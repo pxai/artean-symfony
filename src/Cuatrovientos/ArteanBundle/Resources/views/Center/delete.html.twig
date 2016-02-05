@@ -1,0 +1,15 @@
+{% extends "SamplesBlogBundle:Default:layout.html.twig" %}
+{% block title %}Blog sample::{{ post.title }}{% endblock %}
+{% block body %}
+{% trans %}Delete post{% endtrans %}
+ <div id='posts'>
+		<div>
+
+			{% trans %}Are you sure{% endtrans %}			
+			<div class='title'>{{ post.title }}</div>
+			<div><a href="{{ path('samples_blog_post_delete_save',  {'id': post.id }) }}">Confirm deletion</a> </div>
+			<div><a href="javascript:history.back()">Cancel</a> </div>
+		</div>
+</div>
+<div><a href="{{ path('samples_blog_new_post') }}">New</a> </div>
+{% endblock %}
