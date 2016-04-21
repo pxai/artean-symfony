@@ -1,0 +1,13 @@
+<div class='post'>
+	<div class='title'>{{ post.title }}</div> 
+		<div class='text'>{{ post.text }}</div> 
+		<div class='author'>by {{ post.user.username }}</div> 
+		<div class='category'>{{ post.category.name }}</div> 
+		{% if is_granted('ROLE_ADMIN') %}
+			<div>        
+                <a href="{{ path('samples_blog_post_detail', {'id': post.id }) }}">Detail</a> |
+                <a href="{{ path('samples_blog_post_update', {'id': post.id }) }}">Update</a> |
+                <a href="{{ path('samples_blog_post_delete', {'id': post.id }) }}">Delete</a>                      
+		    </div>
+		{% endif %}
+</div>

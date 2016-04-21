@@ -1,0 +1,12 @@
+
+{# src/Samples/BlogBundle/Resources/views/newPost.html.twig #}
+{% extends "SamplesBlogBundle:Default:layout.html.twig" %}
+{% block title %}Samples blog bundle::new Post{% endblock %}
+{% block body %}
+
+<h3>Update Post: {{ id }}</h3>
+<form method="post" action="{{ path('samples_blog_post_update_save') }}">
+    {{ form_widget(form) }}
+</form>
+
+{% endblock %}
