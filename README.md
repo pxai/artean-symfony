@@ -53,3 +53,12 @@ Steps for creating a CRUD
 Last step
 =========
 Keep on working
+
+
+run
+====
+ Configure your application in app/config/parameters.yml file.
+
+    * Run your application:
+        1. Execute the php bin/console server:run command.
+        2. Browse to the http://localhost:8000 URL.

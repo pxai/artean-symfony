@@ -1,4 +1,0 @@
-Cuatrovientos\ArteanBundle\Entity\Center:
-        name:
-            - NotBlank: {message: 'title.validation.blank'}
-            - Length: { 'min' : 3, 'minMessage' : 'title.validation.min'}            
