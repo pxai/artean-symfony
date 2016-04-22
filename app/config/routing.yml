@@ -1,3 +1,11 @@
+pello_ser_o_no_ser:
+    resource: "@PelloSerONoSerBundle/Resources/config/routing.yml"
+    prefix:   /
+
+pello_ser_o_no_ser:
+    resource: "@CuatrovientosArteanBundle/Resources/config/routing.yml"
+    prefix:   /arteansy
+    
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
