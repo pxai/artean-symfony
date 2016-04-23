@@ -17,16 +17,16 @@ class CenterController extends Controller
     {
         //$centers = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Center")->findAll();
         $centers = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Center")->findCenters();
-        return $this->render('CuatrovientosArteanBundle:Center:index.html.twig', array('posts'=>$centers));
+        return $this->render('CuatrovientosArteanBundle:Center:index.html.twig', array('centers'=>$centers));
     }
 
     /**
     *
     *
     */
-   public function newPostAction()
+   public function newCenterAction()
     {
-        $form = $this->createForm(new PostType());
+        $form = $this->createForm(new CenterType());
         return $this->render('CuatrovientosArteanBundle:Center:new.html.twig',array('form'=> $form->createView()));
     }
 

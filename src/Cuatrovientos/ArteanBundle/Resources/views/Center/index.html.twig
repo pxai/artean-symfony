@@ -2,11 +2,11 @@
 {% block title %}Blog sample::Index{% endblock %}
 {% block body %}
 {% trans %}hello{% endtrans %}
- <div id='posts'>
-        {% for post in posts %}
-            {% include "SamplesBlogBundle:Default:post.html.twig" %}
+ <div id='centers'>
+        {% for center in centers %}
+            {% include "CuatrovientosArteanBundle:Center:center.html.twig" %}
             </div>
         {% endfor %}
 </div>
-<div><a href="{{ path('samples_blog_new_post') }}">New</a> </div>
+<div><a href="{{ path('cuatrovientos_artean_center_new') }}">New</a> </div>
 {% endblock %}
