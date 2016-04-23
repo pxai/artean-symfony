@@ -32,6 +32,12 @@ Check that everything is fine
 ```
 php artean-ng/app/check.php
 ```
+update targets
+==============
+[http://symfony.com/doc/current/book/templating.html#including-stylesheets-and-javascripts-in-twig]
+```
+php bin/console assets:install web
+```
 
 artean-ng
 =========
