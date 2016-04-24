@@ -5,6 +5,12 @@ cuatrovientos_artean_homepage:
 cuatrovientos_artean_samples:
     path:     /artean/samples
     defaults: { _controller: FrameworkBundle:Template:template, template: CuatrovientosArteanBundle:Default:samples.html.twig }
+
+################# offer ##################
+
+cuatrovientos_artean_offer:
+    path:     /artean/open/offer
+    defaults: { _controller: CuatrovientosArteanBundle:Offer:index }
     
 ################# center ##################
 

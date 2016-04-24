@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class CenterType extends AbstractType {
+class OfferType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
@@ -21,7 +21,7 @@ class CenterType extends AbstractType {
 
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'Cuatrovientos\ArteanBundle\Entity\Center',
+            'data_class' => 'Cuatrovientos\ArteanBundle\Entity\Offer',
         ));
     }
 
