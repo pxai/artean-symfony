@@ -15,7 +15,17 @@ class OfferType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('id',HiddenType::class)
-            ->add('name', TextType::class)
+            ->add('company', TextType::class)
+            ->add('position', TextType::class)
+            ->add('functions', TextType::class)
+            ->add('position_no', TextType::class)
+            ->add('contract_type', TextType::class)
+            ->add('jornada', TextType::class)
+            ->add('required_studies', TextType::class)
+            ->add('other_knowledges', TextType::class)
+            ->add('observations', TextType::class)
+            ->add('contact', TextType::class)
+            ->add('cv_reception_date', TextType::class)
             ->add('save', SubmitType::class);
     }
 
