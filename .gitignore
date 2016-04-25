@@ -1,5 +1,4 @@
 
-nbproject/private/
 
 # Cache and logs (Symfony2)
 app/cache/*
