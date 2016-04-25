@@ -17,24 +17,24 @@ class CenterController extends Controller
     {
         //$centers = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Center")->findAll();
         $centers = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Center")->findCenters();
-        return $this->render('CuatrovientosArteanBundle:Center:index.html.twig', array('posts'=>$centers));
+        return $this->render('CuatrovientosArteanBundle:Center:index.html.twig', array('centers'=>$centers));
     }
 
     /**
     *
     *
     */
-   public function newPostAction()
+   public function newCenterAction()
     {
-        $form = $this->createForm(new PostType());
-        return $this->render('CuatrovientosArteanBundle:Center:new.html.twig',array('form'=> $form->createView()));
+        $form = $this->createForm(CenterType::class);
+        return $this->render('CuatrovientosArteanBundle:Center:new.html.twig', array('form'=> $form->createView()));
     }
 
     /**
     *
     *
     */
-    public function newSaveAction(Request $request)
+    public function newCenterSaveAction(Request $request)
     {
         $form = $this->createForm(new PostType(), new Post());
         if ($request->getMethod() == 'POST') {
@@ -59,7 +59,7 @@ class CenterController extends Controller
     *
     *
     */
-   public function detailAction($id=1)
+   public function centerDetailAction($id=1)
     {
 
         $center = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Center")->find($id);
@@ -75,7 +75,7 @@ class CenterController extends Controller
     *
     *
     */
-    public function updateAction($id) {
+    public function centerUpdateAction($id) {
         $center = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Center")->find($id);
       
         $form = $this->createForm(new PostType(), $center);
@@ -87,7 +87,7 @@ class CenterController extends Controller
     *
     *
     */
-    public function updateSaveAction(Request $request) {
+    public function centerUpdateSaveAction(Request $request) {
       
         $form = $this->createForm(new PostType(), new Post());
         $form->submit($request->request->get($form->getName()));
@@ -112,7 +112,7 @@ class CenterController extends Controller
     *
     *
     */
-   public function deleteAction($id=1)
+   public function centerDeleteAction($id=1)
     {
         $center = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Center")->find($id);
         return $this->render('CuatrovientosArteanBundle:Center:delete.html.twig',array('post'=> $center));

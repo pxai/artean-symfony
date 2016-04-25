@@ -1,17 +1,27 @@
 Instalation
 ===========
 Linux:
+```
 sudo curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
 sudo chmod a+x /usr/local/bin/symfony
+```
 
 Windows
+```
 php -r "readfile('http://symfony.com/installer');" > symfony
+```
 
 composer install
 
 Project creation
 ================
 symfony new project_name
+
+Command help
+============
+```
+php bin/console list
+```
 
 First steps
 ===========
@@ -21,7 +31,16 @@ date.timezon = Europe/Madrid
 ...
 
 Check that everything is fine
+```
 php artean-ng/app/check.php
+```
+update targets
+==============
+[http://symfony.com/doc/current/book/templating.html#including-stylesheets-and-javascripts-in-twig]
+```
+php bin/console assets:install web
+```
+
 artean-ng
 =========
 

@@ -8,9 +8,7 @@
 
 <!-- Bootstrap -->
 {% block stylesheets %}
-    {% stylesheets '@CuatrovientosArteanBundle/Resources/public/css/bootstrap.css' %}
-        <link rel="stylesheet" href="{{ asset_url }}"  rel="stylesheet" media="screen" />
-    {% endstylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/cuatrovientosartean/css/bootstrap.css') }}"  rel="stylesheet" media="screen" />
 {% endblock %}
 
 
@@ -25,10 +23,9 @@
 {% block javascripts %}
 <!-- JavaScript plugins (requires jQuery) -->
 <script src="//code.jquery.com/jquery.js"></script>
-    {% javascripts '@CuatrovientosArteanBundle/Resources/public/js/bootstrap.js' %}
         <!-- Include all compiled plugins (below), or include individual files as needed -->        
-        <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
+        <script src="{{ asset('bundles/cuatrovientosartean/js/bootstrap.min.js') }}"></script>
+
     {# % javascripts '@CuatrovientosArteanBundle/Resources/public/js/respond.js' % }
         <!-- Optionally enable responsive features in IE8 -->
         <script src="{{ asset_url }}"></script> 

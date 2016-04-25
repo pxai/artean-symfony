@@ -5,6 +5,12 @@ cuatrovientos_artean_homepage:
 cuatrovientos_artean_samples:
     path:     /artean/samples
     defaults: { _controller: FrameworkBundle:Template:template, template: CuatrovientosArteanBundle:Default:samples.html.twig }
+
+################# offer ##################
+
+cuatrovientos_artean_offer:
+    path:     /artean/open/offer
+    defaults: { _controller: CuatrovientosArteanBundle:Offer:index }
     
 ################# center ##################
 
@@ -14,35 +20,35 @@ cuatrovientos_artean_center:
     
 cuatrovientos_artean_center_new:
     path:     /artean/admin/center/new
-    defaults: { _controller: CuatrovientosArteanBundle:Center:new }
+    defaults: { _controller: CuatrovientosArteanBundle:Center:newCenter }
 
 cuatrovientos_artean_center_new_save:
     path:     /artean/admin/center/new/save
-    defaults: { _controller: CuatrovientosArteanBundle:Center:newSave }
+    defaults: { _controller: CuatrovientosArteanBundle:Center:newCenterSave }
 
 cuatrovientos_artean_center_detail:
     path:     /artean/admin/center/{id}
-    defaults: { _controller: CuatrovientosArteanBundle:Center:detail }
+    defaults: { _controller: CuatrovientosArteanBundle:Center:centerDetail }
 
 
 cuatrovientos_artean_center_update_save:
     path:     /artean/admin/center/update/save
-    defaults: { _controller: CuatrovientosArteanBundle:Center:updateSave }
+    defaults: { _controller: CuatrovientosArteanBundle:Center:centerUpdateSave }
 
 cuatrovientos_artean_center_update:
     path:     /artean/admin/center/update/{id}
-    defaults: { _controller: CuatrovientosArteanBundle:Center:update }
+    defaults: { _controller: CuatrovientosArteanBundle:Center:centerUpdate }
     requirements: 
             'id' : '\d+'
             
 cuatrovientos_artean_center_delete:
     path:     /artean/admin/center/delete/{id}
-    defaults: { _controller: CuatrovientosArteanBundle:Center:delete }
+    defaults: { _controller: CuatrovientosArteanBundle:Center:centerDelete }
     requirements: 
             'id' : '\d+'
 
 cuatrovientos_artean_center_delete_save:
     path:     /artean/admin/center/delete/save/{id}
-    defaults: { _controller: CuatrovientosArteanBundle:Center:deleteSave }
+    defaults: { _controller: CuatrovientosArteanBundle:Center:centerDeleteSave }
     requirements: 
             'id' : '\d+'

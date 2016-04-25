@@ -1,0 +1,3 @@
+pello_ser_o_no_ser_homepage:
+    path:     /
+    defaults: { _controller: PelloSerONoSerBundle:Default:index }
