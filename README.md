@@ -7,6 +7,8 @@ sudo chmod a+x /usr/local/bin/symfony
 Windows
 php -r "readfile('http://symfony.com/installer');" > symfony
 
+composer install
+
 Project creation
 ================
 symfony new project_name
