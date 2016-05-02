@@ -1,12 +1,15 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}Blog sample::Index{% endblock %}
 {% block body %}
-{% trans %}hello{% endtrans %}
- <div id='centers'>
+{% trans %}centers{% endtrans %}
+<div class="table-responsive">
+  <table class="table .table-condensed">
+     <div id='centers'>
         {% for center in centers %}
             {% include "CuatrovientosArteanBundle:Center:center.html.twig" %}
-            </div>
         {% endfor %}
+    </div>
+  </table>
 </div>
 <div><a href="{{ path('cuatrovientos_artean_center_new') }}">New</a> </div>
 {% endblock %}

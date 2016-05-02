@@ -49,7 +49,16 @@ php app/console generate:bundle
 
 Adding bootstrap
 ================
+```
+bower install --save bootstrap
+```
 
+v3
+in AppKernel.php
+            new AppBundle\AppBundle(),
+            new Cuatrovientos\ArteanBundle\CuatrovientosArteanBundle(),
+            new Pello\SerONoSerBundle\PelloSerONoSerBundle(),
+v2
 edit app/config/config.yml
 then go to assetic:
 under assetic: go to bundles: []
