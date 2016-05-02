@@ -36,19 +36,22 @@ class CenterController extends Controller
     */
     public function newCenterSaveAction(Request $request)
     {
-        $form = $this->createForm(new PostType(), new Post());
+        //$form = $this->createForm(new CenterType(), new Center());
+        $form = $this->createForm(CenterType::class, new Center());
         if ($request->getMethod() == 'POST') {
-            //$form->bind($request);
-            $form->submit($request->request->get($form->getName()));
+            $form->handleRequest($request);
+            
+            //$form->submit($request->request->get($form->getName()));
+            
             if ($form->isValid()) {
                 $center = $form->getData();
-
+                
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->merge($center);
                 $em->flush();
-                $response =  $this->render('CuatrovientosArteanBundle:Center:newPostSave.html.twig', array('post' => $center));               
+                $response =  $this->render('CuatrovientosArteanBundle:Center:newSave.html.twig', array('center' => $center));               
             } else {
-                $response = $this->render('CuatrovientosArteanBundle:Center:newPost.html.twig', array('form'=> $form->createView()));
+                $response = $this->render('CuatrovientosArteanBundle:Center:new.html.twig', array('form'=> $form->createView()));
             }
         }
 

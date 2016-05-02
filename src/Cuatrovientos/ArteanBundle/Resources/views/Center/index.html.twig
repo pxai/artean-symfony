@@ -1,7 +1,8 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}Blog sample::Index{% endblock %}
 {% block body %}
-{% trans %}centers{% endtrans %}
+<h2>{% trans %}centers{% endtrans %} <span class="glyphicon glyphicon-heart"></span></h2>
+<div><a href="{{ path('cuatrovientos_artean_center_new') }}">{% trans %}New{% endtrans %}</a> </div>
 <div class="table-responsive">
   <table class="table .table-condensed">
      <div id='centers'>
@@ -11,5 +12,5 @@
     </div>
   </table>
 </div>
-<div><a href="{{ path('cuatrovientos_artean_center_new') }}">New</a> </div>
+
 {% endblock %}

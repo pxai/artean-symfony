@@ -1,8 +1,9 @@
 
 {# src/Samples/BlogBundle/Resources/views/simple.html.twig #}
-{% extends "SamplesBlogBundle:Default:layout.html.twig" %}
-{% block title %}Samples Blog bundle::Simple Save{% endblock %}
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean::Save Center{% endblock %}
 {% block body %}
-Hello, saving Post
- {{ post.title }}
+Hello, saved new Center 
+ <strong>{{ center.name }}</strong>
+ <div><a href="{{ path('cuatrovientos_artean_center') }}">{% trans %}See all{% endtrans %}</a> </div>
 {% endblock %}

@@ -7,10 +7,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Bootstrap -->
-{% block stylesheets %}
-  <link rel="stylesheet"
-            href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
-{% endblock %}
+{% stylesheets
+    '@CuatrovientosArteanBundle/Resources/public/css/bootstrap.min.css'
+    '@CuatrovientosArteanBundle/Resources/public/css/bootstrap-theme.min.css'
+    filter='cssrewrite' output='css/compiled/app.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
 
 
 {% block head %}{% endblock %}
@@ -25,7 +27,6 @@
 <!-- JavaScript plugins (requires jQuery) -->
 <script src="//code.jquery.com/jquery.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->        
-       <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
 
     {# % javascripts '@CuatrovientosArteanBundle/Resources/public/js/respond.js' % }
         <!-- Optionally enable responsive features in IE8 -->
