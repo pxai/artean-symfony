@@ -81,9 +81,9 @@ class CenterController extends Controller
     public function centerUpdateAction($id) {
         $center = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Center")->find($id);
       
-        $form = $this->createForm(new PostType(), $center);
+        $form = $this->createForm(CenterType::class, $center);
 
-        return $this->render('CuatrovientosArteanBundle:Center:updatePost.html.twig',array('form'=> $form->createView(),'id'=>$id));
+        return $this->render('CuatrovientosArteanBundle:Center:update.html.twig',array('form'=> $form->createView(),'id'=>$id));
     }
     
     /**
@@ -92,9 +92,10 @@ class CenterController extends Controller
     */
     public function centerUpdateSaveAction(Request $request) {
       
-        $form = $this->createForm(new PostType(), new Post());
-        $form->submit($request->request->get($form->getName()));
+        $form = $this->createForm(CenterType::class, new Center());
+      //  $form->submit($request->request->get($form->getName()));
         if ($request->getMethod() == 'POST') {
+            $form->handleRequest($request);
             if ($form->isValid()) {
                 $center = $form->getData();
                 
@@ -103,7 +104,7 @@ class CenterController extends Controller
                 $em->flush();
                 
                 // redirect to index
-                $response = $this->forward('CuatrovientosArteanBundle:Center:detail', array('id' => $center->getId()));
+                $response = $this->forward('CuatrovientosArteanBundle:Center:centerDetail', array('id' => $center->getId()));
             } else  {
                  $response = $this->render('CuatrovientosArteanBundle:Center:updatePost.html.twig', array('form'=> $form->createView()));
             }
