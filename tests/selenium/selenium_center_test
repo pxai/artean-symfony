@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost/" />
+<title>Artean Center Management</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Artean Center Management</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/artean-symfony/web/app_dev.php/artean/admin/center</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Reload</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=New</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=center_name</td>
+	<td>Ejemplo</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=center_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=See all</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'Detail')])[133]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Update</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=center_name</td>
+	<td>Ejemplos</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=center_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Index</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'Update')])[133]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=center_name</td>
+	<td>Ejemplo</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=center_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Index</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'Delete')])[133]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Confirm deletion</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Reload</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
