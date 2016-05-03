@@ -66,12 +66,8 @@ class CenterController extends Controller
     {
 
         $center = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Center")->find($id);
-        
-        $comment = new Comment();
-        $comment->setPost($center);
-
-        $form = $this->createForm(new CommentType(),$comment);
-        return $this->render('CuatrovientosArteanBundle:Center:detail.html.twig',array('post'=> $center,'form'=>$form->createView()));
+   
+        return $this->render('CuatrovientosArteanBundle:Center:detail.html.twig',array('center'=> $center));
     }
 
     /**
@@ -119,14 +115,14 @@ class CenterController extends Controller
    public function centerDeleteAction($id=1)
     {
         $center = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Center")->find($id);
-        return $this->render('CuatrovientosArteanBundle:Center:delete.html.twig',array('post'=> $center));
+        return $this->render('CuatrovientosArteanBundle:Center:delete.html.twig',array('center'=> $center));
     }
 
     /**
     *
     *
     */
-   public function deleteSaveAction(Post $center)
+   public function centerDeleteSaveAction(Center $center)
     {
 
        $em = $this->getDoctrine()->getEntityManager();

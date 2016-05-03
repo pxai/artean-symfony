@@ -1,0 +1,13 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Center bundle::Center detail{% endblock %}
+{% block body %}
+<h1>Center detail</h1>
+<ul>
+     <li><strong>Id: </strong>{{ center.id }}</li> 
+     <li><strong>Name: </strong>{{ center.name }}</li> 
+</ul>
+		{#% if is_granted('ROLE_ADMIN') %#}
+                <a href="{{ path('cuatrovientos_artean_center') }}">Index</a> |
+                <a href="{{ path('cuatrovientos_artean_center_update', {'id': center.id }) }}">Update</a> |
+                <a href="{{ path('cuatrovientos_artean_center_delete', {'id': center.id }) }}">Delete</a>                      
+		{#% endif % #}
