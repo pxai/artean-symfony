@@ -52,3 +52,43 @@ cuatrovientos_artean_center_delete_save:
     defaults: { _controller: CuatrovientosArteanBundle:Center:centerDeleteSave }
     requirements: 
             'id' : '\d+'
+            
+################# offer ##################
+cuatrovientos_artean_offer:
+    path:     /artean/admin/offer
+    defaults: { _controller: CuatrovientosArteanBundle:Offer:index }
+    
+cuatrovientos_artean_offer_new:
+    path:     /artean/offer/new
+    defaults: { _controller: CuatrovientosArteanBundle:Offer:newOffer }
+
+cuatrovientos_artean_offer_new_save:
+    path:     /artean/offer/new/save
+    defaults: { _controller: CuatrovientosArteanBundle:Offer:newOfferSave }
+
+cuatrovientos_artean_offer_detail:
+    path:     /artean/admin/offer/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Offer:offerDetail }
+
+
+cuatrovientos_artean_offer_update_save:
+    path:     /artean/admin/offer/update/save
+    defaults: { _controller: CuatrovientosArteanBundle:Offer:offerUpdateSave }
+
+cuatrovientos_artean_offer_update:
+    path:     /artean/admin/offer/update/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Offer:offerUpdate }
+    requirements: 
+            'id' : '\d+'
+            
+cuatrovientos_artean_offer_delete:
+    path:     /artean/admin/offer/delete/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Offer:offerDelete }
+    requirements: 
+            'id' : '\d+'
+
+cuatrovientos_artean_offer_delete_save:
+    path:     /artean/admin/offer/delete/save/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Offer:offerDeleteSave }
+    requirements: 
+            'id' : '\d+'
