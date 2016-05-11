@@ -17,10 +17,14 @@ class OfferType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('id',HiddenType::class)
-            ->add('company', TextType::class)
+            ->add('company', TextType::class,array(
+   "label"=>"company",
+   "required"=>true,
+   'translation_domain' => 'messages'
+ ))
             ->add('position', TextType::class)
             ->add('functions', TextareaType::class)
-            ->add('position_no', TextType::class)
+            ->add('position_no', TextType::class, ['data'=> 1])
             ->add('contract_type', TextType::class)
             ->add('jornada', TextType::class)
             ->add('required_studies', TextareaType::class)

@@ -20,21 +20,21 @@ class OfferController extends Controller
         return $this->render('CuatrovientosArteanBundle:Offer:index.html.twig', array('offers'=>$offers));
     }  
     
-        /**
+    /**
     *
     *
     */
-   public function newOfferAction()
+   public function newOfferOpenAction()
     {
         $form = $this->createForm(OfferType::class);
-        return $this->render('CuatrovientosArteanBundle:Offer:new.html.twig', array('form'=> $form->createView()));
+        return $this->render('CuatrovientosArteanBundle:Offer:newOpen.html.twig', array('form'=> $form->createView()));
     }
 
     /**
     *
     *
     */
-    public function newOfferSaveAction(Request $request)
+    public function newOfferSaveOpenAction(Request $request)
     {
         //$form = $this->createForm(new OfferType(), new Offer());
         $form = $this->createForm(OfferType::class, new Offer());

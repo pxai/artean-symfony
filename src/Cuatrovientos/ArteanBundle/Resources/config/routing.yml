@@ -6,11 +6,6 @@ cuatrovientos_artean_samples:
     path:     /artean/samples
     defaults: { _controller: FrameworkBundle:Template:template, template: CuatrovientosArteanBundle:Default:samples.html.twig }
 
-################# offer ##################
-
-cuatrovientos_artean_offer:
-    path:     /artean/open/offer
-    defaults: { _controller: CuatrovientosArteanBundle:Offer:index }
     
 ################# center ##################
 
@@ -54,6 +49,16 @@ cuatrovientos_artean_center_delete_save:
             'id' : '\d+'
             
 ################# offer ##################
+
+cuatrovientos_artean_open_offer_new:
+    path:     /artean/open/offer/new
+    defaults: { _controller: CuatrovientosArteanBundle:Offer:newOfferOpen }
+    
+cuatrovientos_artean_open_offer_save:
+    path:     /artean/open/offer/save
+    defaults: { _controller: CuatrovientosArteanBundle:Offer:saveOfferOpen }
+    
+### admin    
 cuatrovientos_artean_offer:
     path:     /artean/admin/offer
     defaults: { _controller: CuatrovientosArteanBundle:Offer:index }
