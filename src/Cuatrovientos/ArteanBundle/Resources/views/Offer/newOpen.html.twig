@@ -40,40 +40,40 @@ Simple
 
         <div class="col-md-6">
             <div>
-            <input type="checkbox" id="studies1" value="1" />
+            <input type="checkbox" name="offer[studies][]" id="studies1" value="1" />
             <label for="studies1">Ciclo Medio Comercio</label>
           
-            <input type="checkbox" id="studies2" value="1" />
+            <input type="checkbox" name="offer[studies][]" id="studies2" value="1" />
             <label for="studies2">Ciclo Medio Gestión Administrativa</label>
             </div>
             <div>
-            <input type="checkbox" id="studies3" value="1"  />
+            <input type="checkbox" name="offer[studies][]" id="studies3" value="1"  />
             <label for="studies3">Ciclo Medio Sistemas Microinformáticos y Redes</label>
            
-            <input type="checkbox" id="studies4" value="1"  />
+            <input type="checkbox" name="offer[studies][]" id="studies4" value="1"  />
             <label for="studies4">FP Básica</label>
             </div>
         </div>
           <div class="col-md-6">
             <div>
-            <input type="checkbox" id="studies1" value="1" />
+            <input type="checkbox" name="offer[studies][]" id="studies1" value="1" />
             <label for="studies1">Ciclo Superior Administración y Finanzas</label>
             | 
-            <input type="checkbox" id="studies2" value="1" />
+            <input type="checkbox" name="offer[studies][]" id="studies2" value="1" />
             <label for="studies2">Ciclo Superior Transporte y Logística</label>
             </div>
              <div>
-            <input type="checkbox" id="studies3" value="1"  />
+            <input type="checkbox" name="offer[studies][]" id="studies3" value="1"  />
             <label for="studies3">Ciclo Superior Comercio Internacional</label>
 
-            <input type="checkbox" id="studies3" value="1"  />
+            <input type="checkbox" name="offer[studies][]" id="studies3" value="1"  />
             <label for="studies3">Ciclo Superior GVEC</label>
              </div>
               <div>
-            <input type="checkbox" id="studies1" value="1" />
+            <input type="checkbox" name="offer[studies][]" id="studies1" value="1" />
             <label for="studies1">Ciclo Superior Redes y Sistemas</label>
             | 
-            <input type="checkbox" id="studies2" value="1" />
+            <input type="checkbox" name="offer[studies][]" id="studies2" value="1" />
             <label for="studies2">Ciclo Superior de Desarrollo de Aplicaciones Informáticas</label>
             </div>
         </div>
@@ -86,21 +86,24 @@ Simple
 
         <div class="col-md-6">
             <div>
-            <input type="checkbox" id="studies1" value="1" />
-            <label for="studies1">Euskara</label>
-          
-            <input type="checkbox" id="studies2" value="1" />
-            <label for="studies2">Inglés</label>
+            <input type="checkbox" name="offer[language][]" id="languages1" value="1" />
+            <label for="languages1">Euskara</label>
             </div>
             <div>
-            <input type="checkbox" id="studies3" value="1"  />
-            <label for="studies3">Francés</label>
-           
-            <input type="checkbox" id="studies4" value="1"  />
-            <label for="studies4">Alemán</label>
-            
-            <input type="checkbox" id="studies4" value="1"  />
-            <label for="studies5">Otros</label>
+            <input type="checkbox" name="offer[language][]" id="languages2" value="1" />
+            <label for="languages2">Inglés</label>
+            </div>
+            <div>
+            <input type="checkbox" name="offer[language][]" id="languages3" value="1"  />
+            <label for="languages3">Francés</label>
+            </div>
+            <div>
+            <input type="checkbox" name="offer[language][]" id="languages4" value="1"  />
+            <label for="languages4">Alemán</label>
+            </div>
+            <div>            
+            <input type="checkbox" name="offer[language][]" id="languages5" value="1"  />
+            <label for="languages5">Otros</label>
             </div>
         </div>
         
@@ -120,11 +123,6 @@ Simple
         {{ form_label(form.contact) }}
         {{ form_errors(form.contact) }}
         {{ form_widget(form.contact, {'attr': {'class': 'form-control'}}) }}
-    </div>
-    <div class="form-group">
-        {{ form_label(form.position_no) }}
-        {{ form_errors(form.position_no) }}
-        {{ form_widget(form.position_no, {'attr': {'class': 'form-control'}}) }}
     </div>
     <div class="form-group">
         {{ form_widget(form.save, {'attr': {'class': 'form-control'}}) }}

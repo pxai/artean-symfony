@@ -56,7 +56,7 @@ cuatrovientos_artean_open_offer_new:
     
 cuatrovientos_artean_open_offer_save:
     path:     /artean/open/offer/save
-    defaults: { _controller: CuatrovientosArteanBundle:Offer:saveOfferOpen }
+    defaults: { _controller: CuatrovientosArteanBundle:Offer:newOfferSaveOpen }
     
 ### admin    
 cuatrovientos_artean_offer:
