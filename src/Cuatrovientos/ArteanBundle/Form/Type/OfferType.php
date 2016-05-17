@@ -25,49 +25,56 @@ class OfferType extends AbstractType {
    "required"=>true,
    'translation_domain' => 'messages'
  ))
-            ->add('position', TextType::class)
+            ->add('position', TextType::class, array('label' => 'Super Position'))
             ->add('functions', TextareaType::class)
             ->add('position_no', TextType::class, ['data'=> 1])
             ->add('contract_type', TextType::class)
-            ->add('jornada', TextType::class)
-            ->add('required_studies', CollectionType::class, array(
+            ->add('workday', TextType::class)
+            ->add('required_studies', ChoiceType::class, array(
                     // each entry in the array will be an "email" field
-                    'entry_type'   => TextType::class,
-                    // these options are passed to each "email" type
-                    'entry_options'  => array(
-                        'attr'      => array('class' => 'email-box'),
-                        'choices'  => array(
-                            'Nashville' => 'nashville',
-                            'Paris'     => 'paris',
-                            'Berlin'    => 'berlin',
-                            'London'    => 'london',
-                        ),
-                    ),
-            ))
-                ->add('required_languages', CollectionType::class, array(
+                      'choices'  => array(
+                            'Ciclo Medio Comercio' => 'nashville',
+                            'Ciclo Medio Gestión Administrativa'     => 'paris',
+                            'Ciclo Medio Sistemas Microinformáticos y Redes'    => 'berlin',
+                            'FP Básica'    => 'london',
+                            'Ciclo Superior Administración y Finanzas'    => 'london',
+                            'Ciclo Superior Transporte y Logística'    => 'london',
+                            'Ciclo Superior Comercio Internacional'    => 'london',
+                            'Ciclo Superior GVEC'    => 'london',
+                            'Ciclo Superior Redes y Sistemas'    => 'london',
+                            'Ciclo Superior de Desarrollo de Aplicaciones Informáticas'    => 'london',
+                        ),          
+                                    'choice_attr' => array('class' => 'form-control'),
+                    'attr' => array('class' => 'checkboxblock'),
+                    'expanded' => true,
+                    'multiple' => true
+                    )
+            )
+                ->add('required_languages', ChoiceType::class, array(
                     // each entry in the array will be an "email" field
-                    'entry_type'   => TextType::class,
-                    // these options are passed to each "email" type
-                    'entry_options'  => array(
-                        'attr'      => array('class' => 'email-box'),
-                        'choices'  => array(
-                            'Nashville' => 'nashville',
-                            'Paris'     => 'paris',
-                            'Berlin'    => 'berlin',
-                            'London'    => 'london',
-                        ),
-                    ),
-            ))
+                      'choices'  => array(
+                            'Inglés' => 'nashville',
+                            'Francés'     => 'paris',
+                            'Euskara'    => 'berlin',
+                            'Aleman'    => 'london',
+                            'Italiano'    => 'london',
+                            'Ruso'    => 'london',
+                            'Otros'    => 'london',
+                        ),                 
+                    'attr' => array('class' => 'checkboxblock'),
+                    'expanded' => true,
+                    'multiple' => true
+                    )
+            )
             ->add('other_knowledges', TextareaType::class)
             ->add('observations', TextareaType::class)
             ->add('contact', TextareaType::class)
-            ->add('cv_reception_date', DateType::class)
             ->add('save', SubmitType::class);
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'Cuatrovientos\ArteanBundle\Entity\Offer',
+            'data_class' => 'Cuatrovientos\ArteanBundle\Entity\OfferOpen',
         ));
     }
 
