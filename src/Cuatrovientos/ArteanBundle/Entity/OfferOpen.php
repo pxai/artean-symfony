@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="Cuatrovientos\ArteanBundle\EntityRepository\OfferRepository")
- * @ORM\Table(name="tboffer")
+ * @ORM\Table(name="ofertas")
  */
 class OfferOpen
 {
@@ -38,8 +38,10 @@ class OfferOpen
     private $position_no;
 
      /**
-     * @ORM\Column(name="contract_type",type="string", length=50)
-     */
+  * @var ContractType
+  * @ORM\ManyToOne(targetEntity="ContractType")
+  * @ORM\JoinColumn(name="tipocontrato", referencedColumnName="id")
+  */
     private $contract_type;
     
      /**
@@ -48,7 +50,7 @@ class OfferOpen
     private $workday;
 
     /**
-     * @ORM\Column(name="required_studies",type="string", length=50)
+     * @ORM\Column(name="required_studies",type="array", length=50)
      */
     private $required_studies;
     

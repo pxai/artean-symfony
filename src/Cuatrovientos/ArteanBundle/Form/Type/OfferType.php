@@ -9,10 +9,8 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class OfferType extends AbstractType {
@@ -28,7 +26,10 @@ class OfferType extends AbstractType {
             ->add('position', TextType::class, array('label' => 'Super Position'))
             ->add('functions', TextareaType::class)
             ->add('position_no', TextType::class, ['data'=> 1])
-            ->add('contract_type', TextType::class)
+            ->add('contract_type', EntityType::class, array(
+                    'class' => 'CuatrovientosArteanBundle:ContractType'
+                    )
+            )
             ->add('workday', TextType::class)
             ->add('required_studies', ChoiceType::class, array(
                     // each entry in the array will be an "email" field
