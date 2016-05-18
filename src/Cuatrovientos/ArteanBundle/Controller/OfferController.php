@@ -38,6 +38,7 @@ class OfferController extends Controller
     public function newOfferSaveOpenAction(Request $request)
     {
         //$form = $this->createForm(new OfferType(), new Offer());
+        //$request->get('position')->set($request->request->get('company') .', '. $request->request->get('position'));    
         $form = $this->createForm(OfferType::class, new OfferOpen());
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
@@ -46,10 +47,9 @@ class OfferController extends Controller
             
             if ($form->isValid()) {
                 $offer = $form->getData();
-                
-               // $em = $this->getDoctrine()->getEntityManager();
-               // $em->merge($offer);
-               // $em->flush();
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->merge($offer);
+                $em->flush();
                 $response =  $this->render('CuatrovientosArteanBundle:Offer:newSave.html.twig', array('offer' => $offer));               
             } else {
                 $response = $this->render('CuatrovientosArteanBundle:Offer:new.html.twig', array('form'=> $form->createView()));

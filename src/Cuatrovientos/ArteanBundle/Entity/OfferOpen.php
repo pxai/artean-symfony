@@ -17,23 +17,20 @@ class OfferOpen
      */
     private $id;
     
-     /**
-     * @ORM\Column(name="company",type="string", length=50)
-     */
     private $company;
   
      /**
-     * @ORM\Column(name="position",type="string", length=50)
+     * @ORM\Column(name="puesto",type="string", length=255)
      */
     private $position;
   
          /**
-     * @ORM\Column(name="functions",type="string", length=50)
+     * @ORM\Column(name="descripcionoferta",type="string", length=255)
      */
-    private $functions;
+    private $description;
     
          /**
-     * @ORM\Column(name="position_no",type="string", length=50)
+     * @ORM\Column(name="vacantes",type="integer")
      */
     private $position_no;
 
@@ -45,33 +42,30 @@ class OfferOpen
     private $contract_type;
     
      /**
-     * @ORM\Column(name="workday",type="string", length=50)
+     * @ORM\Column(name="jornada",type="string", length=50)
      */
     private $workday;
 
     /**
-     * @ORM\Column(name="required_studies",type="array", length=50)
+     * @ORM\Column(name="estudiosrequeridos",type="array", length=50)
      */
     private $required_studies;
     
     /**
-     * @ORM\Column(name="required_languages",type="string", length=50)
+     * @ORM\Column(name="idiomas",type="array", length=50)
      */
     private $required_languages;
 
     /**
-     * @ORM\Column(name="other_knowledges",type="array", length=50)
+     * @ORM\Column(name="requisitos",type="array", length=50)
      */
     private $other_knowledges;
     
     /**
-     * @ORM\Column(name="observations",type="string", length=50)
+     * @ORM\Column(name="observaciones",type="string", length=50)
      */
     private $observations;
     
-    /**
-     * @ORM\Column(name="contact",type="string", length=50)
-     */
     private $contact;
 
         
@@ -102,8 +96,8 @@ class OfferOpen
         return $this->position;
     }
 
-    public function getFunctions() {
-        return $this->functions;
+    public function getDescription() {
+        return $this->description;
     }
 
     public function getPositionNo() {
@@ -142,8 +136,8 @@ class OfferOpen
         $this->position = $position;
     }
 
-    public function setFunctions($functions) {
-        $this->functions = $functions;
+    public function setDescription ($description) {
+        $this->description = $description;
     }
 
     public function setPositionNo($position_no) {
