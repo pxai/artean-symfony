@@ -50,6 +50,7 @@ class OfferController extends Controller
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->merge($offer);
                 $em->flush();
+                $this->sendEmail($offer);
                 $response =  $this->render('CuatrovientosArteanBundle:Offer:newSave.html.twig', array('offer' => $offer));               
             } else {
                 $response = $this->render('CuatrovientosArteanBundle:Offer:new.html.twig', array('form'=> $form->createView()));
@@ -59,6 +60,34 @@ class OfferController extends Controller
         return $response;
     }
 
+    private function sendEmail ($offer) {
+         $message = \Swift_Message::newInstance()
+        ->setSubject('Artean: ¡nueva oferta de empleo!')
+        ->setFrom('artean@cuatrovientos.org')
+        ->setTo('artean@cuatrovientos.org')
+        ->setBcc('pello_altadill@cuatrovientos.org')
+        ->setBody(
+            $this->renderView(
+                // app/Resources/views/Emails/registration.html.twig
+                'Emails/newOffer.html.twig',
+                array('offer' => $offer)
+            ),
+            'text/html'
+        );
+        /*
+         * If you also want to include a plaintext version of the message
+        ->addPart(
+            $this->renderView(
+                'Emails/registration.txt.twig',
+                array('name' => $name)
+            ),
+            'text/plain'
+        )
+        */
+        $this->get('mailer')->send($message);
+
+        //return $this->render(...);
+    }
     /**
     *
     *
