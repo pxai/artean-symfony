@@ -1,0 +1,12 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Blog sample::Index{% endblock %}
+{% block body %}
+{% trans %}hello{% endtrans %}
+ <div id='offers'>
+        {% for offer in offers %}
+            {% include "CuatrovientosArteanBundle:Offer:offer.html.twig" %}
+            </div>
+        {% endfor %}
+</div>
+<div><a href="{{ path('cuatrovientos_artean_offer_new') }}">New</a> </div>
+{% endblock %}
