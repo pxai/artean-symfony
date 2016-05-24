@@ -1,11 +1,11 @@
 
-{# src/Cuatrovientos/ArteanBundle/Resources/views/Center/new.html.twig #}
+{# src/Cuatrovientos/ArteanBundle/Resources/views/OfferAd/newAdOpen.html.twig #}
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}Nueva Oferta{% endblock %}
 {% block body %}
 
 Simple
-<form method="post" action="{{ path('cuatrovientos_artean_open_offer_save') }}">
+<form method="post" action="{{ path('cuatrovientos_artean_open_offer_ad_save') }}">
    {# { form_widget(form) } #}
     {{ form_errors(form) }}
     <div class="form-group">
