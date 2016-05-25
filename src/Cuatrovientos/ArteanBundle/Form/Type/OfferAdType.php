@@ -10,18 +10,13 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 
-/**
- * INSERT INTO `tbestudios` (`id`, `codestudios`, `descripcion`) VALUES
-(143, 'FP BAS', 'FP Básica'),
-(144, 'CM SMI', 'Ciclo Medio Sistemas Microinformáticos y redes');
-
- */
-class OfferType extends AbstractType {
+class OfferAdType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
@@ -31,7 +26,8 @@ class OfferType extends AbstractType {
                 "required"=>true,
                 'translation_domain' => 'messages'
               ))
-            ->add('position', TextType::class, array('label' => 'Position'))
+            ->add('position', TextType::class, array('label' => 'Puesto'))
+            ->add('location', TextType::class, array('label' => 'Localidad'))
             ->add('description', TextareaType::class, array('label' => 'Description'))
             ->add('position_no', TextType::class, ['data'=> 1])
             ->add('contract_type', EntityType::class, array(
@@ -59,25 +55,10 @@ class OfferType extends AbstractType {
                     'multiple' => true
                     )
             )
-                ->add('required_languages', ChoiceType::class, array(
-                    // each entry in the array will be an "email" field
-                      'choices'  => array(
-                            'Inglés' => 'in',
-                            'Francés'     => 'fr',
-                            'Euskara'    => 'eu',
-                            'Aleman'    => 'al',
-                            'Italiano'    => 'it',
-                            'Ruso'    => 'ru',
-                            'Otros'    => 'ot',
-                        ),                 
-                    'attr' => array('class' => 'checkboxblock'),
-                    'expanded' => true,
-                    'multiple' => true
-                    )
-            )
             ->add('other_knowledges', TextareaType::class)
             ->add('observations', TextareaType::class)
             ->add('contact', TextareaType::class)
+            ->add('cv_date', DateType::class, array('label' => 'CV Date'))
             ->add('save', SubmitType::class);
         
           $builder->addEventListener(
@@ -94,7 +75,7 @@ class OfferType extends AbstractType {
 
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'Cuatrovientos\ArteanBundle\Entity\OfferOpen',
+            'data_class' => 'Cuatrovientos\ArteanBundle\Entity\OfferAdOpen',
         ));
     }
 

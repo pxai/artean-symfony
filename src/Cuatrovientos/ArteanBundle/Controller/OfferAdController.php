@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Cuatrovientos\ArteanBundle\Entity\Offer;
 use Cuatrovientos\ArteanBundle\Entity\OfferOpen;
-use Cuatrovientos\ArteanBundle\Form\Type\OfferType;
+use Cuatrovientos\ArteanBundle\Form\Type\OfferAdType;
 
 class OfferAdController extends Controller
 {
@@ -25,8 +25,8 @@ class OfferAdController extends Controller
     */
    public function newOfferAdOpenAction()
     {
-        $form = $this->createForm(OfferType::class);
-        return $this->render('CuatrovientosArteanBundle:Offer:newAdOpen.html.twig', array('form'=> $form->createView()));
+        $form = $this->createForm(OfferAdType::class);
+        return $this->render('CuatrovientosArteanBundle:OfferAd:newAdOpen.html.twig', array('form'=> $form->createView()));
     }
 
     /**
@@ -37,7 +37,7 @@ class OfferAdController extends Controller
     {
         //$form = $this->createForm(new OfferType(), new Offer());
         //$request->get('position')->set($request->request->get('company') .', '. $request->request->get('position'));    
-        $form = $this->createForm(OfferType::class, new OfferOpen());
+        $form = $this->createForm(OfferAdType::class, new OfferAdOpen());
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
             
@@ -49,9 +49,9 @@ class OfferAdController extends Controller
                 $em->merge($offer);
                 $em->flush();
                 $this->sendEmail($offer);
-                $response =  $this->render('CuatrovientosArteanBundle:Offer:newAdSave.html.twig', array('offer' => $offer));               
+                $response =  $this->render('CuatrovientosArteanBundle:OfferAd:newAdSave.html.twig', array('offer' => $offer));               
             } else {
-                $response = $this->render('CuatrovientosArteanBundle:Offer:newAdOpen.html.twig', array('form'=> $form->createView()));
+                $response = $this->render('CuatrovientosArteanBundle:OfferAd:newAdOpen.html.twig', array('form'=> $form->createView()));
             }
         }
 

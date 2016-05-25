@@ -24,7 +24,9 @@ class OfferOpen
      */
     private $position;
   
-         /**
+    private $location;
+    
+     /**
      * @ORM\Column(name="descripcionoferta",type="string", length=255)
      */
     private $description;
@@ -65,7 +67,9 @@ class OfferOpen
      * @ORM\Column(name="observaciones",type="string", length=50)
      */
     private $observations;
-    
+ 
+    private $cv_date;
+        
     private $contact;
 
         
@@ -95,6 +99,10 @@ class OfferOpen
     public function getPosition() {
         return $this->position;
     }
+    
+    public function getLocation() {
+        return $this->location;
+    }
 
     public function getDescription() {
         return $this->description;
@@ -107,7 +115,11 @@ class OfferOpen
     public function getWorkday() {
         return $this->workday;
     }
-
+    
+    public function getContractType() {
+        return $this->contract_type;
+    }
+    
     public function getRequiredStudies() {
         return $this->required_studies;
     }
@@ -128,12 +140,20 @@ class OfferOpen
         return $this->contact;
     }
 
+    public function getCvDate() {
+        return $this->cv_date;
+    }
+    
     public function setCompany($company) {
         $this->company = $company;
     }
 
     public function setPosition($position) {
         $this->position = $position;
+    }
+    
+    public function setLocation($location) {
+        $this->location = $location;
     }
 
     public function setDescription ($description) {
@@ -168,8 +188,8 @@ class OfferOpen
         $this->contact = $contact;
     }
    
-        public function getContractType() {
-        return $this->contract_type;
+    public function setCvDate($cv_date) {
+        $this->cv_date = $cv_date;
     }
 
     public function setContractType($contract_type) {
