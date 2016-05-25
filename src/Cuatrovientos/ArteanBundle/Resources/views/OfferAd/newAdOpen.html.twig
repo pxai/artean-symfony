@@ -28,14 +28,14 @@
         {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
     </div>
     <div class="form-group">
-        {{ form_label(form.position_no) }}
-        {{ form_errors(form.position_no) }}
-        {{ form_widget(form.position_no, {'attr': {'class': 'form-control'}}) }}
+        {{ form_label(form.positionNo) }}
+        {{ form_errors(form.positionNo) }}
+        {{ form_widget(form.positionNo, {'attr': {'class': 'form-control'}}) }}
     </div>
     <div class="form-group">
-        {{ form_label(form.contract_type) }}
-        {{ form_errors(form.contract_type) }}
-        {{ form_widget(form.contract_type, {'attr': {'class': 'form-control'}}) }}
+        {{ form_label(form.contractType) }}
+        {{ form_errors(form.contractType) }}
+        {{ form_widget(form.contractType, {'attr': {'class': 'form-control'}}) }}
     </div>
     <div class="form-group">
         {{ form_label(form.workday) }}
@@ -43,15 +43,15 @@
         {{ form_widget(form.workday, {'attr': {'class': 'form-control'}}) }}
     </div>
     <div class="form-group">
-        {{ form_label(form.required_studies) }}
-        {{ form_errors(form.required_studies) }}
-        {{ form_widget(form.required_studies) }}
+        {{ form_label(form.requiredStudies) }}
+        {{ form_errors(form.requiredStudies) }}
+        {{ form_widget(form.requiredStudies) }}
     </div>
        
     <div class="form-group">
-        {{ form_label(form.other_knowledges) }}
-        {{ form_errors(form.other_knowledges) }}
-        {{ form_widget(form.other_knowledges, {'attr': {'class': 'form-control'}}) }}
+        {{ form_label(form.otherKnowledges) }}
+        {{ form_errors(form.otherKnowledges) }}
+        {{ form_widget(form.otherKnowledges, {'attr': {'class': 'form-control'}}) }}
     </div>
     <div class="form-group">
         {{ form_label(form.observations) }}
@@ -64,14 +64,15 @@
         {{ form_widget(form.contact, {'attr': {'class': 'form-control'}}) }}
     </div>
      <div class="form-group">
-        {{ form_label(form.cv_date) }}
-        {{ form_errors(form.cv_date) }}
-        {{ form_widget(form.cv_date, {'attr': {'class': 'form-control'}}) }}
+        {{ form_label(form.cvDate) }}
+        {{ form_errors(form.cvDate) }}
+        {{ form_widget(form.cvDate, {'attr': {'class': 'form-control'}}) }}
     </div>
     <div class="form-group">
         {{ form_row(form._token) }}
         {{ form_widget(form.save, {'attr': {'class': 'form-control'}}) }}
     </div>
 </form>
+
 
 {% endblock %}

@@ -29,13 +29,13 @@ class OfferAdType extends AbstractType {
             ->add('position', TextType::class, array('label' => 'Puesto'))
             ->add('location', TextType::class, array('label' => 'Localidad'))
             ->add('description', TextareaType::class, array('label' => 'Description'))
-            ->add('position_no', TextType::class, ['data'=> 1])
-            ->add('contract_type', EntityType::class, array(
+            ->add('positionNo', TextType::class, ['data'=> 1])
+            ->add('contractType', EntityType::class, array(
                     'class' => 'CuatrovientosArteanBundle:ContractType'
                     )
             )
             ->add('workday', TextType::class)
-            ->add('required_studies', ChoiceType::class, array(
+            ->add('requiredStudies', ChoiceType::class, array(
                     // each entry in the array will be an "email" field
                       'choices'  => array(
                             'Ciclo Medio Comercio' => '9',
@@ -49,16 +49,16 @@ class OfferAdType extends AbstractType {
                             'Ciclo Superior Redes y Sistemas'    => '15',
                             'Ciclo Superior de Desarrollo de Aplicaciones Informáticas'    => '17',
                         ),          
-                                    'choice_attr' => array('class' => 'form-control'),
+                    'choice_attr' => array('class' => 'form-control'),
                     'attr' => array('class' => 'checkboxblock'),
                     'expanded' => true,
                     'multiple' => true
                     )
             )
-            ->add('other_knowledges', TextareaType::class)
+            ->add('otherKnowledges', TextareaType::class)
             ->add('observations', TextareaType::class)
             ->add('contact', TextareaType::class)
-            ->add('cv_date', DateType::class, array('label' => 'CV Date'))
+            ->add('cvDate', DateType::class, array('label' => 'CV Date'))
             ->add('save', SubmitType::class);
         
           $builder->addEventListener(

@@ -15,13 +15,5 @@ class OfferAdRepository extends EntityRepository
 	{
             return $this->findAll();
 	}
-        
-       /**
-	* customized function
-	*
-	*/
-	public function saveOfferAsNew ($offer)
-	{
-            return $this->findAll();
-	}
+
 }

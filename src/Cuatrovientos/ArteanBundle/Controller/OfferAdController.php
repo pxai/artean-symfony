@@ -4,9 +4,9 @@ namespace  Cuatrovientos\ArteanBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Cuatrovientos\ArteanBundle\Entity\Offer;
-use Cuatrovientos\ArteanBundle\Entity\OfferOpen;
+use Cuatrovientos\ArteanBundle\Entity\OfferAdOpen;
 use Cuatrovientos\ArteanBundle\Form\Type\OfferAdType;
+use Cuatrovientos\ArteanBundle\Entity\News;
 
 class OfferAdController extends Controller
 {
@@ -45,10 +45,19 @@ class OfferAdController extends Controller
             
             if ($form->isValid()) {
                 $offer = $form->getData();
+                
+                $news = new News();
+                $news->setTitle($offer->getCompany(). ' ' . $offer->getPosition());
+                $news->setPermalink($this->permalink($news->getTitle()));
+                $news->setWhat($offer->getDescription());
+                $news->setNewsdate(time());
+                $news->setWho(1);
+                $news->setStatus(1);
+            
                 $em = $this->getDoctrine()->getEntityManager();
-                $em->merge($offer);
+                $em->merge($news);
                 $em->flush();
-                $this->sendEmail($offer);
+               // $this->sendEmail($offer);
                 $response =  $this->render('CuatrovientosArteanBundle:OfferAd:newAdSave.html.twig', array('offer' => $offer));               
             } else {
                 $response = $this->render('CuatrovientosArteanBundle:OfferAd:newAdOpen.html.twig', array('form'=> $form->createView()));
@@ -60,13 +69,13 @@ class OfferAdController extends Controller
 
     private function sendEmail ($offer) {
          $message = \Swift_Message::newInstance()
-        ->setSubject('Artean: ¡nueva oferta de empleo!')
+        ->setSubject('Artean: ¡nuevo anuncio de oferta de empleo!')
         ->setFrom('artean@cuatrovientos.org')
         ->setTo('artean@cuatrovientos.org')
         ->setBcc('pello_altadill@cuatrovientos.org')
         ->setBody(
             $this->renderView(
-                // app/Resources/views/Emails/registration.html.twig
+                // app/Resources/views/Emails/newOfferAd.html.twig
                 'Emails/newOfferAd.html.twig',
                 array('offer' => $offer)
             ),
@@ -85,6 +94,14 @@ class OfferAdController extends Controller
         $this->get('mailer')->send($message);
 
         //return $this->render(...);
+    }
+    
+    private function permalink ($title) {
+        $url = '';
+        $patterns = array("/\s+/");
+        $subst = array("-");
+        $url = preg_replace($patterns, $subst, $title);
+        return strtolower($url);
     }
    
 }
