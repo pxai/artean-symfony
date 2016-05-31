@@ -1,6 +1,10 @@
 cuatrovientos_artean_homepage:
     path:     /artean
     defaults: { _controller: CuatrovientosArteanBundle:Default:index }
+ 
+cuatrovientos_artean_homepage_root:
+    path:     /
+    defaults: { _controller: CuatrovientosArteanBundle:Default:index }
     
 cuatrovientos_artean_samples:
     path:     /artean/samples
