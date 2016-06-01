@@ -4,15 +4,17 @@
 namespace Cuatrovientos\ArteanBundle\EntityRepository;
 use Doctrine\ORM\EntityRepository;
 
-class CenterRepository extends EntityRepository
+class ApplicantRepository extends EntityRepository
 {
 
-	/**
-	* customized function
-	*
+        
+       /**
+	* customized findApplicant
 	*/
-	public function findCenters($post_id=0)
+	public function findApplicant($email)
 	{
-            return $this->findAll();
+              
+            $applicant = $this->findOneBy(array("email" => $email));
+            return $applicant;
 	}
 }

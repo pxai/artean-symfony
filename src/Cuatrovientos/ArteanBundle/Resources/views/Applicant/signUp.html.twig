@@ -1,0 +1,13 @@
+
+{# src/Cuatrovientos/ArteanBundle/Resources/views/Center/new.html.twig #}
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Sign Up::new {% endblock %}
+{% block body %}
+
+<h2>Alta en artean - SignUp</h2>
+<p>Tu email no existe en nuestra BBDD.</p>
+<form method="post" action="{{ path('cuatrovientos_artean_applicant_signup_save') }}">
+   {{ form_widget(form) }}
+</form>
+
+{% endblock %}

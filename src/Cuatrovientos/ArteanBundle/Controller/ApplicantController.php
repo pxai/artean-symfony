@@ -46,12 +46,18 @@ class ApplicantController extends Controller
             //$form->submit($request->request->get($form->getName()));
             
             if ($form->isValid()) {
-                $applicant = $form->getData();
+                $new_applicant = $form->getData();
+                $applicant = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Applicant")->findApplicant($new_applicant->getEmail());
+                
+                if (null != $applicant) {
+                    $response =  $this->render('CuatrovientosArteanBundle:Applicant:signInSave.html.twig', array('applicant' => $applicant,'msg'=>'Ya existe'));                               
+                } else {
+                    $response = $this->render('CuatrovientosArteanBundle:Applicant:signIn.html.twig', array('form'=> $form->createView()));
+                }
                /* $em = $this->getDoctrine()->getEntityManager();
                 $em->merge($applicant);
                 $em->flush();
                 $this->sendEmail($applicant);*/
-                $response =  $this->render('CuatrovientosArteanBundle:Applicant:signInSave.html.twig', array('applicant' => $applicant));               
             } else {
                 $response = $this->render('CuatrovientosArteanBundle:Applicant:signIn.html.twig', array('form'=> $form->createView()));
             }

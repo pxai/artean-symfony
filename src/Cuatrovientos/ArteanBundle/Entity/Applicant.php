@@ -5,7 +5,7 @@ namespace Cuatrovientos\ArteanBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="Cuatrovientos\ArteanBundle\EntityRepository\CenterRepository")
+ * @ORM\Entity(repositoryClass="Cuatrovientos\ArteanBundle\EntityRepository\ApplicantRepository")
  * @ORM\Table(name="tbalumnos")
  */
 class Applicant
