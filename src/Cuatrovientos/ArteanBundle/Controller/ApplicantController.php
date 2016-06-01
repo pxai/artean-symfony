@@ -88,7 +88,8 @@ class ApplicantController extends Controller
                 $user->setFullname($applicant->getName() .' '.$applicant->getSurname());
                 $user->setLogin($applicant->getEmail());
                 $user->setEmail($applicant->getEmail());
-                $user->setPassword($user->randPassword());
+                $password = $user->randPassword();
+                $user->setPassword($password);
                 
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($user);
@@ -99,7 +100,7 @@ class ApplicantController extends Controller
                 $em->merge($applicant);
                 $em->flush();
                 $this->sendEmail($applicant);
-                $this->sendEmailUser($user);
+                $this->sendEmailUser($user,$password);
                 
                 $response = $this->render('CuatrovientosArteanBundle:Applicant:signUpSave.html.twig', array('applicant'=> $applicant));
                 
@@ -131,9 +132,9 @@ class ApplicantController extends Controller
     }
     
     
-        private function sendEmailUser ($user) {
+        private function sendEmailUser ($user, $password) {
          $message = \Swift_Message::newInstance()
-        ->setSubject('Artean: ¡Bienvvenid@ la bolsa de empleo!')
+        ->setSubject('Artean: ¡Bienvenid@ la bolsa de empleo!')
         ->setFrom('artean@cuatrovientos.org')
         ->setTo($user->getEmail())
         ->setBcc('pello_altadill@cuatrovientos.org')
@@ -141,7 +142,7 @@ class ApplicantController extends Controller
             $this->renderView(
                 // app/Resources/views/Emails/registration.html.twig
                 'Emails/newUser.html.twig',
-                array('user' => $user)
+                array('user' => $user, 'password' => $password)
             ),
             'text/html'
         );
