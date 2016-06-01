@@ -111,3 +111,11 @@ cuatrovientos_artean_offer_delete_save:
     defaults: { _controller: CuatrovientosArteanBundle:Offer:offerDeleteSave }
     requirements: 
             'id' : '\d+'
+            
+cuatrovientos_artean_applicant_signin:        
+    path:     /artean/applicant/signin
+    defaults: { _controller: CuatrovientosArteanBundle:Applicant:applicantSignIn }
+
+cuatrovientos_artean_applicant_signin_save:        
+    path:     /artean/applicant/signin/save
+    defaults: { _controller: CuatrovientosArteanBundle:Applicant:applicantSignInSave }

@@ -1,17 +1,17 @@
 <?php
-// src/Cuatrovientos/BlogBundle/EntityRepository/ApplicantRepository.php
+// src/Cuatrovientos/BlogBundle/EntityRepository/CenterRepository.php
 
 namespace Cuatrovientos\ArteanBundle\EntityRepository;
 use Doctrine\ORM\EntityRepository;
 
-class ApplicantRepository extends EntityRepository
+class CenterRepository extends EntityRepository
 {
 
 	/**
 	* customized function
 	*
 	*/
-	public function findApplicant($post_id=0)
+	public function findCenters($post_id=0)
 	{
             return $this->findAll();
 	}

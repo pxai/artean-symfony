@@ -1,0 +1,13 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Center bundle:: delete Center{% endblock %}
+{% block body %}
+{% trans %}Delete center{% endtrans %}
+ <div id='center'>
+		<div>
+			{% trans %}Are you sure{% endtrans %}			
+			<div class='title'>{{ center.name }}</div>
+			<div><a href="{{ path('cuatrovientos_artean_center_delete_save',  {'id': center.id }) }}">Confirm deletion</a> </div>
+			<div><a href="javascript:history.back()">Cancel</a> </div>
+		</div>
+</div>
+{% endblock %}

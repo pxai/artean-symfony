@@ -1,0 +1,12 @@
+
+{# src/Cuatrovientos/ArteanBundle/Resources/views/Center/new.html.twig #}
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Sign In::new {% endblock %}
+{% block body %}
+
+<h2>Alta en artean</h2>
+<form method="post" action="{{ path('cuatrovientos_artean_applicant_signin_save') }}">
+   {{ form_widget(form) }}
+</form>
+
+{% endblock %}
