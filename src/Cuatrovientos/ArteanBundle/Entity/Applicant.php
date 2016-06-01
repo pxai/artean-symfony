@@ -37,10 +37,15 @@ class Applicant
      */
     private $idUser;
 
+    /**
+     * //ORM\Column(name="estudiosrequeridos",type="array", length=50)
+     */
+    private $studies;
+    
      /**
      * @ORM\Column(name="curriculum",type="string", length=255)
      */
-    private $cv;
+    private $cv = '';
 
     
     public function __construct () {
@@ -89,6 +94,10 @@ class Applicant
         return $this->idUser;
     }
 
+    public function getStudies() {
+        return $this->studies;
+    }
+    
     public function getCv() {
         return $this->cv;
     }
@@ -107,6 +116,11 @@ class Applicant
 
     public function setCv($cv) {
         $this->cv = $cv;
+    }
+
+
+    public function setStudies($studies) {
+        $this->studies = $studies;
     }
 
 

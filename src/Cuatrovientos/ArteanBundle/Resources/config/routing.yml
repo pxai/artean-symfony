@@ -119,3 +119,11 @@ cuatrovientos_artean_applicant_signin:
 cuatrovientos_artean_applicant_signin_save:        
     path:     /artean/applicant/signin/save
     defaults: { _controller: CuatrovientosArteanBundle:Applicant:applicantSignInSave }
+
+cuatrovientos_artean_applicant_signup:        
+    path:     /artean/applicant/signup
+    defaults: { _controller: CuatrovientosArteanBundle:Applicant:applicantSignUp }
+
+cuatrovientos_artean_applicant_signup_save:        
+    path:     /artean/applicant/signup/save
+    defaults: { _controller: CuatrovientosArteanBundle:Applicant:applicantSignUpSave }

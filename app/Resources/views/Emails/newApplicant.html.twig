@@ -1,0 +1,31 @@
+
+{# src/Samples/BlogBundle/Resources/views/simple.html.twig #}
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Nuevo candidato{% endblock %}
+{% block body %}
+Nueva candidato en la bolsa de empleo
+ {{ applicant.name }} {{applicant.surname}}.
+ <table class="table">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Nuev@ candidat@</th>
+    </tr>    
+    </thead>
+     <tbody>
+    <tr>
+      <th scope="row">Nombre</th>
+      <td>{{ applicant.name }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Apellidos</th>
+      <td>{{ applicant.surname }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Email</th>
+      <td>{{ applicant.email }}</td>
+    </tr>
+
+     </tbody>
+ </table>
+{% endblock %}

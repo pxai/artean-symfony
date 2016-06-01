@@ -5,7 +5,9 @@ namespace  Cuatrovientos\ArteanBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Cuatrovientos\ArteanBundle\Entity\Applicant;
+use Cuatrovientos\ArteanBundle\Entity\User;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantSignInType;
+use Cuatrovientos\ArteanBundle\Form\Type\ApplicantSignUpType;
 
 class ApplicantController extends Controller
 {
@@ -48,11 +50,13 @@ class ApplicantController extends Controller
             if ($form->isValid()) {
                 $new_applicant = $form->getData();
                 $applicant = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Applicant")->findApplicant($new_applicant->getEmail());
+                $user = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:User")->findUser($new_applicant->getEmail());
                 
-                if (null != $applicant) {
-                    $response =  $this->render('CuatrovientosArteanBundle:Applicant:signInSave.html.twig', array('applicant' => $applicant,'msg'=>'Ya existe'));                               
+                if (null != $applicant || null != $user) {
+                    $response =  $this->render('CuatrovientosArteanBundle:Applicant:signInSave.html.twig', array('email' => $new_applicant->getEmail(),'msg'=>'Ya existe'));                               
                 } else {
-                    $response = $this->render('CuatrovientosArteanBundle:Applicant:signIn.html.twig', array('form'=> $form->createView()));
+                    $form = $this->createForm(ApplicantSignUpType::class, $new_applicant);
+                    $response = $this->render('CuatrovientosArteanBundle:Applicant:signUp.html.twig', array('form'=> $form->createView()));
                 }
                /* $em = $this->getDoctrine()->getEntityManager();
                 $em->merge($applicant);
@@ -66,9 +70,50 @@ class ApplicantController extends Controller
         return $response;
     }
 
+    
+     public function applicantSignUpSaveAction(Request $request)
+    {
+        //$form = $this->createForm(new ApplicantType(), new Applicant());
+        //$request->get('position')->set($request->request->get('company') .', '. $request->request->get('position'));    
+        $form = $this->createForm(ApplicantSignUpType::class, new Applicant());
+        if ($request->getMethod() == 'POST') {
+            $form->handleRequest($request);
+            
+            //$form->submit($request->request->get($form->getName()));
+            
+            if ($form->isValid()) {
+                $applicant = $form->getData();
+                $user = new User();
+                
+                $user->setFullname($applicant->getName() .' '.$applicant->getSurname());
+                $user->setLogin($applicant->getEmail());
+                $user->setEmail($applicant->getEmail());
+                $user->setPassword($user->randPassword());
+                
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($user);
+                $em->flush();
+                
+                $applicant->setIdUser($user->getId());
+                
+                $em->merge($applicant);
+                $em->flush();
+                $this->sendEmail($applicant);
+                $this->sendEmailUser($user);
+                
+                $response = $this->render('CuatrovientosArteanBundle:Applicant:signUpSave.html.twig', array('applicant'=> $applicant));
+                
+            } else {
+                $response = $this->render('CuatrovientosArteanBundle:Applicant:signIn.html.twig', array('form'=> $form->createView()));
+            }
+        }
+
+        return $response;
+    }
+    
     private function sendEmail ($applicant) {
          $message = \Swift_Message::newInstance()
-        ->setSubject('Artean: ¡nueva oferta de empleo!')
+        ->setSubject('Artean: ¡nuevo candidato en la bolsa de empleo!')
         ->setFrom('artean@cuatrovientos.org')
         ->setTo('artean@cuatrovientos.org')
         ->setBcc('pello_altadill@cuatrovientos.org')
@@ -80,19 +125,29 @@ class ApplicantController extends Controller
             ),
             'text/html'
         );
-        /*
-         * If you also want to include a plaintext version of the message
-        ->addPart(
-            $this->renderView(
-                'Emails/registration.txt.twig',
-                array('name' => $name)
-            ),
-            'text/plain'
-        )
-        */
+
         $this->get('mailer')->send($message);
 
-        //return $this->render(...);
+    }
+    
+    
+        private function sendEmailUser ($user) {
+         $message = \Swift_Message::newInstance()
+        ->setSubject('Artean: ¡Bienvvenid@ la bolsa de empleo!')
+        ->setFrom('artean@cuatrovientos.org')
+        ->setTo($user->getEmail())
+        ->setBcc('pello_altadill@cuatrovientos.org')
+        ->setBody(
+            $this->renderView(
+                // app/Resources/views/Emails/registration.html.twig
+                'Emails/newUser.html.twig',
+                array('user' => $user)
+            ),
+            'text/html'
+        );
+
+        $this->get('mailer')->send($message);
+
     }
     /**
     *
