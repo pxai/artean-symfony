@@ -1,7 +1,9 @@
 cuatrovientos_artean_homepage:
-    path:     /artean
-    defaults: { _controller: CuatrovientosArteanBundle:Default:index }
- 
+#    path:     /artean
+#    defaults: { _controller: CuatrovientosArteanBundle:Default:index }
+    path:   /artean
+    defaults: { _controller: FrameworkBundle:Template:template, template:  CuatrovientosArteanBundle:Default:stars.html.twig }
+        
 cuatrovientos_artean_homepage_root:
     path:     /
     defaults: { _controller: CuatrovientosArteanBundle:Default:index }

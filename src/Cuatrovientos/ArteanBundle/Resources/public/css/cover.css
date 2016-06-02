@@ -43,8 +43,7 @@ body {
   position: absolute;
   top: 20%;
   left: 0;
-  border: 1px solid black;
-  background-position: top 0% left -10%;
+  background-position: top 20% left -10%;
   /*background-position: top -10% left -10%;*/
   background-size: 15%;
   z-index: 2;
@@ -70,7 +69,7 @@ body {
   margin-left: auto;
   background-image: url('../img/rocket.png');
   background-repeat: no-repeat;
-  background-position: top right 30%;
+  background-position: top right 20%;
 }
 
 /* Padding for spacing */
@@ -86,8 +85,12 @@ body {
 .masthead-brand {
   margin-top: 10px;
   margin-bottom: 10px;
+  float: left;
 }
 
+.masthead-nav {
+    float: right;
+}
 .masthead-nav > li {
   display: inline-block;
 }
@@ -117,12 +120,12 @@ body {
 }
 
 @media (min-width: 768px) {
-  .masthead-brand {
+ /* .masthead-brand {
     float: left;
   }
   .masthead-nav {
     float: right;
-  }
+  }*/
 }
 
 
@@ -148,21 +151,31 @@ body {
   color: rgba(255,255,255,.5);
 }
 
-
+.mainpanel {
+    padding-top: 5em;
+    margin-bottom: 28em;
+    position: relative;
+    height: 100%;
+}
 /*
  * Affix and center
  */
+ 
+  .mastfoot {
+    font-size: 0.8em;
+    margin: 0 2em;
+    position: fixed;
+    bottom: 0;
+    
+  }
+
 
 @media (min-width: 768px) {
   /* Pull out the header and footer */
-  .masthead {
+  /*.masthead {
     position: fixed;
     top: 0;
-  }
-  .mastfoot {
-    position: fixed;
-    bottom: 0;
-  }
+  }*/
 
   /* Start the vertical centering */
   .site-wrapper-inner {
@@ -178,7 +191,7 @@ body {
 }
 
 @media (min-width: 992px) {
-  .masthead,
+ /* .masthead,
   .mastfoot,
   .mainpanel,
   .cover-container {
@@ -188,5 +201,5 @@ body {
   .mainpanel {
       border: 1px solid black;
       margin: 0 auto;
-  }
+  }*/
 }
