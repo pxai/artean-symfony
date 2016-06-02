@@ -11,7 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormEvent;
@@ -36,6 +36,7 @@ class ApplicantSignUpType extends AbstractType {
                 ))
             ->add('studies', ChoiceType::class, array(
                     // each entry in the array will be an "email" field
+                "label"=>"Titulacion(es)",
                       'choices'  => array(
                             'Ciclo Medio Comercio' => '9',
                             'Ciclo Medio Gestión Administrativa'     => '10',
@@ -55,8 +56,13 @@ class ApplicantSignUpType extends AbstractType {
                     'multiple' => true
                     )
             )
-
-            ->add('save', SubmitType::class);
+            ->add('lopd', CheckboxType::class, array(
+                'label'    => 'Acepto condiciones según LOPD',
+                'required' => true,
+                ))
+            ->add('save', SubmitType::class,array(
+                'label' =>'Darse de Alta'
+                ));
         
          /* $builder->addEventListener(
             FormEvents::PRE_SUBMIT,

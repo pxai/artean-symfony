@@ -4,6 +4,11 @@
 {% block title %}Nueva Oferta{% endblock %}
 {% block body %}
 
+    
+<h2>Nueva anuncio de oferta</h2>
+                   {% image '@CuatrovientosArteanBundle/Resources/public/img/news.png' %}
+                        <img src="{{ asset_url }}"  alt="darest candidates" title="fearless candidate"/>
+                    {% endimage %}
 <form method="post" action="{{ path('cuatrovientos_artean_open_offer_ad_save') }}">
    {# { form_widget(form) } #}
     {{ form_errors(form) }}

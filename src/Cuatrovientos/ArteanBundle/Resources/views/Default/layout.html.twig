@@ -10,6 +10,7 @@
 {% stylesheets
     '@CuatrovientosArteanBundle/Resources/public/css/artean.css'
     '@CuatrovientosArteanBundle/Resources/public/css/bootstrap.min.css'
+    '@CuatrovientosArteanBundle/Resources/public/css/cover.css'
     '@CuatrovientosArteanBundle/Resources/public/css/bootstrap-theme.min.css'
     filter='cssrewrite' output='css/compiled/app.css' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
@@ -22,6 +23,20 @@
 
 <body>
 <div class="container">
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand"><a href="http://localhost/bootstrap4-samples/public/splash3.html">Artean</a></h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                    <li> <a href="http://localhost/bootstrap4-samples/public/splash3.html">Inicio</a></li>
+                  <li><a href="http://localhost/bootstrap4-samples/public/splash3.html#candidatos">Candidatos</a></li>
+                  <li><a href="http://localhost/bootstrap4-samples/public/splash3.html#empresas">Empresas</a></li>
+                </ul>
+              </nav>
+            </div>
+
+          </div>
+    
 {% block body %}{% endblock body %}
 
 </div>
@@ -29,7 +44,12 @@
 <!-- JavaScript plugins (requires jQuery) -->
 <script src="//code.jquery.com/jquery.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->        
+     {% javascripts '@CuatrovientosArteanBundle/Resources/public/js/bootstrap.min.js' %}
+        <!-- Optionally enable responsive features in IE8 -->
+        <script src="{{ asset_url }}"></script> 
+     {% endjavascripts %}
 
+    
     {# % javascripts '@CuatrovientosArteanBundle/Resources/public/js/respond.js' % }
         <!-- Optionally enable responsive features in IE8 -->
         <script src="{{ asset_url }}"></script> 

@@ -4,7 +4,10 @@
 {% block title %}Nueva Oferta{% endblock %}
 {% block body %}
 
-Simple
+<h2>Nueva proceso de selección</h2>
+                   {% image '@CuatrovientosArteanBundle/Resources/public/img/process.png' %}
+                        <img src="{{ asset_url }}"  alt="darest candidates" title="fearless candidate"/>
+                    {% endimage %}
 <form method="post" action="{{ path('cuatrovientos_artean_open_offer_save') }}">
    {# { form_widget(form) } #}
     {{ form_errors(form) }}

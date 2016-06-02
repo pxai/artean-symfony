@@ -48,6 +48,8 @@ class Applicant
     private $cv = '';
 
     
+    private $lopd;
+    
     public function __construct () {
     }
 
@@ -122,6 +124,15 @@ class Applicant
     public function setStudies($studies) {
         $this->studies = $studies;
     }
+
+    public function getLopd() {
+        return $this->lopd;
+    }
+
+    public function setLopd($lopd) {
+        $this->lopd = $lopd;
+    }
+
 
 
 }

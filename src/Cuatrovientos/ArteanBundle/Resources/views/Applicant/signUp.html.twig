@@ -4,10 +4,701 @@
 {% block title %}Sign Up::new {% endblock %}
 {% block body %}
 
-<h2>Alta en artean - SignUp</h2>
+<h2>Alta en Bolsa de empleo</h2>
+                   {% image '@CuatrovientosArteanBundle/Resources/public/img/alien.png' %}
+                        <img src="{{ asset_url }}"  alt="darest candidates" title="fearless candidate"/>
+                    {% endimage %}
 <p>Tu email no existe en nuestra BBDD.</p>
 <form method="post" action="{{ path('cuatrovientos_artean_applicant_signup_save') }}">
-   {{ form_widget(form) }}
+   <div class="form-group">
+        {{ form_label(form.name) }}
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+    </div>
+   <div class="form-group">
+        {{ form_label(form.surname) }}
+        {{ form_errors(form.surname) }}
+        {{ form_widget(form.surname, {'attr': {'class': 'form-control'}}) }}
+    </div>
+   <div class="form-group">
+        {{ form_label(form.email) }}
+        {{ form_errors(form.email) }}
+        {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+    </div>
+   <div class="form-group">
+        {{ form_label(form.studies) }}
+        {{ form_errors(form.studies) }}
+        {{ form_widget(form.studies, {'attr': {'class': 'form-control'}}) }}
+    </div>
+   <div class="form-group">
+        {{ form_label(form.lopd) }}
+        {{ form_errors(form.lopd) }}
+        {{ form_widget(form.lopd, {'attr': {'class': 'form-control'}}) }}
+        <button type="button" class="btn btn-info-outline btn-xs" data-toggle="modal" data-target="#lopd-modal">
+  Ver declaración de privacidad
+</button>
+
+    </div>
+    <div class="form-group">
+        {{ form_row(form._token) }}
+        {{ form_widget(form.save, {'attr': {'class': 'form-control'}}) }}
+    </div>
 </form>
+            
+<div class="modal fade" id="lopd-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+<div  class="cerrar">
+        <button type="button" class="btn btn-info-outline btn-xs" data-toggle="modal" data-target="#lopd-modal">
+                                               Cerrar</button>
+</div>
+    
+<DIV ID="mb-title-nav-bar" DIR="LTR">
+	<DIV ID="framework-content-titles" DIR="LTR">
+		<H2 CLASS="western" STYLE="margin-top: 0cm; margin-bottom: 0cm; border: none; padding: 0cm"><A NAME="framework-base-main"></A>
+		<BR>
+		</H2>
+	</DIV>
+</DIV>
+<TABLE CELLPADDING=0 CELLSPACING=0>
+	<TR>
+		<TD VALIGN=TOP STYLE="border: none; padding: 0cm">
+			<TABLE CELLPADDING=2 CELLSPACING=0>
+				<TR>
+					<TD STYLE="border: none; padding: 0cm">
+						<DIV ID="framework-content-main" DIR="LTR">
+							<TABLE WIDTH=100% CELLPADDING=0 CELLSPACING=0>
+								<TR>
+									<TD VALIGN=TOP STYLE="border: none; padding: 0cm">
+										<P STYLE="color: gray; margin-left: 0.05cm; margin-right: 0.05cm; border: none; padding: 0cm">
+										DECLARACIÓN DE PRIVACIDAD</P>
+
+
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Artean
+										Cuatrovientos respeta su privacidad y se compromete a
+										proteger la información personal que Usted nos
+										proporcione. Nos gustaría compartir con Usted los
+										siguientes principios que rigen nuestra política de
+										privacidad.</FONT></FONT></P>
+										<P STYLE="margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<BR><BR>
+										</P>
+										<H3 CLASS="western" STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-top: 0cm; margin-bottom: 0cm; border: none; padding: 0cm"><A NAME="information_collection"></A>
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">La
+										Información que Recogemos</FONT></FONT></H3>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">A
+										lo largo de la presente Política, nos referimos a
+										información que le identifica a Usted personalmente, como
+										“Información Personal” o “Información Personal
+										Sensible”. Artean Cuatrovientos recoge su Información
+										Personal o Información Personal Sensible para poder
+										responder a sus solicitudes, que podrán incluir, por
+										ejemplo, procesar sus pedidos, incluirle en una lista de
+										correos electrónicos, o avisarle de eventos.</FONT></FONT></P>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Información
+										Personal es cualquier información que pueda identificarlo
+										como un individuo, tal como su nombre, dirección postal o
+										de correo electrónico, número de teléfono, ocupación, o
+										intereses personales. Información Personal Sensible es
+										cualquier información que nos permita acceder a su cuenta
+										bancaria, incluyendo el número de su cuenta, número de
+										tarjeta de crédito o débito, conjuntamente con cualquier
+										código de seguridad, código de acceso o contraseña
+										necesaria.</FONT></FONT></P>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Si
+										Usted nos proporciona Información Personal sobre una
+										persona distinta a Usted, como su cónyuge o un compañero
+										de trabajo, Usted deberá contar con la autorización de
+										dicha persona para proporcionarnos sus datos.</FONT></FONT></P>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">En
+										muchos casos, Usted podrá navegar por el sitio web de
+										Artean Cuatrovientos anónimamente. Cuando Usted accede al
+										sitio web de Artean Cuatrovientos, grabamos su dirección
+										IP (la dirección de Internet de su ordenador), para que
+										nos dé una idea de qué partes del sitio web&nbsp; visita
+										y cuánto tiempo pasa en cada sección. No unimos su
+										dirección IP a ninguna Información Personal suya, salvo
+										que Usted se haya registrado con nosotros y haya entrado al
+										sistema utilizando su perfil.</FONT></FONT></P>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">El
+										acceso a ciertas páginas web, servicios, productos y
+										actividades de Artean Cuatrovientos requieren un nombre de
+										usuario y contraseña. Es su responsabilidad mantener la
+										confidencialidad de su nombre de usuario y contraseña.</FONT></FONT></P>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Usted
+										podrá elegir proporcionarnos Información Personal en una
+										variedad de casos, incluyendo cuando Usted:</FONT></FONT></P>
+										<UL>
+											<LI><P STYLE="margin-right: 0.05cm; margin-bottom: 0.21cm; border: none; padding: 0cm">
+											<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">se
+											registra para una cuenta en los sitios web de Artean
+											Cuatrovientos;</FONT></FONT></P>
+											<LI><P STYLE="margin-right: 0.05cm; margin-bottom: 0.21cm; border: none; padding: 0cm">
+											<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">utiliza
+											ciertos productos o servicios de Artean Cuatrovientos;</FONT></FONT></P>
+											<LI><P STYLE="margin-right: 0.05cm; margin-bottom: 0.21cm; border: none; padding: 0cm">
+											<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">se
+											registra para asistir a un seminario;</FONT></FONT></P>
+											<LI><P STYLE="margin-right: 0.05cm; margin-bottom: 0.21cm; border: none; padding: 0cm">
+											<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">participa
+											en una encuesta online;</FONT></FONT></P>
+											<LI><P STYLE="margin-right: 0.05cm; margin-bottom: 0.21cm; border: none; padding: 0cm">
+											<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">solicita
+											ser incluido en una lista de correos electrónicos o de
+											mailing;</FONT></FONT></P>
+											<LI><P STYLE="margin-right: 0.05cm; margin-bottom: 0.21cm; border: none; padding: 0cm">
+											<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">participar
+											en una puja u otra promoción; o</FONT></FONT></P>
+											<LI><P STYLE="margin-right: 0.05cm; margin-bottom: 0.21cm; border: none; padding: 0cm">
+											<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">cuando
+											Usted proporciona a Artean Cuatrovientos información
+											personal sobre su persona por cualquier otro motivo.</FONT></FONT></P>
+										</UL>
+										<P STYLE="margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<BR><BR>
+										</P>
+										<H3 CLASS="western" STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-top: 0cm; margin-bottom: 0cm; border: none; padding: 0cm"><A NAME="choice"></A>
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Su
+										Elección y Control</FONT></FONT></H3>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Siempre
+										le avisaremos antes de recoger cualquier Información
+										Personal y le informaremos acerca del propósito de dicha
+										recogida. Le pediremos su consentimiento antes de utilizar
+										o comunicar sus datos para cualquier finalidad distinta a
+										aquella para la cual Usted proporcionó sus datos. Con el
+										objeto de conocer sus preferencias, necesitamos una acción
+										por su parte, como que marque la opción apropiada para
+										proporcionar su consentimiento.&nbsp;&nbsp;</FONT></FONT></P>
+										<H3 CLASS="western" STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-top: 0cm; margin-bottom: 0cm; border: none; padding: 0cm"><A NAME="cookies"></A>
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Cómo
+										Utilizamos “Cookies” y Otras Tecnologías de Rastreo</FONT></FONT></H3>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Como
+										muchos otros sitios web, Artean Cuatrovientos utiliza
+										ciertas tecnologías, tales como cookies y web beacons, que
+										nos permiten hacer su visita a nuestro sitio más fácil,
+										más eficiente y más valiosa, proporcionándole un
+										servicio personalizado y reconociéndole cuando Usted
+										vuelva a nuestro sitio.</FONT></FONT></P>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Una
+										“cookie” es un pequeño archivo de información enviado
+										por un sitio web al disco duro de su ordenador. El sitio
+										web de Artean Cuatrovientos envía cookies cuando Usted nos
+										visita, efectúa compras, solicita o personaliza
+										información o se registra para ciertos servicios. Una
+										cookie no puede leer datos personales de su disco duro o
+										leer archivos de cookies creados por otros sitios web; de
+										hecho, la única información personal que puede contener
+										una cookie es información proporcionada por Usted. La
+										aceptación de las cookies utilizadas por nuestro sitio web
+										podrá darnos acceso a información sobre su comportamiento
+										de navegación, que podremos utilizar para personalizar
+										nuestro servicio y rastrear patrones de tráfico de
+										usuarios. Hacemos esto con el objeto de determinar la
+										utilidad para nuestros usuarios de la información de
+										nuestro sitio web y para saber cuán efectiva es nuestra
+										estructura de navegación al ayudar a nuestros usuarios a
+										encontrar dicha información.</FONT></FONT></P>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Las
+										cookies normalmente se clasifican en “temporales” y
+										“permanentes”.</FONT></FONT></P>
+										<UL>
+											<LI><P STYLE="margin-right: 0.05cm; margin-bottom: 0.21cm; border: none; padding: 0cm">
+											<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Las
+											cookies temporales no permanecen en su ordenador una vez
+											Usted haya cerrado su navegador.</FONT></FONT></P>
+											<LI><P STYLE="margin-right: 0.05cm; margin-bottom: 0.21cm; border: none; padding: 0cm">
+											<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Las
+											cookies permanentes permanecen en su ordenador hasta que
+											Usted las borre o hasta que caduquen.&nbsp;</FONT></FONT></P>
+										</UL>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Usted
+										podrá navegar por gran parte del sitio web de Artean
+										Cuatrovientos sin la necesidad de aceptar cookies de Artean
+										Cuatrovientos. Sin embargo, si Usted desactiva las cookies
+										de su ordenador algunas funciones del sitio web podrán
+										perderse. Otras páginas web de Artean Cuatrovientos,
+										especialmente aquellas que requieren un nombre de usuario y
+										contraseña, requieren cookies y no podrán ser utilizadas
+										si Usted desactiva las cookies de su navegador.</FONT></FONT></P>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Asimismo,
+										Artean Cuatrovientos utiliza web beacons, conjuntamente con
+										las cookies, para entender el comportamiento de los
+										usuarios. Un web beacon es una imagen electrónica, que se
+										encuentra en un sitio web o correo electrónico compatible
+										con archivos HTLM y se llama píxel único (1X1) o GIF
+										claro. El web beacon es uno de los componentes de la
+										página, tal como otras imágenes y textos, salvo que es
+										tan pequeño y claro que es invisible. Los web beacons
+										pueden reconocer ciertos tipos de información en el
+										ordenador de un usuario, como una cookie, la hora y fecha
+										en que se visualizó la página y una descripción de la
+										página en donde se encuentra el web beacon. Son
+										simplemente una forma práctica de recoger estadísticas
+										básicas y de administrar cookies, y no revela ninguna
+										información adicional de su ordenador. La desactivación
+										de las cookies de su navegador, impedirá a los web beacons
+										que rastreen su actividad. El web beacon podrá grabar una
+										visita anónima de su dirección IP, pero no se guardará
+										información excepcional.</FONT></FONT></P>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Artean
+										Cuatrovientos podrá personalizar links u otras tecnologías
+										similares para rastrear links de correos electrónicos a
+										los que Usted accede. Podremos asociar dicha información a
+										su Información Personal, con el objeto de proporcionarle
+										comunicaciones por correo electrónico o información de
+										compra más enfocada. Cada comunicación por correo
+										electrónico incluye un link para darse de baja, que le
+										permitirá abandonar dicho tipo de comunicaciones.</FONT></FONT></P>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Si
+										Usted prefiere no recibir cookies mientras navega por
+										nuestro sitio web o a través de correos electrónicos
+										compatibles con archivos HTLM, podrá configurar su
+										navegador para que le advierta antes de aceptar una cookie
+										o para rechazar la cookie cuando su navegador le advierta
+										de su presencia. Usted también podrá rechazar todas las
+										cookies, desactivándolas en su navegador.</FONT></FONT></P>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Para
+										más información sobre cookies y otras tecnologías de
+										rastreo, incluyendo instrucciones para bloquear su
+										utilización,
+										vea</FONT></FONT><STRONG><A HREF="https://artean.cuatrovientos.org" ONCLICK="s_objectID=&quot;https://artean.cuatrovientos.org_1&quot;;return this.s_oc?this.s_oc(e):true"><FONT COLOR="#003399"><FONT SIZE=1 STYLE="font-size: 8pt"><U><SPAN STYLE="font-weight: normal">https://artean.cuatrovientos.org</SPAN></U></FONT></FONT></A></STRONG><FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">.</FONT></FONT></P>
+										<H3 CLASS="western" STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-top: 0cm; margin-bottom: 0cm; border: none; padding: 0cm"><A NAME="personal_information"></A>
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Cómo
+										Utilizamos Su Información Personal</FONT></FONT></H3>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Artean
+										Cuatrovientos utiliza su Información Personal para
+										responder a sus solicitudes y, para hacerlo, podría ser
+										necesario que compartamos su información con terceros. En
+										dichos casos, comunicaremos solamente aquella información
+										necesaria para procesar su solicitud y obligaremos a dichos
+										terceros a que limiten el uso de su Información Personal a
+										la satisfacción de su solicitud. Asimismo, podremos
+										utilizar su Información Personal para ponernos en contacto
+										con Usted, en el marco de nuestras encuestas de
+										satisfacción del cliente o con finalidades de
+										investigación de mercado, siempre con su consentimiento.</FONT></FONT></P>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Utilizaremos
+										su Información Personal para proporcionarle los productos
+										y servicios que Usted haya solicitado, para responder a su
+										llamada, y para proporcionarle material comercial que Usted
+										haya solicitado. Los terceros con los que podremos
+										necesitar compartir sus datos, incluyen a nuestros socios
+										comerciales (por ejemplo, como parte de una promoción de
+										venta conjunta o para remitir a uno de nuestros socios de
+										distribución un contacto para una potencial venta);
+										distribuidores de servicio; compañías de transporte; y
+										autoridades gubernamentales (tales como la Aduana).</FONT></FONT></P>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">En
+										el caso de que su empleador tenga un acuerdo por escrito
+										con Artean Cuatrovientos que rija el acceso a la
+										información o programas de Artean Cuatrovientos, Artean
+										Cuatrovientos podrá utilizar su Información Personal para
+										verificar el cumplimiento con el acuerdo, acceder a las
+										licencias de software otorgadas, rastrear software
+										descargados de dichas páginas, o rastrear el uso de otras
+										aplicaciones disponibles en dichas páginas.</FONT></FONT></P>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Asimismo,
+										podremos utilizar su Información Personal para crear
+										archivos de datos anónimos o conjuntos de datos, para
+										realizar análisis estadísticos y para otros fines,
+										omitiendo o suprimiendo información (tal como su nombre) a
+										través de la cual se le pueda identificar. También
+										comunicaremos su Información Personal, cuando dicha cesión
+										sea exigida por una ley, con el objeto de hacer cumplir
+										nuestros Términos de Uso, o en caso de urgencia, para
+										proteger su seguridad personal, al público o a nuestra
+										página web.</FONT></FONT></P>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">La
+										Información Personal Sensible que Usted nos proporcione
+										solamente será utilizada para implementar la actividad o
+										evento especifico para el cual fue suministrada y luego
+										será destruida.</FONT></FONT></P>
+										<H3 CLASS="western" STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-top: 0cm; margin-bottom: 0cm; border: none; padding: 0cm"><A NAME="access"></A>
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Su
+										Derecho a Acceder, Actualizar o Desactivar Su Información</FONT></FONT></H3>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Los
+										usuarios registrados podrán revisar y modificar su
+										Información Personal a través de:</FONT></FONT><STRONG><A HREF="https://artean.cuatrovientos.org" ONCLICK="s_objectID=&quot;https://artean.cuatrovientos.org&quot;;return this.s_oc?this.s_oc(e):true"><FONT COLOR="#003399"><FONT SIZE=1 STYLE="font-size: 8pt"><U><SPAN STYLE="font-weight: normal">https://artean.cuatrovientos.org</SPAN></U></FONT></FONT></A></STRONG><FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">.
+										Usted podrá solicitar la desactivación de su cuenta
+										Artean Cuatrovientos o de cualquier Información Personal
+										tratada por nosotros, enviándonos un e-mail
+										a:&nbsp;</FONT></FONT><STRONG><A HREF="mailto:artean@cuatrovientos.org" ONCLICK="s_objectID=&quot;mailto:artean@cuatrovientos.org&quot;;return this.s_oc?this.s_oc(e):true"><FONT COLOR="#003399"><FONT SIZE=1 STYLE="font-size: 8pt"><U><SPAN STYLE="font-weight: normal">artean@cuatrovientos.org</SPAN></U></FONT></FONT></A></STRONG><FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">.</FONT></FONT></P>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Si
+										Usted elige desactivar su cuenta, en la medida de lo
+										permitido por la ley, conservaremos en nuestros archivos
+										cierta Información Personal sobre su persona, con el
+										objeto de prevenir el fraude, resolver disputas, investigar
+										conflictos o incidencias, hacer cumplir nuestros Términos
+										de Uso, respetar su preferencia de mantenerse en una lista
+										robinson, y cumplir con requisitos legales.</FONT></FONT></P>
+										<H3 CLASS="western" STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-top: 0cm; margin-bottom: 0cm; border: none; padding: 0cm"><A NAME="protect"></A>
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Cómo
+										Protegemos Su Información Personal</FONT></FONT></H3>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Artean
+										Cuatrovientos garantiza la seguridad de los datos que Usted
+										nos proporcione a través de&nbsp; procedimientos físicos,
+										electrónicos y de gestión estándar. Cuando corresponde,
+										los sitios web de Artean Cuatrovientos, utilizan
+										encriptación SSL para aumentar la seguridad de la
+										transmisión de datos sensibles. Dentro de Artean
+										Cuatrovientos, los datos son almacenados en servidores
+										controlados con acceso limitado. Su información podrá ser
+										almacenada y procesada en los Estados Unidos o cualquier
+										otro país en donde Artean Cuatrovientos, sus afiliadas,
+										filiales o agentes estén localizados.</FONT></FONT></P>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Si
+										bien nos esforzamos para proteger su información personal,
+										no podemos asegurar la seguridad de la información que
+										Usted nos proporciona a través de una conexión de
+										Internet no segura. Por este motivo, le rogamos que tome
+										todas las medidas necesarias para proteger sus datos
+										personales cuando Usted está en Internet.</FONT></FONT></P>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Algunas
+										formas de proteger sus datos personales son cambiar sus
+										contraseñas a menudo, utilizando una combinación de
+										letras y números en las contraseñas, y asegurándose de
+										que utiliza un navegador seguro. Asimismo, sea consiente de
+										los ataques de “phising”, a través de los cuales se
+										intenta robar datos personales del consumidor y sobre su
+										cuenta bancaria. Los “phishers” utilizan correos
+										electrónicos para llevar al consumidor a sitios web
+										falsos, diseñados para engañar al destinatario y que éste
+										proporcione información personal sensible, tal como el
+										número de su tarjeta de crédito, el nombre de usuario de
+										una cuenta, contraseñas y números de seguridad social.
+										Artean Cuatrovientos nunca le enviará un correo
+										electrónico, pidiéndole que proporcione o confirme
+										Información Personal Sensible. Su Usted recibe una
+										comunicación como las mencionadas, por favor reenvíela
+										inmediatamente a&nbsp;</FONT></FONT><STRONG><A HREF="mailto:artean@cuatrovientos.org" ONCLICK="s_objectID=&quot;mailto:artean@cuatrovientos.org&quot;;return this.s_oc?this.s_oc(e):true"><FONT COLOR="#003399"><FONT SIZE=1 STYLE="font-size: 8pt"><U><SPAN STYLE="font-weight: normal">artean@cuatrovientos.org</SPAN></U></FONT></FONT></A></STRONG><FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">&nbsp;y
+										bórrela inmediatamente de su ordenador.</FONT></FONT></P>
+										<H3 CLASS="western" STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-top: 0cm; margin-bottom: 0cm; border: none; padding: 0cm"><A NAME="children"></A>
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Niños
+										y Privacidad</FONT></FONT></H3>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Nuestros
+										sitios web no están dirigidos ni pretenden atraer a niños
+										menores de 13 años. Artean Cuatrovientos no solicita, a
+										sabiendas, información personal de niños menores de 13
+										años, ni les envía solicitudes de Información Personal.</FONT></FONT></P>
+										<H3 CLASS="western" STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-top: 0cm; margin-bottom: 0cm; border: none; padding: 0cm"><A NAME="third_party"></A>
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Páginas
+										Web de Terceros</FONT></FONT></H3>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">El
+										sitio web de Artean Cuatrovientos contiene links a sitios
+										web de terceros, en algunos de los cuales podrá aparecer
+										el logo de Artean Cuatrovientos. Sin embargo, dichos sitios
+										web no son operados ni mantenidos por Artean Cuatrovientos,
+										y Artean Cuatrovientos no comparte su Información Personal
+										con dichos sitios web y no es responsable de sus políticas
+										de privacidad. Su utilización de cualquier sitio web de un
+										tercero será por su cuenta y riesgo.</FONT></FONT></P>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Si
+										bien elegimos a nuestros socios comerciales con cuidado,
+										Artean Cuatrovientos no se responsabiliza de las políticas
+										de privacidad de los sitios web operados por terceros cuyo
+										link aparece en nuestro sitio web. Una vez que Usted haya
+										abandonado nuestro sitio web, Usted debería revisar la
+										declaración de privacidad aplicable del sitio web del
+										tercero, para determinar cómo van a utilizar cualquier
+										información que recaben de Usted.</FONT></FONT></P>
+										<H3 CLASS="western" STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-top: 0cm; margin-bottom: 0cm; border: none; padding: 0cm"><A NAME="changes"></A>
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Cambios
+										en la presente Declaración de Privacidad</FONT></FONT></H3>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-bottom: 0.26cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Este
+										documento ha sido actualizado el 12 Septiembre 2008. Artean
+										Cuatrovientos podrá modificar la presente Declaración de
+										Privacidad periódicamente y en cualquier momento. Cuando
+										la presente Declaración de Privacidad sea
+										considerablemente modificada, pondremos un aviso en nuestro
+										sitio web durante 30 días. Su utilización del sitio web
+										de Artean Cuatrovientos después de cualquier cambio
+										introducido, significará y confirmará que Usted consiente
+										dichos cambios.</FONT></FONT></P>
+										<H3 CLASS="western" STYLE="margin-left: 0.05cm; margin-right: 0.05cm; margin-top: 0cm; margin-bottom: 0cm; border: none; padding: 0cm"><A NAME="questions"></A>
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Preguntas
+										o Sugerencias</FONT></FONT></H3>
+										<P STYLE="margin-left: 0.05cm; margin-right: 0.05cm; border: none; padding: 0cm">
+										<FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">Si
+										Usted tiene alguna pregunta o consulta acerca de la
+										recogida, utilización o comunicación de su Información
+										Personal, por favor envíenos un e-mail a la siguiente
+										dirección:&nbsp;</FONT></FONT><STRONG><A HREF="mailto:artean@cuatrovientos.org" ONCLICK="s_objectID=&quot;mailto:artean@cuatrovientos.org&quot;;return this.s_oc?this.s_oc(e):true"><FONT COLOR="#003399"><FONT SIZE=1 STYLE="font-size: 8pt"><U><SPAN STYLE="font-weight: normal">artean@cuatrovientos.org</SPAN></U></FONT></FONT></A></STRONG><FONT COLOR="#666666"><FONT SIZE=1 STYLE="font-size: 8pt">.</FONT></FONT></P>
+									</TD>
+								</TR>
+							</TABLE>
+						</DIV>
+					</TD>
+				</TR>
+			</TABLE>
+			<P><BR>
+			</P>
+		</TD>
+		<TD STYLE="border: none; padding: 0cm"></TD>
+	</TR>
+</TABLE>
+<P STYLE="margin-bottom: 0.26cm; font-variant: normal; font-style: normal; font-weight: normal">
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Una
+“cookie” es un pequeño archivo de información enviado por un
+sitio web al disco duro de su ordenador. El sitio web de Artean
+Cuatrovientos envía cookies cuando Usted nos visita, efectúa
+compras, solicita o personaliza información o se registra para
+ciertos servicios. Una cookie no puede leer datos personales de su
+disco duro o leer archivos de cookies creados por otros sitios web;
+de hecho, la única información personal que puede contener una
+cookie es información proporcionada por Usted. La aceptación de las
+cookies utilizadas por nuestro sitio web podrá darnos acceso a
+información sobre su comportamiento de navegación, que podremos
+utilizar para personalizar nuestro servicio y rastrear patrones de
+tráfico de usuarios. Hacemos esto con el objeto de determinar la
+utilidad para nuestros usuarios de la información de nuestro sitio
+web y para saber cuán efectiva es nuestra estructura de navegación
+al ayudar a nuestros usuarios a encontrar dicha información.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.26cm; font-variant: normal; font-style: normal; font-weight: normal">
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Las
+cookies normalmente se clasifican en “temporales” y
+“permanentes”.</FONT></FONT></FONT></P>
+<UL>
+	<LI><P STYLE="border: none; padding: 0cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 0.37cm">
+	<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Las
+	cookies temporales no permanecen en su ordenador una vez Usted haya
+	cerrado su navegador.</FONT></FONT></FONT></P>
+	<LI><P STYLE="border: none; padding: 0cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 0.37cm">
+	<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Las
+	cookies permanentes permanecen en su ordenador hasta que Usted las
+	borre o hasta que caduquen.&nbsp;</FONT></FONT></FONT></P>
+</UL>
+<P STYLE="margin-bottom: 0.26cm; font-variant: normal; font-style: normal; font-weight: normal">
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Usted
+podrá navegar por gran parte del sitio web de Artean Cuatrovientos
+sin la necesidad de aceptar cookies de Artean Cuatrovientos. Sin
+embargo, si Usted desactiva las cookies de su ordenador algunas
+funciones del sitio web podrán perderse. Otras páginas web de
+Artean Cuatrovientos, especialmente aquellas que requieren un nombre
+de usuario y contraseña, requieren cookies y no podrán ser
+utilizadas si Usted desactiva las cookies de su navegador.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.26cm; font-variant: normal; font-style: normal; font-weight: normal">
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Asimismo,
+Artean Cuatrovientos utiliza web beacons, conjuntamente con las
+cookies, para entender el comportamiento de los usuarios. Un web
+beacon es una imagen electrónica, que se encuentra en un sitio web o
+correo electrónico compatible con archivos HTLM y se llama píxel
+único (1X1) o GIF claro. El web beacon es uno de los componentes de
+la página, tal como otras imágenes y textos, salvo que es tan
+pequeño y claro que es invisible. Los web beacons pueden reconocer
+ciertos tipos de información en el ordenador de un usuario, como una
+cookie, la hora y fecha en que se visualizó la página y una
+descripción de la página en donde se encuentra el web beacon. Son
+simplemente una forma práctica de recoger estadísticas básicas y
+de administrar cookies, y no revela ninguna información adicional de
+su ordenador. La desactivación de las cookies de su navegador,
+impedirá a los web beacons que rastreen su actividad. El web beacon
+podrá grabar una visita anónima de su dirección IP, pero no se
+guardará información excepcional.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.26cm; font-variant: normal; font-style: normal; font-weight: normal">
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Artean
+Cuatrovientos podrá personalizar links u otras tecnologías
+similares para rastrear links de correos electrónicos a los que
+Usted accede. Podremos asociar dicha información a su Información
+Personal, con el objeto de proporcionarle comunicaciones por correo
+electrónico o información de compra más enfocada. Cada
+comunicación por correo electrónico incluye un link para darse de
+baja, que le permitirá abandonar dicho tipo de comunicaciones.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.26cm; font-variant: normal; font-style: normal; font-weight: normal">
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Si
+Usted prefiere no recibir cookies mientras navega por nuestro sitio
+web o a través de correos electrónicos compatibles con archivos
+HTLM, podrá configurar su navegador para que le advierta antes de
+aceptar una cookie o para rechazar la cookie cuando su navegador le
+advierta de su presencia. Usted también podrá rechazar todas las
+cookies, desactivándolas en su navegador.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.26cm"><SPAN STYLE="font-variant: normal"><FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Para
+más información sobre cookies y otras tecnologías de rastreo,
+incluyendo instrucciones para bloquear su utilización,
+vea</SPAN></SPAN></FONT></FONT></FONT></SPAN><STRONG><A HREF="https://artean.cuatrovientos.org" ONCLICK="s_objectID=&quot;https://artean.cuatrovientos.org_1&quot;;return this.s_oc?this.s_oc(e):true"><SPAN STYLE="font-variant: normal"><FONT COLOR="#003399"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">https://artean.cuatrovientos.org</SPAN></U></SPAN></FONT></FONT></FONT></SPAN></A></STRONG><SPAN STYLE="font-variant: normal"><FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">.</SPAN></SPAN></FONT></FONT></FONT></SPAN></P>
+<H3 CLASS="western" STYLE="margin-top: 0cm; margin-bottom: 0cm; border: none; padding: 0cm; font-variant: normal; font-style: normal"><A NAME="personal_information1"></A>
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Cómo
+Utilizamos Su Información Personal</FONT></FONT></FONT></H3>
+<P STYLE="margin-bottom: 0.26cm; font-variant: normal; font-style: normal; font-weight: normal">
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Artean
+Cuatrovientos utiliza su Información Personal para responder a sus
+solicitudes y, para hacerlo, podría ser necesario que compartamos su
+información con terceros. En dichos casos, comunicaremos solamente
+aquella información necesaria para procesar su solicitud y
+obligaremos a dichos terceros a que limiten el uso de su Información
+Personal a la satisfacción de su solicitud. Asimismo, podremos
+utilizar su Información Personal para ponernos en contacto con
+Usted, en el marco de nuestras encuestas de satisfacción del cliente
+o con finalidades de investigación de mercado, siempre con su
+consentimiento.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.26cm; font-variant: normal; font-style: normal; font-weight: normal">
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Utilizaremos
+su Información Personal para proporcionarle los productos y
+servicios que Usted haya solicitado, para responder a su llamada, y
+para proporcionarle material comercial que Usted haya solicitado. Los
+terceros con los que podremos necesitar compartir sus datos, incluyen
+a nuestros socios comerciales (por ejemplo, como parte de una
+promoción de venta conjunta o para remitir a uno de nuestros socios
+de distribución un contacto para una potencial venta);
+distribuidores de servicio; compañías de transporte; y autoridades
+gubernamentales (tales como la Aduana).</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.26cm; font-variant: normal; font-style: normal; font-weight: normal">
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">En
+el caso de que su empleador tenga un acuerdo por escrito con Artean
+Cuatrovientos que rija el acceso a la información o programas de
+Artean Cuatrovientos, Artean Cuatrovientos podrá utilizar su
+Información Personal para verificar el cumplimiento con el acuerdo,
+acceder a las licencias de software otorgadas, rastrear software
+descargados de dichas páginas, o rastrear el uso de otras
+aplicaciones disponibles en dichas páginas.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.26cm; font-variant: normal; font-style: normal; font-weight: normal">
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Asimismo,
+podremos utilizar su Información Personal para crear archivos de
+datos anónimos o conjuntos de datos, para realizar análisis
+estadísticos y para otros fines, omitiendo o suprimiendo información
+(tal como su nombre) a través de la cual se le pueda identificar.
+También comunicaremos su Información Personal, cuando dicha cesión
+sea exigida por una ley, con el objeto de hacer cumplir nuestros
+Términos de Uso, o en caso de urgencia, para proteger su seguridad
+personal, al público o a nuestra página web.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.26cm; font-variant: normal; font-style: normal; font-weight: normal">
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">La
+Información Personal Sensible que Usted nos proporcione solamente
+será utilizada para implementar la actividad o evento especifico
+para el cual fue suministrada y luego será destruida.</FONT></FONT></FONT></P>
+<H3 CLASS="western" STYLE="margin-top: 0cm; margin-bottom: 0cm; border: none; padding: 0cm; font-variant: normal; font-style: normal"><A NAME="access1"></A>
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Su
+Derecho a Acceder, Actualizar o Desactivar Su Información</FONT></FONT></FONT></H3>
+<P STYLE="margin-bottom: 0.26cm"><SPAN STYLE="font-variant: normal"><FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Los
+usuarios registrados podrán revisar y modificar su Información
+Personal a través de https://artean.cuatrovientos.org/ Usted podrá
+solicitar la desactivación de su cuenta Artean Cuatrovientos o de
+cualquier Información Personal tratada por nosotros, enviándonos un
+e-mail a: artean@cuatrovientos.org</SPAN></SPAN></FONT></FONT></FONT></SPAN></P>
+<P STYLE="margin-bottom: 0.26cm; font-variant: normal; font-style: normal; font-weight: normal">
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Si
+Usted elige desactivar su cuenta, en la medida de lo permitido por la
+ley, conservaremos en nuestros archivos cierta Información Personal
+sobre su persona, con el objeto de prevenir el fraude, resolver
+disputas, investigar conflictos o incidencias, hacer cumplir nuestros
+Términos de Uso, respetar su preferencia de mantenerse en una lista
+robinson, y cumplir con requisitos legales.</FONT></FONT></FONT></P>
+<H3 CLASS="western" STYLE="margin-top: 0cm; margin-bottom: 0cm; border: none; padding: 0cm; font-variant: normal; font-style: normal"><A NAME="protect1"></A>
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Cómo
+Protegemos Su Información Personal</FONT></FONT></FONT></H3>
+<P STYLE="margin-bottom: 0.26cm; font-variant: normal; font-style: normal; font-weight: normal">
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Artean
+Cuatrovientos garantiza la seguridad de los datos que Usted nos
+proporcione a través de&nbsp; procedimientos físicos, electrónicos
+y de gestión estándar. Cuando corresponde, los sitios web de Artean
+Cuatrovientos, utilizan encriptación SSL para aumentar la seguridad
+de la transmisión de datos sensibles. Dentro de Artean
+Cuatrovientos, los datos son almacenados en servidores controlados
+con acceso limitado. Su información podrá ser almacenada y
+procesada en los Estados Unidos o cualquier otro país en donde
+Artean Cuatrovientos, sus afiliadas, filiales o agentes estén
+localizados.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.26cm; font-variant: normal; font-style: normal; font-weight: normal">
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Si
+bien nos esforzamos para proteger su información personal, no
+podemos asegurar la seguridad de la información que Usted nos
+proporciona a través de una conexión de Internet no segura. Por
+este motivo, le rogamos que tome todas las medidas necesarias para
+proteger sus datos personales cuando Usted está en Internet.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.26cm"><SPAN STYLE="font-variant: normal"><FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Algunas
+formas de proteger sus datos personales son cambiar sus contraseñas
+a menudo, utilizando una combinación de letras y números en las
+contraseñas, y asegurándose de que utiliza un navegador seguro.
+Asimismo, sea consiente de los ataques de “phising”, a través de
+los cuales se intenta robar datos personales del consumidor y sobre
+su cuenta bancaria. Los “phishers” utilizan correos electrónicos
+para llevar al consumidor a sitios web falsos, diseñados para
+engañar al destinatario y que éste proporcione información
+personal sensible, tal como el número de su tarjeta de crédito, el
+nombre de usuario de una cuenta, contraseñas y números de seguridad
+social. Artean Cuatrovientos nunca le enviará un correo electrónico,
+pidiéndole que proporcione o confirme Información Personal
+Sensible. Su Usted recibe una comunicación como las mencionadas, por
+favor reenvíela inmediatamente a artea<A HREF="mailto:n@cuatrovientos.org">n@cuatrovientos.org</A>
+ y bórrela inmediatamente de su ordenador.</SPAN></SPAN></FONT></FONT></FONT></SPAN></P>
+<H3 CLASS="western" STYLE="margin-top: 0cm; margin-bottom: 0cm; border: none; padding: 0cm; font-variant: normal; font-style: normal"><A NAME="children1"></A>
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Niños
+y Privacidad</FONT></FONT></FONT></H3>
+<P STYLE="margin-bottom: 0.26cm; font-variant: normal; font-style: normal; font-weight: normal">
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Nuestros
+sitios web no están dirigidos ni pretenden atraer a niños menores
+de 13 años. Artean Cuatrovientos no solicita, a sabiendas,
+información personal de niños menores de 13 años, ni les envía
+solicitudes de Información Personal.</FONT></FONT></FONT></P>
+<H3 CLASS="western" STYLE="margin-top: 0cm; margin-bottom: 0cm; border: none; padding: 0cm; font-variant: normal; font-style: normal"><A NAME="third_party1"></A>
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Páginas
+Web de Terceros</FONT></FONT></FONT></H3>
+<P STYLE="margin-bottom: 0.26cm; font-variant: normal; font-style: normal; font-weight: normal">
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">El
+sitio web de Artean Cuatrovientos contiene links a sitios web de
+terceros, en algunos de los cuales podrá aparecer el logo de Artean
+Cuatrovientos. Sin embargo, dichos sitios web no son operados ni
+mantenidos por Artean Cuatrovientos, y Artean Cuatrovientos no
+comparte su Información Personal con dichos sitios web y no es
+responsable de sus políticas de privacidad. Su utilización de
+cualquier sitio web de un tercero será por su cuenta y riesgo.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.26cm; font-variant: normal; font-style: normal; font-weight: normal">
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Si
+bien elegimos a nuestros socios comerciales con cuidado, Artean
+Cuatrovientos no se responsabiliza de las políticas de privacidad de
+los sitios web operados por terceros cuyo link aparece en nuestro
+sitio web. Una vez que Usted haya abandonado nuestro sitio web, Usted
+debería revisar la declaración de privacidad aplicable del sitio
+web del tercero, para determinar cómo van a utilizar cualquier
+información que recaben de Usted.</FONT></FONT></FONT></P>
+<H3 CLASS="western" STYLE="margin-top: 0cm; margin-bottom: 0cm; border: none; padding: 0cm; font-variant: normal; font-style: normal"><A NAME="changes1"></A>
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Cambios
+en la presente Declaración de Privacidad</FONT></FONT></FONT></H3>
+<P STYLE="margin-bottom: 0.26cm; font-variant: normal; font-style: normal; font-weight: normal">
+<FONT COLOR="#666666"><FONT FACE="Arial, Helvetica, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Este
+documento ha sido actualizado el 12 Septiembre 2008. Artean
+Cuatrovientos podrá modificar la presente Declaración de Privacidad
+periódicamente y en cualquier momento. Cuando la presente
+Declaración de Privacidad sea considerablemente modificada,
+pondremos un aviso en nuestro sitio web durante 30 días. Su
+utilización del sitio web de Artean Cuatrovientos después de
+cualquier cambio introducido, significará y confirmará que Usted
+consiente dichos cambios.</FONT></FONT></FONT></P>
+<div >
+        <button type="button" class="btn btn-info-outline btn-xs" data-toggle="modal" data-target="#lopd-modal">
+                                               Cerrar</button>
+</div>
+
+</div>
+</div>
+</div>
 
 {% endblock %}
