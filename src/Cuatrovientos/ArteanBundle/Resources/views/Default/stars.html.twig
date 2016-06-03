@@ -8,12 +8,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Bootstrap CSS -->
-    {% stylesheets '@CuatrovientosArteanBundle/Resources/public/css/bootstrap.min.css' filter='cssrewrite' %}
-    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
-    {% endstylesheets %}
-    {% stylesheets '@CuatrovientosArteanBundle/Resources/public/css/cover.css' filter='cssrewrite' %}
-    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
-    {% endstylesheets %}
+{% stylesheets
+    'bundles/cuatrovientosartean/css/artean.css'
+    'bundles/cuatrovientosartean/css/bootstrap.min.css'
+    'bundles/cuatrovientosartean/css/cover.css'
+    'bundles/cuatrovientosartean/css/bootstrap-theme.min.css'
+    filter='cssrewrite' output='css/compiled/app.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
   </head>
   <body>
                            <!--svg
