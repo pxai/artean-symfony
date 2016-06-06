@@ -110,7 +110,7 @@
                         <img src="{{ asset_url }}"  alt="darest candidates" title="fearless candidate"/>
                     {% endimage %}
                     <p class="lead">Entra en tu perfil o crea una cuenta en Artean indicando tu email</p>
-                    <form method="post" name="applicant" action="/artean/arteans/web/app_dev.php/artean/applicant/signin/save">
+                    <form method="post" name="applicant" action="{{ path('cuatrovientos_artean_applicant_signin_save') }}">
         <div id="applicant_sign_in">
             <div class="col-lg-offset-3 col-lg-6">
                 <div class="input-group">
