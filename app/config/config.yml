@@ -70,5 +70,6 @@ swiftmailer:
 assetic:
     debug:          '%kernel.debug%'
     use_controller: '%kernel.debug%'
+    bundles:        [CuatrovientosArteanBundle]
     filters:
         cssrewrite: ~
