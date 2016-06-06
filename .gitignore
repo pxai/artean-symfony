@@ -27,6 +27,7 @@ app/logs/*
 
 # Assets and user uploads
 /web/bundles/
+!/web/bundles/cuatrovientosartean
 /web/uploads/
 
 # Assets managed by Bower
