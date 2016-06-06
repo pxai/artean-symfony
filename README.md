@@ -127,3 +127,9 @@ To:
 ```
 $kernel = new AppKernel('prod', true);
 ``` 
+Another issue. Add this when uploading to prod in app/config/routing_dev.yml
+```
+_assetic:
+    resource: .
+    type:     assetic
+```
