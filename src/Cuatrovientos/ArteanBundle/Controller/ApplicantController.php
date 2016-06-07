@@ -193,10 +193,13 @@ class ApplicantController extends Controller
 
             $secureid = $_SERVER['HTTP_USER_AGENT'] . ":";
 	    $secureid .= $_SERVER['REMOTE_ADDR'] . ":";
-			
+		
 	    $sessionkey = $this->genpass(16);
             $sess->setSesskey($sessionkey);
             $sess->setActive(1);
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->persist($sess);
+            $em->flush();
 
             $secureid .= $sessionkey;
 	    $secureid = md5(secureid);
