@@ -110,7 +110,7 @@ class ApplicantController extends Controller
                 $this->sendEmail($applicant);
                 $this->sendEmailUser($user,$password);
                 
-                return $this->redirect('https://artean.cuatrovientos.org/?home', 301);
+                //return $this->redirect('https://artean.cuatrovientos.org/?home', 301);
                 
                 $response = $this->render('CuatrovientosArteanBundle:Applicant:signUpSave.html.twig', array('applicant'=> $applicant, 'user'=> $user, 'password' => $password));
                 
@@ -213,9 +213,9 @@ class ApplicantController extends Controller
 	    $roles = array(1,2,19);
 			
 
+	    $_SESSION["userid"] = $user->getId();
             $_SESSION["key"] = $secureid;
             $_SESSION["login"] = $user->getLogin();
-	    $_SESSION["userid"] = $user->getId();
 	    $_SESSION["roles"] = $roles; 
 	    $_SESSION["lopd"] = 0; 
 	}
