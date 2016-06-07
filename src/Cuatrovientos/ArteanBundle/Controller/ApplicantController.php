@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Cuatrovientos\ArteanBundle\Entity\Applicant;
 use Cuatrovientos\ArteanBundle\Entity\User;
+use Cuatrovientos\ArteanBundle\Entity\Session;
 use Cuatrovientos\ArteanBundle\Entity\UserRole;
 use Cuatrovientos\ArteanBundle\Entity\ApplicantStudies;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantSignInType;
@@ -104,9 +105,12 @@ class ApplicantController extends Controller
                 
                 $this->saveStudies($applicant);
                 $this->createProfile($user->getId());
+                $this->newsession($user);
                 
                 $this->sendEmail($applicant);
                 $this->sendEmailUser($user,$password);
+                
+                return $this->redirect('https://artean.cuatrovientos.org/?home', 301);
                 
                 $response = $this->render('CuatrovientosArteanBundle:Applicant:signUpSave.html.twig', array('applicant'=> $applicant, 'user'=> $user, 'password' => $password));
                 
@@ -172,6 +176,66 @@ class ApplicantController extends Controller
                 $em->flush();
     }
     
+    
+        /**
+         * Start new session
+         * @param type $user
+         */
+    	private function newsession ($user)
+	{
+            session_start();
+            $sess = new Session();
+            
+            $sess->setUserid($user->getId());
+            
+	
+            $secureid = "";
+
+            $secureid = $_SERVER['HTTP_USER_AGENT'] . ":";
+	    $secureid .= $_SERVER['REMOTE_ADDR'] . ":";
+			
+	    $sessionkey = $this->genpass(16);
+            $sess->setSesskey($sessionkey);
+            $sess->setActive(1);
+
+            $secureid .= $sessionkey;
+	    $secureid = md5(secureid);
+
+    	    // Crear nueva sesión borrando la anterior
+	    session_regenerate_id(true);
+    	   
+           // 
+	   // $this->db->db_query("new_session",$user->userid,$sessionkey);	
+            
+	    $roles = array(1,2,19);
+			
+
+            $_SESSION["key"] = $secureid;
+            $_SESSION["login"] = $user->getLogin();
+	    $_SESSION["userid"] = $user->getId();
+	    $_SESSION["roles"] = $roles; 
+	    $_SESSION["lopd"] = 0; 
+	}
+        
+        	/**
+	* genpass
+	* Genera un password
+	*/
+	public function genpass ($len=8)
+	{
+		$caracteres = "abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789.,-_";
+		$tot = strlen($caracteres);
+		
+		$result = "";
+		
+		for ($i=0;$i<$len;$i++)
+		{
+			$result .= $caracteres[rand(0,$tot)];
+		}
+		
+		return $result;
+	}
+        
     private function sendEmail ($applicant) {
          $message = \Swift_Message::newInstance()
         ->setSubject('Artean: ¡nuevo candidato en la bolsa de empleo!')
