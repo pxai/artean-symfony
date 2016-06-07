@@ -18,7 +18,7 @@ class Session
     private $id;
     
      /**
-     * @ORM\Column(name="nombrecentro",type="integer")
+     * @ORM\Column(name="userid",type="integer")
      */
     private $userid;
 
@@ -28,7 +28,7 @@ class Session
     private $sesskey;
 
      /**
-     * @ORM\Column(name="$since",type="integer")
+     * @ORM\Column(name="since",type="integer")
      */
     private $since;
 
