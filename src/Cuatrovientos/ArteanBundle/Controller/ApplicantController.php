@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Cuatrovientos\ArteanBundle\Entity\Applicant;
 use Cuatrovientos\ArteanBundle\Entity\User;
+use Cuatrovientos\ArteanBundle\Entity\UserRole;
+use Cuatrovientos\ArteanBundle\Entity\ApplicantStudies;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantSignInType;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantSignUpType;
 
@@ -97,12 +99,16 @@ class ApplicantController extends Controller
                 
                 $applicant->setIdUser($user->getId());
                 
-                $em->merge($applicant);
+                $em->persist($applicant);
                 $em->flush();
+                
+                $this->saveStudies($applicant);
+                $this->createProfile($user->getId());
+                
                 $this->sendEmail($applicant);
                 $this->sendEmailUser($user,$password);
                 
-                $response = $this->render('CuatrovientosArteanBundle:Applicant:signUpSave.html.twig', array('applicant'=> $applicant));
+                $response = $this->render('CuatrovientosArteanBundle:Applicant:signUpSave.html.twig', array('applicant'=> $applicant, 'user'=> $user, 'password' => $password));
                 
             } else {
                 $response = $this->render('CuatrovientosArteanBundle:Applicant:signIn.html.twig', array('form'=> $form->createView()));
@@ -110,6 +116,60 @@ class ApplicantController extends Controller
         }
 
         return $response;
+    }
+    
+    
+    private function createProfile ($iduser) {
+                $em = $this->getDoctrine()->getEntityManager();
+                $userRole1 = new UserRole();
+                
+                $userRole1->setIduser($iduser);
+                $userRole1->setIdrole(19);
+                
+                $userRole2 = new UserRole();
+                
+                $userRole2->setIduser($iduser);
+                $userRole2->setIdrole(1);
+                $em->persist($userRole2);
+
+                $userRole3 = new UserRole();
+                
+                $userRole3->setIduser($iduser);
+                $userRole3->setIdrole(2);
+                $em->persist($userRole3);
+                
+                $em->persist($userRole1);
+                $em->persist($userRole2);
+                $em->persist($userRole3);
+
+                $em->flush();
+        }
+    
+    
+        private function saveStudies ($applicant) {
+                $em = $this->getDoctrine()->getEntityManager();
+                $descriptions = array(9 => 'CM Comercio', 
+                                      10 => 'CM Gestión Administrativa',
+                                      144 => 'CM Sistemas Microinformáticos y Redes',
+                                      143 => 'FP Básica',
+                                      13 => 'CS Administración y Finanzas',
+                                      19 => 'CS Transporte y Logística',
+                                      16 => 'CS Comercio Internacional',
+                                      18 => 'CS GVEC',
+                                      15 => 'CS Redes y Sistemas',
+                                      17 => 'CS Desarrollo de Aplicaciones Multiplataforma');
+                
+                foreach ($applicant->getStudies() as $k => $study) {
+                    $applicantStudies = new ApplicantStudies();
+                    $applicantStudies->setIdapplicant($applicant->getId());
+                    $applicantStudies->setIdcenter(1);
+                    $applicantStudies->setEndyear(date('Y'));
+                    $applicantStudies->setIdstudies($study);
+                    $applicantStudies->setDescription($descriptions[$study]);
+                        $em->persist($applicantStudies);
+                }
+               
+                $em->flush();
     }
     
     private function sendEmail ($applicant) {

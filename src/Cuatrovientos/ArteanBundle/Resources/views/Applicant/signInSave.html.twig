@@ -4,7 +4,30 @@
 {% block title %}SignIn ::new OK{% endblock %}
 {% block body %}
 
-<h2>Alta en artean - OK</h2>
-<p>Tu email {{ email }} ya existe en nuestra BD.</p>
-<p>Si no puedes acceder a tu perfil ponte en contacto con artean@cuatrovientos.org.</p>
+<h2>Alta en artean</h2>
+<div class="row">
+    <p>Tu email {{ email }} ya existe en nuestra BD.</p>
+</div>
+    <div class="col-lg-offset-3 col-lg-6 col-lg-offset-3">
+        <form name='login' method='post' action='https://artean.cuatrovientos.org/?login&amp;&ac=login'>
+        <fieldset><legend>Entrar</legend>
+            <div class="input-group">
+                <label for='logins'>Usuario</label><br />
+                <input class="form-control" type='text' value="{{ email }}" name='logins' id='logins' size='15' />
+            </div>
+            <div class="input-group">
+                <label for='passwords'>Password</label><br />
+                <input  class="form-control"  type='password' name='passwords' id='passwords' size='15' /><br />
+            </div>
+            <div class="input-group">
+                <input  class="form-control" type='submit' name='signup' value='Entrar' />
+            </div>
+        </fieldset>
+        </form>
+        <div class="row" style="margin-top: 3em;">
+            <p>Si no puedes acceder a tu perfil ponte en contacto con artean@cuatrovientos.org.</p>
+        </div>
+    </div>
+           
+
 {% endblock %}
