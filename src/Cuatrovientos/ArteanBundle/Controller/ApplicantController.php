@@ -202,7 +202,7 @@ class ApplicantController extends Controller
             $em->flush();
 
             $secureid .= $sessionkey;
-	    $secureid = md5(secureid);
+	    $secureid = md5($secureid);
 
     	    // Crear nueva sesión borrando la anterior
 	    session_regenerate_id(true);
