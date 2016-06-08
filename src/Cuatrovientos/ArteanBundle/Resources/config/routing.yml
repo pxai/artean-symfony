@@ -54,6 +54,53 @@ cuatrovientos_artean_center_delete_save:
     requirements: 
             'id' : '\d+'
             
+            
+################# news ##################
+
+cuatrovientos_artean_news:
+    path:     /artean/admin/news
+    defaults: { _controller: CuatrovientosArteanBundle:News:index }
+
+cuatrovientos_artean_headlines:
+    path:     /artean/open/news/headlines
+    defaults: { _controller: CuatrovientosArteanBundle:News:showHeadlines }
+
+cuatrovientos_artean_news_new:
+    path:     /artean/admin/news/new
+    defaults: { _controller: CuatrovientosArteanBundle:News:newNews }
+
+cuatrovientos_artean_news_new_save:
+    path:     /artean/admin/news/new/save
+    defaults: { _controller: CuatrovientosArteanBundle:News:newNewsSave }
+
+cuatrovientos_artean_news_detail:
+    path:     /artean/admin/news/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:News:newsDetail }
+
+
+cuatrovientos_artean_news_update_save:
+    path:     /artean/admin/news/update/save
+    defaults: { _controller: CuatrovientosArteanBundle:News:newsUpdateSave }
+
+cuatrovientos_artean_news_update:
+    path:     /artean/admin/news/update/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:News:newsUpdate }
+    requirements: 
+            'id' : '\d+'
+            
+cuatrovientos_artean_news_delete:
+    path:     /artean/admin/news/delete/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:News:newsDelete }
+    requirements: 
+            'id' : '\d+'
+
+cuatrovientos_artean_news_delete_save:
+    path:     /artean/admin/news/delete/save/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:News:newsDeleteSave }
+    requirements: 
+            'id' : '\d+'
+            
+
 ################# offer ##################
 
 cuatrovientos_artean_open_offer_new:

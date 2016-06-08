@@ -1,0 +1,11 @@
+<tr>
+     <td>{{ news.id }}</td> 
+     <td>{{ news.title }}</td> 
+		{#% if is_granted('ROLE_ADMIN') %#}
+			<td>        
+                <a href="{{ path('cuatrovientos_artean_news_detail', {'id': news.id }) }}">Detail<span class="glyphicon glyphicon-heart"></span></a> |
+                <a href="{{ path('cuatrovientos_artean_news_update', {'id': news.id }) }}">Update</a> |
+                <a href="{{ path('cuatrovientos_artean_news_delete', {'id': news.id }) }}">Delete</a>                      
+		    </td>
+		{#% endif % #}
+<//tr>

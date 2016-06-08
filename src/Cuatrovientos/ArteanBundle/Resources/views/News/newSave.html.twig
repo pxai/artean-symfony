@@ -1,0 +1,9 @@
+
+{# src/Samples/BlogBundle/Resources/views/simple.html.twig #}
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean::Save News{% endblock %}
+{% block body %}
+Hello, saved new News 
+ <strong>{{ news.title }}</strong>
+ <div><a href="{{ path('cuatrovientos_artean_news') }}">{% trans %}See all{% endtrans %}</a> </div>
+{% endblock %}

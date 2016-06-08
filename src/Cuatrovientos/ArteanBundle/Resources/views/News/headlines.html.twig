@@ -1,0 +1,15 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Noticias{% endblock %}
+{% block body %}
+<h2>Noticias y ofertas </h2>
+                   {% image '@CuatrovientosArteanBundle/Resources/public/img/news.png' %}
+                        <img src="{{ asset_url }}"  alt="News from artean" title="News from artean"/>
+                    {% endimage %}
+                    <p>Si deseas conocer los detalles debes <a href="https://artean.cuatrovientos.org/?login">entrar en el portal</a></p>
+     <div id='news' style="text-align: left">
+        {% for news in news %}
+            {% include "CuatrovientosArteanBundle:News:newsHeadline.html.twig" %}
+        {% endfor %}
+    </div>
+
+{% endblock %}
