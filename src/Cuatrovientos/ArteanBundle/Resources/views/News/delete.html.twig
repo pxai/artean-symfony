@@ -1,0 +1,13 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}News bundle:: delete News{% endblock %}
+{% block body %}
+{% trans %}Delete news{% endtrans %}
+ <div id='news'>
+		<div>
+			{% trans %}Are you sure{% endtrans %}			
+			<div class='title'>{{ news.title }}</div>
+			<div><a href="{{ path('cuatrovientos_artean_news_delete_save',  {'id': news.id }) }}">Confirm deletion</a> </div>
+			<div><a href="javascript:history.back()">Cancel</a> </div>
+		</div>
+</div>
+{% endblock %}

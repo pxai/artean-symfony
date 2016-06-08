@@ -1,0 +1,14 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}News bundle::News detail{% endblock %}
+{% block body %}
+<h1>News detail</h1>
+<ul>
+     <li><strong>Id: </strong>{{ news.id }}</li> 
+     <li><strong>Title: </strong>{{ news.title }}</li> 
+</ul>
+		{#% if is_granted('ROLE_ADMIN') %#}
+                <a href="{{ path('cuatrovientos_artean_news') }}">Index</a> |
+                <a href="{{ path('cuatrovientos_artean_news_update', {'id': news.id }) }}">Update</a> |
+                <a href="{{ path('cuatrovientos_artean_news_delete', {'id': news.id }) }}">Delete</a>                      
+		{#% endif % #}
+{% endblock %}
