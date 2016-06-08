@@ -15,7 +15,7 @@ class NewsRepository extends EntityRepository
 	*/
 	public function findNews($post_id=0)
 	{
-            return $this->findAll();
+            return $this->findBy(array(), array('newsdate' => 'DESC'));
 	}
         
         /**
