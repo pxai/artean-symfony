@@ -1,13 +1,13 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}Blog sample::Index{% endblock %}
 {% block body %}
-<h2>{% trans %}newss{% endtrans %} <span class="glyphicon glyphicon-heart"></span></h2>
+<h2>{% trans %}news{% endtrans %} <span class="glyphicon glyphicon-heart"></span></h2>
 <div><a href="{{ path('cuatrovientos_artean_news') }}">{% trans %}Reload{% endtrans %}</a> 
     <a href="{{ path('cuatrovientos_artean_news_new') }}">{% trans %}New{% endtrans %}</a> </div>
 <div class="table-responsive">
   <table class="table .table-condensed">
-     <div id='newss'>
-        {% for news in newss %}
+     <div id='news'>
+        {% for news in news %}
             {% include "CuatrovientosArteanBundle:News:news.html.twig" %}
         {% endfor %}
     </div>

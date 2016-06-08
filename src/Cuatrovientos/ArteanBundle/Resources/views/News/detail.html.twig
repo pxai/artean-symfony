@@ -1,11 +1,12 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}News bundle::News detail{% endblock %}
 {% block body %}
-<h1>News detail</h1>
-<ul>
-     <li><strong>Id: </strong>{{ news.id }}</li> 
-     <li><strong>Title: </strong>{{ news.title }}</li> 
-</ul>
+<h1>Noticias</h1>
+<section>
+    <h3>{{ news.title }}</h3> 
+    <div><small>{{ news.newsdate|date('d/m/Y') }}</small></div>
+    <div style="text-align: left">{{ news.what }}</div>
+</section>
 		{#% if is_granted('ROLE_ADMIN') %#}
                 <a href="{{ path('cuatrovientos_artean_news') }}">Index</a> |
                 <a href="{{ path('cuatrovientos_artean_news_update', {'id': news.id }) }}">Update</a> |

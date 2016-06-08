@@ -15,11 +15,23 @@ class NewsController extends Controller
     */
     public function indexAction()
     {
-        //$newss = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:News")->findAll();
-        $newss = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:News")->findNewss();
-        return $this->render('CuatrovientosArteanBundle:News:index.html.twig', array('newss'=>$newss));
+        //$news = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:News")->findAll();
+        $news = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:News")->findNews();
+        return $this->render('CuatrovientosArteanBundle:News:index.html.twig', array('news'=>$news));
     }
 
+    
+        /**
+    *
+    *
+    */
+    public function showHeadlinesAction()
+    {
+        //$news = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:News")->findAll();
+        $news = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:News")->findNews();
+        return $this->render('CuatrovientosArteanBundle:News:headlines.html.twig', array('news'=>$news));
+    }
+    
     /**
     *
     *
@@ -45,6 +57,11 @@ class NewsController extends Controller
             
             if ($form->isValid()) {
                 $news = $form->getData();
+                $news->setPermalink($this->permalink($news->getTitle()));
+                $news->setNewsdate(time());
+                $news->setWho(1);
+                $news->setStatus(1);
+                $news->encodeContent();
                 
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->merge($news);
@@ -94,7 +111,7 @@ class NewsController extends Controller
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $news = $form->getData();
-                
+                $news->encodeContent();
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->merge($news);
                 $em->flush();
@@ -131,4 +148,12 @@ class NewsController extends Controller
        return $this->forward('CuatrovientosArteanBundle:News:index');
     }
 
+    
+        private function permalink ($title) {
+        $url = '';
+        $patterns = array("/\s+/");
+        $subst = array("-");
+        $url = preg_replace($patterns, $subst, $title);
+        return strtolower($url);
+    }
 }

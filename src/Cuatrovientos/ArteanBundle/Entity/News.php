@@ -66,6 +66,15 @@ class News
         return $this;
     }
     
+    public function encodeContent () {
+        $this->what = base64_encode($this->what);
+    }
+
+    public function decodeContent () {
+        $this->what = base64_decode($this->what);
+    }
+
+    
     public function getPermalink() {
         return $this->permalink;
     }
@@ -75,6 +84,7 @@ class News
     }
 
     public function getWhat() {
+        $this->decodeContent();
         return $this->what;
     }
 
