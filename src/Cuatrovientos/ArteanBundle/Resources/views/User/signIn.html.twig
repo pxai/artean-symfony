@@ -1,0 +1,25 @@
+
+{# src/Cuatrovientos/ArteanBundle/Resources/views/Center/new.html.twig #}
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Sign In{% endblock %}
+{% block body %}
+
+<h2>Entrar en artean</h2>
+<form method="post" action="{{ path('cuatrovientos_artean_applicant_signin_save') }}">
+    <div class="form-group">
+      <i class="fa fa-envelope" aria-hidden="true"></i>  {{ form_label(form.login) }}
+        {{ form_errors(form.login) }}
+        {{ form_widget(form.login, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+     <i class="fa fa-key" aria-hidden="true"></i>   {{ form_label(form.password) }}
+        {{ form_errors(form.password) }}
+        {{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form._token) }}
+        {{ form_widget(form.save, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</form>
+
+{% endblock %}
