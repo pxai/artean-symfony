@@ -33,7 +33,7 @@ class News
     private $what;
 
      /**
-     * @ORM\Column(name="newsdate",type="string", length=50)
+     * @ORM\Column(name="newsdate",type="integer")
      */
     private $newsdate;
 
@@ -47,9 +47,15 @@ class News
      */
     private $status;
 
+     /**
+     * @ORM\Column(name="tags",type="string", length=255)
+     */
+    private $tags;
+
          
     public function __construct () {
         $this->newsdate = time();
+        $this->who = 1;
     }
 
     /**
@@ -124,5 +130,15 @@ class News
     public function setStatus($status) {
         $this->status = $status;
     }
-   
+    
+    public function getTags() {
+        return $this->tags;
+    }
+
+    public function setTags($tags) {
+        $this->tags = $tags;
+    }
+
+
+    
 }
