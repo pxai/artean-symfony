@@ -29,6 +29,11 @@ class NewsType extends AbstractType {
                 "required"=>false,
                 'translation_domain' => 'messages'
               ))
+              ->add('tags', TextType::class,array(
+                "label"=>"Tags",
+                "required"=>true,
+                'translation_domain' => 'messages'
+              ))
               ->add('status', ChoiceType::class, array(
                     // each entry in the array will be an "email" field
                       'choices'  => array(

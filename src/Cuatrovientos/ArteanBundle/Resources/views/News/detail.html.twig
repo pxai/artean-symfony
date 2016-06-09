@@ -5,6 +5,7 @@
 <section>
     <h3>{{ news.title }}</h3> 
     <div><small>{{ news.newsdate|date('d/m/Y') }}</small></div>
+    <div><small>{{ news.tags }}</small></div>
     <div style="text-align: left">{{ news.what|raw }}</div>
 </section>
 		{#% if is_granted('ROLE_ADMIN') %#}

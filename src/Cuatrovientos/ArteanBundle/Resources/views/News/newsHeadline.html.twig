@@ -1,4 +1,5 @@
     <div style="margin: 3em;"> 
     <h3>{{ news.title }}</h3> 
-    <small>Publicada en {{ news.newsdate|date('d/m/Y') }}</small> 
+    <div>Etiquetas: <em>{{ news.tags }}<em></div> 
+    <small>Publicada el {{ news.newsdate|date('d/m/Y') }}</small> 
     </div>

@@ -19,6 +19,11 @@
         {{ form_widget(form.what, {'attr': {'class': 'form-control'}}) }}
     </div>
     <div class="form-group">
+        {{ form_label(form.tags) }}
+        {{ form_errors(form.tags) }}
+        {{ form_widget(form.tags, {'attr': {'class': 'form-control', 'placeholder' : 'Ej: AF, CI, GVEC...'}}}) }}
+    </div>
+    <div class="form-group">
         {{ form_label(form.status) }}
         {{ form_errors(form.status) }}
         {{ form_widget(form.status, {'attr': {'class': 'form-control'}}) }}
