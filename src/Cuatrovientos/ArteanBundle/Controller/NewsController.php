@@ -28,7 +28,7 @@ class NewsController extends Controller
     public function showHeadlinesAction()
     {
         //$news = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:News")->findAll();
-        $news = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:News")->findNews();
+        $news = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:News")->findPublicNews();
         return $this->render('CuatrovientosArteanBundle:News:headlines.html.twig', array('news'=>$news));
     }
     
@@ -112,6 +112,7 @@ class NewsController extends Controller
             if ($form->isValid()) {
                 $news = $form->getData();
                 $news->encodeContent();
+                $news->setPermalink($this->permalink($news->getTitle()));
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->merge($news);
                 $em->flush();

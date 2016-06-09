@@ -45,7 +45,6 @@ class ApplicantType extends AbstractType {
                     'multiple' => true
                     )
             )
-
             ->add('save', SubmitType::class);
         
          /* $builder->addEventListener(

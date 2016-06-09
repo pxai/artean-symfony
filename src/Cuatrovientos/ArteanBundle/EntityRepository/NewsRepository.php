@@ -9,13 +9,23 @@ use Cuatrovientos\ArteanBundle\Entity\News;
 class NewsRepository extends EntityRepository
 {
 
-	/**
+    
+    	/**
 	* customized function
 	*
 	*/
 	public function findNews($post_id=0)
 	{
             return $this->findBy(array(), array('newsdate' => 'DESC'));
+	}
+        
+	/**
+	* customized function
+	*
+	*/
+	public function findPublicNews($post_id=0)
+	{
+            return $this->findBy(array('status'=>array(1,2)), array('newsdate' => 'DESC'));
 	}
         
         /**
