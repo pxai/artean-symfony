@@ -4,9 +4,32 @@
 {% block title %}Samples blog bundle::update news{% endblock %}
 {% block body %}
 
-<h3>Update News: {{ id }}</h3>
+<h3>Actualizar noticia: {{ id }}</h3>
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script><script>tinymce.init({ selector:'textarea' , automatic_uploads: true });</script>
 <form method="post" action="{{ path('cuatrovientos_artean_news_update_save') }}">
-    {{ form_widget(form) }}
+ {{ form_errors(form) }}
+     <div class="form-group">
+        {{ form_widget(form.id, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.title) }}
+        {{ form_errors(form.title) }}
+        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.what) }}
+        {{ form_errors(form.what) }}
+        {{ form_widget(form.what, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.status) }}
+        {{ form_errors(form.status) }}
+        {{ form_widget(form.status, {'attr': {'class': 'form-control'}}) }}
+    </div>
+        <div class="form-group">
+        {{ form_row(form._token) }}
+        {{ form_widget(form.save, {'attr': {'class': 'form-control'}}) }}
+    </div>
 </form>
 
 {% endblock %}

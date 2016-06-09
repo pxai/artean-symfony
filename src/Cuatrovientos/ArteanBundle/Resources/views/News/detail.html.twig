@@ -5,7 +5,7 @@
 <section>
     <h3>{{ news.title }}</h3> 
     <div><small>{{ news.newsdate|date('d/m/Y') }}</small></div>
-    <div style="text-align: left">{{ news.what }}</div>
+    <div style="text-align: left">{{ news.what|raw }}</div>
 </section>
 		{#% if is_granted('ROLE_ADMIN') %#}
                 <a href="{{ path('cuatrovientos_artean_news') }}">Index</a> |

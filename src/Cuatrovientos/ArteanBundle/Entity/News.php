@@ -49,6 +49,7 @@ class News
 
          
     public function __construct () {
+        $this->newsdate = time();
     }
 
     /**
