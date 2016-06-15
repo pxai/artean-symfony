@@ -20,6 +20,17 @@ class UserRepository extends EntityRepository
             $user = $this->findOneBy(array("email" => $email));
             return $user;
 	}
+        
+        /**
+	* check login for user findApplicant
+	*/
+	public function checkLogin($new_user)
+	{
+            
+            $user = $this->findOneBy(array("login"=> $new_user->getLogin(), "password" => $new_user->getPassword()));
+            return $user;
+	}
+        
         /**
 	* save offer as news function
 	*

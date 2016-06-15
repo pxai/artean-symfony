@@ -32,16 +32,17 @@ security:
 
         main:            
             anonymous: ~
-            pattern:    ^/artean/admin/
+            pattern:    ^/artean/admin
             #http_basic: ~
             form_login:
                 login_path:  /artean/admin/user/signin
-                check_path:  /artean/admin/user/signin/check
+                check_path:  /artean/admin/user/signin/save
                 provider: artean_db_provider
              
     access_control:
         - { path: ^/artean/admin/user/signin, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/artean/admin, roles: ROLE_ADMIN }
+        - { path: ^/artean/user, roles: ROLE_USER }
             
             # activate different ways to authenticate
 

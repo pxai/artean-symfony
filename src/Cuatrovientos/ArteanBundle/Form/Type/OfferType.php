@@ -27,19 +27,19 @@ class OfferType extends AbstractType {
         $builder
             ->add('id',HiddenType::class)
             ->add('company', TextType::class,array(
-                "label"=>"company",
+                "label"=>"Empresa",
                 "required"=>true,
                 'translation_domain' => 'messages'
               ))
-            ->add('position', TextType::class, array('label' => 'Position'))
-            ->add('description', TextareaType::class, array('label' => 'Description'))
-            ->add('position_no', TextType::class, ['data'=> 1])
-            ->add('contract_type', EntityType::class, array(
+            ->add('position', TextType::class, array('label' => 'Puesto'))
+            ->add('description', TextareaType::class, array('label' => 'Descripción'))
+            ->add('position_no', TextType::class,array('label' => 'Nº vacantes','data'=> 1))
+            ->add('contract_type', EntityType::class, array('label'=>'Tipo de contrato',
                     'class' => 'CuatrovientosArteanBundle:ContractType'
                     )
             )
-            ->add('workday', TextType::class)
-            ->add('required_studies', ChoiceType::class, array(
+            ->add('workday', TextType::class, array('label' => 'Jornada'))
+            ->add('required_studies', ChoiceType::class, array('label'=> 'Formación requerida',
                     // each entry in the array will be an "email" field
                       'choices'  => array(
                             'Ciclo Medio Comercio' => '9',
@@ -59,7 +59,7 @@ class OfferType extends AbstractType {
                     'multiple' => true
                     )
             )
-                ->add('required_languages', ChoiceType::class, array(
+                ->add('required_languages', ChoiceType::class, array('label'=> 'Idiomas requeridos',
                     // each entry in the array will be an "email" field
                       'choices'  => array(
                             'Inglés' => 'in',
@@ -75,10 +75,10 @@ class OfferType extends AbstractType {
                     'multiple' => true
                     )
             )
-            ->add('other_knowledges', TextareaType::class)
-            ->add('observations', TextareaType::class)
-            ->add('contact', TextareaType::class)
-            ->add('save', SubmitType::class);
+            ->add('other_knowledges', TextareaType::class, array('label'=>'Otros conocimientos'))
+            ->add('observations', TextareaType::class, array('label' => 'Observaciones'))
+            ->add('contact', TextareaType::class, array('label' => 'Contacto'))
+            ->add('save', SubmitType::class, array('label'=> 'Enviar'));
         
           $builder->addEventListener(
             FormEvents::PRE_SUBMIT,
