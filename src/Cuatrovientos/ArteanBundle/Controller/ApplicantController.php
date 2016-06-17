@@ -115,7 +115,7 @@ class ApplicantController extends Controller
                 $response = $this->render('CuatrovientosArteanBundle:Applicant:signUpSave.html.twig', array('applicant'=> $applicant, 'user'=> $user, 'password' => $password));
                 
             } else {
-                $response = $this->render('CuatrovientosArteanBundle:Applicant:signIn.html.twig', array('form'=> $form->createView()));
+                $response = $this->render('CuatrovientosArteanBundle:Applicant:signUp.html.twig', array('form'=> $form->createView()));
             }
         }
 
