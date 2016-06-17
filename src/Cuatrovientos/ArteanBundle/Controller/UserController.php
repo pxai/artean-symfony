@@ -14,6 +14,9 @@ use Cuatrovientos\ArteanBundle\Form\Type\ApplicantSignUpType;
 
 class UserController extends Controller
 {
+    
+    var $sessionkey;
+    
     /**
     *
     *
@@ -30,10 +33,18 @@ class UserController extends Controller
     *
     *
     */
-   public function userSignInAction()
+   public function userSignInAction(Request $request,$error='',$lastUsername='')
     {
+
         $form = $this->createForm(UserSignInType::class);
-        return $this->render('CuatrovientosArteanBundle:User:signIn.html.twig', array('form'=> $form->createView()));
+        //$authenticationUtils = $this->get('security.authentication_utils');
+
+        // get the login error if there is one
+        //$error = $authenticationUtils->getLastAuthenticationError();
+        //$lastUsername = $authenticationUtils->getLastUsername();
+         
+        return $this->render('CuatrovientosArteanBundle:User:signIn.html.twig', array('login' => $lastUsername,
+                                                                                     'error' => $error,'form'=> $form->createView()));
     }
 
     /**
@@ -44,29 +55,35 @@ class UserController extends Controller
     {
         //$form = $this->createForm(new ApplicantType(), new Applicant());
         //$request->get('position')->set($request->request->get('company') .', '. $request->request->get('position'));    
-        $form = $this->createForm(UserSignInType::class, new Applicant());
+        $form = $this->createForm(UserSignInType::class, new User());
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
             
             //$form->submit($request->request->get($form->getName()));
             
             if ($form->isValid()) {
-                $new_applicant = $form->getData();
-                $applicant = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Applicant")->findApplicant($new_applicant->getEmail());
-                $user = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:User")->findUser($new_applicant->getEmail());
+                $new_user = $form->getData();
+
+                //$applicant = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Applicant")->findApplicant($new_applicant->getEmail());
+                $user = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:User")->checkLogin($new_user);
                 
-                if (null != $applicant || null != $user) {
-                    $response =  $this->render('CuatrovientosArteanBundle:Applicant:signInSave.html.twig', array('email' => $new_applicant->getEmail(),'msg'=>'Ya existe'));                               
+                if ( null != $user) {
+                    //$response =  $this->render('CuatrovientosArteanBundle:User:signInSave.html.twig', array('email' => $new_applicant->getEmail(),'msg'=>'Ya existe'));                               
+                    $this->newSession($user);
+                   // return $this->userSignInAction($request,'Login CORRECT');
+                    //echo 'Yeah madafaka';exit;
+                    return $this->redirect('https://artean.cuatrovientos.org/?login&ac=login_direct&userid='.$user->getId().'&token='.$this->sessionkey);
                 } else {
-                    $form = $this->createForm(ApplicantSignUpType::class, $new_applicant);
-                    $response = $this->render('CuatrovientosArteanBundle:User:signUp.html.twig', array('form'=> $form->createView()));
+                    //$form = $this->createForm(ApplicantSignUpType::class, $new_applicant);
+                    //$response = $this->render('CuatrovientosArteanBundle:User:signUp.html.twig', array('form'=> $form->createView()));
+                   return $this->userSignInAction($request,'Login incorrect');
                 }
                /* $em = $this->getDoctrine()->getEntityManager();
                 $em->merge($applicant);
                 $em->flush();
                 $this->sendEmail($applicant);*/
             } else {
-                $response = $this->render('CuatrovientosArteanBundle:User:signIn.html.twig', array('form'=> $form->createView()));
+                $response = $this->render('CuatrovientosArteanBundle:User:signIn.html.twig', array('form'=> $form->createView(),'error'=>''));
             }
         }
 
@@ -181,9 +198,9 @@ class UserController extends Controller
          * Start new session
          * @param type $user
          */
-    	private function newsession ($user)
+    	private function newSession ($user)
 	{
-            session_start();
+            //session_start();
             $sess = new Session();
             
             $sess->setUserid($user->getId());
@@ -195,6 +212,7 @@ class UserController extends Controller
 	    $secureid .= $_SERVER['REMOTE_ADDR'] . ":";
 		
 	    $sessionkey = $this->genpass(16);
+            $this->sessionkey = $sessionkey;
             $sess->setSesskey($sessionkey);
             $sess->setActive(1);
             $em = $this->getDoctrine()->getEntityManager();
@@ -205,7 +223,7 @@ class UserController extends Controller
 	    $secureid = md5($secureid);
 
     	    // Crear nueva sesión borrando la anterior
-	    session_regenerate_id(true);
+	    //session_regenerate_id(true);
     	   
            // 
 	   // $this->db->db_query("new_session",$user->userid,$sessionkey);	
@@ -218,6 +236,9 @@ class UserController extends Controller
             $_SESSION["login"] = $user->getLogin();
 	    $_SESSION["roles"] = $roles; 
 	    $_SESSION["lopd"] = 0; 
+            
+//            print_r($_SESSION);
+//            print_r($user);
 	}
         
         	/**
@@ -233,7 +254,7 @@ class UserController extends Controller
 		
 		for ($i=0;$i<$len;$i++)
 		{
-			$result .= $caracteres[rand(0,$tot)];
+			$result .= $caracteres[rand(0,$tot-1)];
 		}
 		
 		return $result;

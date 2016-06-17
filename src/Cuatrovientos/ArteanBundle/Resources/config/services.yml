@@ -1,4 +1,9 @@
 services:
+##    cuatrovientos_artean.passwordLength:    8
 #    cuatrovientos_artean.example:
 #        class: Cuatrovientos\ArteanBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+
+##    cuatrovientos_artean.passwordGenerator:
+##        class: Cuatrovientos\ArteanBundle\PasswordGenerator
+##        arguments:  ['%cuatrovientos_artean.passwordLength%']

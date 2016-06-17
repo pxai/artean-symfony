@@ -9,13 +9,14 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class UserSignInType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-            ->add('login', EmailType::class,array(
+            ->add('login', TextType::class,array(
                 "label"=>"Email",
                 "required"=>true
                 ))
@@ -31,14 +32,14 @@ class UserSignInType extends AbstractType {
 
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'Cuatrovientos\ArteanBundle\Entity\Applicant',
+            'data_class' => 'Cuatrovientos\ArteanBundle\Entity\User',
         ));
     }
 
       public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'csrf_protection' => false,
+            'csrf_protection' => true,
         ));
     }
     
