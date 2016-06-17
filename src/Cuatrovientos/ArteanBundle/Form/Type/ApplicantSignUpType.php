@@ -34,7 +34,11 @@ class ApplicantSignUpType extends AbstractType {
                 "label"=>"Email",
                 "required"=>true
                 ))
-            ->add('studies', ChoiceType::class, array(
+             ->add('mobile', TextType::class,array(
+                "label"=>"Teléfono",
+                "required"=>true
+                ))
+              ->add('studies', ChoiceType::class, array(
                     // each entry in the array will be an "email" field
                 "label"=>"Titulacion(es)",
                       'choices'  => array(

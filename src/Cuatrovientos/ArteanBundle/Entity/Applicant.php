@@ -3,10 +3,12 @@
 namespace Cuatrovientos\ArteanBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Count;
 
 /**
  * @ORM\Entity(repositoryClass="Cuatrovientos\ArteanBundle\EntityRepository\ApplicantRepository")
  * @ORM\Table(name="tbalumnos")
+ * delete from f_users where login='p@pello.io'; delete from tbalumnos where email='p@pello.io';
  */
 class Applicant
 {
@@ -28,6 +30,11 @@ class Applicant
     private $surname;
     
      /**
+     * @ORM\Column(name="telefonomovil",type="string", length=100)
+     */
+    private $mobile;
+    
+     /**
      * @ORM\Column(name="email",type="string", length=100)
      */
     private $email;
@@ -39,6 +46,7 @@ class Applicant
 
     /**
      * //ORM\Column(name="estudiosrequeridos",type="array", length=50)
+     * @Count(min = 1, minMessage = "Selecciona al menos una titulación")
      */
     private $studies;
     
@@ -131,6 +139,14 @@ class Applicant
 
     public function setLopd($lopd) {
         $this->lopd = $lopd;
+    }
+
+    public function getMobile() {
+        return $this->mobile;
+    }
+
+    public function setMobile($mobile) {
+        $this->mobile = $mobile;
     }
 
 
