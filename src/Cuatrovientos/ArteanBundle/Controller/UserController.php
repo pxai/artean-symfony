@@ -14,6 +14,9 @@ use Cuatrovientos\ArteanBundle\Form\Type\ApplicantSignUpType;
 
 class UserController extends Controller
 {
+    
+    var $sessionkey;
+    
     /**
     *
     *
@@ -68,7 +71,8 @@ class UserController extends Controller
                     //$response =  $this->render('CuatrovientosArteanBundle:User:signInSave.html.twig', array('email' => $new_applicant->getEmail(),'msg'=>'Ya existe'));                               
                     $this->newSession($user);
                    // return $this->userSignInAction($request,'Login CORRECT');
-                    return $this->redirect('http://localhost/artean/?ap_applicant&');
+                    //echo 'Yeah madafaka';exit;
+                    return $this->redirect('https://artean.cuatrovientos.org/?login&ac=login_direct&userid='.$user->getId().'&token='.$this->sessionkey);
                 } else {
                     //$form = $this->createForm(ApplicantSignUpType::class, $new_applicant);
                     //$response = $this->render('CuatrovientosArteanBundle:User:signUp.html.twig', array('form'=> $form->createView()));
@@ -208,6 +212,7 @@ class UserController extends Controller
 	    $secureid .= $_SERVER['REMOTE_ADDR'] . ":";
 		
 	    $sessionkey = $this->genpass(16);
+            $this->sessionkey = $sessionkey;
             $sess->setSesskey($sessionkey);
             $sess->setActive(1);
             $em = $this->getDoctrine()->getEntityManager();
@@ -232,9 +237,8 @@ class UserController extends Controller
 	    $_SESSION["roles"] = $roles; 
 	    $_SESSION["lopd"] = 0; 
             
-            print_r($_SESSION);
-            print_r($user);
-            exit;
+//            print_r($_SESSION);
+//            print_r($user);
 	}
         
         	/**
@@ -250,7 +254,7 @@ class UserController extends Controller
 		
 		for ($i=0;$i<$len;$i++)
 		{
-			$result .= $caracteres[rand(0,$tot)];
+			$result .= $caracteres[rand(0,$tot-1)];
 		}
 		
 		return $result;
