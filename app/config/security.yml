@@ -40,6 +40,7 @@ security:
                 provider: artean_db_provider
              
     access_control:
+        - { path: ^/artean/admin/offer, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/artean/admin/user/signin, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 #        - { path: ^/artean/admin, roles: ROLE_ADMIN }
 #        - { path: ^/artean/user, roles: ROLE_USER }
