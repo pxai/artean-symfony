@@ -1,12 +1,12 @@
-<div class='post'>
-	<div class='title'>{{ center.name }}</div> 
-		<div class='text'>{{ center.id }}</div> 
-		<div class='author'>by {{ center.name }}</div> 
-		{% if is_granted('ROLE_ADMIN') %}
+<div class='offer'>
+	<div class='title'>{{ offer.id }}</div> 
+		<div class='text'>{{ offer.puesto }}</div> 
+		<div class='author'>by {{ center.fechaoferta }}</div> 
+		{# % if is_granted('ROLE_ADMIN') % #}
 			<div>        
                 <a href="{{ path('cuatrovientos_artean_center_detail', {'id': center.id }) }}">Detail</a> |
                 <a href="{{ path('cuatrovientos_artean_center_update', {'id': center.id }) }}">Update</a> |
                 <a href="{{ path('cuatrovientos_artean_center_delete', {'id': center.id }) }}">Delete</a>                      
 		    </div>
-		{% endif %}
+		{#% endif % #}
 </div>
