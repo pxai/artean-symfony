@@ -1,10 +1,10 @@
 <?php
-// src/Cuatrovientos/BlogBundle/EntityRepository/ApplicantRepository.php
+// src/Cuatrovientos/BlogBundle/EntityRepository/CenterRepository.php
 
 namespace Cuatrovientos\ArteanBundle\EntityRepository;
 use Doctrine\ORM\EntityRepository;
 
-class ApplicantRepository extends EntityRepository
+class CenterRepository extends EntityRepository
 {
 
 	/**
