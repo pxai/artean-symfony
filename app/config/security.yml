@@ -41,8 +41,8 @@ security:
              
     access_control:
         - { path: ^/artean/admin/user/signin, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/artean/admin, roles: ROLE_ADMIN }
-        - { path: ^/artean/user, roles: ROLE_USER }
+#        - { path: ^/artean/admin, roles: ROLE_ADMIN }
+#        - { path: ^/artean/user, roles: ROLE_USER }
             
             # activate different ways to authenticate
 
