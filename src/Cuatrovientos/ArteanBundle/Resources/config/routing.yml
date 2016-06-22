@@ -138,7 +138,6 @@ cuatrovientos_artean_offer_detail:
     path:     /artean/admin/offer/{id}
     defaults: { _controller: CuatrovientosArteanBundle:Offer:offerDetail }
 
-
 cuatrovientos_artean_offer_update_save:
     path:     /artean/admin/offer/update/save
     defaults: { _controller: CuatrovientosArteanBundle:Offer:offerUpdateSave }
