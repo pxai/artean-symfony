@@ -17,7 +17,7 @@ class OfferController extends Controller
     public function indexAction()
     {
         //$offers = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Offer")->findAll();
-        $offers = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Offer")->findAll();
+        $offers = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:OfferOpen")->findAll();
         return $this->render('CuatrovientosArteanBundle:Offer:index.html.twig', array('offers'=>$offers));
     }  
     

@@ -123,7 +123,7 @@ cuatrovientos_artean_open_offer_ad_save:
     
 ### admin    
 cuatrovientos_artean_offer:
-    path:     /artean/admin/offer
+    path:     /artean/offer
     defaults: { _controller: CuatrovientosArteanBundle:Offer:index }
     
 cuatrovientos_artean_offer_new:
