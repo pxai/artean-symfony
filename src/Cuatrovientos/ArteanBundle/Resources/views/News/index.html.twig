@@ -6,11 +6,9 @@
     <a href="{{ path('cuatrovientos_artean_news_new') }}">{% trans %}New{% endtrans %}</a> </div>
 <div class="table-responsive">
   <table class="table .table-condensed">
-     <div id='news'>
         {% for news in news %}
             {% include "CuatrovientosArteanBundle:News:news.html.twig" %}
         {% endfor %}
-    </div>
   </table>
 </div>
 

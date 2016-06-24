@@ -7,3 +7,5 @@ services:
 ##    cuatrovientos_artean.passwordGenerator:
 ##        class: Cuatrovientos\ArteanBundle\PasswordGenerator
 ##        arguments:  ['%cuatrovientos_artean.passwordLength%']
+    cuatrovientos_artean.utils.permalink:
+        class: Cuatrovientos\ArteanBundle\Service\Utils\Permalink

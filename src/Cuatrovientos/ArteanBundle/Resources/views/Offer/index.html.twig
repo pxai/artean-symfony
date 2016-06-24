@@ -2,11 +2,12 @@
 {% block title %}Ofertas::Index{% endblock %}
 {% block body %}
 {% trans %}Ofertas introducidas por empreass{% endtrans %}
- <div id='offers'>
+<div class="table-responsive">
+  <table class="table .table-condensed">
+      <tr><th>Empresa</th><th>Fecha</th><th>Puesto</th><th></th></tr>
         {% for offer in offers %}
-            {% include "CuatrovientosArteanBundle:Offer:offer.html.twig" %}
-            </div>
+            {% include "CuatrovientosArteanBundle:Offer:offers.html.twig" %}
         {% endfor %}
+  </table>
 </div>
-<div><a href="{{ path('cuatrovientos_artean_offer_new') }}">New</a> </div>
 {% endblock %}
