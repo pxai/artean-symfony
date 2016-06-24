@@ -1,3 +1,8 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Ofertas::Index{% endblock %}
+{% block body %}
+{% trans %}Ofertas introducida por empresa{% endtrans %}
+<a href="javascript:history.back()">Volver</a>
 <div class='offer'>
 Nueva oferta de empleo para
  {{ offer.company }}.
@@ -44,3 +49,4 @@ Nueva oferta de empleo para
 		    </div>
 		{#% endif % #}
 </div>
+{% endblock %}
