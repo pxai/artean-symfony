@@ -92,6 +92,11 @@ class OfferOpen
      * @ORM\Column(name="contacto",type="string", length=255)
      */
     private $contact;
+    
+    /**
+     * @ORM\Column(name="publicada",type="integer")
+     */
+    private $published;
 
        
     public function __construct () {
@@ -216,6 +221,14 @@ class OfferOpen
 
     public function setContact($contact) {
         $this->contact = $contact;
+    }
+
+    public function getPublished() {
+        return $this->published;
+    }
+
+    public function setPublished($published) {
+        $this->published = $published;
     }
 
 

@@ -5,8 +5,10 @@ namespace  Cuatrovientos\ArteanBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Cuatrovientos\ArteanBundle\Entity\Offer;
+use Cuatrovientos\ArteanBundle\Entity\News;
 use Cuatrovientos\ArteanBundle\Entity\OfferOpen;
 use Cuatrovientos\ArteanBundle\Form\Type\OfferType;
+use Cuatrovientos\ArteanBundle\Form\Type\NewsType;
 
 class OfferController extends Controller
 {
@@ -161,4 +163,34 @@ class OfferController extends Controller
        return $this->forward('CuatrovientosArteanBundle:Offer:index');
     }
 
+    
+    /**
+    * publish offer as
+    *
+    */
+    public function newOfferPublishAction($id)
+    {
+        $offer = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:OfferOpen")->findOffer($id);
+                
+        $news = new News();
+        $news->setTitle($offer->getCompany(). ' ' . $offer->getPosition());
+        $news->setPermalink($this->get("cuatrovientos_artean.utils.permalink")->permalink($news->getTitle()));
+        $news->setWhat($offer->getDescription());
+        $news->setNewsdate(time());
+        $news->setWho(1);
+        $news->setStatus(1);
+
+        
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->merge($news);
+        $offer->setPublished(1);
+        $em->persist($offer);
+        
+        $em->flush();
+
+        $form = $this->createForm(NewsType::class, $news);
+        return $this->render('CuatrovientosArteanBundle:News:update.html.twig',array('form'=> $form->createView(),'id'=>$id));
+
+        return $response;
+    }
 }

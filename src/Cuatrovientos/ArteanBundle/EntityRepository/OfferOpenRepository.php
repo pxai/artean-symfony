@@ -8,7 +8,6 @@ use Cuatrovientos\ArteanBundle\Entity\OfferOpen;
 
 class OfferOpenRepository extends EntityRepository
 {
-
 	/**
 	* customized function
 	*/
@@ -16,5 +15,14 @@ class OfferOpenRepository extends EntityRepository
 	{
             return $this->findBy(array(), array('id'=>'desc'));
 	}
+        
+        /**
+         * finds just one offer
+         * @param type $id
+         * @return type
+         */
+        public function findOffer($id) {
+            return $this->findOneBy(array('id'=>$id));            
+        }
 
 }

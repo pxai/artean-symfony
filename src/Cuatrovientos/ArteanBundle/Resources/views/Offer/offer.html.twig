@@ -6,6 +6,9 @@
 <div class='offer'>
 Nueva oferta de empleo para
  {{ offer.company }}.
+{% if offer.published==1 %}
+    <b>Esta oferta ya fue publicada como noticia</b>
+{% endif  %}
  <p>La empresa ha creado una oferta de empleo en el portal con las siguientes especificaciones</p>
  <table class="table">
     <thead>
@@ -43,9 +46,11 @@ Nueva oferta de empleo para
  </table>
 		{# % if is_granted('ROLE_ADMIN') % #}
 			<div>        
-                <a href="{{ path('cuatrovientos_artean_offer_detail', {'id': offer.id }) }}">Detail</a> |
-                <a href="{{ path('cuatrovientos_artean_offer_update', {'id': offer.id }) }}">Update</a> |
-                <a href="{{ path('cuatrovientos_artean_offer_delete', {'id': offer.id }) }}">Delete</a>                      
+                <a href="{{ path('cuatrovientos_artean_offer_process', {'id': offer.id }) }}">Convertir en proceso</a> |
+		{% if offer.published==0 %}
+                    <a href="{{ path('cuatrovientos_artean_offer_publish', {'id': offer.id }) }}">Publicar como noticia</a> |
+		{% endif  %}
+                <a href="{{ path('cuatrovientos_artean_offer_delete', {'id': offer.id }) }}">Eliminar</a>                      
 		    </div>
 		{#% endif % #}
 </div>

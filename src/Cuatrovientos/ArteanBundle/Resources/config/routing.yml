@@ -160,6 +160,18 @@ cuatrovientos_artean_offer_delete_save:
     requirements: 
             'id' : '\d+'
    
+cuatrovientos_artean_offer_process:
+    path:     /artean/admin/offer/process/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Offer:offerDeleteSave }
+    requirements: 
+            'id' : '\d+'
+
+cuatrovientos_artean_offer_publish:
+    path:     /artean/admin/offer/publish/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Offer:newOfferPublish }
+    requirements: 
+            'id' : '\d+'
+
             
  ##### applicant ########################################33
 cuatrovientos_artean_applicant_signin:        
