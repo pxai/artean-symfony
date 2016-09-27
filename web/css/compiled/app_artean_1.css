@@ -1,0 +1,19 @@
+/* 
+    Created on : 17-may-2016, 11:08:49
+    Author     : Pello Altadill
+*/
+
+.checkboxblock label,input {
+    margin-right: 2em;
+    margin-left: 0.2em;
+}
+
+#lopd-modal {
+    background-color: white;
+    text-align: left;
+}
+
+.cerrar {
+    position: fixed;
+    top: 0;
+}
