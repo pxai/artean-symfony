@@ -64,7 +64,7 @@ class OfferController extends Controller
 
     private function sendEmail ($offer) {
          $message = \Swift_Message::newInstance()
-        ->setSubject('Artean: ¡nueva oferta de empleo!')
+        ->setSubject('Artean: ¡nueva solicitud de empleo iniciada por empresa!')
         ->setFrom('artean@cuatrovientos.org')
         ->setTo('artean@cuatrovientos.org')
         ->setBcc('pello_altadill@cuatrovientos.org')
