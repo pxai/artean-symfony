@@ -42,3 +42,8 @@ app/logs/*
 
 # Composer PHAR
 /composer.phar
+
+/web/js
+/web/css
+/web/images
+
