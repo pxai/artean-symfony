@@ -46,17 +46,17 @@ class OfferOpen
     private $description;
     
     /**
-     * @ORM\Column(name="estudiosrequeridos",type="array", length=50)
+     * @ORM\Column(name="estudiosrequeridos",type="array", length=50, nullable=TRUE)
      */
     private $required_studies;
 
     /**
-     * @ORM\Column(name="requisitos",type="array", length=255)
+     * @ORM\Column(name="requisitos",type="string", length=255)
      */
     private $other_knowledges;
     
     /**
-     * @ORM\Column(name="idiomas",type="array", length=255)
+     * @ORM\Column(name="idiomas",type="array", length=255, nullable=TRUE)
      */
     private $required_languages;
 
