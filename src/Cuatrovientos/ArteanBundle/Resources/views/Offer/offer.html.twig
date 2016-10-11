@@ -39,6 +39,22 @@ Nueva oferta de empleo para
       <td>{{ offer.observations }}</td>
     </tr>
     <tr>
+        <th scope="row">Estudios</th>
+        <td>
+            {% for study in offer.requiredStudies %}
+                {{ study }},
+            {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <th scope="row">Idiomas</th>
+        <td>
+            {% for language in offer.requiredLanguages %}
+                {{ language }},
+            {% endfor %}
+        </td>
+    </tr>
+    <tr>
       <th scope="row">Contact</th>
       <td>{{ offer.contact }}</td>
     </tr>
