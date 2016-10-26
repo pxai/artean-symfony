@@ -32,13 +32,21 @@ security:
 
         main:            
             anonymous: ~
-            pattern:    ^/artean/admin
-            #http_basic: ~
+
+            pattern:    ^/
+            context: session_key
             form_login:
-                login_path:  /artean/admin/user/signin
-                check_path:  /artean/admin/user/signin/save
                 provider: artean_db_provider
-             
+                login_path: /login
+                check_path: /login_check
+                username_parameter: _username
+                password_parameter: _password
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+                #target_path_parameter: /admin/chatgroup
+            logout:
+                path:   /logout
+                target: /login
+
     access_control:
         - { path: ^/artean/admin/offer, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/artean/admin/user/signin, roles: IS_AUTHENTICATED_ANONYMOUSLY }

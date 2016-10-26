@@ -1,0 +1,12 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Multisite::Profile{% endblock %}
+{% block body %}
+
+    <h1>Welcome to your profile {{ user.username }}</h1>
+        {% for role in user.roles %}
+            <div>  {{ role.name }},  </div>
+        {% endfor %}
+
+    <div><a href="{{ path('chatgroup_index') }}">Chat Group</a></div>
+
+{% endblock %}

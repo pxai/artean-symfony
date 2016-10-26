@@ -192,10 +192,15 @@ cuatrovientos_artean_applicant_signup_save:
 
 
 #### user 
-cuatrovientos_artean_user_signin:        
-    path:     /artean/admin/user/signin
-    defaults: { _controller: CuatrovientosArteanBundle:User:userSignIn }
+cuatrovientos_artean_login:
+    path:     /login
+    defaults: { _controller: CuatrovientosArteanBundle:Security:login }
 
-cuatrovientos_artean_user_signin_save:        
-    path:     /artean/admin/user/signin/check
-    defaults: { _controller: CuatrovientosArteanBundle:User:userSignInSave }
+cuatrovientos_artean_login_check:
+    path:     /login_check
+    defaults: { _controller: CuatrovientosArteanBundle:Security:loginCheck }
+
+cuatrovientos_artean_logout:
+    path:     /logout
+    defaults: { _controller: CuatrovientosArteanBundle:Security:logout }
+

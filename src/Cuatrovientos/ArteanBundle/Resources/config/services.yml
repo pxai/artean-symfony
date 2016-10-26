@@ -9,3 +9,5 @@ services:
 ##        arguments:  ['%cuatrovientos_artean.passwordLength%']
     cuatrovientos_artean.utils.permalink:
         class: Cuatrovientos\ArteanBundle\Service\Utils\Permalink
+    inventory.security.sha1_password_encoder:
+        class: Cuatrovientos\ArteanBundle\Security\Encoder\Sha1PasswordEncoder
