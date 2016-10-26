@@ -680,7 +680,7 @@
       <workItem from="1477159141077" duration="36000" />
       <workItem from="1477161515823" duration="362000" />
       <workItem from="1477169826735" duration="3538000" />
-      <workItem from="1477470932363" duration="1575000" />
+      <workItem from="1477470932363" duration="1635000" />
     </task>
     <task id="LOCAL-00001" summary="added phpstorm files">
       <created>1475482459126</created>
@@ -721,7 +721,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26792000" />
+    <option name="totallyTimeSpent" value="26852000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1477" y="17" width="1321" height="820" extended-state="0" />
