@@ -131,6 +131,24 @@ class OfferOpen
         return $this->required_studies;
     }
 
+    public function getRequiredLanguagesString() {
+        $result = '';
+        foreach($this->required_languages as $s) {
+            $result .= $s. ', ';
+        }
+        $result = rtrim($result,', ');
+        return $result;
+    }
+
+    public function getRequiredStudiesString() {
+        $result = '';
+        foreach($this->required_studies as $s) {
+            $result .= $s. ', ';
+        }
+        $result = rtrim($result,', ');
+        return $result;
+    }
+
     public function getOtherKnowledges() {
         return $this->other_knowledges;
     }

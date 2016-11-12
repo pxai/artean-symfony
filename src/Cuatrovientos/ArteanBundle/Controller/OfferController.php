@@ -4,6 +4,7 @@ namespace  Cuatrovientos\ArteanBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\Query\ResultSetMapping;
 use Cuatrovientos\ArteanBundle\Entity\Offer;
 use Cuatrovientos\ArteanBundle\Entity\News;
 use Cuatrovientos\ArteanBundle\Entity\OfferOpen;
@@ -156,10 +157,41 @@ class OfferController extends Controller
     */
    public function offerDeleteSaveAction(OfferOpen $offer)
     {
-
+        $rsm = new ResultSetMapping();
        $em = $this->getDoctrine()->getEntityManager();
-       $em->remove($offer);
-       $em->flush();
+        $processQuery = $em->createNativeQuery('insert into tbsolicitudes (fechasolicitud, 
+                                                                            idempresa, 
+                                                                            att, 
+                                                                            saludo, 
+                                                                            contacto, 
+                                                                            descripcionempresa,
+                                                                            horario, 
+                                                                            contrato,
+                                                                            formacion, 
+                                                                            idiomas, 
+                                                                            vacantes, 
+                                                                            jornada,
+                                                                            requisitos,
+                                                                            perfil)
+                                                                        values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)',$rsm);
+        $processQuery->setParameter(1,$offer->getOfferdate());
+        $processQuery->setParameter(2,1);
+        $processQuery->setParameter(3,'Att');
+        $processQuery->setParameter(4,'Estimada/o');
+        $processQuery->setParameter(5,$offer->getContact());
+        $processQuery->setParameter(6,$offer->getCompany().', ' .$offer->getDescription());
+        $processQuery->setParameter(7,$offer->getSchedule());
+        $processQuery->setParameter(8,$offer->getContractType()->getId());
+        $processQuery->setParameter(9,$offer->getRequiredStudiesString());
+        $processQuery->setParameter(10,$offer->getRequiredLanguagesString());
+        $processQuery->setParameter(11,$offer->getPositionNo());
+        $processQuery->setParameter(12,$offer->getWorkday());
+        $processQuery->setParameter(13,$offer->getOtherKnowledges());
+        $processQuery->setParameter(14,$offer->getObservations());
+        $result = $processQuery->getOneOrNullResult();
+
+        //$em->remove($offer);
+        //$em->flush();
        return $this->forward('CuatrovientosArteanBundle:Offer:index');
     }
 
@@ -189,7 +221,7 @@ class OfferController extends Controller
         $em->flush();
 
         $form = $this->createForm(NewsType::class, $news);
-        return $this->render('CuatrovientosArteanBundle:News:update.html.twig',array('form'=> $form->createView(),'id'=>$id));
+        return $this->render('CuatrovienofferDeleteSavetosArteanBundle:News:update.html.twig',array('form'=> $form->createView(),'id'=>$id));
 
         return $response;
     }

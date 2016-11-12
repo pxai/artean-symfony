@@ -124,8 +124,26 @@ class OfferAdOpen
         return $this->required_studies;
     }
 
+    public function getRequiredStudiesString() {
+        $result = '';
+        foreach($this->required_studies as $s) {
+            $result .= $s. ', ';
+        }
+        $result = rtrim($result,', ');
+        return $result;
+    }
+
     public function getRequiredLanguages() {
         return $this->required_languages;
+    }
+
+    public function getRequiredLanguagesString() {
+        $result = '';
+        foreach($this->required_languages as $s) {
+            $result .= $s. ', ';
+        }
+        $result = rtrim($result,', ');
+        return $result;
     }
 
     public function getOtherKnowledges() {
