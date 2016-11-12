@@ -21,7 +21,7 @@ class OfferController extends Controller
     {
 
         $offers = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:OfferOpen")->findOffers();
-        return $this->render('CuatrovientosArteanBundle:Offer:index.html.twig', array('offers'=>$offers));
+        return $this->render('CuatrovientosArteanBundle:Offer:index.html.twig' , array('offers'=>$offers));
     }  
     
     /**
@@ -31,7 +31,7 @@ class OfferController extends Controller
    public function newOfferOpenAction()
     {
         $form = $this->createForm(OfferType::class);
-        return $this->render('CuatrovientosArteanBundle:Offer:newOpen.html.twig', array('form'=> $form->createView()));
+        return $this->render('CuatrovientosArteanBundle:Offer:newOpen.html.twig' , array('form'=> $form->createView()));
     }
 
     /**
@@ -41,7 +41,7 @@ class OfferController extends Controller
     public function newOfferSaveOpenAction(Request $request)
     {
         //$form = $this->createForm(new OfferType(), new Offer());
-        //$request->get('position')->set($request->request->get('company') .', '. $request->request->get('position'));    
+        //$request->get('position')->set($request->request->get('company') .'=> , '. $request->request->get('position'));    
         $form = $this->createForm(OfferType::class, new OfferOpen());
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
@@ -54,9 +54,9 @@ class OfferController extends Controller
                 $em->merge($offer);
                 $em->flush();
                 $this->sendEmail($offer);
-                $response =  $this->render('CuatrovientosArteanBundle:Offer:newSave.html.twig', array('offer' => $offer));               
+                $response =  $this->render('CuatrovientosArteanBundle:Offer:newSave.html.twig' , array('offer' => $offer));
             } else {
-                $response = $this->render('CuatrovientosArteanBundle:Offer:new.html.twig', array('form'=> $form->createView()));
+                $response = $this->render('CuatrovientosArteanBundle:Offer:new.html.twig' , array('form'=> $form->createView()));
             }
         }
 
@@ -72,7 +72,7 @@ class OfferController extends Controller
         ->setBody(
             $this->renderView(
                 // app/Resources/views/Emails/registration.html.twig
-                'Emails/newOffer.html.twig',
+                'Emails/newOffer.html.twig' ,
                 array('offer' => $offer)
             ),
             'text/html'
@@ -81,7 +81,7 @@ class OfferController extends Controller
          * If you also want to include a plaintext version of the message
         ->addPart(
             $this->renderView(
-                'Emails/registration.txt.twig',
+                'Emails/registration.txt.twig'=> ,
                 array('name' => $name)
             ),
             'text/plain'
@@ -100,7 +100,7 @@ class OfferController extends Controller
 
         $offer = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:OfferOpen")->find($id);
    
-        return $this->render('CuatrovientosArteanBundle:Offer:offer.html.twig',array('offer'=> $offer));
+        return $this->render('CuatrovientosArteanBundle:Offer:offer.html.twig' ,array('offer'=> $offer));
     }
 
     /**
@@ -112,7 +112,7 @@ class OfferController extends Controller
       
         $form = $this->createForm(OfferType::class, $offer);
 
-        return $this->render('CuatrovientosArteanBundle:Offer:update.html.twig',array('form'=> $form->createView(),'id'=>$id));
+        return $this->render('CuatrovientosArteanBundle:Offer:update.html.twig' ,array('form'=> $form->createView(),'id'=>$id));
     }
     
     /**
@@ -133,9 +133,9 @@ class OfferController extends Controller
                 $em->flush();
                 
                 // redirect to index
-                $response = $this->forward('CuatrovientosArteanBundle:Offer:offerDetail', array('id' => $offer->getId()));
+                $response = $this->forward('CuatrovientosArteanBundle:Offer:offerDetail' , array('id' => $offer->getId()));
             } else  {
-                 $response = $this->render('CuatrovientosArteanBundle:Offer:updatePost.html.twig', array('form'=> $form->createView()));
+                 $response = $this->render('CuatrovientosArteanBundle:Offer:updatePost.html.twig' , array('form'=> $form->createView()));
             }
         }
         return $response;
@@ -148,7 +148,7 @@ class OfferController extends Controller
    public function offerDeleteAction($id=1)
     {
         $offer = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:OfferOpen")->find($id);
-        return $this->render('CuatrovientosArteanBundle:Offer:delete.html.twig',array('offer'=> $offer));
+        return $this->render('CuatrovientosArteanBundle:Offer:delete.html.twig' ,array('offer'=> $offer));
     }
 
     /**
@@ -159,40 +159,52 @@ class OfferController extends Controller
     {
         $rsm = new ResultSetMapping();
        $em = $this->getDoctrine()->getEntityManager();
-        $processQuery = $em->createNativeQuery('insert into tbsolicitudes (fechasolicitud, 
-                                                                            idempresa, 
-                                                                            att, 
-                                                                            saludo, 
-                                                                            contacto, 
-                                                                            descripcionempresa,
-                                                                            horario, 
-                                                                            contrato,
-                                                                            formacion, 
-                                                                            idiomas, 
-                                                                            vacantes, 
-                                                                            jornada,
-                                                                            requisitos,
-                                                                            perfil)
-                                                                        values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)',$rsm);
-        $processQuery->setParameter(1,$offer->getOfferdate());
-        $processQuery->setParameter(2,1);
-        $processQuery->setParameter(3,'Att');
-        $processQuery->setParameter(4,'Estimada/o');
-        $processQuery->setParameter(5,$offer->getContact());
-        $processQuery->setParameter(6,$offer->getCompany().', ' .$offer->getDescription());
-        $processQuery->setParameter(7,$offer->getSchedule());
-        $processQuery->setParameter(8,$offer->getContractType()->getId());
-        $processQuery->setParameter(9,$offer->getRequiredStudiesString());
-        $processQuery->setParameter(10,$offer->getRequiredLanguagesString());
-        $processQuery->setParameter(11,$offer->getPositionNo());
-        $processQuery->setParameter(12,$offer->getWorkday());
-        $processQuery->setParameter(13,$offer->getOtherKnowledges());
-        $processQuery->setParameter(14,$offer->getObservations());
-        $result = $processQuery->getOneOrNullResult();
+        
+        // problems executing this, fot update, delete and insert not the best option
+        // ?,?,?
+        // Instead using prepared
 
-        //$em->remove($offer);
-        //$em->flush();
-       return $this->forward('CuatrovientosArteanBundle:Offer:index');
+        $sql = 'insert into tbsolicitudes (fechasolicitud, idempresa, att, saludo, contacto, descripcionempresa,horario, contrato,formacion, idiomas, vacantes, jornada,requisitos,perfil)
+                  values (:fechasolicitud, 
+                            :idempresa, 
+                            :att, 
+                            :saludo, 
+                            :contacto, 
+                            :descripcionempresa,
+                            :horario, 
+                            :contrato,
+                            :formacion, 
+                            :idiomas, 
+                            :vacantes, 
+                            :jornada,
+                            :requisitos,
+                            :perfil   
+                  )';
+
+        $params = array(
+            'fechasolicitud' => '2016/11/11', //$offer->getOfferdate(),
+            'idempresa'=> 1,
+            'att'=> 'Att',
+            'saludo'=> 'Estimada/o',
+            'contacto'=> $offer->getContact(),
+            'descripcionempresa'=> $offer->getCompany().', ' .$offer->getDescription(),
+            'horario'=> $offer->getSchedule(),
+            'contrato'=> $offer->getContractType()->getId(),
+            'formacion'=> $offer->getRequiredStudiesString(),
+            'idiomas'=> $offer->getRequiredLanguagesString(),
+            'vacantes'=> $offer->getPositionNo(),
+            'jornada'=> $offer->getWorkday(),
+            'requisitos'=> $offer->getOtherKnowledges(),
+            'perfil'=>   $offer->getObservations());
+
+        $statement = $em->getConnection()->prepare($sql);
+        $statement->execute($params);
+        $id = $em->getConnection()->lastInsertId();
+
+        $em->remove($offer);
+        $em->flush();
+      // return $this->forward('CuatrovientosArteanBundle:Offer:index');
+        return $this->redirect('https://artean.cuatrovientos.org/?ap_manage_tbsolicitudes&ta=update&id='.$id);
     }
 
     
