@@ -100,6 +100,8 @@ class OfferOpen
 
        
     public function __construct () {
+        $this->required_languages = array();
+        $this->required_studies = array();
     }
 
   

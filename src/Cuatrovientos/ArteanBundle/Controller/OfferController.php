@@ -182,7 +182,7 @@ class OfferController extends Controller
                   )';
 
         $params = array(
-            'fechasolicitud' => '2016/11/11', //$offer->getOfferdate(),
+            'fechasolicitud' => date('d/M/Y'),
             'idempresa'=> 1,
             'att'=> 'Att',
             'saludo'=> 'Estimada/o',
@@ -219,21 +219,21 @@ class OfferController extends Controller
         $news = new News();
         $news->setTitle($offer->getCompany(). ' ' . $offer->getPosition());
         $news->setPermalink($this->get("cuatrovientos_artean.utils.permalink")->permalink($news->getTitle()));
-        $news->setWhat($offer->getDescription());
+        $news->setWhat(base64_encode($offer->getDescription()));
         $news->setNewsdate(time());
         $news->setWho(1);
         $news->setStatus(1);
 
         
         $em = $this->getDoctrine()->getEntityManager();
-        $em->merge($news);
+        $em->persist($news);
         $offer->setPublished(1);
         $em->persist($offer);
         
         $em->flush();
 
         $form = $this->createForm(NewsType::class, $news);
-        return $this->render('CuatrovienofferDeleteSavetosArteanBundle:News:update.html.twig',array('form'=> $form->createView(),'id'=>$id));
+        return $this->render('CuatrovientosArteanBundle:News:update.html.twig',array('form'=> $form->createView(),'id'=>$news->getId()));
 
         return $response;
     }

@@ -45,19 +45,29 @@ class OfferAdController extends Controller
             
             if ($form->isValid()) {
                 $offer = $form->getData();
-                
+
+                $newsContent = '<p>'.$offer->getDescription() .'</p>';
+                $newsContent .= '<div><b>Localidad</b><p>'.$offer->getLocation() .'</p></div>';
+                $newsContent .= '<div><b>Vacantes</b><p>'.$offer->getPositionNo() .'</p></div>';
+                $newsContent .= '<div><b>Jornada</b><p>'.$offer->getWorkday() .'</p></div>';
+                $newsContent .= '<div><b>Estudios</b><p>'.$offer->getRequiredStudiesString() .'</p></div>';
+                $newsContent .= '<div><b>Otros conocimientos</b><p>'.$offer->getOtherKnowledges() .'</p></div>';
+                $newsContent .= '<div><b>Observaciones</b><p>'.$offer->getObservations() .'</p></div>';
+                $newsContent .= '<div><b>Contacto</b><p>'.$offer->getContact() .'</p></div>';
+
                 $news = new News();
                 $news->setTitle($offer->getCompany(). ' ' . $offer->getPosition());
                 $news->setPermalink($this->permalink($news->getTitle()));
-                $news->setWhat($offer->getDescription());
+                $news->setWhat(base64_encode($newsContent));
+                $news->setTags($offer->getRequiredStudiesString());
                 $news->setNewsdate(time());
                 $news->setWho(1);
-                $news->setStatus(1);
+                $news->setStatus(0);
             
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->merge($news);
                 $em->flush();
-               // $this->sendEmail($offer);
+                $this->sendEmail($offer);
                 $response =  $this->render('CuatrovientosArteanBundle:OfferAd:newAdSave.html.twig', array('offer' => $offer));               
             } else {
                 $response = $this->render('CuatrovientosArteanBundle:OfferAd:newAdOpen.html.twig', array('form'=> $form->createView()));

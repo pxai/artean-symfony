@@ -22,20 +22,21 @@ class OfferAdType extends AbstractType {
         $builder
             ->add('id',HiddenType::class)
             ->add('company', TextType::class,array(
-                "label"=>"company",
+                "label"=>"Empresa",
                 "required"=>true,
                 'translation_domain' => 'messages'
               ))
             ->add('position', TextType::class, array('label' => 'Puesto'))
             ->add('location', TextType::class, array('label' => 'Localidad'))
-            ->add('description', TextareaType::class, array('label' => 'Description'))
-            ->add('positionNo', TextType::class, ['data'=> 1])
+            ->add('description', TextareaType::class, array('label' => 'Descripción'))
+            ->add('positionNo', TextType::class,array('label' => 'Nº Vacantes', 'data'=>1))
             ->add('contractType', EntityType::class, array(
-                    'class' => 'CuatrovientosArteanBundle:ContractType'
-                    )
+                    'class' => 'CuatrovientosArteanBundle:ContractType',
+                   'label' => 'Tipo de contrato' )
             )
-            ->add('workday', TextType::class)
+            ->add('workday', TextType::class, array('label' => 'Horario'))
             ->add('requiredStudies', ChoiceType::class, array(
+                    'label' => 'Estudios requeridos',
                     // each entry in the array will be an "email" field
                       'choices'  => array(
                           'Ciclo Medio Comercio' => 'ACOM', //'9',
@@ -55,10 +56,10 @@ class OfferAdType extends AbstractType {
                     'multiple' => true
                     )
             )
-            ->add('otherKnowledges', TextareaType::class)
-            ->add('observations', TextareaType::class)
-            ->add('contact', TextareaType::class)
-            ->add('cvDate', DateType::class, array('label' => 'CV Date'))
+            ->add('otherKnowledges', TextareaType::class, array('label' => 'Otros conocimientos'))
+            ->add('observations', TextareaType::class, array('label' => 'Observaciones'))
+            ->add('contact', TextareaType::class, array('label' => 'Información de contacto'))
+            ->add('cvDate', DateType::class, array('label' => 'Fecha de CV'))
             ->add('save', SubmitType::class);
         
           $builder->addEventListener(

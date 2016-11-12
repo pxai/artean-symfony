@@ -54,12 +54,12 @@ class OfferAdOpen
     private $required_studies;
     
     /**
-     * @ORM\Column(name="idiomas",type="array", length=50)
+     * @ORM\Column(name="idiomas",type="array", length=50, nullable=TRUE)
      */
     private $required_languages;
 
     /**
-     * @ORM\Column(name="requisitos",type="array", length=50)
+     * @ORM\Column(name="requisitos",type="string", length=255)
      */
     private $other_knowledges;
     
@@ -74,6 +74,8 @@ class OfferAdOpen
 
         
     public function __construct () {
+        $this->required_languages = array();
+        $this->required_studies = array();
     }
 
     /**
