@@ -21,7 +21,7 @@ Nuevo anuncion de oferta de empleo para
     <tr>
       <th scope="row">Puesto</th>
       <td>{{ offer.position }}</td>
-    </tr>
+    </tr
     <tr>
       <th scope="row">Descripción</th>
       <td>{{ offer.description }}</td>
@@ -40,4 +40,7 @@ Nuevo anuncion de oferta de empleo para
     </tr>
      </tbody>
  </table>
+    <p>
+    <div><a href="{{ path('cuatrovientos_artean_news_detail', {'id': offer.id }) }}">Pincha aquí para editarlo</a> </div>
+    </p>
 {% endblock %}
