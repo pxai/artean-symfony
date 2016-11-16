@@ -39,6 +39,7 @@ class OfferAdType extends AbstractType {
                     'label' => 'Estudios requeridos',
                     // each entry in the array will be an "email" field
                       'choices'  => array(
+                          'Ciclo Medio Actividades Comerciales' => 'ACOM', //'9',
                           'Ciclo Medio Comercio' => 'ACOM', //'9',
                           'Ciclo Medio Gestión Administrativa'     => 'CM GA', //'10',
                           'Ciclo Medio Sistemas Microinformáticos y Redes'    => 'CM SMR', //'144',
