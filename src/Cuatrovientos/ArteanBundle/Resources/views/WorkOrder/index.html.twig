@@ -1,0 +1,13 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Ofertas::Index{% endblock %}
+{% block body %}
+{% trans %}Ofertas introducidas por empreass{% endtrans %}
+<div class="table-responsive">
+  <table class="table .table-condensed">
+      <tr><th>Empresa</th><th>Fecha</th><th>Puesto</th><th></th></tr>
+        {% for offer in offers %}
+            {% include "CuatrovientosArteanBundle:Offer:offers.html.twig" %}
+        {% endfor %}
+  </table>
+</div>
+{% endblock %}

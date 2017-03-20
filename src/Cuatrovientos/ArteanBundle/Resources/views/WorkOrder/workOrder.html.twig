@@ -1,0 +1,73 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Ofertas::Index{% endblock %}
+{% block body %}
+{% trans %}Ofertas introducida por empresa{% endtrans %}
+<a href="javascript:history.back()">Volver</a>
+<div class='offer'>
+Nueva oferta de empleo para
+ {{ offer.company }}.
+{% if offer.published==1 %}
+    <b>Esta oferta ya fue publicada como noticia</b>
+{% endif  %}
+ <p>La empresa ha creado una oferta de empleo en el portal con las siguientes especificaciones</p>
+ <table class="table">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Nueva oferta</th>
+    </tr>    
+    </thead>
+     <tbody>
+    <tr>
+      <th scope="row">Empresa</th>
+      <td>{{ offer.company }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Puesto</th>
+      <td>{{ offer.position }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Descripción</th>
+      <td>{{ offer.description }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Jornada</th>
+      <td>{{ offer.workday }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Observaciones</th>
+      <td>{{ offer.observations }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Estudios</th>
+        <td>
+            {% for study in offer.requiredStudies %}
+                {{ study }},
+            {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <th scope="row">Idiomas</th>
+        <td>
+            {% for language in offer.requiredLanguages %}
+                {{ language }},
+            {% endfor %}
+        </td>
+    </tr>
+    <tr>
+      <th scope="row">Contact</th>
+      <td>{{ offer.contact }}</td>
+    </tr>
+     </tbody>
+ </table>
+		{# % if is_granted('ROLE_ADMIN') % #}
+			<div>        
+                <a href="{{ path('cuatrovientos_artean_offer_process', {'id': offer.id }) }}">Convertir en proceso</a> |
+		{% if offer.published==0 %}
+                    <a href="{{ path('cuatrovientos_artean_offer_publish', {'id': offer.id }) }}">Publicar como noticia</a> |
+		{% endif  %}
+                <a href="{{ path('cuatrovientos_artean_offer_delete', {'id': offer.id }) }}">Eliminar</a>                      
+		    </div>
+		{#% endif % #}
+</div>
+{% endblock %}

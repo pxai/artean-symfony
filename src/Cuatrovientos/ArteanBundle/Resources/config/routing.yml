@@ -204,3 +204,41 @@ cuatrovientos_artean_logout:
     path:     /logout
     defaults: { _controller: CuatrovientosArteanBundle:Security:logout }
 
+### workOrder
+cuatrovientos_artean_offer:
+    path:     /artean/admin/workorder
+    defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:index }
+
+cuatrovientos_artean_offer_new:
+    path:     /artean/admin/workorder/new
+    defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:workOrderOffer }
+
+cuatrovientos_artean_offer_new_save:
+    path:     /artean/admin/workorder/new/save
+    defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:workOrderOfferSave }
+
+cuatrovientos_artean_offer_detail:
+    path:     /artean/admin/workorder/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:workOrderDetail }
+
+cuatrovientos_artean_offer_update_save:
+    path:     /artean/admin/workorder/update/save
+    defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:workOrderUpdateSave }
+
+cuatrovientos_artean_offer_update:
+    path:     /artean/admin/workorder/update/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:workOrderUpdate }
+    requirements:
+            'id' : '\d+'
+
+cuatrovientos_artean_offer_delete:
+    path:     /artean/admin/workorder/delete/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:workOrderDelete }
+    requirements:
+            'id' : '\d+'
+
+cuatrovientos_artean_offer_delete_save:
+    path:     /artean/admin/workorder/delete/save/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:workOrderDeleteSave }
+    requirements:
+            'id' : '\d+'

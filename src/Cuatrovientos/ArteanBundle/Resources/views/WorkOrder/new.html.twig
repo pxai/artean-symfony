@@ -1,0 +1,12 @@
+
+{# src/Cuatrovientos/ArteanBundle/Resources/views/Center/new.html.twig #}
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Center bundle::new Center{% endblock %}
+{% block body %}
+
+Simple
+<form method="post" action="{{ path('cuatrovientos_artean_center_new_save') }}">
+   {{ form_widget(form) }}
+</form>
+
+{% endblock %}
