@@ -31,7 +31,7 @@ class OfferController extends Controller
    public function newOfferOpenAction()
     {
         $form = $this->createForm(OfferType::class);
-        return $this->render('CuatrovientosArteanBundle:Offer:newOpen.html.twig' , array('form'=> $form->createView()));
+        return $this->render('CuatrovientosArteanBundle:Offer:new.html.twig' , array('form'=> $form->createView()));
     }
 
     /**

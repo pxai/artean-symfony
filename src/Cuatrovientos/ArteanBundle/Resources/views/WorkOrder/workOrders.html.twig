@@ -1,0 +1,12 @@
+<tr>
+     <td>{{ workOrder.id }}</td>
+     <td>{{ workOrder.orderDate|date('d-m-Y') }}</td>
+     <td>{{ workOrder.description }}</td>
+		{#% if is_granted('ROLE_ADMIN') %#}
+			<td>        
+                <a href="{{ path('cuatrovientos_artean_workorder_detail', {'id': workOrder.id }) }}">Detail</a> |
+                <a href="{{ path('cuatrovientos_artean_workorder_update', {'id': workOrder.id }) }}">Update</a> |
+                <a href="{{ path('cuatrovientos_artean_workorder_delete', {'id': workOrder.id }) }}">Delete</a>
+		    </td>
+		{#% endif % #}
+</tr>

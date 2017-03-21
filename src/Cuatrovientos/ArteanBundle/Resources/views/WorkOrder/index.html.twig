@@ -1,12 +1,12 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
-{% block title %}Ofertas::Index{% endblock %}
+{% block title %}Partes semanales::Index{% endblock %}
 {% block body %}
-{% trans %}Ofertas introducidas por empreass{% endtrans %}
+{% trans %}Partes semanales{% endtrans %}
 <div class="table-responsive">
   <table class="table .table-condensed">
-      <tr><th>Empresa</th><th>Fecha</th><th>Puesto</th><th></th></tr>
-        {% for offer in offers %}
-            {% include "CuatrovientosArteanBundle:Offer:offers.html.twig" %}
+      <tr><th>Id</th><th>Fecha</th><th>Descripción</th><th></th></tr>
+        {% for workOrder in workOrders %}
+            {% include "CuatrovientosArteanBundle:WorkOrder:workOrders.html.twig" %}
         {% endfor %}
   </table>
 </div>

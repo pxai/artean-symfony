@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="Cuatrovientos\ArteanBundle\EntityRepository\WorkOrderRepository")
  * @ORM\Table(name="tbworkorder")
  */
-class Offer
+class WorkOrder
 {
     /**
      * @ORM\Column(name="id",type="integer")
@@ -34,7 +34,6 @@ class Offer
     private $orderDate;
     
     public function __construct () {
-        $this->orderDate = Date();
     }
 
     /**

@@ -7,7 +7,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\Query\ResultSetMapping;
 use Cuatrovientos\ArteanBundle\Entity\WorkOrder;
 use Cuatrovientos\ArteanBundle\Entity\News;
-use Cuatrovientos\ArteanBundle\Entity\WorkOrderOpen;
 use Cuatrovientos\ArteanBundle\Form\Type\WorkOrderType;
 use Cuatrovientos\ArteanBundle\Form\Type\NewsType;
 
@@ -20,7 +19,7 @@ class WorkOrderController extends Controller
     public function indexAction()
     {
 
-        $workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrderOpen")->findWorkOrders();
+        $workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findAll();
         return $this->render('CuatrovientosArteanBundle:WorkOrder:index.html.twig' , array('workOrders'=>$workOrders));
     }  
     
@@ -28,21 +27,21 @@ class WorkOrderController extends Controller
     *
     *
     */
-   public function newWorkOrderOpenAction()
+   public function newWorkOrderAction()
     {
         $form = $this->createForm(WorkOrderType::class);
-        return $this->render('CuatrovientosArteanBundle:WorkOrder:newOpen.html.twig' , array('form'=> $form->createView()));
+        return $this->render('CuatrovientosArteanBundle:WorkOrder:new.html.twig' , array('form'=> $form->createView()));
     }
 
     /**
     *
     *
     */
-    public function newWorkOrderSaveOpenAction(Request $request)
+    public function newWorkOrderSaveAction(Request $request)
     {
         //$form = $this->createForm(new WorkOrderType(), new WorkOrder());
         //$request->get('position')->set($request->request->get('company') .'=> , '. $request->request->get('position'));    
-        $form = $this->createForm(WorkOrderType::class, new WorkOrderOpen());
+        $form = $this->createForm(WorkOrderType::class, new WorkOrder());
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
             
@@ -98,7 +97,7 @@ class WorkOrderController extends Controller
    public function workOrderDetailAction($id=1)
     {
 
-        $workOrder = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrderOpen")->find($id);
+        $workOrder = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->find($id);
    
         return $this->render('CuatrovientosArteanBundle:WorkOrder:workOrder.html.twig' ,array('workOrder'=> $workOrder));
     }
@@ -147,7 +146,7 @@ class WorkOrderController extends Controller
     */
    public function workOrderDeleteAction($id=1)
     {
-        $workOrder = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrderOpen")->find($id);
+        $workOrder = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->find($id);
         return $this->render('CuatrovientosArteanBundle:WorkOrder:delete.html.twig' ,array('workOrder'=> $workOrder));
     }
 
@@ -155,7 +154,7 @@ class WorkOrderController extends Controller
     *
     *
     */
-   public function workOrderDeleteSaveAction(WorkOrderOpen $workOrder)
+   public function workOrderDeleteSaveAction(WorkOrder $workOrder)
     {
         $rsm = new ResultSetMapping();
        $em = $this->getDoctrine()->getEntityManager();
@@ -214,7 +213,7 @@ class WorkOrderController extends Controller
     */
     public function newWorkOrderPublishAction($id)
     {
-        $workOrder = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrderOpen")->findWorkOrder($id);
+        $workOrder = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findWorkOrder($id);
                 
         $news = new News();
         $news->setTitle($workOrder->getCompany(). ' ' . $workOrder->getPosition());

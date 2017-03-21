@@ -1,11 +1,11 @@
 
-{# src/Samples/BlogBundle/Resources/views/newPost.html.twig #}
+{# src/Samples/BlogBundle/Resources/views/WorkOrder/update.html.twig #}
 {% extends "SamplesBlogBundle:Default:layout.html.twig" %}
-{% block title %}Samples blog bundle::new Post{% endblock %}
+{% block title %}Partes de trabajo, actualización{% endblock %}
 {% block body %}
 
-<h3>Update Post: {{ id }}</h3>
-<form method="post" action="{{ path('samples_blog_post_update_save') }}">
+<h3>Actualizar parte: {{ id }}</h3>
+<form method="post" action="{{ path('cuatrovientos_artean_workorder_update_save') }}">
     {{ form_widget(form) }}
 </form>
 
