@@ -16,4 +16,9 @@ class WorkOrderRepository extends EntityRepository
             return $this->findAll();
 	}
 
+    public function findDetail($id, $idaplicant)
+    {
+        return $this->find($id);
+    }
+
 }

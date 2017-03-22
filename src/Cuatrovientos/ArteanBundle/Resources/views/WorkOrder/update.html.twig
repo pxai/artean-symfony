@@ -1,12 +1,25 @@
-
-{# src/Samples/BlogBundle/Resources/views/WorkOrder/update.html.twig #}
-{% extends "SamplesBlogBundle:Default:layout.html.twig" %}
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}Partes de trabajo, actualización{% endblock %}
 {% block body %}
 
 <h3>Actualizar parte: {{ id }}</h3>
 <form method="post" action="{{ path('cuatrovientos_artean_workorder_update_save') }}">
-    {{ form_widget(form) }}
+    {{ form_errors(form) }}
+    <div class="form-group">
+        {{ form_label(form.orderDate) }}
+        {{ form_errors(form.orderDate) }}
+        {{ form_widget(form.orderDate, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.description) }}
+        {{ form_errors(form.description) }}
+        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_row(form._token) }}
+        {{ form_widget(form.save, {'attr': {'class': 'form-control'}}) }}
+    </div>
 </form>
 
 {% endblock %}

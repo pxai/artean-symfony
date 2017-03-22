@@ -9,6 +9,7 @@ use Cuatrovientos\ArteanBundle\Entity\WorkOrder;
 use Cuatrovientos\ArteanBundle\Entity\News;
 use Cuatrovientos\ArteanBundle\Form\Type\WorkOrderType;
 use Cuatrovientos\ArteanBundle\Form\Type\NewsType;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class WorkOrderController extends Controller
 {
@@ -29,6 +30,7 @@ class WorkOrderController extends Controller
     */
    public function newWorkOrderAction()
     {
+// set and get session attributes
         $form = $this->createForm(WorkOrderType::class);
         return $this->render('CuatrovientosArteanBundle:WorkOrder:new.html.twig' , array('form'=> $form->createView()));
     }
@@ -49,10 +51,10 @@ class WorkOrderController extends Controller
             
             if ($form->isValid()) {
                 $workOrder = $form->getData();
+                $workOrder->setIdapplicant(1);
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->merge($workOrder);
                 $em->flush();
-                $this->sendEmail($workOrder);
                 $response =  $this->render('CuatrovientosArteanBundle:WorkOrder:newSave.html.twig' , array('workOrder' => $workOrder));
             } else {
                 $response = $this->render('CuatrovientosArteanBundle:WorkOrder:new.html.twig' , array('form'=> $form->createView()));
@@ -96,8 +98,8 @@ class WorkOrderController extends Controller
     */
    public function workOrderDetailAction($id=1)
     {
-
-        $workOrder = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->find($id);
+        $idapplicant = 1;
+        $workOrder = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findDetail($id, $idapplicant);
    
         return $this->render('CuatrovientosArteanBundle:WorkOrder:workOrder.html.twig' ,array('workOrder'=> $workOrder));
     }
@@ -126,7 +128,7 @@ class WorkOrderController extends Controller
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $workOrder = $form->getData();
-                
+                $workOrder->setIdapplicant(1);
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->merge($workOrder);
                 $em->flush();
