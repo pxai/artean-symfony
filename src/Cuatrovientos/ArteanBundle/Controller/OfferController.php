@@ -13,10 +13,7 @@ use Cuatrovientos\ArteanBundle\Form\Type\NewsType;
 
 class OfferController extends Controller
 {
-    /**
-    *
-    *
-    */
+
     public function indexAction()
     {
 
@@ -24,20 +21,14 @@ class OfferController extends Controller
         return $this->render('CuatrovientosArteanBundle:Offer:index.html.twig' , array('offers'=>$offers));
     }  
     
-    /**
-    *
-    *
-    */
+
    public function newOfferOpenAction()
     {
         $form = $this->createForm(OfferType::class);
         return $this->render('CuatrovientosArteanBundle:Offer:new.html.twig' , array('form'=> $form->createView()));
     }
 
-    /**
-    *
-    *
-    */
+
     public function newOfferSaveOpenAction(Request $request)
     {
         //$form = $this->createForm(new OfferType(), new Offer());
@@ -77,24 +68,12 @@ class OfferController extends Controller
             ),
             'text/html'
         );
-        /*
-         * If you also want to include a plaintext version of the message
-        ->addPart(
-            $this->renderView(
-                'Emails/registration.txt.twig'=> ,
-                array('name' => $name)
-            ),
-            'text/plain'
-        )
-        */
+
         $this->get('mailer')->send($message);
 
-        //return $this->render(...);
     }
-    /**
-    *
-    *
-    */
+
+
    public function offerDetailAction($id=1)
     {
 
@@ -103,10 +82,7 @@ class OfferController extends Controller
         return $this->render('CuatrovientosArteanBundle:Offer:workOrder.html.twig' ,array('offer'=> $offer));
     }
 
-    /**
-    *
-    *
-    */
+
     public function offerUpdateAction($id) {
         $offer = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Offer")->find($id);
       
@@ -115,10 +91,7 @@ class OfferController extends Controller
         return $this->render('CuatrovientosArteanBundle:Offer:update.html.twig' ,array('form'=> $form->createView(),'id'=>$id));
     }
     
-    /**
-    *
-    *
-    */
+
     public function offerUpdateSaveAction(Request $request) {
       
         $form = $this->createForm(OfferType::class, new Offer());

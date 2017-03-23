@@ -13,31 +13,25 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 class WorkOrderController extends Controller
 {
-    /**
-    *
-    *
-    */
+
     public function indexAction()
     {
+        $logger = $this->get('logger');
+        $logger->info('I love Tony Vairelles\' hairdresser.');
         $workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findAll();
         return $this->render('CuatrovientosArteanBundle:WorkOrder:index.html.twig' , array('workOrders'=>$workOrders));
     }  
     
-    /**
-    *
-    *
-    */
+
    public function newWorkOrderAction()
     {
-// set and get session attributes
+       $logger = $this->get('logger');
+       $logger->info('I love Tony Vairelles\' hairdresser.');
         $form = $this->createForm(WorkOrderType::class);
         return $this->render('CuatrovientosArteanBundle:WorkOrder:new.html.twig' , array('form'=> $form->createView()));
     }
 
-    /**
-    *
-    *
-    */
+
     public function newWorkOrderSaveAction(Request $request)
     {
         //$form = $this->createForm(new WorkOrderType(), new WorkOrder());
@@ -62,6 +56,7 @@ class WorkOrderController extends Controller
 
         return $response;
     }
+
 
     private function sendEmail ($workOrder) {
          $message = \Swift_Message::newInstance()
@@ -91,10 +86,7 @@ class WorkOrderController extends Controller
 
         //return $this->render(...);
     }
-    /**
-    *
-    *
-    */
+
    public function workOrderDetailAction($id=1)
     {
         $idapplicant = 1;
@@ -103,10 +95,7 @@ class WorkOrderController extends Controller
         return $this->render('CuatrovientosArteanBundle:WorkOrder:workOrder.html.twig' ,array('workOrder'=> $workOrder));
     }
 
-    /**
-    *
-    *
-    */
+
     public function workOrderUpdateAction($id) {
         $workOrder = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->find($id);
 
@@ -116,10 +105,7 @@ class WorkOrderController extends Controller
         return $this->render('CuatrovientosArteanBundle:WorkOrder:update.html.twig' ,array('form'=> $form->createView(),'id'=>$id));
     }
     
-    /**
-    *
-    *
-    */
+
     public function workOrderUpdateSaveAction(Request $request) {
       
         $form = $this->createForm(WorkOrderType::class, new WorkOrder());
@@ -142,20 +128,14 @@ class WorkOrderController extends Controller
         return $response;
     }
 
-    /**
-    *
-    *
-    */
+
    public function workOrderDeleteAction($id=1)
     {
         $workOrder = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->find($id);
         return $this->render('CuatrovientosArteanBundle:WorkOrder:delete.html.twig' ,array('workOrder'=> $workOrder));
     }
 
-    /**
-    *
-    *
-    */
+
    public function workOrderDeleteSaveAction(WorkOrder $workOrder)
     {
        $em = $this->getDoctrine()->getEntityManager();
@@ -165,7 +145,5 @@ class WorkOrderController extends Controller
         return $this->forward('CuatrovientosArteanBundle:WorkOrder:index');
 
     }
-
-    
 
 }
