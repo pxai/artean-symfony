@@ -6,7 +6,7 @@
 <form method="post" action="{{ path('cuatrovientos_artean_workorder_new_save') }}">
    {# { form_widget(form) } #}
     {{ form_errors(form) }}
-    {{ form_widget(form.id, {'attr': {'class': 'form-control'}}) }}
+
     <div class="form-group">
         {{ form_label(form.orderDate) }}
         {{ form_errors(form.orderDate) }}

@@ -5,6 +5,7 @@
 <h3>Actualizar parte: {{ id }}</h3>
 <form method="post" action="{{ path('cuatrovientos_artean_workorder_update_save') }}">
     {{ form_errors(form) }}
+ {{ form_widget(form.id) }}
     <div class="form-group">
         {{ form_label(form.orderDate) }}
         {{ form_errors(form.orderDate) }}

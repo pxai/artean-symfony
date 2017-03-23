@@ -206,7 +206,7 @@ cuatrovientos_artean_logout:
 
 ### workOrder
 cuatrovientos_artean_workorder:
-    path:     /artean/admin/workorder
+    path:     /artean/admin/workorders
     defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:index }
 
 cuatrovientos_artean_workorder_new:

@@ -19,7 +19,6 @@ class WorkOrderController extends Controller
     */
     public function indexAction()
     {
-
         $workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findAll();
         return $this->render('CuatrovientosArteanBundle:WorkOrder:index.html.twig' , array('workOrders'=>$workOrders));
     }  
@@ -110,6 +109,7 @@ class WorkOrderController extends Controller
     */
     public function workOrderUpdateAction($id) {
         $workOrder = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->find($id);
+
       
         $form = $this->createForm(WorkOrderType::class, $workOrder);
 
@@ -158,84 +158,14 @@ class WorkOrderController extends Controller
     */
    public function workOrderDeleteSaveAction(WorkOrder $workOrder)
     {
-        $rsm = new ResultSetMapping();
        $em = $this->getDoctrine()->getEntityManager();
-        
-        // problems executing this, fot update, delete and insert not the best option
-        // ?,?,?
-        // Instead using prepared
-
-        $sql = 'insert into tbsolicitudes (fechasolicitud, idempresa, att, saludo, contacto, descripcionempresa,horario, contrato,formacion, idiomas, vacantes, jornada,requisitos,perfil)
-                  values (:fechasolicitud, 
-                            :idempresa, 
-                            :att, 
-                            :saludo, 
-                            :contacto, 
-                            :descripcionempresa,
-                            :horario, 
-                            :contrato,
-                            :formacion, 
-                            :idiomas, 
-                            :vacantes, 
-                            :jornada,
-                            :requisitos,
-                            :perfil   
-                  )';
-
-        $params = array(
-            'fechasolicitud' => date('d/M/Y'),
-            'idempresa'=> 1,
-            'att'=> 'Att',
-            'saludo'=> 'Estimada/o',
-            'contacto'=> $workOrder->getContact(),
-            'descripcionempresa'=> $workOrder->getCompany().', ' .$workOrder->getDescription(),
-            'horario'=> $workOrder->getSchedule(),
-            'contrato'=> $workOrder->getContractType()->getId(),
-            'formacion'=> $workOrder->getRequiredStudiesString(),
-            'idiomas'=> $workOrder->getRequiredLanguagesString(),
-            'vacantes'=> $workOrder->getPositionNo(),
-            'jornada'=> $workOrder->getWorkday(),
-            'requisitos'=> $workOrder->getOtherKnowledges(),
-            'perfil'=>   $workOrder->getObservations());
-
-        $statement = $em->getConnection()->prepare($sql);
-        $statement->execute($params);
-        $id = $em->getConnection()->lastInsertId();
 
         $em->remove($workOrder);
         $em->flush();
-      // return $this->forward('CuatrovientosArteanBundle:WorkOrder:index');
-        return $this->redirect('https://artean.cuatrovientos.org/?ap_manage_tbsolicitudes&ta=update&id='.$id);
+        return $this->forward('CuatrovientosArteanBundle:WorkOrder:index');
+
     }
 
     
-    /**
-    * publish workOrder as
-    *
-    */
-    public function newWorkOrderPublishAction($id)
-    {
-        $workOrder = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findWorkOrder($id);
-                
-        $news = new News();
-        $news->setTitle($workOrder->getCompany(). ' ' . $workOrder->getPosition());
-        $news->setPermalink($this->get("cuatrovientos_artean.utils.permalink")->permalink($news->getTitle()));
-        $news->setWhat(base64_encode($workOrder->getDescription()));
-        $news->setNewsdate(time());
-        $news->setWho(1);
-        $news->setStatus(1);
 
-        
-        $em = $this->getDoctrine()->getEntityManager();
-        $em->persist($news);
-        $workOrder->setPublished(1);
-        $em->persist($workOrder);
-        
-        $em->flush();
-
-        $form = $this->createForm(NewsType::class, $news);
-        return $this->render('CuatrovientosArteanBundle:News:update.html.twig',array('form'=> $form->createView(),'id'=>$news->getId()));
-
-        return $response;
-    }
 }
