@@ -11,6 +11,7 @@ services:
     #    class: Pello\InventoryBundle\Security\User\DatabaseUserProvider
     # app/config/services.yml
     my.oauth_aware.user_provider.service:
-        class: HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider
-        arguments:
-            - '@fos_user.user_manager'
+          class: Cuatrovientos\ArteanBundle\Security\User\DatabaseUserProvider
+ #        class: HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider
+#       arguments:
+#            - '@fos_user.user_manager'

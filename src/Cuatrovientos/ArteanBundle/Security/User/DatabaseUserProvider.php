@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiBundle\Security\User;
+namespace Cuatrovientos\ArteanBundle\Security\User;
 
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;

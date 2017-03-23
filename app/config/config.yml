@@ -87,3 +87,6 @@ hwi_oauth:
             client_secret:       JYZf1lOkuPLs3Fj_GrgQf-nB
             options:
                 csrf: true
+#fos_user:
+#    service:
+#        user_manager: fos_user.user_manager.default
