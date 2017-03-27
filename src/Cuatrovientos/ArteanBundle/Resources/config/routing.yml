@@ -204,6 +204,10 @@ cuatrovientos_artean_logout:
     path:     /logout
     defaults: { _controller: CuatrovientosArteanBundle:Security:logout }
 
+cuatrovientos_artean_login_redirect:
+    path:     /artean/redirect
+    defaults: { _controller: CuatrovientosArteanBundle:Security:arteanRedirect }
+
 ### workOrder
 cuatrovientos_artean_workorder:
     path:     /artean/admin/workorders

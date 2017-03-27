@@ -61,5 +61,14 @@ class SecurityController extends Controller
     }
 
 
+    /**
+     * @Route("/artean/redirect", name="artean_redirect")
+     */
+    public function arteanRedirectAction()
+    {
+        $this->get('session')->set('loginUserId', $user['user_id']);
+        return $this->redirect("/artean/?home");
+    }
+
 
 }

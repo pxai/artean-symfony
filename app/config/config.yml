@@ -78,15 +78,6 @@ assetic:
  #               display: popup #dialog is optimized for popup window
  #               auth_type: rerequest # Re-asking for Declined Permissions
 
-hwi_oauth:
-    firewall_names: [secured_area]
-    resource_owners:
-        any_name:
-            type:                google
-            client_id:           917325508729-che23j2v3jauf4t6n11dik27ejaog043.apps.googleusercontent.com
-            client_secret:       JYZf1lOkuPLs3Fj_GrgQf-nB
-            options:
-                csrf: true
 #fos_user:
 #    service:
 #        user_manager: fos_user.user_manager.default
