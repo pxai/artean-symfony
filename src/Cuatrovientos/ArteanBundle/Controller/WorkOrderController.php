@@ -18,8 +18,8 @@ class WorkOrderController extends Controller
     {
         $user = $this->get('security.token_storage')->getToken();
         $logger = $this->get('logger');
-        $logger->info('all in all: '  . $user->getId());
-       $workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findAllWorkOrders();
+        $logger->info('all in all: '  . $user->getUsername());
+        $workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findAllWorkOrders();
 
         $form = $this->createForm(WorkOrderType::class);
         return $this->render('CuatrovientosArteanBundle:WorkOrder:index.html.twig' , array('form'=> $form->createView(),"workOrders"=>$workOrders));

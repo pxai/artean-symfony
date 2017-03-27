@@ -2,25 +2,30 @@
 
 namespace Cuatrovientos\ArteanBundle\Security\User;
 
+use Cuatrovientos\ArteanBundle\Entity\User;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 
-class DatabaseUserProvider implements UserProviderInterface
+class DatabaseUserProvider  implements UserProviderInterface
 {
     public function loadUserByUsername($username)
     {
-        // make a call to your webservice here
-        //$userData = ...
-        // pretend it returns an array on success, false if there is no user
 
-        if ($userData) {
-            $password = '...';
+      /*  $qb = $this->createQueryBuilder();
+        $qb->select('u')
+            ->from('CuatrovientosArteanBundle:User', 'u')
+            ->where('u.username = :username')
+            ->setParameter('username', $username)
+            ->setMaxResults(1);
+        $user = $qb->getQuery()->getResult();*/
 
-            // ...
+       $user = new User();
+        if ($user) {
 
-            return new WebserviceUser($username, $password, $salt, $roles);
+            return $user;
         }
 
         throw new UsernameNotFoundException(
@@ -30,7 +35,7 @@ class DatabaseUserProvider implements UserProviderInterface
 
     public function refreshUser(UserInterface $user)
     {
-        if (!$user instanceof WebserviceUser) {
+        if (!$user instanceof User) {
             throw new UnsupportedUserException(
                 sprintf('Instances of "%s" are not supported.', get_class($user))
             );
@@ -41,6 +46,6 @@ class DatabaseUserProvider implements UserProviderInterface
 
     public function supportsClass($class)
     {
-        return $class === 'ApiBundle\Security\User\WebserviceUser';
+        return User::class === $class;
     }
 }

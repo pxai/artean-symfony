@@ -16,6 +16,8 @@ security:
                 property: login
                 # if you're using multiple entity managers
                 # manager_name: customer
+        database_user_provider:
+            id: app.database_user_provider
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:

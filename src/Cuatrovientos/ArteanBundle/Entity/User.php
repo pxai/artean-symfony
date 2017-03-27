@@ -4,12 +4,13 @@ namespace Cuatrovientos\ArteanBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\EquatableInterface;
 
 /**
  * @ORM\Entity(repositoryClass="Cuatrovientos\ArteanBundle\EntityRepository\UserRepository")
  * @ORM\Table(name="f_users")
  */
-class User implements UserInterface, \Serializable
+class User implements UserInterface, EquatableInterface, \Serializable
 {
     /**
      * @ORM\Column(name="id",type="integer")
@@ -192,4 +193,25 @@ class User implements UserInterface, \Serializable
         $this->lopd = $lopd;
     }
 
+
+    public function isEqualTo(UserInterface $user)
+    {
+        if (!$user instanceof WebserviceUser) {
+            return false;
+        }
+
+        if ($this->password !== $user->getPassword()) {
+            return false;
+        }
+
+        if ($this->salt !== $user->getSalt()) {
+            return false;
+        }
+
+        if ($this->username !== $user->getUsername()) {
+            return false;
+        }
+
+        return true;
+    }
 }
