@@ -1,16 +1,12 @@
-pello_ser_o_no_ser:
-    resource: "@PelloSerONoSerBundle/Resources/config/routing.yml"
-    prefix:   /
-
-artean:
-    resource: "@CuatrovientosArteanBundle/Resources/config/routing.yml"
-    prefix:   /
-    
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
+artean:
+    resource: "@CuatrovientosArteanBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
 _assetic:
     resource: .
     type:     assetic
-

@@ -18,7 +18,6 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new AppBundle\AppBundle(),
             new Cuatrovientos\ArteanBundle\CuatrovientosArteanBundle(),
-            new Pello\SerONoSerBundle\PelloSerONoSerBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
