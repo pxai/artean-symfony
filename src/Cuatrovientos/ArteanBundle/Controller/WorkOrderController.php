@@ -18,13 +18,30 @@ class WorkOrderController extends Controller
     {
         $logger = $this->get('logger');
         $logger->info('I love Tony Vairelles\' hairdresser.');
-        $workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findAll();
-        $logger->info('We got data: ' . count($workOrders));
-        return $this->render('CuatrovientosArteanBundle:WorkOrder:index.html.twig' , array('workOrders'=>$workOrders));
-    }  
-    
+        return $this->render('CuatrovientosArteanBundle:WorkOrder:new.html.twig' );
+    }
 
-   public function newWorkOrderAction()
+    public function workordersAction()
+    {
+        //$logger = $this->get('logger');
+        //$logger->info('I love Tony Vairelles\' hairdresser.');
+       // $workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findAll();
+       // $logger->info('We got data: ' . count($workOrders));
+       // return $this->render('CuatrovientosArteanBundle:WorkOrder:index.html.twig' , array('workOrders'=>$workOrders));
+    }
+
+    public function allAction()
+    {
+        $logger = $this->get('logger');
+        $logger->info('all in all');
+       // $workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findAll();
+
+        $form = $this->createForm(WorkOrderType::class);
+        return $this->render('CuatrovientosArteanBundle:WorkOrder:all.html.twig' , array('form'=> $form->createView()));
+    }
+
+
+    public function newWorkOrderAction()
     {
        $logger = $this->get('logger');
        $logger->info('I love Tony Vairelles\' hairdresser.');
