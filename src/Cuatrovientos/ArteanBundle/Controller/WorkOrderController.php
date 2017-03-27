@@ -16,9 +16,9 @@ class WorkOrderController extends Controller
 
     public function indexAction()
     {
-        $user = $this->get('security.token_storage')->getToken();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
         $logger = $this->get('logger');
-        $logger->info('all in all: '  . $user->getUsername());
+        $logger->info('all in all: ' . $user->getEmail());
         $workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findAllWorkOrders();
 
         $form = $this->createForm(WorkOrderType::class);
