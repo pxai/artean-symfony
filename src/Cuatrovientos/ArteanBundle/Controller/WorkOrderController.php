@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\Query\ResultSetMapping;
 use Cuatrovientos\ArteanBundle\Entity\WorkOrder;
-use Cuatrovientos\ArteanBundle\Entity\News;
+use Cuatrovientos\ArteanBundle\Entity\User;
 use Cuatrovientos\ArteanBundle\Form\Type\WorkOrderType;
 use Cuatrovientos\ArteanBundle\Form\Type\NewsType;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -16,28 +16,13 @@ class WorkOrderController extends Controller
 
     public function indexAction()
     {
+        $user = $this->get('security.token_storage')->getToken();
         $logger = $this->get('logger');
-        $logger->info('I love Tony Vairelles\' hairdresser.');
-        return $this->render('CuatrovientosArteanBundle:WorkOrder:new.html.twig' );
-    }
-
-    public function workordersAction()
-    {
-        //$logger = $this->get('logger');
-        //$logger->info('I love Tony Vairelles\' hairdresser.');
-       // $workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findAll();
-       // $logger->info('We got data: ' . count($workOrders));
-       // return $this->render('CuatrovientosArteanBundle:WorkOrder:index.html.twig' , array('workOrders'=>$workOrders));
-    }
-
-    public function allAction()
-    {
-        $logger = $this->get('logger');
-        $logger->info('all in all');
-       // $workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findAll();
+        $logger->info('all in all: '  . $user->getId());
+       $workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findAllWorkOrders();
 
         $form = $this->createForm(WorkOrderType::class);
-        return $this->render('CuatrovientosArteanBundle:WorkOrder:all.html.twig' , array('form'=> $form->createView()));
+        return $this->render('CuatrovientosArteanBundle:WorkOrder:index.html.twig' , array('form'=> $form->createView(),"workOrders"=>$workOrders));
     }
 
 

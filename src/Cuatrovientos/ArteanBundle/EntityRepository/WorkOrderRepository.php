@@ -11,7 +11,7 @@ class WorkOrderRepository extends EntityRepository
 	* customized function
 	*
 	*/
-	public function findAll()
+	public function findAllWorkOrders()
 	{
             return $this->findAll();
 	}

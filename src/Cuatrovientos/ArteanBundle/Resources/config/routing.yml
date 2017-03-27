@@ -211,7 +211,7 @@ cuatrovientos_artean_login_redirect:
 ### workOrder
 cuatrovientos_artean_workorder:
     path:     /artean/admin/workorder/all
-    defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:all }
+    defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:index }
 
 cuatrovientos_artean_workorder_new:
     path:     /artean/admin/workorder/new
