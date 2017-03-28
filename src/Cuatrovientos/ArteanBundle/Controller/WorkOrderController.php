@@ -30,8 +30,6 @@ class WorkOrderController extends Controller
 
    public function newWorkOrderAction()
     {
-       $logger = $this->get('logger');
-       $logger->info('I love Tony Vairelles\' hairdresser.');
         $form = $this->createForm(WorkOrderType::class);
         return $this->render('CuatrovientosArteanBundle:WorkOrder:new.html.twig' , array('form'=> $form->createView()));
     }
@@ -39,8 +37,7 @@ class WorkOrderController extends Controller
 
     public function newWorkOrderSaveAction(Request $request)
     {
-        //$form = $this->createForm(new WorkOrderType(), new WorkOrder());
-        //$request->get('position')->set($request->request->get('company') .'=> , '. $request->request->get('position'));    
+        $this->user = $this->get('security.token_storage')->getToken()->getUser();
         $form = $this->createForm(WorkOrderType::class, new WorkOrder());
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
@@ -49,7 +46,7 @@ class WorkOrderController extends Controller
             
             if ($form->isValid()) {
                 $workOrder = $form->getData();
-                $workOrder->setIdapplicant(1);
+                $workOrder->setIdapplicant($this->user->getId());
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->merge($workOrder);
                 $em->flush();
@@ -94,7 +91,8 @@ class WorkOrderController extends Controller
 
    public function workOrderDetailAction($id=1)
     {
-        $idapplicant = 1;
+        $this->user = $this->get('security.token_storage')->getToken()->getUser();
+        $idapplicant = $this->user->getId();
         $workOrder = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findDetail($id, $idapplicant);
    
         return $this->render('CuatrovientosArteanBundle:WorkOrder:workOrder.html.twig' ,array('workOrder'=> $workOrder));
@@ -112,14 +110,14 @@ class WorkOrderController extends Controller
     
 
     public function workOrderUpdateSaveAction(Request $request) {
-      
+        $this->user = $this->get('security.token_storage')->getToken()->getUser();
         $form = $this->createForm(WorkOrderType::class, new WorkOrder());
       //  $form->submit($request->request->get($form->getName()));
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $workOrder = $form->getData();
-                $workOrder->setIdapplicant(1);
+                $workOrder->setIdapplicant($this->user->getId());
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->merge($workOrder);
                 $em->flush();
@@ -136,18 +134,21 @@ class WorkOrderController extends Controller
 
    public function workOrderDeleteAction($id=1)
     {
+        $this->user = $this->get('security.token_storage')->getToken()->getUser();
         $workOrder = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->find($id);
         return $this->render('CuatrovientosArteanBundle:WorkOrder:delete.html.twig' ,array('workOrder'=> $workOrder));
     }
 
 
    public function workOrderDeleteSaveAction(WorkOrder $workOrder)
-    {
+   {
+       $this->user = $this->get('security.token_storage')->getToken()->getUser();
        $em = $this->getDoctrine()->getEntityManager();
-
-        $em->remove($workOrder);
-        $em->flush();
-        return $this->forward('CuatrovientosArteanBundle:WorkOrder:index');
+       if ($workOrder->getIdapplicant() == $this->user->getId()) {
+       $em->remove($workOrder);
+       $em->flush();
+       return $this->forward('CuatrovientosArteanBundle:WorkOrder:index');
+   }
 
     }
 
