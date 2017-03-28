@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8e471461-a8a1-4423-98b7-019ee3911c23" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/security.yml" afterPath="$PROJECT_DIR$/app/config/security.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/WorkOrderController.php" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/WorkOrderController.php" />
     </list>
     <ignored path="arteans.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,8 +36,8 @@
       <file leaf-file-name="WorkOrderController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/WorkOrderController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
+            <state relative-caret-position="442">
+              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding>
                 <element signature="e#58#115#0#PHP" expanded="true" />
               </folding>
@@ -183,8 +181,8 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="187" />
-    <option name="y" value="121" />
+    <option name="x" value="110" />
+    <option name="y" value="88" />
     <option name="width" value="1263" />
     <option name="height" value="647" />
   </component>
@@ -704,7 +702,7 @@
       <workItem from="1490355950587" duration="631000" />
       <workItem from="1490397109393" duration="1269000" />
       <workItem from="1490550717140" duration="4982000" />
-      <workItem from="1490599430422" duration="11759000" />
+      <workItem from="1490599430422" duration="11881000" />
     </task>
     <task id="LOCAL-00001" summary="added phpstorm files">
       <created>1475482459126</created>
@@ -867,14 +865,21 @@
       <option name="project" value="LOCAL" />
       <updated>1490617671890</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Ok, logs and shows data">
+      <created>1490638996404</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1490638996405</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94104000" />
+    <option name="totallyTimeSpent" value="94226000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="187" y="121" width="1263" height="647" extended-state="0" />
+    <frame x="110" y="88" width="1263" height="647" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18765037" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1352,8 +1357,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/WorkOrderController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
+        <state relative-caret-position="442">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding>
             <element signature="e#58#115#0#PHP" expanded="true" />
           </folding>
