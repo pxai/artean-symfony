@@ -7,13 +7,14 @@ use Doctrine\ORM\EntityRepository;
 class WorkOrderRepository extends EntityRepository
 {
 
-	/**
+
+    /**
 	* customized function
 	*
 	*/
-	public function findAll()
+	public function findAllOrders($idapplicant)
 	{
-            return $this->findAll();
+            return $this->findBy(array("idapplicant"=>$idapplicant));
 	}
 
     public function findDetail($id, $idaplicant)

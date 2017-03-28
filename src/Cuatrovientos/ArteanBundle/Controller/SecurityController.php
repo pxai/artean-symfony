@@ -66,8 +66,9 @@ class SecurityController extends Controller
      */
     public function arteanRedirectAction()
     {
-        $this->get('session')->set('loginUserId', $user['user_id']);
-        return $this->redirect("/artean/?home");
+        //$this->get('session')->set('loginUserId', $user['user_id']);
+        //return $this->redirect("/artean/arteans/admin/workorders");
+        return $this->redirectToRoute("cuatrovientos_artean_workorder");
     }
 
 

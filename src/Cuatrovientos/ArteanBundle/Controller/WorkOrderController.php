@@ -13,13 +13,17 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 class WorkOrderController extends Controller
 {
+    private $user;
+
+    public function initialize()
+    {
+
+    }
 
     public function indexAction()
     {
-        $logger = $this->get('logger');
-        $logger->info('I love Tony Vairelles\' hairdresser.');
-        $workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findAll();
-        $logger->info('We got data: ' . count($workOrders));
+        $this->user = $this->get('security.token_storage')->getToken()->getUser();
+        $workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findAllOrders($this->user->getId());
         return $this->render('CuatrovientosArteanBundle:WorkOrder:index.html.twig' , array('workOrders'=>$workOrders));
     }  
     
