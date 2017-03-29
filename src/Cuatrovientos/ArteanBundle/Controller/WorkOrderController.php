@@ -146,10 +146,29 @@ class WorkOrderController extends Controller
        $this->user = $this->get('security.token_storage')->getToken()->getUser();
        $em = $this->getDoctrine()->getEntityManager();
        if ($workOrder->getIdapplicant() == $this->user->getId()) {
-       $em->remove($workOrder);
-       $em->flush();
-       return $this->redirectToRoute("cuatrovientos_artean_workorder");
+           $em->remove($workOrder);
+           $em->flush();
+           return $this->redirectToRoute("cuatrovientos_artean_workorder");
+       }
    }
+
+
+       public function printAction()
+   {
+       $this->user = $this->get('security.token_storage')->getToken()->getUser();
+       return $this->render('CuatrovientosArteanBundle:WorkOrder:print.html.twig');
+   }
+
+
+       public function printSaveAction()
+   {
+       $this->user = $this->get('security.token_storage')->getToken()->getUser();
+       $em = $this->getDoctrine()->getEntityManager();
+       if ($workOrder->getIdapplicant() == $this->user->getId()) {
+           $em->remove($workOrder);
+           $em->flush();
+           return $this->redirectToRoute("cuatrovientos_artean_workorder");
+       }
 
     }
 

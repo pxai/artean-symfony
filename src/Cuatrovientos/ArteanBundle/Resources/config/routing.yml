@@ -224,6 +224,8 @@ cuatrovientos_artean_workorder_new_save:
 cuatrovientos_artean_workorder_detail:
     path:     /artean/admin/workorder/{id}
     defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:workOrderDetail }
+    requirements:
+          'id' : '\d+'
 
 cuatrovientos_artean_workorder_update_save:
     path:     /artean/admin/workorder/update/save
@@ -246,3 +248,11 @@ cuatrovientos_artean_workorder_delete_save:
     defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:workOrderDeleteSave }
     requirements:
             'id' : '\d+'
+
+cuatrovientos_artean_workorder_print:
+    path:     /artean/admin/workorder/print
+    defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:print }
+
+cuatrovientos_artean_workorder_print_save:
+    path:     /artean/admin/workorder/print/save
+    defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:printSave }
