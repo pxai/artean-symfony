@@ -1,8 +1,13 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}Partes de trabajo, actualización{% endblock %}
 {% block body %}
+    <h2>Partes de trabajo</h2>
 
-<h3>Actualizar parte: {{ id }}</h3>
+    <a href="{{ path('cuatrovientos_artean_workorder') }}" class="btn">
+        <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
+    </a>
+
+    <h3><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Actualizar parte {{ id }}</h3>
 <form method="post" action="{{ path('cuatrovientos_artean_workorder_update_save') }}">
     {{ form_errors(form) }}
  {{ form_widget(form.id) }}

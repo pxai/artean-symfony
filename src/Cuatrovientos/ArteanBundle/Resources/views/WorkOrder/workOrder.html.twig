@@ -2,9 +2,13 @@
 {% block title %}Partes semanales::Index{% endblock %}
 {% block body %}
 {% trans %}Partes introducidos por el alumnado{% endtrans %}
-<a href="javascript:history.back()">Volver</a>
-<div class='offer'>
-Detalle de parte de trabajo
+
+    <h2>Partes de trabajo</h2>
+
+    <a href="{{ path('cuatrovientos_artean_workorder') }}" class="btn">
+        <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
+    </a>
+    <h3><i class="fa fa-list-ul" aria-hidden="true"></i> Detalle parte de trabajo</h3>
  <table class="table">
     <thead>
     <tr>

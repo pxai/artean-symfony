@@ -1,7 +1,13 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}Parte semanal ::{{ workOrder.id }}{% endblock %}
 {% block body %}
-{% trans %}Eliminar parte de trabajo{% endtrans %}
+	<h2>Partes de trabajo</h2>
+
+	<a href="{{ path('cuatrovientos_artean_workorder') }}" class="btn">
+		<i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
+	</a>
+
+	<h3><i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar parte {{ workOrder.id }}</h3>
  <div id='posts'>
 		<div>
 

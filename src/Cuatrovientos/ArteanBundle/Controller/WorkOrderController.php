@@ -50,7 +50,7 @@ class WorkOrderController extends Controller
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->merge($workOrder);
                 $em->flush();
-                $response =  $this->render('CuatrovientosArteanBundle:WorkOrder:newSave.html.twig' , array('workOrder' => $workOrder));
+                $response =  $this->redirectToRoute("cuatrovientos_artean_workorder");
             } else {
                 $response = $this->render('CuatrovientosArteanBundle:WorkOrder:new.html.twig' , array('form'=> $form->createView()));
             }
@@ -123,7 +123,8 @@ class WorkOrderController extends Controller
                 $em->flush();
                 
                 // redirect to index
-                $response = $this->forward('CuatrovientosArteanBundle:WorkOrder:workOrderDetail' , array('id' => $workOrder->getId()));
+                $response =  $this->redirectToRoute("cuatrovientos_artean_workorder");
+                //$response = $this->forward('CuatrovientosArteanBundle:WorkOrder:workOrderDetail' , array('id' => $workOrder->getId()));
             } else  {
                  $response = $this->render('CuatrovientosArteanBundle:WorkOrder:updatePost.html.twig' , array('form'=> $form->createView()));
             }
@@ -147,7 +148,7 @@ class WorkOrderController extends Controller
        if ($workOrder->getIdapplicant() == $this->user->getId()) {
        $em->remove($workOrder);
        $em->flush();
-       return $this->forward('CuatrovientosArteanBundle:WorkOrder:index');
+       return $this->redirectToRoute("cuatrovientos_artean_workorder");
    }
 
     }

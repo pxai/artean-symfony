@@ -4,9 +4,9 @@
      <td>{{ workOrder.description }}</td>
 		{#% if is_granted('ROLE_ADMIN') %#}
 			<td>        
-                <a href="{{ path('cuatrovientos_artean_workorder_detail', {'id': workOrder.id }) }}">Detail</a> |
-                <a href="{{ path('cuatrovientos_artean_workorder_update', {'id': workOrder.id }) }}">Update</a> |
-                <a href="{{ path('cuatrovientos_artean_workorder_delete', {'id': workOrder.id }) }}">Delete</a>
+                <a href="{{ path('cuatrovientos_artean_workorder_detail', {'id': workOrder.id }) }}" class="btn btn-info"><i class="fa fa-list-alt" aria-hidden="true"></i> Detalle</a>
+                <a href="{{ path('cuatrovientos_artean_workorder_update', {'id': workOrder.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> Modificar</a>
+                <a href="{{ path('cuatrovientos_artean_workorder_delete', {'id': workOrder.id }) }}" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar</a>
 		    </td>
 		{#% endif % #}
 </tr>
