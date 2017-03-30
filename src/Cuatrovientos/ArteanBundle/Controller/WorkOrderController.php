@@ -154,40 +154,91 @@ class WorkOrderController extends Controller
    }
 
 
-       public function printAction()
+       public function printAction(Request $request)
    {
        $this->user = $this->get('security.token_storage')->getToken()->getUser();
-       return $this->render('CuatrovientosArteanBundle:WorkOrder:print.html.twig');
+       $init = "";
+       $end = "";
+       if ($request->getMethod() == 'GET') {
+           return $this->render('CuatrovientosArteanBundle:WorkOrder:print.html.twig', array("init"=>$init, "end"=>$end,"workOrders"=>array()));
+       } elseif ($request->getMethod() == 'POST') {
+           $defaultData = array('message' => 'Imprimir partes');
+           $form = $this->createFormBuilder($defaultData)
+               ->add('init', TextType::class)
+               ->add('end', TextType::class)
+               ->getForm();
+
+
+           $form->handleRequest($request);
+
+           $init = $request->request->get("init");
+           $end = $request->request->get("end");
+           $dates = $this->getInitEndDates($init, $end);
+           //$logger->info('Yeah: ' . $dates[0] . ' and  ' . $dates[1]);
+           $workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findOrdersInDateRange($dates[0],$dates[1],$this->user->getId());
+
+           return $this->render('CuatrovientosArteanBundle:WorkOrder:print.html.twig', array("init"=>$init, "end"=>$end,"workOrders"=> $workOrders));
+
+       }
    }
 
 
        public function printSaveAction(Request $request)
    {
        $this->user = $this->get('security.token_storage')->getToken()->getUser();
-       $em = $this->getDoctrine()->getEntityManager();
 
-       $defaultData = array('message' => 'Imprimir partes');
-       $form = $this->createFormBuilder($defaultData)
-           ->add('init', TextType::class)
-           ->add('end', TextType::class)
-           ->getForm();
+       $logger = $this->get('logger');
+
+
        if ($request->getMethod() == 'POST') {
-           $form->handleRequest($request);
-           // data is an array with "name", "email", and "message" keys
-           $data = $form->getData();
+           $defaultData = array('message' => 'Imprimir partes');
+           $form = $this->createFormBuilder($defaultData)
+               ->add('init', TextType::class)
+               ->add('end', TextType::class)
+               ->getForm();
            $init = "init";
            $end = "end";
+           $name = $this->user->getUsername();
+
+           $form->handleRequest($request);
+
+           $init = $request->request->get("init");
+           $end = $request->request->get("end");
+           $dates = $this->getInitEndDates($init, $end);
+           //$logger->info('Yeah: ' . $dates[0] . ' and  ' . $dates[1]);
+           $workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findOrdersInDateRange($dates[0],$dates[1],$this->user->getId());
+
+           return $this->render('CuatrovientosArteanBundle:WorkOrder:printSave.html.twig', array("init"=>$init, "end"=>$end,"workOrders"=> $workOrders,"name"=>$name));
+
        }
 
-      /* $dto = new DateTime();
-       $dto->setISODate($year, $week);
-       $ret['week_start'] = $dto->format('Y-m-d');
-       $dto->modify('+6 days');
-       $ret['week_end'] = $dto->format('Y-m-d');
-       */
-       return $this->render('CuatrovientosArteanBundle:WorkOrder:printSave.html.twig', array("init"=>$init, "end"=>$end,"workOrders"=> array()));
 
+    }
 
+    private function  getInitEndDates ($init, $end) {
+        $dataInit = preg_split("/\-/",$init);
+        $dataEnd = preg_split("/\-/",$end);
+        $weekInit = ltrim($dataInit[1],'W');
+        $weekEnd = ltrim($dataEnd[1],'W');
+
+        $dates = array();
+        $dto = new \DateTime();
+
+        $dto->setISODate($dataInit[0], $weekInit);
+        $ret['week_start1'] = $dto->format('Y-m-d');
+        $dto->modify('+6 days');
+        $ret['week_end1'] = $dto->format('Y-m-d');
+
+        $dates[0] = $ret['week_start1'];
+
+        $dto->setISODate($dataEnd[0], $weekEnd);
+        $ret['week_start2'] = $dto->format('Y-m-d');
+        $dto->modify('+6 days');
+        $ret['week_end2'] = $dto->format('Y-m-d');
+
+        $dates[1] = $ret['week_start2'];
+
+        return $dates;
     }
 
 }

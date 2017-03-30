@@ -1,18 +1,19 @@
-{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% extends "CuatrovientosArteanBundle:Default:workOrderPrint.html.twig" %}
 {% block title %}Partes semanales::Index{% endblock %}
 {% block body %}
-    <h2>Imprimir partes</h2>
+    <h3>{{ name }}</h3>
     <div>
-        <a href="{{ path('cuatrovientos_artean_workorder_new') }}" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</a>
-        <a href="{{ path('cuatrovientos_artean_workorder_print') }}" class="btn btn-info"><i class="fa fa-print" aria-hidden="true"></i> Imprimir</a>
-    </div>
-    { $init} - { $end }
-<div class="table-responsive">
-  <table class="table .table-condensed">
-      <tr><th>Id</th><th>Fecha</th><th>Descripción</th><th>Horas</th><th></th></tr>
+       Semanas:  {{ init }} - {{ end }}
+     </div>
+
+<div class="workorders">
+
         {% for workOrder in workOrders %}
-            {% include "CuatrovientosArteanBundle:WorkOrder:workOrders.html.twig" %}
+            <div class="workorder">
+                <div><h4>{{ workOrder.orderDate|date('d-m-Y') }}</h4></div>
+                <div>{{ workOrder.description }}</div>
+                <div><b>Horas: {{ workOrder.hours }}</b></div>
+            </div>
         {% endfor %}
-  </table>
 </div>
 {% endblock %}

@@ -9,8 +9,8 @@
     <a href="{{ path('cuatrovientos_artean_workorder') }}" class="btn">
         <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
     </a>
-    <h3><i class="fa fa-print" aria-hidden="true"></i> Imprimir partes</h3>
-<form method="post" action="{{ path('cuatrovientos_artean_workorder_print_save') }}">
+    <h3><i class="fa fa-print" aria-hidden="true"></i> Imprimir partes: selecciona intervalos</h3>
+<form method="post" action="{{ path('cuatrovientos_artean_workorder_print') }}">
     <div class="form-group">
         <label class="required" for="init">Imprimir desde la semana</label>
         <input type="week" name="init" required id="init" class="form-control" />
@@ -23,5 +23,25 @@
         <input type="submit" name="Seleccionar partes" required id="myWeek" class="form-control"  />
     </div>
 </form>
+    {% if workOrders|length > 0 %}
+    {{ init }} - {{ end }}
+    <form method="post" action="{{ path('cuatrovientos_artean_workorder_print_save') }}">
+            <input type="hidden" name="init" value="{{ init }}" id="init" class="form-control" />
+            <input type="hidden" name="end" value="{{ end }}" id="end" class="form-control"  />
+        <div class="form-group">
+            <button class="btn btn-info"  name="Seleccionar partes" required id="myWeek" class="form-control" >
+                <i class="fa fa-print" aria-hidden="true"></i> Imprimir para sellado
+            </button>
+        </div>
+    </form>
+    <div class="table-responsive">
+        <table class="table .table-condensed">
+            <tr><th>Id</th><th>Fecha</th><th>Descripción</th><th>Horas</th><th></th></tr>
+            {% for workOrder in workOrders %}
+                {% include "CuatrovientosArteanBundle:WorkOrder:workOrders.html.twig" %}
+            {% endfor %}
+        </table>
+    </div>
 
+    {% endif %}
 {% endblock %}

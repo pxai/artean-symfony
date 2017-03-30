@@ -17,6 +17,21 @@ class WorkOrderRepository extends EntityRepository
             return $this->findBy(array("idapplicant"=>$idapplicant));
 	}
 
+
+    /**
+     * customized function
+     *
+     */
+    public function findOrdersInDateRange($from, $to, $idapplicant)
+    {
+        $workOrders = $this->createQueryBuilder('wo')
+            ->where('wo.idapplicant=:idapplicant and wo.orderDate >= :from and wo.orderDate <= :to')
+            ->setParameters(array('from' => $from, 'to' => $to, 'idapplicant' => $idapplicant ))
+            ->getQuery()
+            ->getResult();
+        return $workOrders;
+    }
+
     public function findDetail($id, $idaplicant)
     {
         return $this->find($id);
