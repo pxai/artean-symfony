@@ -210,49 +210,49 @@ cuatrovientos_artean_login_redirect:
 
 ### workOrder
 cuatrovientos_artean_workorder:
-    path:     /artean/admin/workorders
+    path:     /artean/student/workorders
     defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:index }
 
 cuatrovientos_artean_workorder_new:
-    path:     /artean/admin/workorder/new
+    path:     /artean/student/workorder/new
     defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:newWorkOrder }
 
 cuatrovientos_artean_workorder_new_save:
-    path:     /artean/admin/workorder/new/save
+    path:     /artean/student/workorder/new/save
     defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:newWorkOrderSave }
 
 cuatrovientos_artean_workorder_detail:
-    path:     /artean/admin/workorder/{id}
+    path:     /artean/student/workorder/{id}
     defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:workOrderDetail }
     requirements:
           'id' : '\d+'
 
 cuatrovientos_artean_workorder_update_save:
-    path:     /artean/admin/workorder/update/save
+    path:     /artean/student/workorder/update/save
     defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:workOrderUpdateSave }
 
 cuatrovientos_artean_workorder_update:
-    path:     /artean/admin/workorder/update/{id}
+    path:     /artean/student/workorder/update/{id}
     defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:workOrderUpdate }
     requirements:
             'id' : '\d+'
 
 cuatrovientos_artean_workorder_delete:
-    path:     /artean/admin/workorder/delete/{id}
+    path:     /artean/student/workorder/delete/{id}
     defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:workOrderDelete }
     requirements:
             'id' : '\d+'
 
 cuatrovientos_artean_workorder_delete_save:
-    path:     /artean/admin/workorder/delete/save/{id}
+    path:     /artean/student/workorder/delete/save/{id}
     defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:workOrderDeleteSave }
     requirements:
             'id' : '\d+'
 
 cuatrovientos_artean_workorder_print:
-    path:     /artean/admin/workorder/print
+    path:     /artean/student/workorder/print
     defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:print }
 
 cuatrovientos_artean_workorder_print_save:
-    path:     /artean/admin/workorder/print/save
+    path:     /artean/student/workorder/print/save
     defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:printSave }

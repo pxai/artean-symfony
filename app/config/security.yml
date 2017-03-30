@@ -52,5 +52,5 @@ security:
         - { path: ^/artean/admin/offer, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/artean/admin/user/signin, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 #        - { path: ^/artean/admin, roles: ROLE_ADMIN }
-#        - { path: ^/artean/user, roles: ROLE_USER }
+        - { path: ^/artean/student, roles: ROLE_USER }
 
