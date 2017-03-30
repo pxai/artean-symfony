@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
@@ -29,8 +30,8 @@ class WorkOrderType extends AbstractType {
                 "required"=>true,
                 'translation_domain' => 'messages'
               ))
-
-            ->add('orderDate', DateType::class, array('label' => 'Fecha'))
+            ->add('orderDate', DateType::class, array('label' => 'Fecha',"required"=>true))
+            ->add('hours', NumberType::class, array('label' => 'Horas', "required"=>true))
             ->add('save', SubmitType::class, array('label'=> 'Enviar'));
 
     }

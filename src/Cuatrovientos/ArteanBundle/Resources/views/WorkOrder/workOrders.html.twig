@@ -2,6 +2,7 @@
      <td>{{ workOrder.id }}</td>
      <td>{{ workOrder.orderDate|date('d-m-Y') }}</td>
      <td>{{ workOrder.description }}</td>
+    <td>{{ workOrder.hours }}</td>
 		{#% if is_granted('ROLE_ADMIN') %#}
 			<td>        
                 <a href="{{ path('cuatrovientos_artean_workorder_detail', {'id': workOrder.id }) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>

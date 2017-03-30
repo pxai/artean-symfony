@@ -27,6 +27,10 @@ class WorkOrder
      */
     private $description;
 
+    /**
+     * @ORM\Column(name="hours",type="float")
+     */
+    private $hours;
     
     /**
      * @ORM\Column(name="order_date",type="date", length=50)
@@ -97,6 +101,22 @@ class WorkOrder
     public function setOrderDate($orderDate)
     {
         $this->orderDate = $orderDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHours()
+    {
+        return $this->hours;
+    }
+
+    /**
+     * @param mixed $hours
+     */
+    public function setHours($hours)
+    {
+        $this->hours = $hours;
     }
 
     

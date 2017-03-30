@@ -21,7 +21,11 @@
         {{ form_errors(form.description) }}
         {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
     </div>
-
+    <div class="form-group">
+        {{ form_label(form.hours) }}
+        {{ form_errors(form.hours) }}
+        {{ form_widget(form.hours, {'attr': {'class': 'form-control'}}) }}
+    </div>
     <div class="form-group">
         {{ form_row(form._token) }}
         {{ form_widget(form.save, {'attr': {'class': 'form-control'}}) }}

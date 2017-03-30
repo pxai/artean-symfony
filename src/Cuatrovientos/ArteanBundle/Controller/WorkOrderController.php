@@ -10,6 +10,7 @@ use Cuatrovientos\ArteanBundle\Entity\News;
 use Cuatrovientos\ArteanBundle\Form\Type\WorkOrderType;
 use Cuatrovientos\ArteanBundle\Form\Type\NewsType;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class WorkOrderController extends Controller
 {
@@ -126,7 +127,7 @@ class WorkOrderController extends Controller
                 $response =  $this->redirectToRoute("cuatrovientos_artean_workorder");
                 //$response = $this->forward('CuatrovientosArteanBundle:WorkOrder:workOrderDetail' , array('id' => $workOrder->getId()));
             } else  {
-                 $response = $this->render('CuatrovientosArteanBundle:WorkOrder:updatePost.html.twig' , array('form'=> $form->createView()));
+                 $response = $this->render('CuatrovientosArteanBundle:WorkOrder:update.html.twig' , array('form'=> $form->createView(),'id'=> $form->get('id')->getData()));
             }
         }
         return $response;
@@ -160,15 +161,32 @@ class WorkOrderController extends Controller
    }
 
 
-       public function printSaveAction()
+       public function printSaveAction(Request $request)
    {
        $this->user = $this->get('security.token_storage')->getToken()->getUser();
        $em = $this->getDoctrine()->getEntityManager();
-       if ($workOrder->getIdapplicant() == $this->user->getId()) {
-           $em->remove($workOrder);
-           $em->flush();
-           return $this->redirectToRoute("cuatrovientos_artean_workorder");
+
+       $defaultData = array('message' => 'Imprimir partes');
+       $form = $this->createFormBuilder($defaultData)
+           ->add('init', TextType::class)
+           ->add('end', TextType::class)
+           ->getForm();
+       if ($request->getMethod() == 'POST') {
+           $form->handleRequest($request);
+           // data is an array with "name", "email", and "message" keys
+           $data = $form->getData();
+           $init = "init";
+           $end = "end";
        }
+
+      /* $dto = new DateTime();
+       $dto->setISODate($year, $week);
+       $ret['week_start'] = $dto->format('Y-m-d');
+       $dto->modify('+6 days');
+       $ret['week_end'] = $dto->format('Y-m-d');
+       */
+       return $this->render('CuatrovientosArteanBundle:WorkOrder:printSave.html.twig', array("init"=>$init, "end"=>$end,"workOrders"=> array()));
+
 
     }
 
