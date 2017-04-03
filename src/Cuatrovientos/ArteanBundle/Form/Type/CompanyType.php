@@ -47,12 +47,12 @@ class CompanyType extends AbstractType {
     /**
      * @ORM\Column(name="provincia",type="string", length=100)
      */
-    ->add('provincia', TextType::class, array('label' => 'Fecha',"required"=>false,'data' => 'Navarra/Nafarroa'))
+    ->add('provincia', TextType::class, array('label' => 'Provincia',"required"=>false,'data' => 'Navarra/Nafarroa'))
 
     /**
      * @ORM\Column(name="codigpostal",type="string", length=10)
      */
-    ->add('codigpostal', TextType::class, array('label' => 'Fecha',"required"=>true,'data' => '31001'))
+    ->add('codigpostal', TextType::class, array('label' => 'Código Postal',"required"=>false,'data' => '31001'))
 
     /**
      * @ORM\Column(name="telefono",type="string", length=30)

@@ -1,7 +1,7 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}Artean :: Empresa : índice{% endblock %}
 {% block body %}
-<h2><i class="fa fa-industry" aria-hidden="true"></i> {% trans %}Empresas{% endtrans %} </h2>
+<h2><i class="fa fa-industry" aria-hidden="true"></i> Empresas ({{ total }}) </h2>
 <div><a href="{{ path('cuatrovientos_artean_company') }}">{% trans %}Recargar{% endtrans %}</a>
     <a href="{{ path('cuatrovientos_artean_company_new') }}" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Nueva empresa</a> </div>
 <div class="table-responsive">
@@ -12,6 +12,12 @@
         {% endfor %}
     </div>
   </table>
+    <a href="{{ path('cuatrovientos_artean_company_paged', {'init': 0, 'limit':100 }) }}" class="btn "><i class="fa fa-fast-backward" aria-hidden="true"></i> Inicio</a>
+    {% if init > 0 %}
+    <a href="{{ path('cuatrovientos_artean_company_paged', {'init': init-100, 'limit':100 }) }}" class="btn "><i class="fa fa-forward" aria-hidden="true"></i> Atrás</a>
+    {% endif %}
+    <a href="{{ path('cuatrovientos_artean_company_paged', {'init': init+100, 'limit':100 }) }}" class="btn "><i class="fa fa-forward" aria-hidden="true"></i> Siguiente</a>
+    <a href="{{ path('cuatrovientos_artean_company_paged', {'init': (total/100)|round(0,'floor'), 'limit':100 }) }}" class="btn "><i class="fa fa-fast-forward" aria-hidden="true"></i> Último</a>
 </div>
 
 {% endblock %}

@@ -12,7 +12,142 @@
    <h3><i class="fa fa-plus" aria-hidden="true"></i> Nueva empresa</h3>
 
 <form method="post" action="{{ path('cuatrovientos_artean_company_new_save') }}" class="arteanform">
-   {{ form_widget(form) }}
+   {{ form_errors(form) }}
+   <div class="form-group">
+      {{ form_label(form.cif) }}
+      {{ form_errors(form.cif) }}
+      {{ form_widget(form.cif, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(form.empresa) }}
+      {{ form_errors(form.empresa) }}
+      {{ form_widget(form.empresa, {'attr': {'class': 'form-control'}}) }}
+   </div>
+
+
+   <div class="form-group">
+      {{ form_label(form.contacto) }}
+      {{ form_errors(form.contacto) }}
+      {{ form_widget(form.contacto, {'attr': {'class': 'form-control'}}) }}
+   </div>
+
+   <div class="form-group">
+      {{ form_label(form.actividad) }}
+      {{ form_errors(form.actividad) }}
+      {{ form_widget(form.actividad, {'attr': {'class': 'form-control'}}) }}
+   </div>
+
+   <div class="form-group">
+      {{ form_label(form.direccion) }}
+      {{ form_errors(form.direccion) }}
+      {{ form_widget(form.direccion, {'attr': {'class': 'form-control'}}) }}
+   </div>
+
+   <div class="form-group">
+      {{ form_label(form.poblacion) }}
+      {{ form_errors(form.poblacion) }}
+      {{ form_widget(form.poblacion, {'attr': {'class': 'form-control'}}) }}
+   </div>
+
+   <div class="form-group">
+      {{ form_label(form.provincia) }}
+      {{ form_errors(form.provincia) }}
+      {{ form_widget(form.provincia, {'attr': {'class': 'form-control'}}) }}
+   </div>
+
+   <div class="form-group">
+      {{ form_label(form.codigpostal) }}
+      {{ form_errors(form.codigpostal) }}
+      {{ form_widget(form.codigpostal, {'attr': {'class': 'form-control'}}) }}
+   </div>
+
+   <div class="form-group">
+      {{ form_label(form.telefono) }}
+      {{ form_errors(form.telefono) }}
+      {{ form_widget(form.telefono, {'attr': {'class': 'form-control'}}) }}
+   </div>
+
+   <div class="form-group">
+      {{ form_label(form.fax) }}
+      {{ form_errors(form.fax) }}
+      {{ form_widget(form.fax, {'attr': {'class': 'form-control'}}) }}
+   </div>
+
+   <div class="form-group">
+      {{ form_label(form.email) }}
+      {{ form_errors(form.email) }}
+      {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+   </div>
+
+   <div class="form-group">
+      {{ form_label(form.web) }}
+      {{ form_errors(form.web) }}
+      {{ form_widget(form.web, {'attr': {'class': 'form-control'}}) }}
+   </div>
+
+   <div class="form-group">
+      {{ form_label(form.fechaalta) }}
+      {{ form_errors(form.fechaalta) }}
+      {{ form_widget(form.fechaalta, {'attr': {'class': 'form-control'}}) }}
+   </div>
+
+   <div class="form-group">
+      {{ form_label(form.fechaactualizacion) }}
+      {{ form_errors(form.fechaactualizacion) }}
+      {{ form_widget(form.fechaactualizacion, {'attr': {'class': 'form-control'}}) }}
+   </div>
+
+   <div class="form-group">
+      {{ form_label(form.baja) }}
+      {{ form_errors(form.baja) }}
+      {{ form_widget(form.baja, {'attr': {'class': 'form-control'}}) }}
+   </div>
+
+   <div class="form-group">
+      {{ form_label(form.fechabaja) }}
+      {{ form_errors(form.fechabaja) }}
+      {{ form_widget(form.fechabaja, {'attr': {'class': 'form-control'}}) }}
+   </div>
+
+   <div class="form-group">
+      {{ form_label(form.pbservaciones) }}
+      {{ form_errors(form.pbservaciones) }}
+      {{ form_widget(form.pbservaciones, {'attr': {'class': 'form-control'}}) }}
+   </div>
+
+   <div class="form-group">
+      {{ form_label(form.fct) }}
+      {{ form_errors(form.fct) }}
+      {{ form_widget(form.fct, {'attr': {'class': 'form-control'}}) }}
+   </div>
+
+   <div class="form-group">
+      {{ form_label(form.convenio) }}
+      {{ form_errors(form.convenio) }}
+      {{ form_widget(form.convenio, {'attr': {'class': 'form-control'}}) }}
+   </div>
+
+   <div class="form-group">
+      {{ form_label(form.convenio_pip) }}
+      {{ form_errors(form.convenio_pip) }}
+      {{ form_widget(form.convenio_pip, {'attr': {'class': 'form-control'}}) }}
+   </div>
+
+   <div class="form-group">
+      {{ form_label(form.convenio_dual) }}
+      {{ form_errors(form.convenio_dual) }}
+      {{ form_widget(form.convenio_dual, {'attr': {'class': 'form-control'}}) }}
+   </div>
+
+   <div class="form-group">
+      {{ form_label(form.convenio_pipdual) }}
+      {{ form_errors(form.convenio_pipdual) }}
+      {{ form_widget(form.convenio_pipdual, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_row(form._token) }}
+      {{ form_widget(form.save, {'attr': {'class': 'form-control'}}) }}
+   </div>
 </form>
 
 {% endblock %}

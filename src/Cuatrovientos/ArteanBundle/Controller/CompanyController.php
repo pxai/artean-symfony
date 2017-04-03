@@ -13,11 +13,12 @@ class CompanyController extends Controller
     *
     *
     */
-    public function indexAction()
+    public function indexAction($init=0,$limit=100)
     {
         //$companies = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Company")->findAll();
-        $companies = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Company")->findAllCompanies();
-        return $this->render('CuatrovientosArteanBundle:Company:index.html.twig', array('companies'=>$companies));
+        $companies = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Company")->findAllCompanies(0, $init, $limit);
+        $total = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Company")->countAllCompanies();
+        return $this->render('CuatrovientosArteanBundle:Company:index.html.twig', array('companies'=>$companies, 'init'=>$init, 'limit'=> $limit, 'total'=> $total));
     }
 
     /**
