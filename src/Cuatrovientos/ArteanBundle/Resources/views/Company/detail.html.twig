@@ -1,0 +1,14 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean :: Empresa : Detalle empresa{% endblock %}
+{% block body %}
+<h1>Detalle empresa</h1>
+<ul>
+     <li><strong>Id: </strong>{{ company.id }}</li>
+     <li><strong>Nombre: </strong>{{ company.empresa }}</li>
+</ul>
+		{#% if is_granted('ROLE_ADMIN') %#}
+                <a href="{{ path('cuatrovientos_artean_company') }}">Index</a> |
+                <a href="{{ path('cuatrovientos_artean_company_update', {'id': company.id }) }}">Update</a> |
+                <a href="{{ path('cuatrovientos_artean_company_delete', {'id': company.id }) }}">Delete</a>
+		{#% endif % #}
+{% endblock %}

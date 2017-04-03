@@ -20,12 +20,12 @@ class Applicant
     private $id;
     
      /**
-     * @ORM\Column(name="nombre",type="string", length=50)
+     * @ORM\Column(name="nombre",type="string", length=100)
      */
     private $name;
   
     /**
-     * @ORM\Column(name="apellidos",type="string", length=50)
+     * @ORM\Column(name="apellidos",type="string", length=100)
      */
     private $surname;
     

@@ -1,0 +1,9 @@
+
+{# src/Samples/BlogBundle/Resources/views/simple.html.twig #}
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean :: Empresa : guardar{% endblock %}
+{% block body %}
+Guardar nueva empresa
+ <strong>{{ center.company }}</strong>
+ <div><a href="{{ path('cuatrovientos_artean_company') }}">{% trans %}Ver todos{% endtrans %}</a> </div>
+{% endblock %}

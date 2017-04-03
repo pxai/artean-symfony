@@ -1,0 +1,13 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean :: Empresa : Eliminar empresa{% endblock %}
+{% block body %}
+{% trans %}Eliminar empresa{% endtrans %}
+ <div id='center'>
+		<div>
+			{% trans %}¿Estás segura?{% endtrans %}
+			<div class='title'>{{ company.empresa }}</div>
+			<div><a href="{{ path('cuatrovientos_artean_company_delete_save',  {'id': company.id }) }}">Confirmar borrado</a> </div>
+			<div><a href="javascript:history.back()">Cancel</a> </div>
+		</div>
+</div>
+{% endblock %}
