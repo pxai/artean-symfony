@@ -4,8 +4,14 @@
 {% block title %}Artean :: Empresa : modificar{% endblock %}
 {% block body %}
 
-<h3>Modificar empresa: {{ id }}</h3>
-<form method="post" action="{{ path('cuatrovientos_artean_company_update_save') }}">
+     <h2><i class="fa fa-industry" aria-hidden="true"></i> Empresas</h2>
+
+     <a href="{{ path('cuatrovientos_artean_company') }}" class="btn">
+          <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todas
+     </a>
+
+     <h3><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Actualizar empresa {{ id }}</h3>
+<form method="post" action="{{ path('cuatrovientos_artean_company_update_save') }}" class="arteanform">
 
      {{ form_widget(form) }}
     

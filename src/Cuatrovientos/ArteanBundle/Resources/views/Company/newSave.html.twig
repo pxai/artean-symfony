@@ -3,7 +3,12 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}Artean :: Empresa : guardar{% endblock %}
 {% block body %}
-Guardar nueva empresa
- <strong>{{ center.company }}</strong>
+ <h2><i class="fa fa-industry" aria-hidden="true"></i> Empresas</h2>
+
+ <a href="{{ path('cuatrovientos_artean_company') }}" class="btn">
+  <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todas
+ </a>
+<h3>Guardar nueva empresa</h3>
+ <strong>{{ company.empresa }}</strong>
  <div><a href="{{ path('cuatrovientos_artean_company') }}">{% trans %}Ver todos{% endtrans %}</a> </div>
 {% endblock %}

@@ -1,9 +1,9 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}Artean :: Empresa : índice{% endblock %}
 {% block body %}
-<h2>{% trans %}Empresas{% endtrans %} <span class="glyphicon glyphicon-heart"></span></h2>
-<div><a href="{{ path('cuatrovientos_artean_company') }}">{% trans %}Reload{% endtrans %}</a> 
-    <a href="{{ path('cuatrovientos_artean_company_new') }}">{% trans %}New{% endtrans %}</a> </div>
+<h2><i class="fa fa-industry" aria-hidden="true"></i> {% trans %}Empresas{% endtrans %} </h2>
+<div><a href="{{ path('cuatrovientos_artean_company') }}">{% trans %}Recargar{% endtrans %}</a>
+    <a href="{{ path('cuatrovientos_artean_company_new') }}" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Nueva empresa</a> </div>
 <div class="table-responsive">
   <table class="table .table-condensed">
      <div id='companys'>

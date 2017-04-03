@@ -3,9 +3,15 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}Artean :: Empresa : nueva{% endblock %}
 {% block body %}
+   <h2><i class="fa fa-industry" aria-hidden="true"></i> Empresas</h2>
 
+   <a href="{{ path('cuatrovientos_artean_company') }}" class="btn">
+      <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todas
+   </a>
 
-<form method="post" action="{{ path('cuatrovientos_artean_company_new_save') }}">
+   <h3><i class="fa fa-plus" aria-hidden="true"></i> Nueva empresa</h3>
+
+<form method="post" action="{{ path('cuatrovientos_artean_company_new_save') }}" class="arteanform">
    {{ form_widget(form) }}
 </form>
 

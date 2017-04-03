@@ -1,13 +1,19 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}Artean :: Empresa : Eliminar empresa{% endblock %}
 {% block body %}
-{% trans %}Eliminar empresa{% endtrans %}
+	<h2><i class="fa fa-industry" aria-hidden="true"></i> Empresas</h2>
+
+	<a href="{{ path('cuatrovientos_artean_company') }}" class="btn">
+		<i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
+	</a>
+
+	<h3><i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar empresa {{ company.id }}</h3>
  <div id='center'>
 		<div>
 			{% trans %}¿Estás segura?{% endtrans %}
 			<div class='title'>{{ company.empresa }}</div>
-			<div><a href="{{ path('cuatrovientos_artean_company_delete_save',  {'id': company.id }) }}">Confirmar borrado</a> </div>
-			<div><a href="javascript:history.back()">Cancel</a> </div>
+			<div><a href="{{ path('cuatrovientos_artean_company_delete_save',  {'id': company.id }) }}"  class="btn btn-danger">Confirmar borrado</a> </div>
+			<div><a href="javascript:history.back()" class="btn btn-warning">Cancel</a> </div>
 		</div>
 </div>
 {% endblock %}
