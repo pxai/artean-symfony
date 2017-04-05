@@ -79,7 +79,7 @@ class OfferController extends Controller
 
         $offer = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:OfferOpen")->find($id);
    
-        return $this->render('CuatrovientosArteanBundle:Offer:workOrder.html.twig' ,array('offer'=> $offer));
+        return $this->render('CuatrovientosArteanBundle:Offer:offer.html.twig' ,array('offer'=> $offer));
     }
 
 
