@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8e471461-a8a1-4423-98b7-019ee3911c23" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/OfferController.php" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/OfferController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Entity/Offer.php" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Entity/Offer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/EntityRepository/OfferRepository.php" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/EntityRepository/OfferRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Offer/offer.html.twig" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Offer/offer.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Offer/update.html.twig" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Offer/update.html.twig" />
     </list>
     <ignored path="arteans.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -995,7 +989,7 @@
       <workItem from="1490907279544" duration="6184000" />
       <workItem from="1490960271949" duration="781000" />
       <workItem from="1491172588160" duration="15240000" />
-      <workItem from="1491322362997" duration="5071000" />
+      <workItem from="1491322362997" duration="5481000" />
     </task>
     <task id="LOCAL-00001" summary="added phpstorm files">
       <created>1475482459126</created>
@@ -1277,11 +1271,18 @@
       <option name="project" value="LOCAL" />
       <updated>1491376314775</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Almost there with pagination">
+      <created>1491379102306</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1491379102306</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="142894000" />
+    <option name="totallyTimeSpent" value="143304000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="109" width="1263" height="647" extended-state="0" />
