@@ -1,12 +1,67 @@
 
 {# src/Cuatrovientos/ArteanBundle/Resources/views/Center/new.html.twig #}
-{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
-{% block title %}Center bundle::new Center{% endblock %}
+{% extends "CuatrovientosArteanBundle:Default:layoutStars.html.twig" %}
+{% block title %}Artean :: Nueva solicitud{% endblock %}
 {% block body %}
 
-Simple
-<form method="post" action="{{ path('cuatrovientos_artean_center_new_save') }}">
-   {{ form_widget(form) }}
+   <h3>Nueva solicitud a bolsa de empleo</h3>
+
+<form method="post" action="{{ path('cuatrovientos_artean_open_offer_save') }}">
+   {{ form_errors(form) }}
+   <div class="form-group">
+      {{ form_label(form.company) }}
+      {{ form_errors(form.company) }}
+      {{ form_widget(form.company, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(form.position) }}
+      {{ form_errors(form.position) }}
+      {{ form_widget(form.position, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(form.description) }}
+      {{ form_errors(form.description) }}
+      {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(form.position_no) }}
+      {{ form_errors(form.position_no) }}
+      {{ form_widget(form.position_no, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(form.contract_type) }}
+      {{ form_errors(form.contract_type) }}
+      {{ form_widget(form.contract_type, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(form.workday) }}
+      {{ form_errors(form.workday) }}
+      {{ form_widget(form.workday, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(form.required_studies) }}
+      {{ form_errors(form.required_studies) }}
+      {{ form_widget(form.required_studies, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+   {{ form_label(form.other_knowledges) }}
+   {{ form_errors(form.other_knowledges) }}
+   {{ form_widget(form.other_knowledges, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(form.observations) }}
+      {{ form_errors(form.observations) }}
+      {{ form_widget(form.observations, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(form.contact) }}
+      {{ form_errors(form.contact) }}
+      {{ form_widget(form.contact, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_row(form._token) }}
+      {{ form_widget(form.save, {'attr': {'class': 'form-control'}}) }}
+   </div>
 </form>
 
 {% endblock %}

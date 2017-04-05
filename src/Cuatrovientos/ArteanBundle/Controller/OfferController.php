@@ -47,7 +47,7 @@ class OfferController extends Controller
                 $this->sendEmail($offer);
                 $response =  $this->render('CuatrovientosArteanBundle:Offer:newSave.html.twig' , array('offer' => $offer));
             } else {
-                $response = $this->render('CuatrovientosArteanBundle:Offer:new.html.twig' , array('form'=> $form->createView()));
+                $response = $this->render('CuatrovientosArteanBundle:Offer:newOpen.html.twig' , array('form'=> $form->createView()));
             }
         }
 

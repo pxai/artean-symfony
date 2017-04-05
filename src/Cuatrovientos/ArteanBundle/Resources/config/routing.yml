@@ -106,7 +106,7 @@ cuatrovientos_artean_news_delete_save:
 cuatrovientos_artean_open_offer_new:
     path:     /artean/open/offer/new
     defaults: { _controller: CuatrovientosArteanBundle:Offer:newOfferOpen }
-    
+
 cuatrovientos_artean_open_offer_save:
     path:     /artean/open/offer/save
     defaults: { _controller: CuatrovientosArteanBundle:Offer:newOfferSaveOpen }
@@ -304,4 +304,3 @@ cuatrovientos_artean_company_delete_save:
     defaults: { _controller: CuatrovientosArteanBundle:Company:companyDeleteSave }
     requirements: 
             'id' : '\d+'
-            
