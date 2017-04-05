@@ -162,7 +162,7 @@ cuatrovientos_artean_offer_delete_save:
    
 cuatrovientos_artean_offer_process:
     path:     /artean/admin/offer/process/{id}
-    defaults: { _controller: CuatrovientosArteanBundle:Offer:offerDeleteSave }
+    defaults: { _controller: CuatrovientosArteanBundle:Offer:offerProcessSave }
     requirements: 
             'id' : '\d+'
 

@@ -2,9 +2,11 @@
 {% block title %}Ofertas::Index{% endblock %}
 {% block body %}
 {% trans %}Ofertas introducida por empresa{% endtrans %}
-<a href="javascript:history.back()">Volver</a>
-<div class='offer'>
-Nueva oferta de empleo para
+
+    <div><a href="{{ path('cuatrovientos_artean_offer') }}" class="btn btn-info">Volver al Índice</a>
+
+    <div class='offer'>
+Oferta de empleo para
  {{ offer.company }}.
 {% if offer.published==1 %}
     <b>Esta oferta ya fue publicada como noticia</b>

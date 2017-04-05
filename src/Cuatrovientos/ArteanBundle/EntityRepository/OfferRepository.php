@@ -11,7 +11,7 @@ class OfferRepository extends EntityRepository
 	* customized function
 	*
 	*/
-	public function findAll()
+	public function findAllOffers()
 	{
             return $this->findAll();
 	}

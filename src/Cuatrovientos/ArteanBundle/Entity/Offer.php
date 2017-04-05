@@ -6,12 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="Cuatrovientos\ArteanBundle\EntityRepository\OfferRepository")
- * @ORM\Table(name="tboffer")
+ * @ORM\Table(name="ofertas")
  */
 class Offer
 {
     /**
-     * @ORM\Column(name="codcentro",type="integer")
+     * @ORM\Column(name="id",type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */

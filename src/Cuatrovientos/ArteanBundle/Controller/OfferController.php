@@ -84,7 +84,7 @@ class OfferController extends Controller
 
 
     public function offerUpdateAction($id) {
-        $offer = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Offer")->find($id);
+        $offer = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:OfferOpen")->findOffer($id);
       
         $form = $this->createForm(OfferType::class, $offer);
 
@@ -94,7 +94,7 @@ class OfferController extends Controller
 
     public function offerUpdateSaveAction(Request $request) {
       
-        $form = $this->createForm(OfferType::class, new Offer());
+        $form = $this->createForm(OfferType::class, new OfferOpen());
       //  $form->submit($request->request->get($form->getName()));
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
@@ -133,6 +133,19 @@ class OfferController extends Controller
         $rsm = new ResultSetMapping();
        $em = $this->getDoctrine()->getEntityManager();
         
+
+        $em->remove($offer);
+        $em->flush();
+      // return $this->forward('CuatrovientosArteanBundle:Offer:index');
+        return $this->redirectToRoute('cuatrovientos_artean_offer');
+    }
+
+
+    public function offerProcessSaveAction(OfferOpen $offer)
+    {
+        $rsm = new ResultSetMapping();
+        $em = $this->getDoctrine()->getEntityManager();
+
         // problems executing this, fot update, delete and insert not the best option
         // ?,?,?
         // Instead using prepared
@@ -176,7 +189,7 @@ class OfferController extends Controller
 
         $em->remove($offer);
         $em->flush();
-      // return $this->forward('CuatrovientosArteanBundle:Offer:index');
+        // return $this->forward('CuatrovientosArteanBundle:Offer:index');
         return $this->redirect('https://artean.cuatrovientos.org/?ap_manage_tbsolicitudes&ta=update&id='.$id);
     }
 

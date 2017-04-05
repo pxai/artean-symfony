@@ -1,11 +1,10 @@
-
-{# src/Samples/BlogBundle/Resources/views/newPost.html.twig #}
-{% extends "SamplesBlogBundle:Default:layout.html.twig" %}
-{% block title %}Samples blog bundle::new Post{% endblock %}
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Ofertas::Index{% endblock %}
 {% block body %}
+    {% trans %}Ofertas introducidas por empreass{% endtrans %}
 
-<h3>Update Post: {{ id }}</h3>
-<form method="post" action="{{ path('samples_blog_post_update_save') }}">
+<h3>Modificar oferta: {{ id }}</h3>
+<form method="post" action="{{ path('cuatrovientos_artean_offer_update_save') }}">
     {{ form_widget(form) }}
 </form>
 
