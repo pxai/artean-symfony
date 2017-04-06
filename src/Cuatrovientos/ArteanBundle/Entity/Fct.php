@@ -32,12 +32,12 @@ class Fct
     private $applicant;
 
     /**
-     * @ORM\Column(name="requisitos",type="string", length=10)
+     * @ORM\Column(name="curso",type="string", length=10)
      */
     private $curso;
 
     /**
-     * @ORM\Column(name="requisitos",type="string", length=255)
+     * @ORM\Column(name="period",type="string", length=255)
      */
     private $period;
 
