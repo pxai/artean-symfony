@@ -3,8 +3,16 @@
 {% block body %}
 <h2><i class="fa fa-industry" aria-hidden="true"></i> Empresas ({{ total }}) </h2>
 <div><a href="{{ path('cuatrovientos_artean_company') }}">{% trans %}Recargar{% endtrans %}</a>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#searchformModal" data-whatever="searchCompany">
+    <i class="fa fa-search" aria-hidden="true"></i> Buscar
+  </button>
+
     <a href="{{ path('cuatrovientos_artean_company_new') }}" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Nueva empresa</a> </div>
-<div class="table-responsive">
+<div id="searchformModal" style="display:none";  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+
+  {% include "CuatrovientosArteanBundle:Company:search.html.twig" %}
+  </div>
+  <div class="table-responsive">
   <table class="table .table-condensed">
      <div id='companys'>
         {% for company in companies %}

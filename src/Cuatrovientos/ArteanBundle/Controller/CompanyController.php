@@ -5,7 +5,9 @@ namespace  Cuatrovientos\ArteanBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Cuatrovientos\ArteanBundle\Entity\Company;
+use Cuatrovientos\ArteanBundle\Form\Type\CompanySearchType;
 use Cuatrovientos\ArteanBundle\Form\Type\CompanyType;
+
 
 class CompanyController extends Controller
 {
@@ -15,10 +17,38 @@ class CompanyController extends Controller
     */
     public function indexAction($init=0,$limit=100)
     {
+        $form = $this->createForm(CompanySearchType::class);
         //$companies = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Company")->findAll();
         $companies = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Company")->findAllCompanies(0, $init, $limit);
         $total = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Company")->countAllCompanies();
-        return $this->render('CuatrovientosArteanBundle:Company:index.html.twig', array('companies'=>$companies, 'init'=>$init, 'limit'=> $limit, 'total'=> $total));
+        return $this->render('CuatrovientosArteanBundle:Company:index.html.twig', array('companies'=>$companies, 'init'=>$init, 'limit'=> $limit, 'total'=> $total,'form'=> $form->createView()));
+    }
+
+
+    public function searchAction(Request $request)
+    {
+        $form = $this->createForm(CompanySearchType::class, new Company());
+        //$companies = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Company")->findAll();
+
+        if ($request->getMethod() == 'POST') {
+            $form->handleRequest($request);
+
+            //$form->submit($request->request->get($form->getName()));
+
+            if ($form->isValid()) {
+                $company = $form->getData();
+                $init = 0;
+                $limit = 100;
+                $companies = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Company")->searchCompanies($company, 0, 100);
+                $total = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Company")->countAllCompanies();
+                return $this->render('CuatrovientosArteanBundle:Company:index.html.twig', array('companies' => $companies, 'init' => $init, 'limit' => $limit, 'total' => $total, 'form' => $form->createView()));
+
+            }
+        } else {
+            $companies = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Company")->findAllCompanies(0, $init, $limit);
+            $total = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Company")->countAllCompanies();
+            return $this->render('CuatrovientosArteanBundle:Company:index.html.twig', array('companies' => $companies, 'init' => $init, 'limit' => $limit, 'total' => $total, 'form' => $form->createView()));
+        }
     }
 
     /**

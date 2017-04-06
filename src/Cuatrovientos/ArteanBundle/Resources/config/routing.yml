@@ -257,7 +257,7 @@ cuatrovientos_artean_workorder_print_save:
     path:     /artean/student/workorder/print/save
     defaults: { _controller: CuatrovientosArteanBundle:WorkOrder:printSave }
     
-################# center ##################
+################# company ##################
 
 cuatrovientos_artean_company:
     path:     /artean/admin/company
@@ -269,6 +269,10 @@ cuatrovientos_artean_company_paged:
     requirements:
         'init' : '\d+'
         'limit' : '\d+'
+
+cuatrovientos_artean_company_search:
+    path:     /artean/admin/company/search
+    defaults: { _controller: CuatrovientosArteanBundle:Company:search }
 
 cuatrovientos_artean_company_new:
     path:     /artean/admin/company/new
