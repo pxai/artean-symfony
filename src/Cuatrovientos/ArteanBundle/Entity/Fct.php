@@ -42,9 +42,13 @@ class Fct
     private $period;
 
     /**
-     * @var Degree
-     * @ORM\ManyToOne(targetEntity="Degree")
-     * @ORM\JoinColumn(name="idciclo", referencedColumnName="id")
+     * var Degree
+     * ORM\ManyToOne(targetEntity="Degree")
+     * ORM\JoinColumn(name="idciclo", referencedColumnName="id")
+     */
+
+    /**
+     * @ORM\Column(name="idciclo",type="integer", length=255)
      */
     private $degree;
 
@@ -59,9 +63,12 @@ class Fct
     private $company_contact;
 
     /**
-     * @var Applicant
-     * @ORM\ManyToOne(targetEntity="Applicant")
-     * @ORM\JoinColumn(name="idapplicant", referencedColumnName="id")
+ * var Applicant
+ * ORM\ManyToOne(targetEntity="Applicant")
+ * ORM\JoinColumn(name="idapplicant", referencedColumnName="id")
+ */
+    /**
+     * @ORM\Column(name="idapplicant",type="integer", length=255)
      */
     private $school_tutor;
 
