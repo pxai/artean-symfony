@@ -51,7 +51,7 @@ class CompanyRepository extends EntityRepository
             }
 
             if ($company->getConvenio()) {
-                $qb->andWhere('m.convenio is not null');
+                $qb->andWhere("m.convenio is not null or m.convenio <> ''");
             }
 
             return $qb->getQuery()
