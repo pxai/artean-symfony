@@ -11,10 +11,7 @@ use Cuatrovientos\ArteanBundle\Form\Type\CompanyType;
 
 class CompanyController extends Controller
 {
-    /**
-    *
-    *
-    */
+
     public function indexAction($init=0,$limit=100)
     {
         $form = $this->createForm(CompanySearchType::class);
@@ -27,12 +24,9 @@ class CompanyController extends Controller
     public function searchAction(Request $request)
     {
         $form = $this->createForm(CompanySearchType::class, new Company());
-        //$companies = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Company")->findAll();
 
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
-
-            //$form->submit($request->request->get($form->getName()));
 
             if ($form->isValid()) {
                 $company = $form->getData();
@@ -50,20 +44,13 @@ class CompanyController extends Controller
         }
     }
 
-    /**
-    *
-    *
-    */
+
    public function newCompanyAction()
     {
         $form = $this->createForm(CompanyType::class);
         return $this->render('CuatrovientosArteanBundle:Company:new.html.twig', array('form'=> $form->createView()));
     }
 
-    /**
-    *
-    *
-    */
     public function newCompanySaveAction(Request $request)
     {
         //$form = $this->createForm(new CompanyType(), new Company());
@@ -75,10 +62,6 @@ class CompanyController extends Controller
             
             if ($form->isValid()) {
                 $company = $form->getData();
-                
-//                $em = $this->getDoctrine()->getEntityManager();
-//                $em->merge($company);
-//                $em->flush();
 
                 $this->get("cuatrovientos_artean.bo.company")->create($company);
 
@@ -91,10 +74,7 @@ class CompanyController extends Controller
         return $response;
     }
 
-    /**
-    *
-    *
-    */
+
    public function companyDetailAction($id=1)
     {
 
@@ -102,10 +82,7 @@ class CompanyController extends Controller
         return $this->render('CuatrovientosArteanBundle:Company:detail.html.twig',array('company'=> $company));
     }
 
-    /**
-    *
-    *
-    */
+
     public function companyUpdateAction($id) {
         $company = $this->get("cuatrovientos_artean.bo.company")->selectById($id);
       
@@ -114,10 +91,7 @@ class CompanyController extends Controller
         return $this->render('CuatrovientosArteanBundle:Company:update.html.twig',array('form'=> $form->createView(),'id'=>$id));
     }
     
-    /**
-    *
-    *
-    */
+
     public function companyUpdateSaveAction(Request $request) {
       
         $form = $this->createForm(CompanyType::class, new Company());
@@ -138,20 +112,14 @@ class CompanyController extends Controller
         return $response;
     }
 
-    /**
-    *
-    *
-    */
+
    public function companyDeleteAction($id)
     {
         $company = $this->get("cuatrovientos_artean.bo.company")->selectById($id);
         return $this->render('CuatrovientosArteanBundle:Company:delete.html.twig',array('company'=> $company));
     }
 
-    /**
-    *
-    *
-    */
+
    public function companyDeleteSaveAction(Company $company)
     {
         $this->get("cuatrovientos_artean.bo.company")->remove($company);

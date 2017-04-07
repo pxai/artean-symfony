@@ -19,3 +19,11 @@ services:
     cuatrovientos_artean.bo.company:
          class: Cuatrovientos\ArteanBundle\Service\Business\CompanyBusiness
          arguments: ['@cuatrovientos_artean.dao.company']
+
+    cuatrovientos_artean.dao.workorder:
+         class: Cuatrovientos\ArteanBundle\Service\DAO\WorkOrderDAO
+         arguments: ['CuatrovientosArteanBundle:WorkOrder', '@doctrine.orm.entity_manager' ]
+
+    cuatrovientos_artean.bo.workorder:
+         class: Cuatrovientos\ArteanBundle\Service\Business\WorkOrderBusiness
+         arguments: ['@cuatrovientos_artean.dao.workorder']

@@ -25,7 +25,8 @@ class WorkOrderController extends Controller
     {
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
         //$workOrders = $this->get("api_inventory.bo.article")->findAllOrders($this->user->getId());
-        $workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findAllOrders($this->user->getId());
+        $workOrders = $this->get("cuatrovientos_artean.bo.workorders")->findAllOrders($this->user->getId());
+       // $workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findAllOrders($this->user->getId());
         return $this->render('CuatrovientosArteanBundle:WorkOrder:index.html.twig' , array('workOrders'=>$workOrders));
     }  
     
@@ -49,9 +50,10 @@ class WorkOrderController extends Controller
             if ($form->isValid()) {
                 $workOrder = $form->getData();
                 $workOrder->setIdapplicant($this->user->getId());
-                $em = $this->getDoctrine()->getEntityManager();
+/*                $em = $this->getDoctrine()->getEntityManager();
                 $em->merge($workOrder);
-                $em->flush();
+                $em->flush();*/
+                $this->get("cuatrovientos_artean.bo.workorders")->create($workOrder);
                 $response =  $this->redirectToRoute("cuatrovientos_artean_workorder");
             } else {
                 $response = $this->render('CuatrovientosArteanBundle:WorkOrder:new.html.twig' , array('form'=> $form->createView()));
@@ -62,48 +64,22 @@ class WorkOrderController extends Controller
     }
 
 
-    private function sendEmail ($workOrder) {
-         $message = \Swift_Message::newInstance()
-        ->setSubject('Artean: ¡nueva solicitud de empleo iniciada por empresa!')
-        ->setFrom('artean@cuatrovientos.org')
-        ->setTo('artean@cuatrovientos.org')
-        ->setBcc('pello_altadill@cuatrovientos.org')
-        ->setBody(
-            $this->renderView(
-                // app/Resources/views/Emails/registration.html.twig
-                'Emails/newWorkOrder.html.twig' ,
-                array('workOrder' => $workOrder)
-            ),
-            'text/html'
-        );
-        /*
-         * If you also want to include a plaintext version of the message
-        ->addPart(
-            $this->renderView(
-                'Emails/registration.txt.twig'=> ,
-                array('name' => $name)
-            ),
-            'text/plain'
-        )
-        */
-        $this->get('mailer')->send($message);
-
-        //return $this->render(...);
-    }
 
    public function workOrderDetailAction($id=1)
     {
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
         $idapplicant = $this->user->getId();
-        $workOrder = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findDetail($id, $idapplicant);
-   
+        //$workOrder = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findDetail($id, $idapplicant);
+        $workOrder = $this->get("cuatrovientos_artean.bo.workorders")->findDetail($id, $idapplicant);
         return $this->render('CuatrovientosArteanBundle:WorkOrder:workOrder.html.twig' ,array('workOrder'=> $workOrder));
     }
 
 
     public function workOrderUpdateAction($id) {
-        $workOrder = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->find($id);
-
+       // $workOrder = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->find($id);
+        $this->user = $this->get('security.token_storage')->getToken()->getUser();
+        $idapplicant = $this->user->getId();
+        $workOrder = $this->get("cuatrovientos_artean.bo.workorders")->findDetail($id, $idapplicant);
       
         $form = $this->createForm(WorkOrderType::class, $workOrder);
 
@@ -120,10 +96,10 @@ class WorkOrderController extends Controller
             if ($form->isValid()) {
                 $workOrder = $form->getData();
                 $workOrder->setIdapplicant($this->user->getId());
-                $em = $this->getDoctrine()->getEntityManager();
+ /*               $em = $this->getDoctrine()->getEntityManager();
                 $em->merge($workOrder);
-                $em->flush();
-                
+                $em->flush();*/
+                $this->get("cuatrovientos_artean.bo.workorders")->update($workOrder);
                 // redirect to index
                 $response =  $this->redirectToRoute("cuatrovientos_artean_workorder");
                 //$response = $this->forward('CuatrovientosArteanBundle:WorkOrder:workOrderDetail' , array('id' => $workOrder->getId()));
@@ -138,7 +114,8 @@ class WorkOrderController extends Controller
    public function workOrderDeleteAction($id=1)
     {
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
-        $workOrder = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->find($id);
+        $idapplicant = $this->user->getId();
+        $workOrder = $this->get("cuatrovientos_artean.bo.workorders")->findDetail($id, $idapplicant);
         return $this->render('CuatrovientosArteanBundle:WorkOrder:delete.html.twig' ,array('workOrder'=> $workOrder));
     }
 
@@ -148,8 +125,9 @@ class WorkOrderController extends Controller
        $this->user = $this->get('security.token_storage')->getToken()->getUser();
        $em = $this->getDoctrine()->getEntityManager();
        if ($workOrder->getIdapplicant() == $this->user->getId()) {
-           $em->remove($workOrder);
-           $em->flush();
+          /* $em->remove($workOrder);
+           $em->flush();*/
+           $this->get("cuatrovientos_artean.bo.workorders")->remove($workOrder);
            return $this->redirectToRoute("cuatrovientos_artean_workorder");
        }
    }
@@ -176,7 +154,8 @@ class WorkOrderController extends Controller
            $end = $request->request->get("end");
            $dates = $this->getInitEndDates($init, $end);
            //$logger->info('Yeah: ' . $dates[0] . ' and  ' . $dates[1]);
-           $workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findOrdersInDateRange($dates[0],$dates[1],$this->user->getId());
+           $workOrders = $this->get("cuatrovientos_artean.bo.workorders")->findOrdersInDateRange($dates[0],$dates[1],$this->user->getId());
+           //$workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findOrdersInDateRange($dates[0],$dates[1],$this->user->getId());
 
            return $this->render('CuatrovientosArteanBundle:WorkOrder:print.html.twig', array("init"=>$init, "end"=>$end,"workOrders"=> $workOrders));
 
@@ -207,7 +186,8 @@ class WorkOrderController extends Controller
            $end = $request->request->get("end");
            $dates = $this->getInitEndDates($init, $end);
            //$logger->info('Yeah: ' . $dates[0] . ' and  ' . $dates[1]);
-           $workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findOrdersInDateRange($dates[0],$dates[1],$this->user->getId());
+          // $workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findOrdersInDateRange($dates[0],$dates[1],$this->user->getId());
+            $workOrders = $this->get("cuatrovientos_artean.bo.workorders")->findOrdersInDateRange($dates[0],$dates[1],$this->user->getId());
 
            return $this->render('CuatrovientosArteanBundle:WorkOrder:printSave.html.twig', array("init"=>$init, "end"=>$end,"workOrders"=> $workOrders,"name"=>$name));
 
