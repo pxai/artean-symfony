@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="Cuatrovientos\ArteanBundle\EntityRepository\CompanyRepository")
  * @ORM\Table(name="tbempresas")
  */
-class Company
+class Company  extends Entity
 {
 
     /**

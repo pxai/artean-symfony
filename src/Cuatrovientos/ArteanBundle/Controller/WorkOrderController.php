@@ -24,6 +24,7 @@ class WorkOrderController extends Controller
     public function indexAction()
     {
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
+        //$workOrders = $this->get("api_inventory.bo.article")->findAllOrders($this->user->getId());
         $workOrders = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:WorkOrder")->findAllOrders($this->user->getId());
         return $this->render('CuatrovientosArteanBundle:WorkOrder:index.html.twig' , array('workOrders'=>$workOrders));
     }  

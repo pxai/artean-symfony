@@ -11,3 +11,11 @@ services:
         class: Cuatrovientos\ArteanBundle\Service\Utils\Permalink
     inventory.security.sha1_password_encoder:
         class: Cuatrovientos\ArteanBundle\Security\Encoder\Sha1PasswordEncoder
+
+    cuatrovientos_artean.dao.company:
+         class: Cuatrovientos\ArteanBundle\Service\DAO\CompanyDAO
+         arguments: ['CuatrovientosArteanBundle:Company', '@doctrine.orm.entity_manager' ]
+
+    cuatrovientos_artean.bo.company:
+         class: Cuatrovientos\ArteanBundle\Service\Business\CompanyBusiness
+         arguments: ['@cuatrovientos_artean.dao.company']

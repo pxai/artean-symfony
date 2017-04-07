@@ -18,9 +18,8 @@ class CompanyController extends Controller
     public function indexAction($init=0,$limit=100)
     {
         $form = $this->createForm(CompanySearchType::class);
-        //$companies = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Company")->findAll();
-        $companies = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Company")->findAllCompanies(0, $init, $limit);
-        $total = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Company")->countAllCompanies();
+        $companies = $this->get("cuatrovientos_artean.bo.company")->findAllCompanies(0, $init, $limit);
+        $total = $this->get("cuatrovientos_artean.bo.company")->countAllCompanies();
         return $this->render('CuatrovientosArteanBundle:Company:index.html.twig', array('companies'=>$companies, 'init'=>$init, 'limit'=> $limit, 'total'=> $total,'form'=> $form->createView()));
     }
 
@@ -39,14 +38,14 @@ class CompanyController extends Controller
                 $company = $form->getData();
                 $init = 0;
                 $limit = 100;
-                $companies = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Company")->searchCompanies($company, 0, 100);
-                $total = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Company")->countAllCompanies();
+                $companies = $this->get("cuatrovientos_artean.bo.company")->searchCompanies($company, 0, 100);
+                $total = count($companies);
                 return $this->render('CuatrovientosArteanBundle:Company:index.html.twig', array('companies' => $companies, 'init' => $init, 'limit' => $limit, 'total' => $total, 'form' => $form->createView()));
 
             }
         } else {
-            $companies = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Company")->findAllCompanies(0, $init, $limit);
-            $total = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Company")->countAllCompanies();
+            $companies = $this->get("cuatrovientos_artean.bo.company")->findAllCompanies(0, $init, $limit);
+            $total = $this->get("cuatrovientos_artean.bo.company")->countAllCompanies();
             return $this->render('CuatrovientosArteanBundle:Company:index.html.twig', array('companies' => $companies, 'init' => $init, 'limit' => $limit, 'total' => $total, 'form' => $form->createView()));
         }
     }
@@ -77,9 +76,12 @@ class CompanyController extends Controller
             if ($form->isValid()) {
                 $company = $form->getData();
                 
-                $em = $this->getDoctrine()->getEntityManager();
-                $em->merge($company);
-                $em->flush();
+//                $em = $this->getDoctrine()->getEntityManager();
+//                $em->merge($company);
+//                $em->flush();
+
+                $this->get("cuatrovientos_artean.bo.company")->create($company);
+
                 $response =  $this->render('CuatrovientosArteanBundle:Company:newSave.html.twig', array('company' => $company));               
             } else {
                 $response = $this->render('CuatrovientosArteanBundle:Company:new.html.twig', array('form'=> $form->createView()));
@@ -96,8 +98,7 @@ class CompanyController extends Controller
    public function companyDetailAction($id=1)
     {
 
-        $company = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Company")->find($id);
-   
+        $company = $this->get("cuatrovientos_artean.bo.company")->selectById($id);
         return $this->render('CuatrovientosArteanBundle:Company:detail.html.twig',array('company'=> $company));
     }
 
@@ -106,7 +107,7 @@ class CompanyController extends Controller
     *
     */
     public function companyUpdateAction($id) {
-        $company = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Company")->find($id);
+        $company = $this->get("cuatrovientos_artean.bo.company")->selectById($id);
       
         $form = $this->createForm(CompanyType::class, $company);
 
@@ -125,10 +126,8 @@ class CompanyController extends Controller
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $company = $form->getData();
-                
-                $em = $this->getDoctrine()->getEntityManager();
-                $em->merge($company);
-                $em->flush();
+
+                $this->get("cuatrovientos_artean.bo.company")->update($company);
                 
                 // redirect to index
                 $response = $this->forward('CuatrovientosArteanBundle:Company:companyDetail', array('id' => $company->getId()));
@@ -143,9 +142,9 @@ class CompanyController extends Controller
     *
     *
     */
-   public function companyDeleteAction($id=1)
+   public function companyDeleteAction($id)
     {
-        $company = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Company")->find($id);
+        $company = $this->get("cuatrovientos_artean.bo.company")->selectById($id);
         return $this->render('CuatrovientosArteanBundle:Company:delete.html.twig',array('company'=> $company));
     }
 
@@ -155,10 +154,7 @@ class CompanyController extends Controller
     */
    public function companyDeleteSaveAction(Company $company)
     {
-
-       $em = $this->getDoctrine()->getEntityManager();
-       $em->remove($company);
-       $em->flush();
+        $this->get("cuatrovientos_artean.bo.company")->remove($company);
        return $this->forward('CuatrovientosArteanBundle:Company:index');
     }
 

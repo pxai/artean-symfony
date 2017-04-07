@@ -13,6 +13,7 @@
      <h3><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Actualizar empresa {{ id }}</h3>
 <form method="post" action="{{ path('cuatrovientos_artean_company_update_save') }}" class="arteanform">
      {{ form_errors(form) }}
+     {{ form_widget(form.id) }}
      <div class="form-group">
           {{ form_label(form.cif) }}
           {{ form_errors(form.cif) }}
