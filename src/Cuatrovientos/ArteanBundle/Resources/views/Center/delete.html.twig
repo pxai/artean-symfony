@@ -1,7 +1,13 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
-{% block title %}Center bundle:: delete Center{% endblock %}
+{% block title %}Artean :: Centers : Eliminar empresa{% endblock %}
 {% block body %}
-{% trans %}Delete center{% endtrans %}
+	<h2><i class="fa fa-industry" aria-hidden="true"></i> Centro s de enseñanza</h2>
+
+	<a href="{{ path('cuatrovientos_artean_center') }}" class="btn">
+		<i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
+	</a>
+
+	<h3><i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar centro de enseñanza {{ center.id }}</h3>
  <div id='center'>
 		<div>
 			{% trans %}Are you sure{% endtrans %}			

@@ -18,7 +18,11 @@ cuatrovientos_artean_samples:
 cuatrovientos_artean_center:
     path:     /artean/admin/center
     defaults: { _controller: CuatrovientosArteanBundle:Center:index }
-    
+
+cuatrovientos_artean_center_search:
+    path:     /artean/admin/center/search
+    defaults: { _controller: CuatrovientosArteanBundle:Center:search }
+
 cuatrovientos_artean_center_new:
     path:     /artean/admin/center/new
     defaults: { _controller: CuatrovientosArteanBundle:Center:newCenter }

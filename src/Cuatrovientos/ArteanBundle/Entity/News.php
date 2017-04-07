@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="Cuatrovientos\ArteanBundle\EntityRepository\NewsRepository")
  * @ORM\Table(name="news")
  */
-class News
+class News extends Entity
 {
     /**
      * @ORM\Column(name="id",type="integer")

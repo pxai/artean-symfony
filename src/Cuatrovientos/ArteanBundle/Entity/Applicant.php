@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints\Count;
  * @ORM\Table(name="tbalumnos")
  * delete from f_users where login='p@pello.io'; delete from tbalumnos where email='p@pello.io';
  */
-class Applicant
+class Applicant extends Entity
 {
     /**
      * @ORM\Column(name="id",type="integer")

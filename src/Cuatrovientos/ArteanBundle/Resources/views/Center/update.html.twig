@@ -1,14 +1,27 @@
-
 {# src/Samples/BlogBundle/Resources/views/newPost.html.twig #}
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
-{% block title %}Samples blog bundle::update center{% endblock %}
+{% block title %}Artean :: Centro : modificar{% endblock %}
 {% block body %}
 
-<h3>Update Center: {{ id }}</h3>
-<form method="post" action="{{ path('cuatrovientos_artean_center_update_save') }}">
+     <h2><i class="fa fa-industry" aria-hidden="true"></i> Centros de enseñanza</h2>
 
-     {{ form_widget(form) }}
-    
+     <a href="{{ path('cuatrovientos_artean_center') }}" class="btn">
+          <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todas
+     </a>
+
+     <h3><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Actualizar centro de enseñanza {{ id }}</h3>
+<form method="post" action="{{ path('cuatrovientos_artean_center_update_save') }}">
+     {{ form_errors(form) }}
+     {{ form_widget(form.id) }}
+     <div class="form-group">
+          {{ form_label(form.name) }}
+          {{ form_errors(form.name) }}
+          {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_row(form._token) }}
+          {{ form_widget(form.save, {'attr': {'class': 'form-control'}}) }}
+     </div>
 </form>
 
 {% endblock %}

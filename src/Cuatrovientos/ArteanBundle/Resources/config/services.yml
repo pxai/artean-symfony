@@ -27,3 +27,11 @@ services:
     cuatrovientos_artean.bo.workorder:
          class: Cuatrovientos\ArteanBundle\Service\Business\WorkOrderBusiness
          arguments: ['@cuatrovientos_artean.dao.workorder']
+
+    cuatrovientos_artean.dao.center:
+         class: Cuatrovientos\ArteanBundle\Service\DAO\CenterDAO
+         arguments: ['CuatrovientosArteanBundle:Center', '@doctrine.orm.entity_manager' ]
+
+    cuatrovientos_artean.bo.center:
+         class: Cuatrovientos\ArteanBundle\Service\Business\CenterBusiness
+         arguments: ['@cuatrovientos_artean.dao.center']

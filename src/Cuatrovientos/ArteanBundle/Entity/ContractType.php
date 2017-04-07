@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="Cuatrovientos\ArteanBundle\EntityRepository\ContractTypeRepository")
  * @ORM\Table(name="tbtiposcontrato")
  */
-class ContractType
+class ContractType extends Entity
 {
     /**
      * @ORM\Column(name="id",type="integer")
