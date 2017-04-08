@@ -1,0 +1,20 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean :: Tipos de contrato : Detalle tipos de contrato{% endblock %}
+{% block body %}
+    <h2><i class="fa fa-industry" aria-hidden="true"></i> Tipos de contrato</h2>
+
+    <a href="{{ path('cuatrovientos_artean_contracttype') }}" class="btn">
+        <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
+    </a>
+    <h3><i class="fa fa-search-plus" aria-hidden="true"></i> Detalle de Tipos de contrato</h3>
+    <a href="{{ path('cuatrovientos_artean_contracttype_update', {'id': contractType.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> Modificar</a>
+    <ul>
+     <li><strong>Id: </strong>{{ contractType.id }}</li>
+     <li><strong>Name: </strong>{{ contractType.name }}</li>
+</ul>
+		{#% if is_granted('ROLE_ADMIN') %#}
+                <a href="{{ path('cuatrovientos_artean_contracttype') }}">Index</a> |
+                <a href="{{ path('cuatrovientos_artean_contracttype_update', {'id': contractType.id }) }}">Update</a> |
+                <a href="{{ path('cuatrovientos_artean_contracttype_delete', {'id': contractType.id }) }}">Delete</a>
+		{#% endif % #}
+{% endblock %}

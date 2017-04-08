@@ -357,3 +357,48 @@ cuatrovientos_artean_studies_delete_save:
     defaults: { _controller: CuatrovientosArteanBundle:Studies:studiesDeleteSave }
     requirements: 
             'id' : '\d+'
+            
+################# contract type ##################
+
+cuatrovientos_artean_contracttype:
+    path:     /artean/admin/contracttype
+    defaults: { _controller: CuatrovientosArteanBundle:ContractType:index }
+
+cuatrovientos_artean_contracttype_search:
+    path:     /artean/admin/contracttype/search
+    defaults: { _controller: CuatrovientosArteanBundle:ContractType:search }
+
+cuatrovientos_artean_contracttype_new:
+    path:     /artean/admin/contracttype/new
+    defaults: { _controller: CuatrovientosArteanBundle:ContractType:newContractType }
+
+cuatrovientos_artean_contracttype_new_save:
+    path:     /artean/admin/contracttype/new/save
+    defaults: { _controller: CuatrovientosArteanBundle:ContractType:newContractTypeSave }
+
+cuatrovientos_artean_contracttype_detail:
+    path:     /artean/admin/contracttype/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:ContractType:contracttypeDetail }
+
+
+cuatrovientos_artean_contracttype_update_save:
+    path:     /artean/admin/contracttype/update/save
+    defaults: { _controller: CuatrovientosArteanBundle:ContractType:contracttypeUpdateSave }
+
+cuatrovientos_artean_contracttype_update:
+    path:     /artean/admin/contracttype/update/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:ContractType:contracttypeUpdate }
+    requirements: 
+            'id' : '\d+'
+            
+cuatrovientos_artean_contracttype_delete:
+    path:     /artean/admin/contracttype/delete/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:ContractType:contracttypeDelete }
+    requirements: 
+            'id' : '\d+'
+
+cuatrovientos_artean_contracttype_delete_save:
+    path:     /artean/admin/contracttype/delete/save/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:ContractType:contracttypeDeleteSave }
+    requirements: 
+            'id' : '\d+'

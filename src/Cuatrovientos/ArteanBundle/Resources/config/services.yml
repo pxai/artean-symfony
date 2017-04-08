@@ -43,3 +43,11 @@ services:
     cuatrovientos_artean.bo.studies:
          class: Cuatrovientos\ArteanBundle\Service\Business\StudiesBusiness
          arguments: ['@cuatrovientos_artean.dao.studies']
+
+    cuatrovientos_artean.dao.contracttype:
+         class: Cuatrovientos\ArteanBundle\Service\DAO\ContractTypeDAO
+         arguments: ['CuatrovientosArteanBundle:ContractType', '@doctrine.orm.entity_manager' ]
+
+    cuatrovientos_artean.bo.contracttype:
+         class: Cuatrovientos\ArteanBundle\Service\Business\ContractTypeBusiness
+         arguments: ['@cuatrovientos_artean.dao.contracttype']

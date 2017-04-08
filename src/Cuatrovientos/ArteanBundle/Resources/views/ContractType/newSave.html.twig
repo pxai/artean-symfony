@@ -1,0 +1,14 @@
+
+{# src/Samples/BlogBundle/Resources/views/simple.html.twig #}
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean :: Tipos de contrato : guardar{% endblock %}
+{% block body %}
+ <h2><i class="fa fa-industry" aria-hidden="true"></i> Tipos de contrato</h2>
+
+ <a href="{{ path('cuatrovientos_artean_contracttype') }}" class="btn">
+  <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
+ </a>
+ <h3>¡Tipos de contrato guardado correctamente!</h3>
+ <strong>{{ contractType.name }}</strong>
+ <div><a href="{{ path('cuatrovientos_artean_contracttype') }}">{% trans %}See all{% endtrans %}</a> </div>
+{% endblock %}

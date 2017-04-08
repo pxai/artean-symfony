@@ -60,7 +60,8 @@ class CenterController extends Controller
             if ($form->isValid()) {
                 $center = $form->getData();
                 $this->get("cuatrovientos_artean.bo.center")->create($center);
-                $response =  $this->render('CuatrovientosArteanBundle:Center:newSave.html.twig', array('center' => $center));               
+                $response =  $this->redirectToRoute("cuatrovientos_artean_center");
+                //$response =  $this->render('CuatrovientosArteanBundle:Center:newSave.html.twig', array('center' => $center));
             } else {
                 $response = $this->render('CuatrovientosArteanBundle:Center:new.html.twig', array('form'=> $form->createView()));
             }

@@ -60,7 +60,8 @@ class StudiesController extends Controller
             if ($form->isValid()) {
                 $studies = $form->getData();
                 $this->get("cuatrovientos_artean.bo.studies")->create($studies);
-                $response =  $this->render('CuatrovientosArteanBundle:Studies:newSave.html.twig', array('studies' => $studies));               
+                $response =  $this->redirectToRoute("cuatrovientos_artean_studies");
+                //$response =  $this->render('CuatrovientosArteanBundle:Studies:newSave.html.twig', array('studies' => $studies));
             } else {
                 $response = $this->render('CuatrovientosArteanBundle:Studies:new.html.twig', array('form'=> $form->createView()));
             }

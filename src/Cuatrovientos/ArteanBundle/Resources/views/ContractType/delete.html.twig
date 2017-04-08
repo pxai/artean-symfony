@@ -1,0 +1,19 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean :: Tipos de contrato : Eliminar tipo de contrato{% endblock %}
+{% block body %}
+	<h2><i class="fa fa-industry" aria-hidden="true"></i> Tipos de contrato</h2>
+
+	<a href="{{ path('cuatrovientos_artean_contracttype') }}" class="btn">
+		<i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
+	</a>
+
+	<h3><i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar  tipo de contrato {{ contractType.id }}</h3>
+ <div id='contracttype'>
+		<div>
+			{% trans %}Are you sure{% endtrans %}			
+			<div class='title'>{{ contractType.name }}</div>
+			<div><a href="{{ path('cuatrovientos_artean_contracttype_delete_save',  {'id': contractType.id }) }}">Confirm deletion</a> </div>
+			<div><a href="javascript:history.back()">Cancel</a> </div>
+		</div>
+</div>
+{% endblock %}
