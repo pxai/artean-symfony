@@ -37,9 +37,8 @@ class CenterDAO extends GenericDAO {
     {
         $repository = $this->em->getRepository($this->entityType);
         return  $repository->createQueryBuilder('m')
-            ->where('m.cif like :cif')
-            ->andWhere('m.nombre LIKE :nombre')
-            ->setParameter('nombre','%'.$center->getName().'%')
+            ->where('m.name LIKE :name')
+            ->setParameter('name','%'.$center->getName().'%')
             ->orderBy('m.id', 'DESC')
             ->getQuery()
             ->setFirstResult($start)

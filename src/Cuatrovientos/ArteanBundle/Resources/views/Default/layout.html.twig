@@ -73,11 +73,15 @@
 </div>
 {% block javascripts %}
 <!-- JavaScript plugins (requires jQuery) -->
-<script src="//code.jquery.com/jquery.js"></script>
+<!--script src="//code.jquery.com/jquery.js"></script-->
 <script src="https://use.fontawesome.com/09c458bfbf.js"></script>
 
-        <!-- Include all compiled plugins (below), or include individual files as needed -->        
-     {% javascripts '@CuatrovientosArteanBundle/Resources/public/js/bootstrap.min.js' %}
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+     {% javascripts
+     '@CuatrovientosArteanBundle/Resources/public/js/jquery.min.js'
+     '@CuatrovientosArteanBundle/Resources/public/js/bootstrap.min.js'
+     %}
         <!-- Optionally enable responsive features in IE8 -->
         <script src="{{ asset_url }}"></script> 
      {% endjavascripts %}

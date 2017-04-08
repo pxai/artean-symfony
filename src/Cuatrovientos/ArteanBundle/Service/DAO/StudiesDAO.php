@@ -37,9 +37,8 @@ class StudiesDAO extends GenericDAO {
     {
         $repository = $this->em->getRepository($this->entityType);
         return  $repository->createQueryBuilder('m')
-            ->where('m.cif like :cif')
-            ->andWhere('m.codestudies LIKE :nombre')
-            ->setParameter('nombre','%'.$studies->getName().'%')
+            ->where('m.name LIKE :name')
+            ->setParameter('name','%'.$studies->getName().'%')
             ->orderBy('m.id', 'DESC')
             ->getQuery()
             ->setFirstResult($start)
