@@ -35,3 +35,11 @@ services:
     cuatrovientos_artean.bo.center:
          class: Cuatrovientos\ArteanBundle\Service\Business\CenterBusiness
          arguments: ['@cuatrovientos_artean.dao.center']
+
+    cuatrovientos_artean.dao.studies:
+         class: Cuatrovientos\ArteanBundle\Service\DAO\StudiesDAO
+         arguments: ['CuatrovientosArteanBundle:Studies', '@doctrine.orm.entity_manager' ]
+
+    cuatrovientos_artean.bo.studies:
+         class: Cuatrovientos\ArteanBundle\Service\Business\StudiesBusiness
+         arguments: ['@cuatrovientos_artean.dao.studies']

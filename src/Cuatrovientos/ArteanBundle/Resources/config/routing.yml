@@ -312,3 +312,48 @@ cuatrovientos_artean_company_delete_save:
     defaults: { _controller: CuatrovientosArteanBundle:Company:companyDeleteSave }
     requirements: 
             'id' : '\d+'
+
+################# studies ##################
+
+cuatrovientos_artean_studies:
+    path:     /artean/admin/studies
+    defaults: { _controller: CuatrovientosArteanBundle:Studies:index }
+
+cuatrovientos_artean_studies_search:
+    path:     /artean/admin/studies/search
+    defaults: { _controller: CuatrovientosArteanBundle:Studies:search }
+
+cuatrovientos_artean_studies_new:
+    path:     /artean/admin/studies/new
+    defaults: { _controller: CuatrovientosArteanBundle:Studies:newStudies }
+
+cuatrovientos_artean_studies_new_save:
+    path:     /artean/admin/studies/new/save
+    defaults: { _controller: CuatrovientosArteanBundle:Studies:newStudiesSave }
+
+cuatrovientos_artean_studies_detail:
+    path:     /artean/admin/studies/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Studies:studiesDetail }
+
+
+cuatrovientos_artean_studies_update_save:
+    path:     /artean/admin/studies/update/save
+    defaults: { _controller: CuatrovientosArteanBundle:Studies:studiesUpdateSave }
+
+cuatrovientos_artean_studies_update:
+    path:     /artean/admin/studies/update/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Studies:studiesUpdate }
+    requirements: 
+            'id' : '\d+'
+            
+cuatrovientos_artean_studies_delete:
+    path:     /artean/admin/studies/delete/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Studies:studiesDelete }
+    requirements: 
+            'id' : '\d+'
+
+cuatrovientos_artean_studies_delete_save:
+    path:     /artean/admin/studies/delete/save/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Studies:studiesDeleteSave }
+    requirements: 
+            'id' : '\d+'
