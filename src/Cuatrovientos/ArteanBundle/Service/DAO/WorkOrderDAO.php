@@ -11,8 +11,7 @@ class WorkOrderDAO extends GenericDAO {
 
     public function findAllOrders($userid)
     {
-        $repository = $this->em->getRepository($this->entityType);
-        return $repository->findBy(array("idapplicant"=>$userid));
+        return $this->repository->findBy(array("idapplicant"=>$userid));
     }
 
     /**
@@ -21,24 +20,20 @@ class WorkOrderDAO extends GenericDAO {
      */
     public function findOrdersInDateRange($from, $to, $idapplicant)
     {
-        $repository = $this->em->getRepository($this->entityType);
-        $workOrders = $repository->createQueryBuilder('wo')
+       return $this->repository->createQueryBuilder('wo')
             ->where('wo.idapplicant=:idapplicant and wo.orderDate >= :from and wo.orderDate <= :to')
             ->setParameters(array('from' => $from, 'to' => $to, 'idapplicant' => $idapplicant ))
             ->getQuery()
             ->getResult();
-        return $workOrders;
     }
 
     public function findDetail($id, $idapplicant)
     {
-        $repository = $this->em->getRepository($this->entityType);
-        $workOrders = $repository->createQueryBuilder('wo')
+        return $this->repository->createQueryBuilder('wo')
             ->where('wo.id =:id and wo.idapplicant=:idapplicant')
             ->setParameters(array('id' => $id, 'idapplicant' => $idapplicant ))
             ->getQuery()
-            ->getResult();
-        return $workOrders;
+            ->getOneOrNullResult();
     }
 
 

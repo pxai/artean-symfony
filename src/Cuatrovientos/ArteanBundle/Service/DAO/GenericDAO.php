@@ -11,10 +11,12 @@ abstract class GenericDAO {
 
     protected $entityType;
     protected $em;
+    protected $repository;
 
     function __construct($entityType, EntityManager $em) {
         $this->entityType = $entityType;
         $this->em = $em;
+        $this->repository = $this->em->getRepository($this->entityType);
     }
 
     /**
@@ -22,7 +24,7 @@ abstract class GenericDAO {
      * @param type $id
      */
     public function selectById($id, $field = 'id') {
-        return $this->em->getRepository($this->entityType)->findOneBy(array($field => $id));
+        return $this->repository->findOneBy(array($field => $id));
     }
 
     /**
@@ -31,14 +33,14 @@ abstract class GenericDAO {
      * @return type
      */
     public function selectBy($params) {
-        return $this->em->getRepository($this->entityType)->findOneBy($params);
+        return $this->repository->findOneBy($params);
     }
 
     /**
      * select all items
      */
     public function selectAll() {
-        return $this->em->getRepository($this->entityType)->findAll();
+        return $this->repository->findAll();
     }
 
     /**

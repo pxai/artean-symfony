@@ -11,8 +11,7 @@ class ContractTypeDAO extends GenericDAO {
 
     public function findAllContractTypes($id=0, $start=0,$total=100)
     {
-        $repository = $this->em->getRepository($this->entityType);
-        return $repository->createQueryBuilder('m')
+        return $this->repository->createQueryBuilder('m')
         ->where('m.id > :id')
         ->setParameter('id',$id)
         ->orderBy('m.id', 'DESC')
@@ -25,8 +24,7 @@ class ContractTypeDAO extends GenericDAO {
 
     public function countAllContractTypes()
     {
-        $repository = $this->em->getRepository($this->entityType);
-        return $repository->createQueryBuilder('m')
+        return $this->repository->createQueryBuilder('m')
             ->select('count(m.id)')
             ->from('CuatrovientosArteanBundle:ContractType','contractType')
             ->getQuery()
@@ -35,8 +33,7 @@ class ContractTypeDAO extends GenericDAO {
 
     public function searchContractTypes($contractType, $start=0,$total=100)
     {
-        $repository = $this->em->getRepository($this->entityType);
-        return  $repository->createQueryBuilder('m')
+        return  $this->repository->createQueryBuilder('m')
             ->where('m.name LIKE :name')
             ->setParameter('name','%'.$contractType->getName().'%')
             ->orderBy('m.id', 'DESC')

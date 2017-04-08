@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="Cuatrovientos\ArteanBundle\EntityRepository\WorkOrderRepository")
  * @ORM\Table(name="tbworkorder")
  */
-class WorkOrder
+class WorkOrder extends Entity
 {
     /**
      * @ORM\Column(name="id",type="integer")
