@@ -13,4 +13,3 @@ app:
 _assetic:
     resource: .
     type:     assetic
-

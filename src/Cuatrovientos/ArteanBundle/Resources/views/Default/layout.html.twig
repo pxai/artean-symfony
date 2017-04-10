@@ -21,15 +21,70 @@
 <body>
 <div class="container">
           <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand"><a href="https://artean.cuatrovientos.org/?home">Artean</a></h3>
+              <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+                  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <a class="navbar-brand" href="https://artean.cuatrovientos.org/?home"><i class="fa fa-compass"></i> Artean</a>
+                  {% if is_granted('ROLE_ADMIN')  %}
+                  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                      <ul class="navbar-nav">
+                          <li class="nav-item active">
+                              <a class="nav-link" href='https://artean.cuatrovientos.org/?ap_manage_tbempresas' title='Gestión de empresas'><i class="fa fa-building-o"></i> Empresas</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href='https://artean.cuatrovientos.org/?ap_manage_candidatos'><i class="fa fa-user"></i> Candidatos</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href='?ap_manage_tbsolicitudes' title='Solicitudes'><i class="fa fa-bullhorn"></i> Solicitudes</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href='https://artean.cuatrovientos.org/?ap_manage_mailing' title='Mailing'><i class="fa fa-mail-forward"></i> Mailing</a>
+                          </li>
+                          <li class="nav-item">
+                              <a  class="nav-link" href='https://artean.cuatrovientos.org/?ap_manage_cursos' title='Cursos'><i class="fa fa-graduation-cap"></i> Cursos</a>
+                          </li>
+                          <li class="nav-item dropdown">
+                              <a class="nav-link" class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Gestionar
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                  <a class="dropdown-item" href="{{ path('cuatrovientos_artean_studies') }}">Titulaciones</a>
+                                  <a class="dropdown-item" href="{{ path('cuatrovientos_artean_center') }}">Centros de estudios</a>
+                                  <a class="dropdown-item" href="{{ path('cuatrovientos_artean_contracttype') }}">Tipos de contrato</a>
+                              </div>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href='?http://localhost/artean/arteans/web/app_dev.php/logout' title='Salir'><i class="fa fa-mail-forward"></i> Salir</a>
+                          </li>
+
+                      </ul>
+                  </div>
+                  {% elseif is_granted('ROLE_USER') %}
+                      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                          <ul class="navbar-nav">
+                              <!--li class="nav-item">
+                                  <a class="nav-link" href='https://artean.cuatrovientos.org/?ap_manage_candidatos'><i class="fa fa-user"></i> Candidato</a>
+                              </li-->
+                              <li class="nav-item">
+                                  <a class="nav-link" href='{{ path('cuatrovientos_artean_workorder') }}'><i class="fa fa-user"></i> Partes FCTs</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" href='{{ path('user_logout') }}' title='Salir'><i class="fa fa-mail-forward"></i> Salir</a>
+                              </li>
+
+                          </ul>
+                      </div>
+                  {% endif %}
+              </nav>
+
               <!--nav>
                 <ul class="nav masthead-nav">
                     <li> <a href="https://artean.cuatrovientos.org/?home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Inicio</a></li>
                   <li><a href="https://artean.cuatrovientos.org/?ap_manage_candidatos">Candidatos</a></li>
                   <li><a href="https://artean.cuatrovientos.org/?ap_manage_tbempresas">Empresas</a></li>
                 </ul>
-              </nav-->
+              </nav>
                 <nav class="navbar navbar-default navbar-static-top">
                     <div class="container-fluid">
                         <div class="navbar-header">
@@ -40,16 +95,28 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <!--a class="navbar-brand" href="#">Project name</a-->
+                            <a class="navbar-brand" href="#">Project name</a>
                         </div>
-                        <div id="navbar"><!--class="navbar-collapse collapse"-->
+                        <div id="navbar">
                             <ul class="nav navbar-nav">
-                                <li><a href='?ap_manage_tbempresas' title='<?=_("Gestión empresas")?>'><i class="fa fa-building-o"></i> <?=_("Empresas")?></a></li>
-                                <li><a href='?ap_manage_candidatos' title='<?=_("Gestión candidatos")?>'><i class="fa fa-user"></i> <?=_("Candidatos")?></a></li>
-                                <li><a href='?ap_manage_tbsolicitudes' title='<?=_("Gestión solicitudes")?>'><i class="fa fa-bullhorn"></i> <?=_("Solicitudes")?></a></li>
-                                <li><a href='?ap_manage_mailing' title='<?=_("Mailing")?>'><i class="fa fa-mail-forward"></i> <?=_("Mailing")?></a></li>
-                                <li><a href='?ap_manage_cursos' title='<?=_("Courses")?>'><i class="fa fa-graduation-cap"></i> <?=_("Courses")?></a></li>
-                                <li><a href='?logout'><i class="fa fa-sign-out"></i><?=_("Logout")?></a></li>
+                                <li>
+                                <a href='?ap_manage_tbempresas' title='<?=_("Gestión empresas")?>'><i class="fa fa-building-o"></i> <?=_("Empresas")?></a>
+                                </li>
+                                <li>
+                                <a href='?ap_manage_candidatos' title='<?=_("Gestión candidatos")?>'><i class="fa fa-user"></i> <?=_("Candidatos")?></a>
+                                </li>
+                                <li>
+                                <a href='?ap_manage_tbsolicitudes' title='<?=_("Gestión solicitudes")?>'><i class="fa fa-bullhorn"></i> <?=_("Solicitudes")?></a>
+                                </li>
+                                <li>
+                                <a href='?ap_manage_mailing' title='<?=_("Mailing")?>'><i class="fa fa-mail-forward"></i> <?=_("Mailing")?></a>
+                                </li>
+                                <li>
+                                <a href='?ap_manage_cursos' title='<?=_("Courses")?>'><i class="fa fa-graduation-cap"></i> <?=_("Courses")?></a>
+                                </li>
+                                <li>
+                                <a href='?logout'><i class="fa fa-sign-out"></i><?=_("Logout")?></a>
+                                </li>
                             </ul>
 
                             <ul class="nav navbar-nav navbar-left">
@@ -57,16 +124,10 @@
                               <li class="active"><a href="./">Static top <span class="sr-only">(current)</span></a></li>
                               <li><a href="../navbar-fixed-top/">Fixed top</a></li>
                             </ul>
-                            <!--ul class="nav navbar-nav navbar-right">
-                              <li><a href="../navbar/">Default</a></li>
-                              <li class="active"><a href="./">Static top <span class="sr-only">(current)</span></a></li>
-                              <li><a href="../navbar-fixed-top/">Fixed top</a></li>
-                            </ul-->
-                        </div><!--/.nav-collapse -->
-                    </div>
-                </nav>
-            </div>
 
+                        </div>
+                    </div>
+                </nav-->
           </div>
     
 {% block body %}{% endblock body %}
@@ -81,6 +142,7 @@
 
      {% javascripts
      '@CuatrovientosArteanBundle/Resources/public/js/jquery.min.js'
+     '@CuatrovientosArteanBundle/Resources/public/js/tether.min.js'
      '@CuatrovientosArteanBundle/Resources/public/js/bootstrap.min.js'
      %}
         <!-- Optionally enable responsive features in IE8 -->

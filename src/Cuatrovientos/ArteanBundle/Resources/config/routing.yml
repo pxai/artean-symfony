@@ -12,6 +12,8 @@ cuatrovientos_artean_samples:
     path:     /artean/samples
     defaults: { _controller: FrameworkBundle:Template:template, template: CuatrovientosArteanBundle:Default:samples.html.twig }
 
+user_logout:
+    path:   /logout
     
 ################# center ##################
 

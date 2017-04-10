@@ -8,7 +8,6 @@ use Symfony\Component\Validator\Constraints\Count;
 /**
  * @ORM\Entity(repositoryClass="Cuatrovientos\ArteanBundle\EntityRepository\ApplicantRepository")
  * @ORM\Table(name="tbalumnos")
- * delete from f_users where login='p@pello.io'; delete from tbalumnos where email='p@pello.io';
  */
 class Applicant extends Entity
 {
