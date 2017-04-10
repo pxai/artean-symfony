@@ -59,9 +59,19 @@ class User implements UserInterface, \Serializable
      */
     private $lopd = 1;
 
+    /**
+     * Many Users have Many Groups.
+     * @ORM\ManyToMany(targetEntity="Role")
+     * @ORM\JoinTable(name="f_users_has_roles",
+     *      joinColumns={@ORM\JoinColumn(name="iduser", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="idrole", referencedColumnName="id")}
+     *      )
+     */
+    private $roles;
 
     public function __construct () {
         $this->since = time();
+        $this->roles = array();
     }
 
     public function randPassword( $length = 8, $chars = 'abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789' ) {
@@ -129,8 +139,7 @@ class User implements UserInterface, \Serializable
     
    public function getRoles()
     {
-       //return $this->roles;
-        return array('ROLE_USER');
+       return $this->roles->toArray();
     }
 
     public function eraseCredentials()

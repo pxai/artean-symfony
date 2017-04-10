@@ -36,7 +36,7 @@ class OfferAdOpen
      */
     private $position_no;
 
-     /**
+    /**
   * @var ContractType
   * @ORM\ManyToOne(targetEntity="ContractType")
   * @ORM\JoinColumn(name="tipocontrato", referencedColumnName="id")
