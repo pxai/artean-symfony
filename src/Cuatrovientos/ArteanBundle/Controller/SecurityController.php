@@ -70,7 +70,7 @@ class SecurityController extends Controller
         //return $this->redirect("/artean/arteans/admin/workorders");
 
         if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
-            $response =  $this->render('CuatrovientosArteanBundle:Default:adminDashboard.html.twig');
+           return  $this->render('CuatrovientosArteanBundle:Default:adminDashboard.html.twig');
         } elseif ($this->get('security.authorization_checker')->isGranted('ROLE_USER')) {
             return $this->redirectToRoute("cuatrovientos_artean_workorder");
         }
