@@ -18,6 +18,8 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new AppBundle\AppBundle(),
             new Cuatrovientos\ArteanBundle\CuatrovientosArteanBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
             new Pello\SerONoSerBundle\PelloSerONoSerBundle()
         ];
 

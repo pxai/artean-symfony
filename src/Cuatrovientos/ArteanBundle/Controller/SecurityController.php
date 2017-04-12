@@ -68,7 +68,12 @@ class SecurityController extends Controller
     {
         //$this->get('session')->set('loginUserId', $user['user_id']);
         //return $this->redirect("/artean/arteans/admin/workorders");
-        return $this->redirectToRoute("cuatrovientos_artean_workorder");
+
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+            $response =  $this->render('CuatrovientosArteanBundle:Default:adminDashboard.html.twig');
+        } elseif ($this->get('security.authorization_checker')->isGranted('ROLE_USER')) {
+            return $this->redirectToRoute("cuatrovientos_artean_workorder");
+        }
     }
 
 
