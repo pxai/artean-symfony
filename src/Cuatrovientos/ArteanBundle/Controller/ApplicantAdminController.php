@@ -12,7 +12,7 @@ use Cuatrovientos\ArteanBundle\Entity\ApplicantStudies;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantSignInType;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantSignUpType;
 
-class ApplicantController extends Controller
+class ApplicantAdminController extends Controller
 {
     /**
     *
@@ -20,20 +20,10 @@ class ApplicantController extends Controller
     */
     public function indexAction()
     {
-        //$applicants = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Applicant")->findAll();
-        //$applicants = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Applicant")->findApplicant();
-        $form = $this->createForm(ApplicantSignInType::class);
+         $form = $this->createForm(ApplicantSignInType::class);
         return $this->render('CuatrovientosArteanBundle:Applicant:signIn.html.twig', array('form'=> $form->createView()));
-    }
-
-    public function dashboardAction()
-    {
-        //$applicants = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Applicant")->findAll();
-        //$applicants = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Applicant")->findApplicant();
-        $form = $this->createForm(ApplicantSignInType::class);
-        return $this->render('CuatrovientosArteanBundle:Applicant:dashboard.html.twig', array('form'=> $form->createView()));
-    }
-
+    }  
+    
     /**
     *
     *

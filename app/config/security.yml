@@ -54,4 +54,4 @@ security:
         - { path: ^/artean/admin, roles: ROLE_ADMIN }
         #- { path: ^/artean/api/admin, roles: ROLE_ADMIN }
         - { path: ^/artean/student, roles: ROLE_USER }
-
+        - { path: ^/artean/applicant, roles: ROLE_USER }

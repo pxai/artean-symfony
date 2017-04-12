@@ -182,19 +182,19 @@ cuatrovientos_artean_offer_publish:
  ##### applicant ########################################33
 cuatrovientos_artean_applicant_signin:        
     path:     /artean/applicant/signin
-    defaults: { _controller: CuatrovientosArteanBundle:Applicant:applicantSignIn }
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:applicantSignIn }
 
 cuatrovientos_artean_applicant_signin_save:        
     path:     /artean/applicant/signin/save
-    defaults: { _controller: CuatrovientosArteanBundle:Applicant:applicantSignInSave }
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:applicantSignInSave }
 
 cuatrovientos_artean_applicant_signup:        
     path:     /artean/applicant/signup
-    defaults: { _controller: CuatrovientosArteanBundle:Applicant:applicantSignUp }
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:applicantSignUp }
 
 cuatrovientos_artean_applicant_signup_save:        
     path:     /artean/applicant/signup/save
-    defaults: { _controller: CuatrovientosArteanBundle:Applicant:applicantSignUpSave }
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:applicantSignUpSave }
 
 
 #### user 
@@ -408,3 +408,8 @@ cuatrovientos_artean_contracttype_delete_save:
 cuatrovientos_artean_api_news_index:
     path: "/api/news"
     defaults: { _controller: CuatrovientosArteanBundle:Api\NewsApi:index }
+
+
+cuatrovientos_artean_applicant_dashboard:
+    path:     /artean/applicant/dashboard
+    defaults: { _controller: CuatrovientosArteanBundle:Applicant:dashboard}
