@@ -9,8 +9,10 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormEvent;
@@ -25,26 +27,60 @@ class ApplicantType extends AbstractType {
                 "label"=>"Nombre",
                 "required"=>true
                 ))
-            ->add('studies', ChoiceType::class, array(
-                    // each entry in the array will be an "email" field
-                      'choices'  => array(
-                            'Ciclo Medio Comercio' => '9',
-                            'Ciclo Medio Gestión Administrativa'     => '10',
-                            'Ciclo Medio Sistemas Microinformáticos y Redes'    => '144',
-                            'FP Básica'    => '143',
-                            'Ciclo Superior Administración y Finanzas'    => '13',
-                            'Ciclo Superior Transporte y Logística'    => '19',
-                            'Ciclo Superior Comercio Internacional'    => '16',
-                            'Ciclo Superior GVEC'    => '18',
-                            'Ciclo Superior Redes y Sistemas'    => '15',
-                            'Ciclo Superior de Desarrollo de Aplicaciones Informáticas'    => '17',
-                        ),          
-                    'choice_attr' => array('class' => 'form-control'),
-                    'attr' => array('class' => 'checkboxblock'),
-                    'expanded' => true,
-                    'multiple' => true
-                    )
-            )
+            ->add('surname', TextType::class,array(
+                "label"=>"Apellidos",
+                "required"=>true
+            ))
+            ->add('email', EmailType::class,array(
+                "label"=>"Email",
+                "required"=>true
+            ))
+            ->add('web', TextType::class,array(
+                "label"=>"Web/perfil/linkedin",
+                "required"=>false
+            ))
+            ->add('mobile', TextType::class,array(
+                "label"=>"Teléfono",
+                "required"=>true
+            ))
+            ->add('address', TextType::class,array(
+                "label"=>"Dirección",
+                "required"=>false
+            ))
+            ->add('city', TextType::class,array(
+                "label"=>"Localidad",
+                "required"=>false
+            ))
+            ->add('province', TextType::class,array(
+                "label"=>"Provincia",
+                "required"=>false
+            ))
+            ->add('postalCode', TextType::class,array(
+                "label"=>"Código Postal",
+                "required"=>false
+            ))
+            ->add('phone', TextType::class,array(
+                "label"=>"Teléfono secundario",
+                "required"=>false
+            ))
+            ->add('drivingLicense', ChoiceType::class,array(
+                "label"=>"Carnet de conducir",
+                'choices'  => array('Tengo carnet' => '1'),
+                "required"=>false
+            ))
+            ->add('move', ChoiceType::class, array(
+                'label' => 'Posibilidad desplazamiento',
+                'choices'  => array('Puedo desplazarme' => '1'),
+                'required'=>false
+            ))
+            ->add('birth', TextType::class,array(
+                "label"=>"Fecha de nacimiento",
+                "required"=>false
+            ))
+            ->add('resume', TextareaType::class,array(
+                "label"=>"Resumen",
+                "required"=>false
+            ))
             ->add('save', SubmitType::class);
         
          /* $builder->addEventListener(

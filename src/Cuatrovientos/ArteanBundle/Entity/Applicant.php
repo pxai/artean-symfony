@@ -32,16 +32,71 @@ class Applicant extends Entity
      * @ORM\Column(name="telefonomovil",type="string", length=100)
      */
     private $mobile;
+
     
      /**
      * @ORM\Column(name="email",type="string", length=100)
      */
     private $email;
+
+    /**
+     * @ORM\Column(name="web",type="string", length=100)
+     */
+    private $web;
    
      /**
      * @ORM\Column(name="id_user",type="integer")
      */
     private $idUser;
+
+    /**
+     * @ORM\Column(name="direccion",type="string", length=255)
+     */
+    private $address;
+
+    /**
+     * @ORM\Column(name="localidad",type="string", length=50)
+     */
+    private $city;
+
+    /**
+     * @ORM\Column(name="provincia",type="string", length=20)
+     */
+    private $province;
+
+    /**
+     * @ORM\Column(name="codpostal",type="string", length=10)
+     */
+    private $postalCode;
+
+    /**
+     * @ORM\Column(name="telefono",type="string", length=100)
+     */
+    private $phone;
+
+    /**
+     * @ORM\Column(name="carneconducir",type="string", length=10)
+     * update tbalumnos set carneconducir=1 where carneconducir='VERDADERO'
+     * update tbalumnos set carneconducir=0 where carneconducir='FALSO'
+     */
+    private $drivingLicense;
+
+    /**
+     * @ORM\Column(name="desplazamiento",type="string", length=10)
+     * update tbalumnos set desplazamiento=0 where desplazamiento='FALSO'
+     * update tbalumnos set desplazamiento=1 where desplazamiento='VERDADERO'
+     */
+    private $move;
+
+    /**
+     * @ORM\Column(name="fechanacimiento",type="string", length=20)
+     */
+    private $birth;
+
+    /**
+     * @ORM\Column(name="resumen",type="string")
+     */
+    private $resume;
 
     /**
      * //ORM\Column(name="estudiosrequeridos",type="array", length=50)
@@ -147,6 +202,168 @@ class Applicant extends Entity
     public function setMobile($mobile) {
         $this->mobile = $mobile;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getWeb()
+    {
+        return $this->web;
+    }
+
+    /**
+     * @param mixed $web
+     */
+    public function setWeb($web)
+    {
+        $this->web = $web;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param mixed $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param mixed $city
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProvince()
+    {
+        return $this->province;
+    }
+
+    /**
+     * @param mixed $province
+     */
+    public function setProvince($province)
+    {
+        $this->province = $province;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPostalCode()
+    {
+        return $this->postalCode;
+    }
+
+    /**
+     * @param mixed $postalCode
+     */
+    public function setPostalCode($postalCode)
+    {
+        $this->postalCode = $postalCode;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param mixed $phone
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDrivingLicense()
+    {
+        return $this->drivingLicense;
+    }
+
+    /**
+     * @param mixed $drivingLicense
+     */
+    public function setDrivingLicense($drivingLicense)
+    {
+        $this->drivingLicense = $drivingLicense;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMove()
+    {
+        return $this->move;
+    }
+
+    /**
+     * @param mixed $move
+     */
+    public function setMove($move)
+    {
+        $this->move = $move;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBirth()
+    {
+        return $this->birth;
+    }
+
+    /**
+     * @param mixed $birth
+     */
+    public function setBirth($birth)
+    {
+        $this->birth = $birth;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getResume()
+    {
+        return $this->resume;
+    }
+
+    /**
+     * @param mixed $resume
+     */
+    public function setResume($resume)
+    {
+        $this->resume = $resume;
+    }
+
+
 
 
 

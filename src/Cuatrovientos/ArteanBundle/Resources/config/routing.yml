@@ -413,3 +413,7 @@ cuatrovientos_artean_api_news_index:
 cuatrovientos_artean_applicant_dashboard:
     path:     /artean/applicant/dashboard
     defaults: { _controller: CuatrovientosArteanBundle:Applicant:dashboard}
+
+cuatrovientos_artean_applicant_dashboard_update:
+    path:     /artean/applicant/dashboard/update
+    defaults: { _controller: CuatrovientosArteanBundle:Applicant:update}
