@@ -96,9 +96,7 @@ class WorkOrderController extends Controller
             if ($form->isValid()) {
                 $workOrder = $form->getData();
                 $workOrder->setIdapplicant($this->user->getId());
- /*               $em = $this->getDoctrine()->getEntityManager();
-                $em->merge($workOrder);
-                $em->flush();*/
+
                 $this->get("cuatrovientos_artean.bo.workorder")->update($workOrder);
                 // redirect to index
                 $response =  $this->redirectToRoute("cuatrovientos_artean_workorder");

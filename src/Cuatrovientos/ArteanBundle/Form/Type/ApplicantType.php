@@ -97,11 +97,11 @@ class ApplicantType extends AbstractType {
 
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'Cuatrovientos\ArteanBundle\Entity\ApplicantOpen',
+            'data_class' => 'Cuatrovientos\ArteanBundle\Entity\Applicant',
         ));
     }
 
     public function getName() {
-        return 'center';
+        return 'applicant';
     }
 }

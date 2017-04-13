@@ -10,7 +10,6 @@ use Cuatrovientos\ArteanBundle\Entity\Session;
 use Cuatrovientos\ArteanBundle\Entity\UserRole;
 use Cuatrovientos\ArteanBundle\Entity\ApplicantStudies;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantType;
-use Cuatrovientos\ArteanBundle\Form\Type\ApplicantSignUpType;
 
 class ApplicantController extends Controller
 {
@@ -42,14 +41,16 @@ class ApplicantController extends Controller
     *
     */
     public function updateAction(Request $request) {
-      
+        $this->user = $this->get('security.token_storage')->getToken()->getUser();
+        $logger = $this->get('logger');
         $form = $this->createForm(ApplicantType::class, new Applicant());
       //  $form->submit($request->request->get($form->getName()));
+
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $applicant = $form->getData();
-
+                $applicant->setIdUser($this->user->getId());
                 $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);
 
                 return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');

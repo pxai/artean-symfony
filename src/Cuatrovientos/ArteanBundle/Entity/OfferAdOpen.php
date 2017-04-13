@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="Cuatrovientos\ArteanBundle\EntityRepository\OfferRepository")
  * @ORM\Table(name="ofertas")
  */
-class OfferAdOpen
+class OfferAdOpen extends Entity
 {
   /**
      * @ORM\Column(name="codcentro",type="integer")
