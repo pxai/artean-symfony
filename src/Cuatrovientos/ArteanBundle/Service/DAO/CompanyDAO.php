@@ -21,6 +21,15 @@ class CompanyDAO extends GenericDAO {
         ->getResult();
     }
 
+    public function findCompanies($term)
+    {
+        return $this->repository->createQueryBuilder('m')
+            ->where('m.empresa like :name')
+            ->setParameter('name','%'.$term.'%')
+            ->orderBy('m.empresa', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 
     public function countAllCompanies()
     {

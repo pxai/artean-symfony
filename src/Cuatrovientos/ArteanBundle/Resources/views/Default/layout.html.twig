@@ -10,9 +10,9 @@
     'bundles/cuatrovientosartean/css/bootstrap.min.css'
     'bundles/cuatrovientosartean/css/bootstrap-theme.min.css'
     filter='cssrewrite' output='css/compiled/app.css' %}
-    <link rel="stylesheet" href="{{ asset_url }}" />
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
 {% endstylesheets %}
-
+{% block extrastyles %}{% endblock %}
 
 {% block head %}{% endblock %}
 
@@ -106,6 +106,6 @@
         <script src="{{ asset_url }}"></script> 
      {  %endjavascripts % #}
 {% endblock %}
-
+{% block extrascripts %}{% endblock %}
 </body>
 </html>

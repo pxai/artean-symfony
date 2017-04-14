@@ -21,6 +21,16 @@ class StudiesDAO extends GenericDAO {
         ->getResult();
     }
 
+    public function findStudies($term)
+    {
+        return $this->repository->createQueryBuilder('m')
+            ->where('m.name like :name')
+            ->orWhere('m.description like :name')
+            ->setParameter('name','%'.$term.'%')
+            ->orderBy('m.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 
     public function countAllStudies()
     {

@@ -13,6 +13,9 @@ class CompanyBusiness extends GenericBusiness {
         return $this->entityDAO->findAllCompanies($id, $start,$total);
     }
 
+    public function findCompanies($term) {
+        return $this->entityDAO->findCompanies($term);
+    }
 
     public function countAllCompanies()
     {

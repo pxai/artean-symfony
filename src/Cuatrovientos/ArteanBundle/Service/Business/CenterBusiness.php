@@ -14,6 +14,11 @@ class CenterBusiness extends GenericBusiness {
     }
 
 
+    public function findCenters($term) {
+        return $this->entityDAO->findCenters($term);
+    }
+
+
     public function countAllCenters()
     {
         return $this->entityDAO->countAllCenters();

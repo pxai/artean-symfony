@@ -21,6 +21,15 @@ class CenterDAO extends GenericDAO {
         ->getResult();
     }
 
+    public function findCenters($term)
+    {
+        return $this->repository->createQueryBuilder('m')
+            ->where('m.name like :name')
+            ->setParameter('name','%'.$term.'%')
+            ->orderBy('m.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 
     public function countAllCenters()
     {

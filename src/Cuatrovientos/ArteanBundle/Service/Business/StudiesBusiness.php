@@ -13,6 +13,9 @@ class StudiesBusiness extends GenericBusiness {
         return $this->entityDAO->findAllStudies($id, $start,$total);
     }
 
+    public function findStudies($term) {
+        return $this->entityDAO->findStudies($term);
+    }
 
     public function countAllStudies()
     {

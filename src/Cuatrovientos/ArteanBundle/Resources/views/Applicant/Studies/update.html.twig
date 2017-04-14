@@ -1,3 +1,13 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean :: Datos aspirante{% endblock %}
+{% block extrastyles %}
+    {% stylesheets
+    'bundles/cuatrovientosartean/css/select2.min.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
+{% endblock %}
+{% block body %}
+<h1>Aspirante</h1>
 <form method="post" action="{{ path('cuatrovientos_artean_applicant_dashboard_update_studies_save') }}">
     {{ form_errors(formStudies) }}
     {{ form_widget(formStudies.id) }}
@@ -12,6 +22,9 @@
         {{ form_widget(formStudies.studies, {'attr': {'class': 'form-control'}}) }}
     </div>
     <div class="form-group">
+        <!--select class="js-data-example-ajax">
+            <option value="3620194" selected="selected">select2/select2</option>
+        </select-->
         {{ form_label(formStudies.center) }}
         {{ form_errors(formStudies.center) }}
         {{ form_widget(formStudies.center, {'attr': {'class': 'form-control'}}) }}
@@ -28,3 +41,36 @@
         {{ form_widget(formStudies.save, {'attr': {'class': 'form-control'}}) }}
     </div>
 </form>
+{% endblock %}
+{% block extrascripts %}
+    {% javascripts
+    '@CuatrovientosArteanBundle/Resources/public/js/select2.full.min.js'
+    %}
+    <!-- Optionally enable responsive features in IE8 -->
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script language="javascript">
+        $(".js-data-example-ajax").select2({
+            ajax: {
+                url: '{{ path('cuatrovientos_artean_api_center_index') }}',
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return { term: params.term, // search term
+                             page: params.page
+                    };
+                    },
+                processResults: function (data, params) {
+                    var data = [{ id: 0, text: 'enhancement' }, { id: 1, text: 'bug' }, { id: 2, text: 'duplicate' }, { id: 3, text: 'invalid' }, { id: 4, text: 'wontfix' }];
+                            params.page = params.page || 1;
+                            return { results: data, pagination: { more: (params.page * 30) < data.length } }; },
+                cache: true },
+            escapeMarkup: function (markup) { return markup; },
+            // let our custom formatter work
+            minimumInputLength: 1,
+           // templateResult: {id:'id',text:'name'} // omitted for brevity, see the source of this page
+            //templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
+         });
+        </script>
+{% endblock %}
+
