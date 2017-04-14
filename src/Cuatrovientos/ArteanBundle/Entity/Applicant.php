@@ -98,12 +98,6 @@ class Applicant extends Entity
      */
     private $resume;
 
-    /**
-     * //ORM\Column(name="estudiosrequeridos",type="array", length=50)
-     * @Count(min = 1, minMessage = "Selecciona al menos una titulación")
-     */
-    private $studies;
-    
      /**
      * @ORM\Column(name="curriculum",type="string", length=255)
      */
@@ -111,8 +105,14 @@ class Applicant extends Entity
 
     
     private $lopd;
+
+    /**
+     * @ORM\OneToMany(targetEntity="ApplicantStudies", mappedBy="applicant",fetch="EXTRA_LAZY")
+     */
+    private $studies;
     
     public function __construct () {
+        $this->studies = array();
     }
 
     /**

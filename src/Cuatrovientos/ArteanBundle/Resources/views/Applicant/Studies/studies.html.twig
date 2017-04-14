@@ -1,0 +1,11 @@
+<div class="table-responsive">
+<h2>Estudios</h2>
+  <table class="table .table-condensed">
+     <div id='studies'>
+         <tr><th>Id</th><th>Nombre</th><th>Descripción</th><th>Centro</th><th>Año fin</th><th></th></tr>
+        {% for study in applicant.studies %}
+            {% include "CuatrovientosArteanBundle:Applicant/Studies:study.html.twig" %}
+        {% endfor %}
+    </div>
+  </table>
+</div>

@@ -1,0 +1,12 @@
+<tr>
+    <td>{{ study.id }}</td>
+    <td>{{ study.studies.name }}</td>
+    <td>{{ study.description }}</td>
+    <td>{{ study.center.name }}</td>
+    <td>{{ study.endyear }}</td>
+    <td>
+        <a href="{{ path('cuatrovientos_artean_company_detail', {'id': study.id }) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i> Det</a>
+        <a href="{{ path('cuatrovientos_artean_company_update', {'id': study.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> U</a>
+        <a href="{{ path('cuatrovientos_artean_company_delete', {'id': study.id }) }}" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> D</a>
+    </td>
+</tr>

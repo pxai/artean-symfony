@@ -16,31 +16,34 @@ class ApplicantStudies extends Entity
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
-     /**
-     * @ORM\Column(name="idapplicant",type="integer")
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Applicant", inversedBy="studies",fetch="EXTRA_LAZY")
+     * @ORM\JoinColumn(name="idapplicant", referencedColumnName="id")
      */
-    private $idapplicant;
+    private $applicant;
   
-     /**
-     * @ORM\Column(name="codestudios",type="integer")
+    /**
+     * @ORM\ManyToOne(targetEntity="Studies")
+     * @ORM\JoinColumn(name="codestudios", referencedColumnName="id")
      */
-    private $idstudies;
+    private $studies;
 
     /**
      * @ORM\Column(name="descripcion",type="string", length=100)
      */
     private $description;
-    
+
     /**
-     * @ORM\Column(name="codcentro",type="integer")
+     * @ORM\ManyToOne(targetEntity="Center")
+     * @ORM\JoinColumn(name="codcentro", referencedColumnName="codcentro")
      */
-    private $idcenter;
+    private $center;
 
     /**
      * @ORM\Column(name="anofin",type="integer")
      */
-    private $endyear;
+    private $endYear;
 
 
     public function __construct () {
@@ -50,50 +53,84 @@ class ApplicantStudies extends Entity
         return $this->id;
     }
 
-    public function getIdapplicant() {
-        return $this->idapplicant;
-    }
-
-    public function getIdstudies() {
-        return $this->idstudies;
-    }
 
     public function getDescription() {
         return $this->description;
     }
 
-    public function getIdcenter() {
-        return $this->idcenter;
-    }
-
-    public function getEndyear() {
-        return $this->endyear;
-    }
 
     public function setId($id) {
         $this->id = $id;
     }
 
-    public function setIdapplicant($idapplicant) {
-        $this->idapplicant = $idapplicant;
-    }
-
-    public function setIdstudies($idstudies) {
-        $this->idstudies = $idstudies;
-    }
 
     public function setDescription($description) {
         $this->description = $description;
     }
 
-    public function setIdcenter($idcenter) {
-        $this->idcenter = $idcenter;
+    /**
+     * @return mixed
+     */
+    public function getEndYear()
+    {
+        return $this->endYear;
     }
 
-    public function setEndyear($endyear) {
-        $this->endyear = $endyear;
+    /**
+     * @param mixed $endYear
+     */
+    public function setEndYear($endYear)
+    {
+        $this->endYear = $endYear;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getApplicant()
+    {
+        return $this->applicant;
+    }
+
+    /**
+     * @param mixed $applicant
+     */
+    public function setApplicant($applicant)
+    {
+        $this->applicant = $applicant;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStudies()
+    {
+        return $this->studies;
+    }
+
+    /**
+     * @param mixed $studies
+     */
+    public function setStudies($studies)
+    {
+        $this->studies = $studies;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCenter()
+    {
+        return $this->center;
+    }
+
+    /**
+     * @param mixed $center
+     */
+    public function setCenter($center)
+    {
+        $this->center = $center;
+    }
 
 
    

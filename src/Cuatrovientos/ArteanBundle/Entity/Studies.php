@@ -59,6 +59,7 @@ class Studies extends Entity
     {
         $this->description = $description;
     }
-    
+
+
    
 }

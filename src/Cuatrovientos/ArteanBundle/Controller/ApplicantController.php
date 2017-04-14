@@ -30,7 +30,7 @@ class ApplicantController extends Controller
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
         $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($this->user->getId());
         $form = $this->createForm(ApplicantType::class, $applicant);
-        return $this->render('CuatrovientosArteanBundle:Applicant:dashboard.html.twig', array('form'=> $form->createView()));
+        return $this->render('CuatrovientosArteanBundle:Applicant:dashboard.html.twig', array('form'=> $form->createView(),'applicant'=>$applicant));
     }
 
 
