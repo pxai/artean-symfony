@@ -1,0 +1,18 @@
+<div class="table-responsive">
+<h2>Idiomas</h2>
+  <table class="table .table-condensed">
+     <div id='studies'>
+         <tr><th>Id</th><th>Idioma</th><th>Hablado</th><th>Escrito</th><th>Notas</th><th></th></tr>
+        {% for language in applicant.languages %}
+            {% include "CuatrovientosArteanBundle:Applicant/Languages:language.html.twig" %}
+        {% endfor %}
+    </div>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#applicantLanguagesModal" data-whatever="searchCompany">
+          <i class="fa fa-search" aria-hidden="true"></i> Nuevo
+      </button>
+
+      <div id="applicantLanguagesModal" style="display:none";  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+          {% include "CuatrovientosArteanBundle:Applicant/Languages:applicantLanguageForm.html.twig" %}
+      </div>
+
+</div>

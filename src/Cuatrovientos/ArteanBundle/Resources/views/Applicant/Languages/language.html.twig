@@ -1,0 +1,11 @@
+<tr>
+    <td>{{ language.id }}</td>
+    <td>{{ language.language.id }}</td>
+    <td>{{ language.speaking }}</td>
+    <td>{{ language.writing }}</td>
+    <td>{{ language.description }}</td>
+    <td>
+        <a href="{{ path('cuatrovientos_artean_applicant_dashboard_update_language', {'id': language.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> U</a>
+        <a href="{{ path('cuatrovientos_artean_applicant_dashboard_delete_language_save', {'id': language.id }) }}" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> D</a>
+    </td>
+</tr>

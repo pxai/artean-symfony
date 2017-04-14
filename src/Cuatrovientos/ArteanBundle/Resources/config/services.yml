@@ -56,10 +56,14 @@ services:
          class: Cuatrovientos\ArteanBundle\Service\DAO\ApplicantStudiesDAO
          arguments: ['CuatrovientosArteanBundle:ApplicantStudies', '@doctrine.orm.entity_manager']
 
+    cuatrovientos_artean.dao.applicantLanguages:
+         class: Cuatrovientos\ArteanBundle\Service\DAO\ApplicantLanguagesDAO
+         arguments: ['CuatrovientosArteanBundle:ApplicantLanguages', '@doctrine.orm.entity_manager']
+
     cuatrovientos_artean.dao.applicant:
          class: Cuatrovientos\ArteanBundle\Service\DAO\ApplicantDAO
          arguments: ['CuatrovientosArteanBundle:Applicant', '@doctrine.orm.entity_manager' ]
 
     cuatrovientos_artean.bo.applicant:
          class: Cuatrovientos\ArteanBundle\Service\Business\ApplicantBusiness
-         arguments: ['@cuatrovientos_artean.dao.applicant','@cuatrovientos_artean.dao.applicantStudies']
+         arguments: ['@cuatrovientos_artean.dao.applicant','@cuatrovientos_artean.dao.applicantStudies','@cuatrovientos_artean.dao.applicantLanguages']

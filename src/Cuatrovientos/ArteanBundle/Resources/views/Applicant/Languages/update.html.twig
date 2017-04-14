@@ -1,0 +1,41 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean :: Datos aspirante{% endblock %}
+{% block extrastyles %}
+    {% stylesheets
+    'bundles/cuatrovientosartean/css/select2.min.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
+{% endblock %}
+{% block body %}
+<h1>Aspirante</h1>
+<form method="post" action="{{ path('cuatrovientos_artean_applicant_dashboard_update_language_save') }}">
+    {{ form_errors(formLanguage) }}
+    {{ form_widget(formLanguage.id) }}
+    <div class="form-group">
+        {{ form_label(formLanguage.language) }}
+        {{ form_errors(formLanguage.language) }}
+        {{ form_widget(formLanguage.language, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(formLanguage.speaking) }}
+        {{ form_errors(formLanguage.speaking) }}
+        {{ form_widget(formLanguage.speaking, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(formLanguage.writing) }}
+        {{ form_errors(formLanguage.writing) }}
+        {{ form_widget(formLanguage.writing, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(formLanguage.description) }}
+        {{ form_errors(formLanguage.description) }}
+        {{ form_widget(formLanguage.description, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(formLanguage._token) }}
+        {{ form_widget(formLanguage.save, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</form>
+{% endblock %}
+
+
