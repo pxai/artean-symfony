@@ -364,7 +364,10 @@ class Applicant extends Entity
     }
 
 
-
+    function __toString()
+    {
+        return $this->getId().'';
+    }
 
 
 }

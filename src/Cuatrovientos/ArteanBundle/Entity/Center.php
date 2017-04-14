@@ -57,6 +57,9 @@ class Center extends Entity
         $this->name = $name;
         return $this;
     }
-    
-   
+
+    function __toString()
+    {
+        return $this->getName();
+    }
 }

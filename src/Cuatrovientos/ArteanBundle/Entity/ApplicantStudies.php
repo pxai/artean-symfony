@@ -18,7 +18,7 @@ class ApplicantStudies extends Entity
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Applicant", inversedBy="studies",fetch="EXTRA_LAZY")
+     * @ORM\ManyToOne(targetEntity="Applicant")
      * @ORM\JoinColumn(name="idapplicant", referencedColumnName="id")
      */
     private $applicant;
@@ -47,6 +47,7 @@ class ApplicantStudies extends Entity
 
 
     public function __construct () {
+        //$this->applicant = new Applicant();
     }
 
     public function getId() {

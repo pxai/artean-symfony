@@ -60,6 +60,10 @@ class Studies extends Entity
         $this->description = $description;
     }
 
+    function __toString()
+    {
+        return $this->getName();
+    }
 
-   
+
 }

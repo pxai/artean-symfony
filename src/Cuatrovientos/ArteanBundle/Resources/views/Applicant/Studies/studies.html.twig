@@ -7,5 +7,12 @@
             {% include "CuatrovientosArteanBundle:Applicant/Studies:study.html.twig" %}
         {% endfor %}
     </div>
-  </table>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#applicantStudiesModal" data-whatever="searchCompany">
+          <i class="fa fa-search" aria-hidden="true"></i> Nuevo
+      </button>
+
+      <div id="applicantStudiesModal" style="display:none";  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+          {% include "CuatrovientosArteanBundle:Applicant/Studies:applicantStudiesForm.html.twig" %}
+      </div>
+
 </div>

@@ -52,10 +52,14 @@ services:
          class: Cuatrovientos\ArteanBundle\Service\Business\ContractTypeBusiness
          arguments: ['@cuatrovientos_artean.dao.contracttype']
 
+    cuatrovientos_artean.dao.applicantStudies:
+         class: Cuatrovientos\ArteanBundle\Service\DAO\ApplicantStudiesDAO
+         arguments: ['CuatrovientosArteanBundle:ApplicantStudies', '@doctrine.orm.entity_manager']
+
     cuatrovientos_artean.dao.applicant:
          class: Cuatrovientos\ArteanBundle\Service\DAO\ApplicantDAO
          arguments: ['CuatrovientosArteanBundle:Applicant', '@doctrine.orm.entity_manager' ]
 
     cuatrovientos_artean.bo.applicant:
          class: Cuatrovientos\ArteanBundle\Service\Business\ApplicantBusiness
-         arguments: ['@cuatrovientos_artean.dao.applicant']
+         arguments: ['@cuatrovientos_artean.dao.applicant','@cuatrovientos_artean.dao.applicantStudies']

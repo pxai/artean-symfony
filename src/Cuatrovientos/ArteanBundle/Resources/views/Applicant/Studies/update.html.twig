@@ -1,0 +1,30 @@
+<form method="post" action="{{ path('cuatrovientos_artean_applicant_dashboard_update_studies_save') }}">
+    {{ form_errors(formStudies) }}
+    {{ form_widget(formStudies.id) }}
+    <div class="form-group">
+        {{ form_label(formStudies.description) }}
+        {{ form_errors(formStudies.description) }}
+        {{ form_widget(formStudies.description, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(formStudies.studies) }}
+        {{ form_errors(formStudies.studies) }}
+        {{ form_widget(formStudies.studies, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(formStudies.center) }}
+        {{ form_errors(formStudies.center) }}
+        {{ form_widget(formStudies.center, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(formStudies.endYear) }}
+        {{ form_errors(formStudies.endYear) }}
+        {{ form_widget(formStudies.endYear, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+
+    <div class="form-group">
+        {{ form_row(formStudies._token) }}
+        {{ form_widget(formStudies.save, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</form>

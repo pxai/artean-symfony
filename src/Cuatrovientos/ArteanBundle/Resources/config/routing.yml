@@ -417,3 +417,23 @@ cuatrovientos_artean_applicant_dashboard:
 cuatrovientos_artean_applicant_dashboard_update:
     path:     /artean/applicant/dashboard/update
     defaults: { _controller: CuatrovientosArteanBundle:Applicant:update}
+
+cuatrovientos_artean_applicant_dashboard_new_studies_save:
+    path:     /artean/applicant/studies/new/save
+    defaults: { _controller: CuatrovientosArteanBundle:Applicant:newStudies}
+
+cuatrovientos_artean_applicant_dashboard_delete_studies_save:
+    path:     /artean/applicant/studies/delete/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Applicant:deleteStudies}
+    requirements:
+            'id' : '\d+'
+
+cuatrovientos_artean_applicant_dashboard_update_studies:
+    path:     /artean/applicant/studies/update/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Applicant:updateStudies}
+    requirements:
+            'id' : '\d+'
+
+cuatrovientos_artean_applicant_dashboard_update_studies_save:
+    path:     /artean/applicant/studies/update/save
+    defaults: { _controller: CuatrovientosArteanBundle:Applicant:updateStudiesSave}
