@@ -1,0 +1,30 @@
+<form method="post" action="{{ path('cuatrovientos_artean_applicant_dashboard_new_job_save') }}">
+    {{ form_errors(formJob) }}
+    {{ form_widget(formJob.id) }}
+    <div class="form-group">
+        {{ form_label(formJob.company) }}
+        {{ form_errors(formJob.company) }}
+        {{ form_widget(formJob.company, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(formJob.contractType) }}
+        {{ form_errors(formJob.contractType) }}
+        {{ form_widget(formJob.contractType, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(formJob.description) }}
+        {{ form_errors(formJob.description) }}
+        {{ form_widget(formJob.description, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(formJob.endDate) }}
+        {{ form_errors(formJob.endDate) }}
+        {{ form_widget(formJob.endDate, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+
+    <div class="form-group">
+        {{ form_row(formJob._token) }}
+        {{ form_widget(formJob.save, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</form>

@@ -1,14 +1,13 @@
 <div class="table-responsive">
 <h2>Estudios</h2>
   <table class="table .table-condensed">
-     <div id='studies'>
          <tr><th>Id</th><th>Nombre</th><th>Descripción</th><th>Centro</th><th>Año fin</th><th></th></tr>
         {% for study in applicant.studies %}
             {% include "CuatrovientosArteanBundle:Applicant/Studies:study.html.twig" %}
         {% endfor %}
-    </div>
+    </table>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#applicantStudiesModal" data-whatever="searchCompany">
-          <i class="fa fa-search" aria-hidden="true"></i> Nuevo
+          <i class="fa fa-search" aria-hidden="true"></i> Añadir estudios
       </button>
 
       <div id="applicantStudiesModal" style="display:none";  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">

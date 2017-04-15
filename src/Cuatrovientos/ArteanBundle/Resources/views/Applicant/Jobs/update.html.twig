@@ -9,36 +9,34 @@
 {% endblock %}
 {% block body %}
 <h1>Aspirante</h1>
-<form method="post" action="{{ path('cuatrovientos_artean_applicant_dashboard_update_studies_save') }}">
-    {{ form_errors(formStudies) }}
-    {{ form_widget(formStudies.id) }}
+<form method="post" action="{{ path('cuatrovientos_artean_applicant_dashboard_update_job_save') }}">
+    {{ form_errors(formJob) }}
+    {{ form_widget(formJob.id) }}
     <div class="form-group">
-        {{ form_label(formStudies.description) }}
-        {{ form_errors(formStudies.description) }}
-        {{ form_widget(formStudies.description, {'attr': {'class': 'form-control'}}) }}
+        {{ form_label(formJob.company) }}
+        {{ form_errors(formJob.company) }}
+        {{ form_widget(formJob.company, {'attr': {'class': 'form-control'}}) }}
     </div>
     <div class="form-group">
-        {{ form_label(formStudies.studies) }}
-        {{ form_errors(formStudies.studies) }}
-        {{ form_widget(formStudies.studies, {'attr': {'class': 'form-control'}}) }}
+        {{ form_label(formJob.contractType) }}
+        {{ form_errors(formJob.contractType) }}
+        {{ form_widget(formJob.contractType, {'attr': {'class': 'form-control'}}) }}
     </div>
     <div class="form-group">
-        <!--select id="js-data-example-ajax">
-        </select-->
-        {{ form_label(formStudies.center) }}
-        {{ form_errors(formStudies.center) }}
-        {{ form_widget(formStudies.center, {'attr': {'class': 'form-control'}}) }}
+        {{ form_label(formJob.description) }}
+        {{ form_errors(formJob.description) }}
+        {{ form_widget(formJob.description, {'attr': {'class': 'form-control'}}) }}
     </div>
     <div class="form-group">
-        {{ form_label(formStudies.endYear) }}
-        {{ form_errors(formStudies.endYear) }}
-        {{ form_widget(formStudies.endYear, {'attr': {'class': 'form-control'}}) }}
+        {{ form_label(formJob.endDate) }}
+        {{ form_errors(formJob.endDate) }}
+        {{ form_widget(formJob.endDate, {'attr': {'class': 'form-control'}}) }}
     </div>
 
 
     <div class="form-group">
-        {{ form_row(formStudies._token) }}
-        {{ form_widget(formStudies.save, {'attr': {'class': 'form-control'}}) }}
+        {{ form_row(formJob._token) }}
+        {{ form_widget(formJob.save, {'attr': {'class': 'form-control'}}) }}
     </div>
 </form>
 {% endblock %}

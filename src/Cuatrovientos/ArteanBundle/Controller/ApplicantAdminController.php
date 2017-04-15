@@ -14,30 +14,21 @@ use Cuatrovientos\ArteanBundle\Form\Type\ApplicantSignUpType;
 
 class ApplicantAdminController extends Controller
 {
-    /**
-    *
-    *
-    */
+
     public function indexAction()
     {
          $form = $this->createForm(ApplicantSignInType::class);
         return $this->render('CuatrovientosArteanBundle:Applicant:signIn.html.twig', array('form'=> $form->createView()));
     }  
     
-    /**
-    *
-    *
-    */
+
    public function applicantSignInAction()
     {
         $form = $this->createForm(ApplicantSignInType::class);
         return $this->render('CuatrovientosArteanBundle:Applicant:signIn.html.twig', array('form'=> $form->createView()));
     }
 
-    /**
-    *
-    *
-    */
+
     public function applicantSignInSaveAction(Request $request)
     {
         //$form = $this->createForm(new ApplicantType(), new Applicant());

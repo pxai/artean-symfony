@@ -116,6 +116,11 @@ class Applicant extends Entity
      */
     private $languages;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ApplicantJobs", mappedBy="applicant",fetch="EXTRA_LAZY")
+     */
+    private $jobs;
+
     public function __construct () {
         $this->studies = array();
     }
@@ -382,6 +387,22 @@ class Applicant extends Entity
     public function setLanguages($languages)
     {
         $this->languages = $languages;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getJobs()
+    {
+        return $this->jobs;
+    }
+
+    /**
+     * @param mixed $jobs
+     */
+    public function setJobs($jobs)
+    {
+        $this->jobs = $jobs;
     }
 
 

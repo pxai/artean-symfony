@@ -499,7 +499,10 @@ class Company  extends Entity
         $this->convenio_pipdual = $convenio_pipdual;
     }
 
-
+    function __toString()
+    {
+        return $this->empresa;
+    }
 
 
 }

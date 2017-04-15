@@ -6,10 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Cuatrovientos\ArteanBundle\Entity\Applicant;
 use Cuatrovientos\ArteanBundle\Entity\ApplicantStudies;
+use Cuatrovientos\ArteanBundle\Entity\ApplicantJobs;
 use Cuatrovientos\ArteanBundle\Entity\ApplicantLanguages;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantType;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantStudiesType;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantLanguageType;
+use Cuatrovientos\ArteanBundle\Form\Type\ApplicantJobType;
 
 class ApplicantController extends Controller
 {
@@ -18,28 +20,24 @@ class ApplicantController extends Controller
     {
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
         $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($this->user->getId());
-       /* $applicantStudies = new ApplicantStudies();
-        $applicantStudies->setApplicant($applicant);
 
-        $applicantLanguages = new ApplicantLanguages();
-        $applicantLanguages->setApplicant($applicant);*/
 
         $form = $this->createForm(ApplicantType::class, $applicant);
         $formStudies = $this->createForm(ApplicantStudiesType::class, new ApplicantStudies());
         $formLanguage = $this->createForm(ApplicantLanguageType::class, new ApplicantLanguages());
+        $formJob = $this->createForm(ApplicantJobType::class, new ApplicantJobs());
         return $this->render('CuatrovientosArteanBundle:Applicant:dashboard.html.twig',
             array(  'form'=> $form->createView(),
                     'formStudies'=>$formStudies->createView(),
                     'formLanguage'=>$formLanguage->createView(),
+                    'formJob'=>$formJob->createView(),
                     'applicant'=>$applicant));
     }
 
 
     public function updateAction(Request $request) {
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
-        $logger = $this->get('logger');
         $form = $this->createForm(ApplicantType::class, new Applicant());
-      //  $form->submit($request->request->get($form->getName()));
 
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
@@ -55,6 +53,7 @@ class ApplicantController extends Controller
         }
         return $response;
     }
+
 
     public function newStudiesAction(Request $request) {
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
@@ -103,10 +102,8 @@ class ApplicantController extends Controller
 
     public function updateStudiesSaveAction(Request $request) {
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
-        $logger = $this->get('logger');
         $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($this->user->getId());
         $form = $this->createForm(ApplicantStudiesType::class, new ApplicantStudies());
-        //  $form->submit($request->request->get($form->getName()));
 
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
@@ -184,6 +181,71 @@ class ApplicantController extends Controller
         $applicantLanguages= $this->get("cuatrovientos_artean.bo.applicant")->selectApplicantLanguages($id, $applicant);
         if (null !=  $applicantLanguages) {
             $this->get("cuatrovientos_artean.bo.applicant")->deleteApplicantLanguages($applicantLanguages);
+        }
+        return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');
+    }
+
+    public function newJobAction(Request $request) {
+        $this->user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($this->user->getId());
+        $form = $this->createForm(ApplicantJobType::class, new ApplicantJobs());
+
+        if ($request->getMethod() == 'POST') {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                $applicantJob = $form->getData();
+                $applicantJob ->setApplicant($applicant);
+                $this->get("cuatrovientos_artean.bo.applicant")->saveApplicantJobs($applicantJob);
+
+                return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');
+            } else  {
+                $response = $this->render('CuatrovientosArteanBundle:Applicant:dashboard.html.twig', array('form'=> $form->createView()));
+            }
+        }
+        return $response;
+    }
+
+    public function updateJobAction($id) {
+        $this->user = $this->get('security.token_storage')->getToken()->getUser();
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($this->user->getId());
+        $applicantJob= $this->get("cuatrovientos_artean.bo.applicant")->selectApplicantJobs($id, $applicant);
+
+        if (null !=  $applicantJob) {
+            $formJob = $this->createForm(ApplicantJobType::class, $applicantJob);
+            return $this->render('CuatrovientosArteanBundle:Applicant/Jobs:update.html.twig', array('formJob' => $formJob->createView()));
+        } else {
+            return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');
+        }
+    }
+
+    public function updateJobSaveAction(Request $request) {
+        $this->user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($this->user->getId());
+        $form = $this->createForm(ApplicantJobType::class, new ApplicantJobs());
+
+        if ($request->getMethod() == 'POST') {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                $applicantJob = $form->getData();
+                $applicantJob->setApplicant($applicant);
+                $this->get("cuatrovientos_artean.bo.applicant")->updateApplicantJobs($applicantJob);
+
+                return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');
+            } else  {
+                $response = $this->render('CuatrovientosArteanBundle:Applicant:dashboard.html.twig', array('form'=> $form->createView()));
+            }
+        }
+        return $response;
+    }
+
+    public function deleteJobAction($id) {
+        $this->user = $this->get('security.token_storage')->getToken()->getUser();
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($this->user->getId());
+        $applicantJobs= $this->get("cuatrovientos_artean.bo.applicant")->selectApplicantJobs($id, $applicant);
+        if (null !=  $applicantJobs) {
+            $this->get("cuatrovientos_artean.bo.applicant")->deleteApplicantJobs($applicantJobs);
         }
         return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');
     }

@@ -7,7 +7,7 @@
             <li class="active"><a href="#tab1" data-toggle="tab">Aspirante</a></li>
             <li ><a href="#tab2" data-toggle="tab">Estudios</a></li>
             <li ><a href="#tab3" data-toggle="tab">Idiomas</a></li>
-            <li ><a href="#tab4" data-toggle="tab">Experiencia</a></li>
+            <li ><a href="#tab4" data-toggle="tab">Experiencia laboral</a></li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="tab1">
@@ -19,7 +19,9 @@
             <div class="tab-pane" id="tab3">
                 {% include "CuatrovientosArteanBundle:Applicant/Languages:languages.html.twig" %}
             </div>
-            <div class="tab-pane" id="tab4"><br/>Fourth tab content</div>
+            <div class="tab-pane" id="tab4">
+                {% include "CuatrovientosArteanBundle:Applicant/Jobs:jobs.html.twig" %}
+            </div>
         </div>
     </div>
 
