@@ -22,7 +22,7 @@ class ApplicantJobs extends Entity
      * @ORM\JoinColumn(name="idapplicant", referencedColumnName="id")
      */
     private $applicant;
-  
+
     /**
      * @ORM\ManyToOne(targetEntity="Company")
      * @ORM\JoinColumn(name="idemployer", referencedColumnName="id")
@@ -100,6 +100,17 @@ class ApplicantJobs extends Entity
     /**
      * @param mixed $company
      */
+    public function setNewCompany()
+    {
+        $company = new Company();
+        $company->setId($this->companyName);
+        $this->setCompany($company);
+        return $this;
+    }
+
+    /**
+     * @param mixed $company
+     */
     public function setCompany($company)
     {
         $this->company = $company;
@@ -171,5 +182,5 @@ class ApplicantJobs extends Entity
 
 
 
-   
+
 }

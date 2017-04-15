@@ -1,11 +1,9 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}Artean :: Datos aspirante{% endblock %}
 {% block extrastyles %}
-    {% stylesheets
-    'bundles/cuatrovientosartean/css/selectize.bootstrap3.css'
-    filter='cssrewrite' output='css/compiled/select.css' %}
-    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
-    {% endstylesheets %}
+    <style>
+        {% include "CuatrovientosArteanBundle:Applicant/Studies:studies.select.css" %}
+    </style>
 {% endblock %}
 {% block body %}
 <h1>Aspirante</h1>
@@ -13,9 +11,10 @@
     {{ form_errors(formJob) }}
     {{ form_widget(formJob.id) }}
     <div class="form-group">
-        {{ form_label(formJob.company) }}
-        {{ form_errors(formJob.company) }}
-        {{ form_widget(formJob.company, {'attr': {'class': 'form-control'}}) }}
+        <label for="applicant_job_company" class="required">Empresa</label>
+        <select id="applicant_job_company" name="applicant_job[companyName]">
+            <option value="{{ applicantJob.company.id }}">{{ applicantJob.company.empresa }}</option>
+        </select>
     </div>
     <div class="form-group">
         {{ form_label(formJob.contractType) }}
@@ -43,46 +42,53 @@
 {% block extrascripts %}
     {% javascripts
     '@CuatrovientosArteanBundle/Resources/public/js/selectize.js'
+    '@CuatrovientosArteanBundle/Resources/public/js/es5.js'
     %}
     <!-- Optionally enable responsive features in IE8 -->
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     <script language="javascript">
-        // <select id="select-movie"></select>
-        $('#js-data-example-ajax').selectize({
+        $('#applicant_job_company').selectize({
             valueField: 'id',
-            labelField: 'name',
-            searchField: 'title',
+            labelField: 'empresa',
+            searchField: 'empresa',
             options: [],
-            create: false,
+            create: true,
             render: {
                 option: function(item, escape) {
                     return '<div>' +
                             '<span class="title">' +
-                            '<span class="name">' + escape(item.id) +':' +escape(item.name) +  '</span>' +
-                             '</div>';
+                            '<span class="empresa">' + escape(item.empresa) +  '</span>' +
+                            '</span>' +
+                            '</div>';
                 }
             },
             load: function(query, callback) {
                 if (!query.length) return callback();
                 $.ajax({
-                    url: '{{ path('cuatrovientos_artean_api_center_index') }}',
+                    url: '{{ path('cuatrovientos_artean_api_company_index') }}',
                     type: 'GET',
-                    dataType: 'jsonp',
+                    dataType: 'json',
                     data: {
                         term: query,
-                        page_limit: 10,
+                        page_limit: 100,
                     },
                     error: function() {
                         callback();
                     },
                     success: function(res) {
-                        console.log(res);
-                        callback(res);
+                        if (res.length === 0) {
+                            console.log('Nothing found');
+                        } else {
+                            console.log(res);
+                            callback(res);
+                        }
                     }
                 });
             }
         });
-        </script>
-{% endblock %}
 
+
+
+    </script>
+{% endblock %}

@@ -210,10 +210,11 @@ class ApplicantController extends Controller
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
         $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($this->user->getId());
         $applicantJob= $this->get("cuatrovientos_artean.bo.applicant")->selectApplicantJobs($id, $applicant);
+        $applicantJob->getCompany();
 
         if (null !=  $applicantJob) {
             $formJob = $this->createForm(ApplicantJobType::class, $applicantJob);
-            return $this->render('CuatrovientosArteanBundle:Applicant/Jobs:update.html.twig', array('formJob' => $formJob->createView()));
+            return $this->render('CuatrovientosArteanBundle:Applicant/Jobs:update.html.twig', array('formJob' => $formJob->createView(),'applicantJob'=>$applicantJob));
         } else {
             return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');
         }

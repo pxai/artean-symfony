@@ -121,6 +121,47 @@
             }
         });
 
+        $('#applicant_job_company').selectize({
+            valueField: 'id',
+            labelField: 'empresa',
+            searchField: 'empresa',
+            options: [],
+            create: true,
+            render: {
+                option: function(item, escape) {
+                    return '<div>' +
+                            '<span class="title">' +
+                            '<span class="empresa">' + escape(item.empresa) +  '</span>' +
+                            '</span>' +
+                            '</div>';
+                }
+            },
+            load: function(query, callback) {
+                if (!query.length) return callback();
+                $.ajax({
+                    url: '{{ path('cuatrovientos_artean_api_company_index') }}',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {
+                        term: query,
+                        page_limit: 100,
+                    },
+                    error: function() {
+                        callback();
+                    },
+                    success: function(res) {
+                        if (res.length === 0) {
+                            console.log('Nothing found');
+                        } else {
+                            console.log(res);
+                            callback(res);
+                        }
+                    }
+                });
+            }
+        });
+
+
     </script>
 {% endblock %}
 

@@ -2,9 +2,9 @@
     {{ form_errors(formJob) }}
     {{ form_widget(formJob.id) }}
     <div class="form-group">
-        {{ form_label(formJob.company) }}
-        {{ form_errors(formJob.company) }}
-        {{ form_widget(formJob.company, {'attr': {'class': 'form-control'}}) }}
+        <label for="applicant_job_company" class="required">Empresa</label>
+        <select id="applicant_job_company" name="applicant_job[companyName]">
+         </select>
     </div>
     <div class="form-group">
         {{ form_label(formJob.contractType) }}

@@ -5,13 +5,14 @@ namespace Cuatrovientos\ArteanBundle\Service\Business;
 use Cuatrovientos\ArteanBundle\Entity\Applicant;
 use Cuatrovientos\ArteanBundle\Entity\Center;
 use Cuatrovientos\ArteanBundle\Entity\Studies;
+use Cuatrovientos\ArteanBundle\Entity\Company;
 use Cuatrovientos\ArteanBundle\Service\DAO\ApplicantDAO;
 use Cuatrovientos\ArteanBundle\Service\DAO\ApplicantStudiesDAO;
 use Cuatrovientos\ArteanBundle\Service\DAO\ApplicantLanguagesDAO;
 use Cuatrovientos\ArteanBundle\Service\DAO\ApplicantJobsDAO;
 use Cuatrovientos\ArteanBundle\Service\DAO\CenterDAO;
 use Cuatrovientos\ArteanBundle\Service\DAO\StudiesDAO;
-
+use Cuatrovientos\ArteanBundle\Service\DAO\CompanyDAO;
 
 class ApplicantBusiness extends GenericBusiness {
 
@@ -20,19 +21,22 @@ class ApplicantBusiness extends GenericBusiness {
     private $applicantJobsDAO;
     private $centerDAO;
     private $studiesDAO;
+    private $companyDAO;
 
     public function __construct (ApplicantDAO $applicantDAO,
                                  ApplicantStudiesDAO $applicantStudiesDAO,
                                  ApplicantLanguagesDAO $applicantLanguagesDAO,
                                  ApplicantJobsDAO $applicantJobsDAO,
                                  CenterDAO $centerDAO,
-                                 StudiesDAO $studiesDAO) {
+                                 StudiesDAO $studiesDAO,
+                                 CompanyDAO $companyDAO) {
         $this->entityDAO = $applicantDAO;
         $this->applicantStudiesDAO = $applicantStudiesDAO;
         $this->applicantLanguagesDAO = $applicantLanguagesDAO;
         $this->applicantJobsDAO = $applicantJobsDAO;
         $this->centerDAO = $centerDAO;
         $this->studiesDAO = $studiesDAO;
+        $this->companyDAO = $companyDAO;
     }
 
 
@@ -84,10 +88,12 @@ class ApplicantBusiness extends GenericBusiness {
     }
 
     public function saveApplicantJobs($applicantJobs) {
+        $this->setJobCompany($applicantJobs);
         $this->applicantJobsDAO->create($applicantJobs);
     }
 
     public function updateApplicantJobs($applicantJobs) {
+        $this->setJobCompany($applicantJobs);
         $this->applicantJobsDAO->update($applicantJobs);
     }
 
@@ -132,6 +138,26 @@ class ApplicantBusiness extends GenericBusiness {
             $studies->setName($applicantStudies->getStudiesValue());
             $this->studiesDAO->create($studies);
             $applicantStudies->setStudies($studies);
+        }
+    }
+
+    /**
+     * @param $applicantStudies
+     */
+    private function setJobCompany($applicantJob)
+    {
+        if (preg_match("/^[0-9]+$/", $applicantJob->getCompanyName())) {
+            // Check that exists
+            if ($company = $this->companyDAO->selectById($applicantJob->getCompanyName())) {
+                $applicantJob->setCompany($company);
+            } else { // else, insert that number as the name
+                $applicantJob->setNewCompany();
+            }
+        } else { // Else, new Company must be created
+            $company = new Company();
+            $company->setEmpresa($applicantJob->getCompanyName());
+            $this->companyDAO->create($company);
+            $applicantJob->setCompany($company);
         }
     }
 }
