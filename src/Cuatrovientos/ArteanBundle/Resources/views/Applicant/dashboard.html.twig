@@ -1,5 +1,10 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}Artean :: Datos aspirante{% endblock %}
+{% block extrastyles %}
+    <style>
+        {% include "CuatrovientosArteanBundle:Applicant/Studies:studies.select.css" %}
+    </style>
+{% endblock %}
 {% block body %}
 <h1>Aspirante</h1>
     <div>
@@ -27,3 +32,95 @@
 
 
 {% endblock %}
+{% block extrascripts %}
+    {% javascripts
+    '@CuatrovientosArteanBundle/Resources/public/js/selectize.js'
+    '@CuatrovientosArteanBundle/Resources/public/js/es5.js'
+    %}
+    <!-- Optionally enable responsive features in IE8 -->
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script language="javascript">
+        $('#applicant_studies_center').selectize({
+            valueField: 'id',
+            labelField: 'name',
+            searchField: 'name',
+            options: [],
+            create: true,
+            render: {
+                option: function(item, escape) {
+                    return '<div>' +
+                            '<span class="title">' +
+                            '<span class="name">' + escape(item.name) +  '</span>' +
+                            '</span>' +
+                            '</div>';
+                }
+            },
+            load: function(query, callback) {
+                if (!query.length) return callback();
+                $.ajax({
+                    url: '{{ path('cuatrovientos_artean_api_center_index') }}',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {
+                        term: query,
+                        page_limit: 100,
+                    },
+                    error: function() {
+                        callback();
+                    },
+                    success: function(res) {
+                        if (res.length === 0) {
+                            console.log('Nothing found');
+                        } else {
+                            console.log(res);
+                            callback(res);
+                        }
+                    }
+                });
+            }
+        });
+
+        $('#applicant_studies_studies').selectize({
+            valueField: 'id',
+            labelField: 'name',
+            searchField: 'name',
+            options: [],
+            create: true,
+            render: {
+                option: function(item, escape) {
+                    return '<div>' +
+                            '<span class="title">' +
+                            '<span class="name">' + escape(item.name) +  '</span>' +
+                            '</span>' +
+                            '</div>';
+                }
+            },
+            load: function(query, callback) {
+                if (!query.length) return callback();
+                $.ajax({
+                    url: '{{ path('cuatrovientos_artean_api_studies_index') }}',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {
+                        term: query,
+                        page_limit: 100,
+                    },
+                    error: function() {
+                        callback();
+                    },
+                    success: function(res) {
+                        if (res.length === 0) {
+                            console.log('Nothing found');
+                        } else {
+                            console.log(res);
+                            callback(res);
+                        }
+                    }
+                });
+            }
+        });
+
+    </script>
+{% endblock %}
+

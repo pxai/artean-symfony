@@ -23,26 +23,14 @@ class ApplicantLanguageType extends AbstractType {
                     'class' => 'CuatrovientosArteanBundle:Language',
                    'label' => 'Idioma' )
             )
-            ->add('speaking', ChoiceType::class, array('label'=> 'Nivel hablado',
-                'choices'  => array(
-                    'A1' => '1',
-                    'A2'     => '2',
-                    'B1'    => '3',
-                    'B2'    => '4',
-                    'C1'    => '5',
-                    'C2'    => '6',
-                    'Nativo'    => '7')
-                ))
-            ->add('writing', ChoiceType::class, array('label'=> 'Nivel escrito',
-                'choices'  => array(
-                    'A1' => '1',
-                    'A2'     => '2',
-                    'B1'    => '3',
-                    'B2'    => '4',
-                    'C1'    => '5',
-                    'C2'    => '6',
-                    'Nativo'    => '7')
-            ))
+            ->add('speaking', EntityType::class, array(
+                    'class' => 'CuatrovientosArteanBundle:LanguageLevel',
+                    'label' => 'Nivel hablado' )
+            )
+            ->add('writing', EntityType::class, array(
+                    'class' => 'CuatrovientosArteanBundle:LanguageLevel',
+                    'label' => 'Nivel escrito' )
+            )
             ->add('description', TextareaType::class, array('label' => 'Descripción', 'required'=>true))
             ->add('save', SubmitType::class);
     }

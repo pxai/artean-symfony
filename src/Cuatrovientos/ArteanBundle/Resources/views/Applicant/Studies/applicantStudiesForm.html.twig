@@ -7,14 +7,14 @@
         {{ form_widget(formStudies.description, {'attr': {'class': 'form-control'}}) }}
     </div>
     <div class="form-group">
-        {{ form_label(formStudies.studies) }}
-        {{ form_errors(formStudies.studies) }}
-        {{ form_widget(formStudies.studies, {'attr': {'class': 'form-control'}}) }}
+        <label for="applicant_studies_studies" class="required">Estudios</label>
+        <select id="applicant_studies_studies" name="applicant_studies[studiesValue]">
+        </select>
     </div>
     <div class="form-group">
-        {{ form_label(formStudies.centerValue) }}
-        {{ form_errors(formStudies.centerValue) }}
-        {{ form_widget(formStudies.centerValue, {'attr': {'class': 'form-control'}}) }}
+        <label for="applicant_studies_center" class="required">Centro</label>
+        <select id="applicant_studies_center" name="applicant_studies[centerValue]">
+        </select>
     </div>
     <div class="form-group">
         {{ form_label(formStudies.endYear) }}

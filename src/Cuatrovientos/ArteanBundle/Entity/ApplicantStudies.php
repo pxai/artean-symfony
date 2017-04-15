@@ -4,6 +4,8 @@ namespace Cuatrovientos\ArteanBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Cuatrovientos\ArteanBundle\Entity\Center;
+use Cuatrovientos\ArteanBundle\Entity\Studies;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="tbalumnosestudios")
@@ -40,7 +42,7 @@ class ApplicantStudies extends Entity
      */
     private $center;
 
-
+    private $studiesValue;
     private $centerValue;
 
     /**
@@ -50,7 +52,6 @@ class ApplicantStudies extends Entity
 
 
     public function __construct () {
-        //$this->applicant = new Applicant();
     }
 
     public function getId() {
@@ -161,6 +162,32 @@ class ApplicantStudies extends Entity
     public function setCenterValue($centerValue)
     {
         $this->centerValue = $centerValue;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStudiesValue()
+    {
+        return $this->studiesValue;
+    }
+
+    /**
+     * @param mixed $center
+     */
+    public function setNewStudies()
+    {
+        $studies = new Studies();
+        $studies->setId($this->studiesValue);
+        $this->setStudies($studies);
+        return $this;
+    }
+    /**
+     * @param mixed $studiesValue
+     */
+    public function setStudiesValue($studiesValue)
+    {
+        $this->studiesValue = $studiesValue;
     }
 
 

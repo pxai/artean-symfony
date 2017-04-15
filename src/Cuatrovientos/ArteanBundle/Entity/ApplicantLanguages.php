@@ -31,12 +31,14 @@ class ApplicantLanguages extends Entity
 
 
     /**
-     * @ORM\Column(name="hablado",type="integer")
+     * @ORM\ManyToOne(targetEntity="LanguageLevel")
+     * @ORM\JoinColumn(name="hablado", referencedColumnName="id")
      */
     private $speaking;
 
     /**
-     * @ORM\Column(name="escrito",type="integer")
+     * @ORM\ManyToOne(targetEntity="LanguageLevel")
+     * @ORM\JoinColumn(name="escrito", referencedColumnName="id")
      */
     private $writing;
 

@@ -414,22 +414,18 @@ cuatrovientos_artean_api_center_index:
     defaults: { _controller: CuatrovientosArteanBundle:Api\CenterApi:index }
 
 cuatrovientos_artean_api_studies_index:
-    path: "/api/studies/{term}"
+    path: "/api/studies/"
     defaults: { _controller: CuatrovientosArteanBundle:Api\StudiesApi:index }
-    requirements:
-           'term' : '\w+'
+
 
 cuatrovientos_artean_api_company_index:
-    path: "/api/company/{term}"
+    path: "/api/company/"
     defaults: { _controller: CuatrovientosArteanBundle:Api\CompanyApi:index }
-    requirements:
-           'term' : '\w+'
+
 
 cuatrovientos_artean_api_applicant_index:
-    path: "/api/admin/applicant/{term}"
+    path: "/api/admin/applicant/"
     defaults: { _controller: CuatrovientosArteanBundle:Api\ApplicantApi:index }
-    requirements:
-           'term' : '\w+'
 
 cuatrovientos_artean_applicant_dashboard:
     path:     /artean/applicant/dashboard

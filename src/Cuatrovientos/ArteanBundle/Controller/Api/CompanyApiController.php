@@ -14,9 +14,9 @@ class CompanyApiController extends Controller
     /**
      * @Rest\View
      */
-    public function indexAction($term)
+    public function indexAction(Request $request)
     {
-        return $this->get("cuatrovientos_artean.bo.company")->findCompanies($term);
+        return $this->get("cuatrovientos_artean.bo.company")->findCompanies($request->query->get('term'));
     }
 
 }
