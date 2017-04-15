@@ -24,10 +24,7 @@ class ApplicantStudiesType extends AbstractType {
                     'class' => 'CuatrovientosArteanBundle:Studies',
                    'label' => 'Estudios' )
             )
-            ->add('center', EntityType::class, array(
-                    'class' => 'CuatrovientosArteanBundle:Center',
-                    'label' => 'Centro' )
-            )
+            ->add('centerValue', TextType::class, array('label' => 'Centro', 'required'=>true))
             ->add('endYear', TextType::class, array('label' => 'Año fin', 'required'=>false))
             ->add('save', SubmitType::class);
     }

@@ -3,25 +3,30 @@
 namespace Cuatrovientos\ArteanBundle\Service\Business;
 
 use Cuatrovientos\ArteanBundle\Entity\Applicant;
+use Cuatrovientos\ArteanBundle\Entity\Center;
 use Cuatrovientos\ArteanBundle\Service\DAO\ApplicantDAO;
 use Cuatrovientos\ArteanBundle\Service\DAO\ApplicantStudiesDAO;
 use Cuatrovientos\ArteanBundle\Service\DAO\ApplicantLanguagesDAO;
 use Cuatrovientos\ArteanBundle\Service\DAO\ApplicantJobsDAO;
+use Cuatrovientos\ArteanBundle\Service\DAO\CenterDAO;
 
 class ApplicantBusiness extends GenericBusiness {
 
     private $applicantStudiesDAO;
     private $applicantLanguagesDAO;
     private $applicantJobsDAO;
+    private $centerDAO;
 
     public function __construct (ApplicantDAO $applicantDAO,
                                  ApplicantStudiesDAO $applicantStudiesDAO,
                                  ApplicantLanguagesDAO $applicantLanguagesDAO,
-                                 ApplicantJobsDAO $applicantJobsDAO) {
+                                 ApplicantJobsDAO $applicantJobsDAO,
+                                 CenterDAO $centerDAO) {
         $this->entityDAO = $applicantDAO;
         $this->applicantStudiesDAO = $applicantStudiesDAO;
         $this->applicantLanguagesDAO = $applicantLanguagesDAO;
         $this->applicantJobsDAO = $applicantJobsDAO;
+        $this->centerDAO = $centerDAO;
     }
 
 
@@ -39,7 +44,16 @@ class ApplicantBusiness extends GenericBusiness {
     }
 
     public function updateApplicantStudies($applicantStudies) {
-        $this->applicantStudiesDAO->update($applicantStudies);
+        // If id is inserted
+        if (preg_match("/^[0-9]+$/",$applicantStudies->getCenterValue())) {
+            $this->applicantStudiesDAO->update($applicantStudies->setNewCenter());
+        } else { // Else, new Center must be created
+            $center = new Center();
+            $center->setName($applicantStudies->getCenterValue());
+            $this->centerDAO->create($center);
+            $applicantStudies->setCenter($center);
+            $this->applicantStudiesDAO->update($applicantStudies);
+        }
     }
 
     public function deleteApplicantStudies($applicantStudies) {

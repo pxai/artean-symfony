@@ -3,7 +3,7 @@
 namespace Cuatrovientos\ArteanBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Cuatrovientos\ArteanBundle\Entity\Center;
 /**
  * @ORM\Entity
  * @ORM\Table(name="tbalumnosestudios")
@@ -39,6 +39,9 @@ class ApplicantStudies extends Entity
      * @ORM\JoinColumn(name="codcentro", referencedColumnName="codcentro")
      */
     private $center;
+
+
+    private $centerValue;
 
     /**
      * @ORM\Column(name="anofin",type="integer")
@@ -126,11 +129,38 @@ class ApplicantStudies extends Entity
     }
 
     /**
-     * @param mixed $center
+     * @param mixed $centerValue
      */
     public function setCenter($center)
     {
         $this->center = $center;
+    }
+
+    /**
+     * @param mixed $center
+     */
+    public function setNewCenter()
+    {
+        $center = new Center();
+        $center->setId($this->centerValue);
+        $this->setCenter($center);
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCenterValue()
+    {
+        return $this->centerValue;
+    }
+
+    /**
+     * @param mixed $centerValue
+     */
+    public function setCenterValue($centerValue)
+    {
+        $this->centerValue = $centerValue;
     }
 
 

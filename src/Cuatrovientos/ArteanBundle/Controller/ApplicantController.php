@@ -91,10 +91,10 @@ class ApplicantController extends Controller
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
         $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($this->user->getId());
         $applicantStudies= $this->get("cuatrovientos_artean.bo.applicant")->selectApplicantStudies($id, $applicant);
-
+        $applicantStudies->getCenter();
         if (null !=  $applicantStudies) {
             $formStudies = $this->createForm(ApplicantStudiesType::class, $applicantStudies);
-            return $this->render('CuatrovientosArteanBundle:Applicant/Studies:update.html.twig', array('formStudies' => $formStudies->createView()));
+            return $this->render('CuatrovientosArteanBundle:Applicant/Studies:update.html.twig', array('formStudies' => $formStudies->createView(),'applicantStudies'=>$applicantStudies));
         } else {
             return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');
         }
