@@ -1,0 +1,43 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean :: Solicitudes : Detalle de solicitud{% endblock %}
+{% block body %}
+    <h2><i class="fa fa-industry" aria-hidden="true"></i> Solicitud de empleo</h2>
+
+    <a href="{{ path('cuatrovientos_artean_jobrequest') }}" class="btn">
+        <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
+    </a>
+    <h3><i class="fa fa-search-plus" aria-hidden="true"></i> Detalle de solicitud</h3>
+    <a href="{{ path('cuatrovientos_artean_jobrequest_update', {'id': jobRequest.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> Modificar</a>
+    <ul>
+     <li><strong>Id: </strong>{{ jobRequest.id }}</li>
+     <li><strong>Fecha orferta: </strong>{{ jobRequest.offerdate }}</li>
+     <li><strong>Descripción: </strong>{{ jobRequest.description }}</li>
+        {%   if (jobRequest.company != null ) %}
+        <li><strong>Empresa: </strong>{#}{ jobRequest.company.empresa }#}</li>
+        {%  endif %}
+     <li><strong>Att: </strong>{{ jobRequest.att }}</li>
+     <li><strong>Saludo: </strong>{{ jobRequest.greeting }}</li>
+     <li><strong>Provincia: </strong>{{ jobRequest.province }}</li>
+     <li><strong>Ciudad: </strong>{{ jobRequest.city }}</li>
+     <li><strong>Sexo: </strong>{{ jobRequest.sex }}</li>
+        <li><strong>Horario: </strong>{{ jobRequest.schedule }}</li>
+        <li><strong>Tipo de contrato: </strong>{{ jobRequest.contractType }}</li>
+        <li><strong>Categoría: </strong>{{ jobRequest.category }}</li>
+        <li><strong>Estudios requeridos: </strong>{{ jobRequest.requiredStudies }}</li>
+        <li><strong>Perfil: </strong>{{ jobRequest.profile }}</li>
+        <li><strong>Requisitos: </strong>{{ jobRequest.skills }}</li>
+        <li><strong>Idiomas requeridos: </strong>{{ jobRequest.requiredLanguages }}</li>
+        <li><strong>Vacantes: </strong>{{ jobRequest.positionNo }}</li>
+        <li><strong>Jornada: </strong>{{ jobRequest.workday }}</li>
+        <li><strong>Salario: </strong>{{ jobRequest.salary }}</li>
+        <li><strong>Urgencia: </strong>{{ jobRequest.urgent }}</li>
+        <li><strong>Incidencias: </strong>{{ jobRequest.issues }}</li>
+        <li><strong>Notas: </strong>{{ jobRequest.notes }}</li>
+        <li><strong>Valoración: </strong>{{ jobRequest.rating }}</li>
+    </ul>
+		{#% if is_granted('ROLE_ADMIN') %#}
+                <a href="{{ path('cuatrovientos_artean_jobrequest') }}">Index</a> |
+                <a href="{{ path('cuatrovientos_artean_jobrequest_update', {'id': jobRequest.id }) }}">Modificar</a> |
+                <a href="{{ path('cuatrovientos_artean_jobrequest_delete', {'id': jobRequest.id }) }}">Eliminar</a>
+		{#% endif % #}
+{% endblock %}

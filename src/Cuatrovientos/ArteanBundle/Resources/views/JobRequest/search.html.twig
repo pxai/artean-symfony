@@ -1,0 +1,31 @@
+<div class="modal-dialog" role="document">
+   <div class="modal-content">
+      <form method="post" action="{{ path('cuatrovientos_artean_jobrequest_search') }}" class="arteanform">
+      <div class="modal-header">
+
+   <a href="{{ path('cuatrovientos_artean_jobrequest') }}" class="btn">
+      <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todas
+   </a>
+
+   <h3><i class="fa fa-search" aria-hidden="true"></i> Buscar solicitudes</h3>
+         <h4 class="modal-title" id="exampleModalLabel">Buscar solicitudes a bolsa</h4>
+      </div>
+      <div class="modal-body">
+
+   {{ form_errors(form) }}
+   <div class="form-group">
+      {{ form_label(form.description) }}
+      {{ form_errors(form.description) }}
+      {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+   </div>
+
+      {{ form_row(form._token) }}
+
+      </div>
+      <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+         <button type="submit" class="btn btn-primary">Buscar ofertas</button>
+      </div>
+      </form>
+   </div>
+</div>

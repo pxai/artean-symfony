@@ -496,3 +496,55 @@ cuatrovientos_artean_applicant_dashboard_update_job:
 cuatrovientos_artean_applicant_dashboard_update_job_save:
     path:     /artean/applicant/job/update/save
     defaults: { _controller: CuatrovientosArteanBundle:Applicant:updateJobSave}
+    
+################# jobrequest ##################
+
+cuatrovientos_artean_jobrequest:
+    path:     /artean/admin/jobrequest
+    defaults: { _controller: CuatrovientosArteanBundle:JobRequest:index }
+
+cuatrovientos_artean_jobrequest_paged:
+    path:     /artean/admin/jobrequest/init/{init}/limit/{limit}
+    defaults: { _controller: CuatrovientosArteanBundle:JobRequest:index }
+    requirements:
+        'init' : '\d+'
+        'limit' : '\d+'
+
+cuatrovientos_artean_jobrequest_search:
+    path:     /artean/admin/jobrequest/search
+    defaults: { _controller: CuatrovientosArteanBundle:JobRequest:search }
+
+cuatrovientos_artean_jobrequest_new:
+    path:     /artean/admin/jobrequest/new
+    defaults: { _controller: CuatrovientosArteanBundle:JobRequest:newJobRequest }
+
+cuatrovientos_artean_jobrequest_new_save:
+    path:     /artean/admin/jobrequest/new/save
+    defaults: { _controller: CuatrovientosArteanBundle:JobRequest:newJobRequestSave }
+
+cuatrovientos_artean_jobrequest_detail:
+    path:     /artean/admin/jobrequest/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:JobRequest:jobrequestDetail }
+
+
+cuatrovientos_artean_jobrequest_update_save:
+    path:     /artean/admin/jobrequest/update/save
+    defaults: { _controller: CuatrovientosArteanBundle:JobRequest:jobrequestUpdateSave }
+
+cuatrovientos_artean_jobrequest_update:
+    path:     /artean/admin/jobrequest/update/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:JobRequest:jobrequestUpdate }
+    requirements: 
+            'id' : '\d+'
+            
+cuatrovientos_artean_jobrequest_delete:
+    path:     /artean/admin/jobrequest/delete/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:JobRequest:jobrequestDelete }
+    requirements: 
+            'id' : '\d+'
+
+cuatrovientos_artean_jobrequest_delete_save:
+    path:     /artean/admin/jobrequest/delete/save/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:JobRequest:jobrequestDeleteSave }
+    requirements: 
+            'id' : '\d+'

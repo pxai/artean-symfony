@@ -71,3 +71,11 @@ services:
     cuatrovientos_artean.bo.applicant:
          class: Cuatrovientos\ArteanBundle\Service\Business\ApplicantBusiness
          arguments: ['@cuatrovientos_artean.dao.applicant','@cuatrovientos_artean.dao.applicantStudies','@cuatrovientos_artean.dao.applicantLanguages','@cuatrovientos_artean.dao.applicantJobs','@cuatrovientos_artean.dao.center','@cuatrovientos_artean.dao.studies','@cuatrovientos_artean.dao.company']
+
+    cuatrovientos_artean.dao.jobrequest:
+         class: Cuatrovientos\ArteanBundle\Service\DAO\JobRequestDAO
+         arguments: ['CuatrovientosArteanBundle:JobRequest', '@doctrine.orm.entity_manager' ]
+
+    cuatrovientos_artean.bo.jobrequest:
+         class: Cuatrovientos\ArteanBundle\Service\Business\JobRequestBusiness
+         arguments: ['@cuatrovientos_artean.dao.jobrequest','@cuatrovientos_artean.dao.company']
