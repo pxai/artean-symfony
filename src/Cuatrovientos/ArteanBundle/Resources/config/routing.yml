@@ -548,3 +548,55 @@ cuatrovientos_artean_jobrequest_delete_save:
     defaults: { _controller: CuatrovientosArteanBundle:JobRequest:jobrequestDeleteSave }
     requirements: 
             'id' : '\d+'
+
+################# fct ##################
+
+cuatrovientos_artean_fct:
+    path:     /artean/admin/fct
+    defaults: { _controller: CuatrovientosArteanBundle:Fct:index }
+
+cuatrovientos_artean_fct_paged:
+    path:     /artean/admin/fct/init/{init}/limit/{limit}
+    defaults: { _controller: CuatrovientosArteanBundle:Fct:index }
+    requirements:
+        'init' : '\d+'
+        'limit' : '\d+'
+
+cuatrovientos_artean_fct_search:
+    path:     /artean/admin/fct/search
+    defaults: { _controller: CuatrovientosArteanBundle:Fct:search }
+
+cuatrovientos_artean_fct_new:
+    path:     /artean/admin/fct/new
+    defaults: { _controller: CuatrovientosArteanBundle:Fct:newFct }
+
+cuatrovientos_artean_fct_new_save:
+    path:     /artean/admin/fct/new/save
+    defaults: { _controller: CuatrovientosArteanBundle:Fct:newFctSave }
+
+cuatrovientos_artean_fct_detail:
+    path:     /artean/admin/fct/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Fct:fctDetail }
+
+
+cuatrovientos_artean_fct_update_save:
+    path:     /artean/admin/fct/update/save
+    defaults: { _controller: CuatrovientosArteanBundle:Fct:fctUpdateSave }
+
+cuatrovientos_artean_fct_update:
+    path:     /artean/admin/fct/update/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Fct:fctUpdate }
+    requirements: 
+            'id' : '\d+'
+            
+cuatrovientos_artean_fct_delete:
+    path:     /artean/admin/fct/delete/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Fct:fctDelete }
+    requirements: 
+            'id' : '\d+'
+
+cuatrovientos_artean_fct_delete_save:
+    path:     /artean/admin/fct/delete/save/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Fct:fctDeleteSave }
+    requirements: 
+            'id' : '\d+'

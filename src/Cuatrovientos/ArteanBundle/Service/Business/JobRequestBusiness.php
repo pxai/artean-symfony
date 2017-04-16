@@ -33,10 +33,6 @@ class JobRequestBusiness extends GenericBusiness {
         $this->entityDAO->update($jobRequest);
     }
 
-    public function deleteApplicantJobs($applicantJobs) {
-        $this->applicantJobsDAO->remove($applicantJobs);
-    }
-
     public function findJobRequests($term) {
         return $this->entityDAO->findJobRequests($term);
     }

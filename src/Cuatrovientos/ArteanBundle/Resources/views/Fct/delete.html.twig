@@ -1,0 +1,21 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean :: Fcts : Eliminar solicitud{% endblock %}
+{% block body %}
+	<h2><i class="fa fa-industry" aria-hidden="true"></i> Fcts</h2>
+
+	<a href="{{ path('cuatrovientos_artean_fct') }}" class="btn">
+		<i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
+	</a>
+
+	<h3><i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar fcts {{ fct.id }}</h3>
+ <div id='center'>
+		<div>
+			{% trans %}Estás seguro{% endtrans %}
+			<div class='title'>{{ fct.company.empresa }}</div>
+			<div class='title'>{{ fct.applicant.name }}</div>
+			<div class='title'>{{ fct.description }}</div>
+			<div><a href="{{ path('cuatrovientos_artean_fct_delete_save',  {'id': fct.id }) }}">Confirmar</a> </div>
+			<div><a href="javascript:history.back()">Cancelar</a> </div>
+		</div>
+</div>
+{% endblock %}

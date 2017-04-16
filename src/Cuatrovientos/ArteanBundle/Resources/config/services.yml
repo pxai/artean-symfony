@@ -79,3 +79,11 @@ services:
     cuatrovientos_artean.bo.jobrequest:
          class: Cuatrovientos\ArteanBundle\Service\Business\JobRequestBusiness
          arguments: ['@cuatrovientos_artean.dao.jobrequest','@cuatrovientos_artean.dao.company']
+
+    cuatrovientos_artean.dao.fct:
+         class: Cuatrovientos\ArteanBundle\Service\DAO\FctDAO
+         arguments: ['CuatrovientosArteanBundle:Fct', '@doctrine.orm.entity_manager' ]
+
+    cuatrovientos_artean.bo.fct:
+         class: Cuatrovientos\ArteanBundle\Service\Business\FctBusiness
+         arguments: ['@cuatrovientos_artean.dao.fct','@cuatrovientos_artean.dao.company','@cuatrovientos_artean.dao.applicant']

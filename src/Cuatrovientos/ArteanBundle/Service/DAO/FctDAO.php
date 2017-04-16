@@ -4,7 +4,7 @@ namespace Cuatrovientos\ArteanBundle\Service\DAO;
 
 /**
  * Pello Altad
- * MessageDAO
+ * FctDAO
  * Extends GenericDAO
  */
 class FctDAO extends GenericDAO {

@@ -1,0 +1,32 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+    {% block title %}Artean :: Fcts : índice{% endblock %}
+    {% block body %}
+        <h2><i class="fa fa-industry" aria-hidden="true"></i> Fcts({{ total }}) </h2>
+        <div><a href="{{ path('cuatrovientos_artean_fct') }}">{% trans %}Recargar{% endtrans %}</a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#searchformModal" data-whatever="searchCenter">
+                <i class="fa fa-search" aria-hidden="true"></i> Buscar
+            </button>
+
+            <a href="{{ path('cuatrovientos_artean_fct_new') }}" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Nueva Fct</a> </div>
+        <div id="searchformModal" style="display:none";  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            {% include "CuatrovientosArteanBundle:Fct:search.html.twig" %}
+        </div>
+<div class="table-responsive">
+  <table class="table .table-condensed">
+     <div id='fcts'>
+         <tr><th>Id</th><th>Empresa</th><th>Alumno</th><th>Curso</th><th></th></tr>
+        {% for fct in fcts %}
+            {% include "CuatrovientosArteanBundle:Fct:fct.html.twig" %}
+        {% endfor %}
+    </div>
+  </table>
+    <a href="{{ path('cuatrovientos_artean_fct_paged', {'init': 0, 'limit':100 }) }}" class="btn "><i class="fa fa-fast-backward" aria-hidden="true"></i> Inicio</a>
+    {% if init > 0 %}
+        <a href="{{ path('cuatrovientos_artean_fct_paged', {'init': init-100, 'limit':100 }) }}" class="btn "><i class="fa fa-forward" aria-hidden="true"></i> Atrás</a>
+    {% endif %}
+    <a href="{{ path('cuatrovientos_artean_fct_paged', {'init': init+100, 'limit':100 }) }}" class="btn "><i class="fa fa-forward" aria-hidden="true"></i> Siguiente</a>
+    <a href="{{ path('cuatrovientos_artean_fct_paged', {'init': (total/100)|round(0,'floor'), 'limit':100 }) }}" class="btn "><i class="fa fa-fast-forward" aria-hidden="true"></i> Último</a>
+
+</div>
+
+{% endblock %}

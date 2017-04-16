@@ -1,0 +1,33 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean :: Fcts : Detalle de solicitud{% endblock %}
+{% block body %}
+    <h2><i class="fa fa-industry" aria-hidden="true"></i> Fcts</h2>
+
+    <a href="{{ path('cuatrovientos_artean_fct') }}" class="btn">
+        <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
+    </a>
+    <h3><i class="fa fa-search-plus" aria-hidden="true"></i> Detalle de Fct</h3>
+    <a href="{{ path('cuatrovientos_artean_fct_update', {'id': fct.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> Modificar</a>
+    <ul>
+     <li><strong>Id: </strong>{{ fct.id }}</li>
+        <li><strong>Empresa: </strong>{{ fct.company.empresa }}</li>
+        <li><strong>Alumno/a: </strong>{{ fct.applicant.surname }}, {{ fct.applicant.name }}</li>
+        <li><strong>Curso: </strong>{{ fct.course }}</li>
+        <li><strong>Periodo: </strong>{{ fct.period }}</li>
+        <li><strong>Ciclo: </strong>{{ fct.degree }}</li>
+        <li><strong>Tutor de empresa: </strong>{{ fct.companyTutor }}</li>
+        <li><strong>Contacto de empresa: </strong>{{ fct.companyContact }}</li>
+        <li><strong>Tutor del instituto: </strong>{{ fct.schoolTutor }}</li>
+        <li><strong>Fecha: </strong>{{ fct.fctDate|date('d-m-Y') }}</li>
+        <li><strong>Descripción: </strong>{{ fct.description }}</li>
+        <li><strong>Resultados: </strong>{{ fct.resultados }}</li>
+        <li><strong>Valoración del estudiante: </strong>{{ fct.applicantRating }}</li>
+        <li><strong>Valoraciión del instituto: </strong>{{ fct.schoolRating }}</li>
+        <li><strong>Valoración de la empresa: </strong>{{ fct.companyRating }}</li>
+    </ul>
+		{#% if is_granted('ROLE_ADMIN') %#}
+                <a href="{{ path('cuatrovientos_artean_fct') }}">Index</a> |
+                <a href="{{ path('cuatrovientos_artean_fct_update', {'id': fct.id }) }}">Modificar</a> |
+                <a href="{{ path('cuatrovientos_artean_fct_delete', {'id': fct.id }) }}">Eliminar</a>
+		{#% endif % #}
+{% endblock %}

@@ -19,6 +19,17 @@ class ApplicantDAO extends GenericDAO {
             ->getOneOrNullResult();
     }
 
+    public function findApplicants($term)
+    {
+        $repository = $this->em->getRepository('CuatrovientosArteanBundle:ApplicantSimple');
+        return $repository->createQueryBuilder('m')
+            ->where('m.name like :name')
+            ->orWhere('m.surname like :name')
+            ->setParameter('name','%'.$term.'%')
+            ->orderBy('m.surname', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 
    /* public function findAllCompanies($id=0, $start=0,$total=100)
     {

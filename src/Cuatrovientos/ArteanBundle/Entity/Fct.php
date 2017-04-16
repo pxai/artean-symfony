@@ -5,8 +5,8 @@ namespace Cuatrovientos\ArteanBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="Cuatrovientos\ArteanBundle\EntityRepository\FctRepository")
- * @ORM\Table(name="ofertas")
+ * @ORM\Entity
+ * @ORM\Table(name="tbfct")
  */
 class Fct extends Entity
 {
@@ -24,6 +24,8 @@ class Fct extends Entity
      */
     private $company;
 
+    private $companyName;
+
     /**
      * @var Applicant
      * @ORM\ManyToOne(targetEntity="Applicant")
@@ -31,15 +33,17 @@ class Fct extends Entity
      */
     private $applicant;
 
+    private $applicantName;
+
     /**
      * @ORM\Column(name="curso",type="string", length=10)
      */
-    private $curso;
+    private $course = "2016-2017";
 
     /**
-     * @ORM\Column(name="period",type="string", length=255)
+     * @ORM\Column(name="periodo",type="string", length=255)
      */
-    private $period;
+    private $period = "Marzo";
 
     /**
      * var Degree
@@ -55,27 +59,23 @@ class Fct extends Entity
     /**
      * @ORM\Column(name="tutor_empresa",type="string", length=255)
      */
-    private $company_tutor;
+    private $companyTutor;
 
     /**
      * @ORM\Column(name="contacto_empresa",type="string", length=255)
      */
-    private $company_contact;
+    private $companyContact;
 
     /**
- * var Applicant
- * ORM\ManyToOne(targetEntity="Applicant")
- * ORM\JoinColumn(name="idapplicant", referencedColumnName="id")
- */
-    /**
-     * @ORM\Column(name="idapplicant",type="integer", length=255)
+     * ORM\ManyToOne(targetEntity="User")
+     * ORM\JoinColumn(name="tutor_instituto", referencedColumnName="id")
      */
-    private $school_tutor;
+    private $schoolTutor;
 
     /**
-     * @ORM\Column(name="fecha",type="datetime", length=255)
+     * @ORM\Column(name="fecha",type="date", length=255)
      */
-    private $fct_date;
+    private $fctDate;
 
     /**
      * @ORM\Column(name="descripcion",type="string", length=255)
@@ -90,24 +90,24 @@ class Fct extends Entity
     /**
      * @ORM\Column(name="valoracion_alumno",type="string", length=500)
      */
-    private $applicant_rating;
+    private $applicantRating = "Sin valoración";
 
     /**
      * @ORM\Column(name="valoracion_cuatrovientos",type="string", length=500)
      */
-    private $school_rating;
+    private $schoolRating = "Sin valoración";
 
     /**
      * @ORM\Column(name="valoracion_empresa",type="string", length=500)
      */
-    private $company_rating;
+    private $companyRating = "Sin valoración";
 
 
     public function __construct()
     {
         //$this->required_languages = array();
         //$this->required_studies = array();
-        $this->fct_date = new \DateTime();
+        $this->fctDate = new \DateTime();
     }
 
     /**
@@ -144,6 +144,17 @@ class Fct extends Entity
     }
 
     /**
+     * @param mixed $company
+     */
+    public function setNewCompany()
+    {
+        $company = new Company();
+        $company->setId($this->companyName);
+        $this->setCompany($company);
+        return $this;
+    }
+
+    /**
      * @return Applicant
      */
     public function getApplicant()
@@ -160,19 +171,29 @@ class Fct extends Entity
     }
 
     /**
+     * @param mixed $company
+     */
+    public function setNewApplicant()
+    {
+        $applicant = new Applicant();
+        $applicant->setId($this->applicantName);
+        $this->setApplicant($applicant);
+        return $this;
+    }
+    /**
      * @return mixed
      */
-    public function getCurso()
+    public function getCourse()
     {
-        return $this->curso;
+        return $this->course;
     }
 
     /**
      * @param mixed $curso
      */
-    public function setCurso($curso)
+    public function setCourse($course)
     {
-        $this->curso = $curso;
+        $this->course = $course;
     }
 
     /**
@@ -212,15 +233,15 @@ class Fct extends Entity
      */
     public function getCompanyTutor()
     {
-        return $this->company_tutor;
+        return $this->companyTutor;
     }
 
     /**
      * @param mixed $company_tutor
      */
-    public function setCompanyTutor($company_tutor)
+    public function setCompanyTutor($companyTutor)
     {
-        $this->company_tutor = $company_tutor;
+        $this->companyTutor = $companyTutor;
     }
 
     /**
@@ -228,15 +249,15 @@ class Fct extends Entity
      */
     public function getCompanyContact()
     {
-        return $this->company_contact;
+        return $this->companyContact;
     }
 
     /**
      * @param mixed $company_contact
      */
-    public function setCompanyContact($company_contact)
+    public function setCompanyContact($companyContact)
     {
-        $this->company_contact = $company_contact;
+        $this->companyContact = $companyContact;
     }
 
     /**
@@ -244,15 +265,15 @@ class Fct extends Entity
      */
     public function getSchoolTutor()
     {
-        return $this->school_tutor;
+        return $this->schoolTutor;
     }
 
     /**
      * @param Applicant $school_tutor
      */
-    public function setSchoolTutor($school_tutor)
+    public function setSchoolTutor($schoolTutor)
     {
-        $this->school_tutor = $school_tutor;
+        $this->schoolTutor = $schoolTutor;
     }
 
     /**
@@ -260,15 +281,15 @@ class Fct extends Entity
      */
     public function getFctDate()
     {
-        return $this->fct_date;
+        return $this->fctDate;
     }
 
     /**
      * @param mixed $fct_date
      */
-    public function setFctDate($fct_date)
+    public function setFctDate($fctDate)
     {
-        $this->fct_date = $fct_date;
+        $this->fctDate = $fctDate;
     }
 
     /**
@@ -308,15 +329,15 @@ class Fct extends Entity
      */
     public function getApplicantRating()
     {
-        return $this->applicant_rating;
+        return $this->applicantRating;
     }
 
     /**
      * @param mixed $applicant_rating
      */
-    public function setApplicantRating($applicant_rating)
+    public function setApplicantRating($applicantRating)
     {
-        $this->applicant_rating = $applicant_rating;
+        $this->applicantRating = $applicantRating;
     }
 
     /**
@@ -324,15 +345,15 @@ class Fct extends Entity
      */
     public function getSchoolRating()
     {
-        return $this->school_rating;
+        return $this->schoolRating;
     }
 
     /**
      * @param mixed $school_rating
      */
-    public function setSchoolRating($school_rating)
+    public function setSchoolRating($schoolRating)
     {
-        $this->school_rating = $school_rating;
+        $this->schoolRating = $schoolRating;
     }
 
     /**
@@ -340,15 +361,47 @@ class Fct extends Entity
      */
     public function getCompanyRating()
     {
-        return $this->company_rating;
+        return $this->companyRating;
     }
 
     /**
      * @param mixed $company_rating
      */
-    public function setCompanyRating($company_rating)
+    public function setCompanyRating($companyRating)
     {
-        $this->company_rating = $company_rating;
+        $this->companyRating = $companyRating;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCompanyName()
+    {
+        return $this->companyName;
+    }
+
+    /**
+     * @param mixed $companyName
+     */
+    public function setCompanyName($companyName)
+    {
+        $this->companyName = $companyName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getApplicantName()
+    {
+        return $this->applicantName;
+    }
+
+    /**
+     * @param mixed $applicantName
+     */
+    public function setApplicantName($applicantName)
+    {
+        $this->applicantName = $applicantName;
     }
 
 

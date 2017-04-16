@@ -1,0 +1,186 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean :: Fcts : nueva{% endblock %}
+{% block extrastyles %}
+   <style>
+      {% include "CuatrovientosArteanBundle:Applicant/Studies:studies.select.css" %}
+   </style>
+{% endblock %}
+{% block body %}
+   <h2><i class="fa fa-industry" aria-hidden="true"></i> Fcts</h2>
+
+   <a href="{{ path('cuatrovientos_artean_fct') }}" class="btn">
+      <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
+   </a>
+
+   <h3><i class="fa fa-plus" aria-hidden="true"></i> Nueva Fcts</h3>
+<form method="post" action="{{ path('cuatrovientos_artean_fct_new_save') }}">
+   {{ form_errors(form) }}
+   {{ form_widget(form.id) }}
+   <div class="form-group">
+      <label for="fct_company" class="required">Empresa</label>
+      <select id="fct_company" name="fct[companyValue]">
+      </select>
+   </div>
+   <div class="form-group">
+      <label for="fct_applicant" class="required">Estudiante</label>
+      <select id="fct_applicant" name="fct[applicantName]">
+      </select>
+   </div>
+   <div class="form-group">
+      {{ form_label(form.course) }}
+      {{ form_errors(form.course) }}
+      {{ form_widget(form.course, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(form.period) }}
+      {{ form_errors(form.period) }}
+      {{ form_widget(form.period, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(form.degree) }}
+      {{ form_errors(form.degree) }}
+      {{ form_widget(form.degree, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(form.companyTutor) }}
+      {{ form_errors(form.companyTutor) }}
+      {{ form_widget(form.companyTutor, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(form.companyContact) }}
+      {{ form_errors(form.companyContact) }}
+      {{ form_widget(form.companyContact, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(form.schoolTutor) }}
+      {{ form_errors(form.schoolTutor) }}
+      {{ form_widget(form.schoolTutor, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(form.fctDate) }}
+      {{ form_errors(form.fctDate) }}
+      {{ form_widget(form.fctDate, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(form.description) }}
+      {{ form_errors(form.description) }}
+      {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(form.resultados) }}
+      {{ form_errors(form.resultados) }}
+      {{ form_widget(form.resultados, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(form.applicantRating) }}
+      {{ form_errors(form.applicantRating) }}
+      {{ form_widget(form.applicantRating, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(form.schoolRating) }}
+      {{ form_errors(form.schoolRating) }}
+      {{ form_widget(form.schoolRating, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(form.companyRating) }}
+      {{ form_errors(form.companyRating) }}
+      {{ form_widget(form.companyRating, {'attr': {'class': 'form-control'}}) }}
+   </div>
+
+   <div class="form-group">
+      {{ form_row(form._token) }}
+      {{ form_widget(form.save, {'attr': {'class': 'form-control'}}) }}
+   </div>
+</form>
+{% endblock %}
+{% block extrascripts %}
+    {% javascripts
+    '@CuatrovientosArteanBundle/Resources/public/js/selectize.js'
+    '@CuatrovientosArteanBundle/Resources/public/js/es5.js'
+    %}
+<!-- Optionally enable responsive features in IE8 -->
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+<script language="javascript">
+   $('#fct_company').selectize({
+      valueField: 'id',
+      labelField: 'empresa',
+      searchField: 'empresa',
+      options: [],
+      create: true,
+      render: {
+         option: function(item, escape) {
+            return '<div>' +
+                    '<span class="title">' +
+                    '<span class="empresa">' + escape(item.empresa) +  '</span>' +
+                    '</span>' +
+                    '</div>';
+         }
+      },
+      load: function(query, callback) {
+         if (!query.length) return callback();
+         $.ajax({
+            url: '{{ path('cuatrovientos_artean_api_company_index') }}',
+            type: 'GET',
+            dataType: 'json',
+            data: {
+               term: query,
+               page_limit: 100,
+            },
+            error: function() {
+               callback();
+            },
+            success: function(res) {
+               if (res.length === 0) {
+                  console.log('Nothing found');
+               } else {
+                  console.log(res);
+                  callback(res);
+               }
+            }
+         });
+      }
+   });
+
+   $('#fct_applicant').selectize({
+      valueField: 'id',
+      labelField: 'surname',
+      searchField: 'name',
+      options: [],
+      create: true,
+      render: {
+         option: function(item, escape) {
+            return '<div>' +
+                    '<span class="title">' +
+                    '<span class="name">' + escape(item.surname) + ', '+ escape(item.name) +  '</span>' +
+                    '</span>' +
+                    '</div>';
+         }
+      },
+      load: function(query, callback) {
+         if (!query.length) return callback();
+         $.ajax({
+            url: '{{ path('cuatrovientos_artean_api_applicant_index') }}',
+            type: 'GET',
+            dataType: 'json',
+            data: {
+               term: query,
+               page_limit: 100,
+            },
+            error: function() {
+               callback();
+            },
+            success: function(res) {
+               if (res.length === 0) {
+                  console.log('Nothing found');
+               } else {
+                  console.log(res);
+                  callback(res);
+               }
+            }
+         });
+      }
+   });
+
+</script>
+{% endblock %}
