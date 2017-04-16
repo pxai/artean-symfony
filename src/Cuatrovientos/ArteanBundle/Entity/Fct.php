@@ -46,31 +46,26 @@ class Fct extends Entity
     private $period = "Marzo";
 
     /**
-     * var Degree
      * ORM\ManyToOne(targetEntity="Degree")
      * ORM\JoinColumn(name="idciclo", referencedColumnName="id")
-     */
-
-    /**
-     * @ORM\Column(name="idciclo",type="integer", length=255)
      */
     private $degree;
 
     /**
      * @ORM\Column(name="tutor_empresa",type="string", length=255)
      */
-    private $companyTutor;
+    private $companyTutor = "Por determinar";
 
     /**
      * @ORM\Column(name="contacto_empresa",type="string", length=255)
      */
-    private $companyContact;
+    private $companyContact = "Por determinar";
 
     /**
      * ORM\ManyToOne(targetEntity="User")
      * ORM\JoinColumn(name="tutor_instituto", referencedColumnName="id")
      */
-    private $schoolTutor;
+    private $schoolTutor = "Por determinar";
 
     /**
      * @ORM\Column(name="fecha",type="date", length=255)

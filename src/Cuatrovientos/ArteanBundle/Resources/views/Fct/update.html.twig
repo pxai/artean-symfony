@@ -19,12 +19,14 @@
      {{ form_widget(form.id) }}
      <div class="form-group">
           <label for="fct_company" class="required">Empresa</label>
-          <select id="fct_company" name="fct[companyValue]">
+          <select id="fct_company" name="fct[companyName]">
+               <option value="{{ fct.company.id }}">{{ fct.company.empresa }}</option>
           </select>
      </div>
      <div class="form-group">
      <label for="fct_applicant" class="required">Estudiante</label>
      <select id="fct_applicant" name="fct[applicantName]">
+          <option value="{{ fct.applicant.id }}">{{ fct.applicant.surname }}, {{ fct.applicant.name }}</option>
      </select>
      </div>
      <div class="form-group">
@@ -145,7 +147,7 @@
 
           $('#fct_applicant').selectize({
                valueField: 'id',
-               labelField: 'surname',
+               labelField: 'name',
                searchField: 'name',
                options: [],
                create: true,
@@ -153,7 +155,7 @@
                     option: function(item, escape) {
                          return '<div>' +
                                  '<span class="title">' +
-                                 '<span class="nombre">' + escape(item.surname)+', ' + escape(name) +  '</span>' +
+                                 '<span class="nombre">' + escape(item.name) +  '</span>' +
                                  '</span>' +
                                  '</div>';
                     }

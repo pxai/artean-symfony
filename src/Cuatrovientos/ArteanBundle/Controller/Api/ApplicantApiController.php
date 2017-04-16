@@ -12,8 +12,12 @@ class ApplicantApiController extends Controller
      * @Rest\View
      */
     public function indexAction(Request $request)
-    {
-        return $this->get("cuatrovientos_artean.bo.applicant")->findApplicants($request->query->get('term'));
+    {   // TODO: concat in doctrine
+        $applicants = $this->get("cuatrovientos_artean.bo.applicant")->findApplicants($request->query->get('term'));
+        foreach ($applicants as $applicant) {
+         $applicant->setName($applicant->getSurname().', ' .$applicant->getName());
+        }
+        return  $applicants;
     }
 
 }

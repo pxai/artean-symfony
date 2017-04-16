@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -32,16 +33,19 @@ class FctType extends AbstractType {
                     'expanded' => true,
                 )
             )
-            ->add('degree', TextType::class, array('label' => 'Ciclo',"required"=>true))
-            ->add('companyTutor', TextType::class, array('label' => 'Tutor empresa',"required"=>true))
-            ->add('companyContact', TextType::class, array('label' => 'Contacto empresa',"required"=>true))
-            ->add('schoolTutor', TextType::class, array('label' => 'Tutor del instituto',"required"=>true))
-            ->add('fctDate', DateType::class, array('label' => 'Fecha',"required"=>true))
-            ->add('description', TextareaType::class, array('label' => 'Descripción',"required"=>true))
-            ->add('resultados', TextareaType::class, array('label' => 'Resultados',"required"=>true))
-            ->add('applicantRating', TextareaType::class, array('label' => 'Valoración del estudiante',"required"=>true))
-            ->add('schoolRating', TextareaType::class, array('label' => 'Valoración del instituto',"required"=>true))
-            ->add('companyRating', TextareaType::class, array('label' => 'Valoración de la empresa',"required"=>true))
+            ->add('degree', EntityType::class, array(
+                    'class' => 'CuatrovientosArteanBundle:Degree',
+                    'label' => 'Ciclo' )
+            )
+            ->add('companyTutor', TextType::class, array('label' => 'Tutor empresa',"required"=>false))
+            ->add('companyContact', TextType::class, array('label' => 'Contacto empresa',"required"=>false))
+            ->add('schoolTutor', TextType::class, array('label' => 'Tutor del instituto',"required"=>false))
+            ->add('fctDate', DateType::class, array('label' => 'Fecha',"required"=>false))
+            ->add('description', TextareaType::class, array('label' => 'Descripción',"required"=>false))
+            ->add('resultados', TextareaType::class, array('label' => 'Resultados',"required"=>false))
+            ->add('applicantRating', TextareaType::class, array('label' => 'Valoración del estudiante',"required"=>false))
+            ->add('schoolRating', TextareaType::class, array('label' => 'Valoración del instituto',"required"=>false))
+            ->add('companyRating', TextareaType::class, array('label' => 'Valoración de la empresa',"required"=>false))
 
             ->add('save', SubmitType::class);
     }

@@ -29,12 +29,14 @@ class FctBusiness extends GenericBusiness {
     }
 
     public function create(Entity $fct) {
-        $this->setJobCompany($fct);
+        $this->setFctCompany($fct);
+        $this->setFctApplicant($fct);
         $this->entityDAO->create($fct);
     }
 
     public function update(Entity $fct) {
-        $this->setJobCompany($fct);
+        $this->setFctCompany($fct);
+        $this->setFctApplicant($fct);
         $this->entityDAO->update($fct);
     }
 
@@ -53,7 +55,7 @@ class FctBusiness extends GenericBusiness {
         return $this->entityDAO->searchFcts($fct, $start, $total);
     }
 
-    private function setJobCompany($fct)
+    private function setFctCompany($fct)
     {
         if (preg_match("/^[0-9]+$/", $fct->getCompanyName())) {
             // Check that exists
@@ -67,6 +69,23 @@ class FctBusiness extends GenericBusiness {
             $company->setEmpresa($fct->getCompanyName());
             $this->companyDAO->create($company);
             $fct->setCompany($company);
+        }
+    }
+
+    private function setFctApplicant($fct)
+    {
+        if (preg_match("/^[0-9]+$/", $fct->getCompanyName())) {
+            // Check that exists
+            if ($applicant = $this->applicantDAO->selectById($fct->getApplicantName())) {
+                $fct->setApplicant($applicant);
+            } else { // else, insert that number as the name
+                $fct->setNewApplicant();
+            }
+        } else { // Else, new Company must be created
+            $applicant = new Applicant();
+            $applicant->setName($fct->getApplicantName());
+            $this->applicantDAO->create($applicant);
+            $fct->setApplicant($applicant);
         }
     }
 }
