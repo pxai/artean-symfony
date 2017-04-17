@@ -1,0 +1,26 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+    {% block title %}Artean :: Cursos : índice{% endblock %}
+    {% block body %}
+        <h2><i class="fa fa-industry" aria-hidden="true"></i> Cursos({{ total }}) </h2>
+        <div><a href="{{ path('cuatrovientos_artean_course') }}">{% trans %}Recargar{% endtrans %}</a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#searchformModal" data-whatever="searchCourse">
+                <i class="fa fa-search" aria-hidden="true"></i> Buscar
+            </button>
+
+            <a href="{{ path('cuatrovientos_artean_course_new') }}" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo centro</a> </div>
+        <div id="searchformModal" style="display:none";  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+
+            {% include "CuatrovientosArteanBundle:Course:search.html.twig" %}
+        </div>
+<div class="table-responsive">
+  <table class="table .table-condensed">
+     <div id='courses'>
+         <tr><th>Id</th><th>Nombre</th><th>Fecha inicio</th><th></th></tr>
+        {% for course in courses %}
+            {% include "CuatrovientosArteanBundle:Course:course.html.twig" %}
+        {% endfor %}
+    </div>
+  </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean :: Cursos : Detalle curso{% endblock %}
+{% block body %}
+    <h2><i class="fa fa-industry" aria-hidden="true"></i> Curso</h2>
+
+    <a href="{{ path('cuatrovientos_artean_course') }}" class="btn">
+        <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
+    </a>
+    <h3><i class="fa fa-search-plus" aria-hidden="true"></i> Detalle de curso</h3>
+    <a href="{{ path('cuatrovientos_artean_course_update', {'id': course.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> Modificar</a>
+    <ul>
+     <li><strong>Id: </strong>{{ course.id }}</li> 
+     <li><strong>Name: </strong>{{ course.name }}</li> 
+</ul>
+		{#% if is_granted('ROLE_ADMIN') %#}
+                <a href="{{ path('cuatrovientos_artean_course') }}">Index</a> |
+                <a href="{{ path('cuatrovientos_artean_course_update', {'id': course.id }) }}">Update</a> |
+                <a href="{{ path('cuatrovientos_artean_course_delete', {'id': course.id }) }}">Delete</a>                      
+		{#% endif % #}
+{% endblock %}

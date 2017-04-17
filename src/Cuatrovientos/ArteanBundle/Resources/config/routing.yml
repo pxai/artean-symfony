@@ -600,3 +600,55 @@ cuatrovientos_artean_fct_delete_save:
     defaults: { _controller: CuatrovientosArteanBundle:Fct:fctDeleteSave }
     requirements: 
             'id' : '\d+'
+
+################# course ##################
+
+cuatrovientos_artean_course:
+    path:     /artean/admin/course
+    defaults: { _controller: CuatrovientosArteanBundle:Course:index }
+
+cuatrovientos_artean_course_paged:
+    path:     /artean/admin/course/init/{init}/limit/{limit}
+    defaults: { _controller: CuatrovientosArteanBundle:Course:index }
+    requirements:
+        'init' : '\d+'
+        'limit' : '\d+'
+
+cuatrovientos_artean_course_search:
+    path:     /artean/admin/course/search
+    defaults: { _controller: CuatrovientosArteanBundle:Course:search }
+
+cuatrovientos_artean_course_new:
+    path:     /artean/admin/course/new
+    defaults: { _controller: CuatrovientosArteanBundle:Course:newCourse }
+
+cuatrovientos_artean_course_new_save:
+    path:     /artean/admin/course/new/save
+    defaults: { _controller: CuatrovientosArteanBundle:Course:newCourseSave }
+
+cuatrovientos_artean_course_detail:
+    path:     /artean/admin/course/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Course:courseDetail }
+
+
+cuatrovientos_artean_course_update_save:
+    path:     /artean/admin/course/update/save
+    defaults: { _controller: CuatrovientosArteanBundle:Course:courseUpdateSave }
+
+cuatrovientos_artean_course_update:
+    path:     /artean/admin/course/update/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Course:courseUpdate }
+    requirements: 
+            'id' : '\d+'
+            
+cuatrovientos_artean_course_delete:
+    path:     /artean/admin/course/delete/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Course:courseDelete }
+    requirements: 
+            'id' : '\d+'
+
+cuatrovientos_artean_course_delete_save:
+    path:     /artean/admin/course/delete/save/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Course:courseDeleteSave }
+    requirements: 
+            'id' : '\d+'

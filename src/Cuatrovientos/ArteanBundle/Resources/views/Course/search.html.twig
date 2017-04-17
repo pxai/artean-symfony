@@ -1,0 +1,31 @@
+<div class="modal-dialog" role="document">
+   <div class="modal-content">
+      <form method="post" action="{{ path('cuatrovientos_artean_course_search') }}" class="arteanform">
+      <div class="modal-header">
+
+   <a href="{{ path('cuatrovientos_artean_course') }}" class="btn">
+      <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
+   </a>
+
+   <h3><i class="fa fa-search" aria-hidden="true"></i> Buscar curso</h3>
+         <h4 class="modal-title" id="exampleModalLabel">Buscar curso</h4>
+      </div>
+      <div class="modal-body">
+
+   {{ form_errors(form) }}
+   <div class="form-group">
+      {{ form_label(form.name) }}
+      {{ form_errors(form.name) }}
+      {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+   </div>
+
+      {{ form_row(form._token) }}
+
+      </div>
+      <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+         <button type="submit" class="btn btn-primary">Buscar cursos</button>
+      </div>
+      </form>
+   </div>
+</div>
