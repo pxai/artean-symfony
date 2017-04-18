@@ -1,0 +1,29 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean :: Mailings : Detalle mailing{% endblock %}
+{% block body %}
+    <h2><i class="fa fa-industry" aria-hidden="true"></i> Mailing</h2>
+
+    <a href="{{ path('cuatrovientos_artean_mailing') }}" class="btn">
+        <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
+    </a>
+    <h3><i class="fa fa-search-plus" aria-hidden="true"></i> Detalle de curso</h3>
+    <a href="{{ path('cuatrovientos_artean_mailing_update', {'id': mailing.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> Modificar</a>
+    <ul>
+     <li><strong>Id: </strong>{{ mailing.id }}</li> 
+     <li><strong>De: </strong>{{ mailing.mailFrom }}</li>
+        <li><strong>Para: </strong>{{ mailing.mailTo }}</li>
+        <li><strong>Copia oculta: </strong>{{ mailing.bcc }}</li>
+        <li><strong>Asunto: </strong>{{ mailing.subject }}</li>
+        <li><strong>Mensaje: </strong>{{ mailing.body }}</li>
+        <li><strong>Fecha: </strong>{{ mailing.mailDate }}</li>
+        <li><strong>Tipo de mailing: </strong>{{ mailing.type }}</li>
+
+
+
+    </ul>
+		{#% if is_granted('ROLE_ADMIN') %#}
+                <a href="{{ path('cuatrovientos_artean_mailing') }}">Index</a> |
+                <a href="{{ path('cuatrovientos_artean_mailing_update', {'id': mailing.id }) }}">Update</a> |
+                <a href="{{ path('cuatrovientos_artean_mailing_delete', {'id': mailing.id }) }}">Delete</a>                      
+		{#% endif % #}
+{% endblock %}

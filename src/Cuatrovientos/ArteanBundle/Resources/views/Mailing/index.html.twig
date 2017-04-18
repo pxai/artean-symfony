@@ -1,0 +1,26 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+    {% block title %}Artean :: Mailing : índice{% endblock %}
+    {% block body %}
+        <h2><i class="fa fa-industry" aria-hidden="true"></i> Mailing({{ total }}) </h2>
+        <div><a href="{{ path('cuatrovientos_artean_mailing') }}">{% trans %}Recargar{% endtrans %}</a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#searchformModal" data-whatever="searchMailing">
+                <i class="fa fa-search" aria-hidden="true"></i> Buscar
+            </button>
+
+            <a href="{{ path('cuatrovientos_artean_mailing_new') }}" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo mailing</a> </div>
+        <div id="searchformModal" style="display:none";  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+
+            {% include "CuatrovientosArteanBundle:Mailing:search.html.twig" %}
+        </div>
+<div class="table-responsive">
+  <table class="table .table-condensed">
+     <div id='mailings'>
+         <tr><th>Id</th><th>Asunto</th><th>Fecha</th><th></th></tr>
+        {% for mailing in mailings %}
+            {% include "CuatrovientosArteanBundle:Mailing:mailing.html.twig" %}
+        {% endfor %}
+    </div>
+  </table>
+</div>
+
+{% endblock %}

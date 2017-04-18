@@ -35,7 +35,7 @@ class CourseType extends AbstractType {
             ->add('priceFirstTerm', TextType::class, array('label' => 'Precio primer trimestre',"required"=>false))
             ->add('priceSecondTerm', TextType::class, array('label' => 'Precio segundo trimestre',"required"=>false))
             ->add('book', TextType::class, array('label' => 'Reserva matrícula',"required"=>false))
-           ->add('save', SubmitType::class, array('label' => 'Fecha'));
+           ->add('save', SubmitType::class, array('label' => 'Guardar curso'));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver) {

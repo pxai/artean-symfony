@@ -1,0 +1,54 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean :: Mailing : nuevo{% endblock %}
+{% block body %}
+   <h2><i class="fa fa-industry" aria-hidden="true"></i> Mailing</h2>
+
+   <a href="{{ path('cuatrovientos_artean_mailing') }}" class="btn">
+      <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
+   </a>
+
+   <h3><i class="fa fa-plus" aria-hidden="true"></i> Nuevo mailing</h3>
+<form method="post" action="{{ path('cuatrovientos_artean_mailing_new_save') }}">
+   {{ form_errors(form) }}
+    <div class="form-group">
+        {{ form_label(form.mailFrom) }}
+        {{ form_errors(form.mailFrom) }}
+        {{ form_widget(form.mailFrom, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.mailTo) }}
+        {{ form_errors(form.mailTo) }}
+        {{ form_widget(form.mailTo, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.bcc) }}
+        {{ form_errors(form.bcc) }}
+        {{ form_widget(form.bcc, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.subject) }}
+        {{ form_errors(form.subject) }}
+        {{ form_widget(form.subject, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.body) }}
+        {{ form_errors(form.body) }}
+        {{ form_widget(form.body, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.mailDate) }}
+        {{ form_errors(form.mailDate) }}
+        {{ form_widget(form.mailDate, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.type) }}
+        {{ form_errors(form.type) }}
+        {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+    </div>
+   <div class="form-group">
+      {{ form_row(form._token) }}
+      {{ form_widget(form.save, {'attr': {'class': 'form-control'}}) }}
+   </div>
+</form>
+
+{% endblock %}

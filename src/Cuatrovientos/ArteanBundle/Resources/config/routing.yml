@@ -652,3 +652,55 @@ cuatrovientos_artean_course_delete_save:
     defaults: { _controller: CuatrovientosArteanBundle:Course:courseDeleteSave }
     requirements: 
             'id' : '\d+'
+            
+################# mailing ##################
+
+cuatrovientos_artean_mailing:
+    path:     /artean/admin/mailing
+    defaults: { _controller: CuatrovientosArteanBundle:Mailing:index }
+
+cuatrovientos_artean_mailing_paged:
+    path:     /artean/admin/mailing/init/{init}/limit/{limit}
+    defaults: { _controller: CuatrovientosArteanBundle:Mailing:index }
+    requirements:
+        'init' : '\d+'
+        'limit' : '\d+'
+
+cuatrovientos_artean_mailing_search:
+    path:     /artean/admin/mailing/search
+    defaults: { _controller: CuatrovientosArteanBundle:Mailing:search }
+
+cuatrovientos_artean_mailing_new:
+    path:     /artean/admin/mailing/new
+    defaults: { _controller: CuatrovientosArteanBundle:Mailing:newMailing }
+
+cuatrovientos_artean_mailing_new_save:
+    path:     /artean/admin/mailing/new/save
+    defaults: { _controller: CuatrovientosArteanBundle:Mailing:newMailingSave }
+
+cuatrovientos_artean_mailing_detail:
+    path:     /artean/admin/mailing/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Mailing:mailingDetail }
+
+
+cuatrovientos_artean_mailing_update_save:
+    path:     /artean/admin/mailing/update/save
+    defaults: { _controller: CuatrovientosArteanBundle:Mailing:mailingUpdateSave }
+
+cuatrovientos_artean_mailing_update:
+    path:     /artean/admin/mailing/update/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Mailing:mailingUpdate }
+    requirements: 
+            'id' : '\d+'
+            
+cuatrovientos_artean_mailing_delete:
+    path:     /artean/admin/mailing/delete/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Mailing:mailingDelete }
+    requirements: 
+            'id' : '\d+'
+
+cuatrovientos_artean_mailing_delete_save:
+    path:     /artean/admin/mailing/delete/save/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Mailing:mailingDeleteSave }
+    requirements: 
+            'id' : '\d+'

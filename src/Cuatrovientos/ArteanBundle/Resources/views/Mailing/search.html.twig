@@ -1,0 +1,35 @@
+<div class="modal-dialog" role="document">
+   <div class="modal-content">
+      <form method="post" action="{{ path('cuatrovientos_artean_mailing_search') }}" class="arteanform">
+      <div class="modal-header">
+
+   <a href="{{ path('cuatrovientos_artean_mailing') }}" class="btn">
+      <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
+   </a>
+
+   <h3><i class="fa fa-search" aria-hidden="true"></i> Buscar mailing</h3>
+         <h4 class="modal-title" id="exampleModalLabel">Buscar mailing</h4>
+      </div>
+      <div class="modal-body">
+
+   {{ form_errors(form) }}
+   <div class="form-group">
+      {{ form_label(form.subject) }}
+      {{ form_errors(form.subject) }}
+      {{ form_widget(form.subject, {'attr': {'class': 'form-control'}}) }}
+   </div>
+         <div class="form-group">
+            {{ form_label(form.body) }}
+            {{ form_errors(form.body) }}
+            {{ form_widget(form.body, {'attr': {'class': 'form-control'}}) }}
+         </div>
+      {{ form_row(form._token) }}
+
+      </div>
+      <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+         <button type="submit" class="btn btn-primary">Buscar mailings</button>
+      </div>
+      </form>
+   </div>
+</div>

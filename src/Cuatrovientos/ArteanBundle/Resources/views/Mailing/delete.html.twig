@@ -1,0 +1,19 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean :: Mailing : Eliminar curso{% endblock %}
+{% block body %}
+	<h2><i class="fa fa-industry" aria-hidden="true"></i> Mailings</h2>
+
+	<a href="{{ path('cuatrovientos_artean_mailing') }}" class="btn">
+		<i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
+	</a>
+
+	<h3><i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar mailing {{ mailing.id }}</h3>
+ <div id='mailing'>
+		<div>
+			{% trans %}Estás segura{% endtrans %}
+			<div class='title'>{{ mailing.subject }}</div>
+			<div><a href="{{ path('cuatrovientos_artean_mailing_delete_save',  {'id': mailing.id }) }}">Confirmar</a> </div>
+			<div><a href="javascript:history.back()">Cancel</a> </div>
+		</div>
+</div>
+{% endblock %}
