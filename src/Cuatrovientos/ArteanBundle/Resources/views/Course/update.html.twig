@@ -12,12 +12,87 @@
      <h3><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Actualizar curso {{ id }}</h3>
 <form method="post" action="{{ path('cuatrovientos_artean_course_update_save') }}">
      {{ form_errors(form) }}
-     {{ form_widget(form.id) }}
-     <div class="form-group">
-          {{ form_label(form.name) }}
-          {{ form_errors(form.name) }}
-          {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
-     </div>
+    {{ form_widget(form.id) }}
+    <div class="form-group">
+        {{ form_label(form.name) }}
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.startDate) }}
+        {{ form_errors(form.startDate) }}
+        {{ form_widget(form.startDate, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.endDate) }}
+        {{ form_errors(form.endDate) }}
+        {{ form_widget(form.endDate, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.hours) }}
+        {{ form_errors(form.hours) }}
+        {{ form_widget(form.hours, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.timetable) }}
+        {{ form_errors(form.timetable) }}
+        {{ form_widget(form.timetable, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.classHoursDay) }}
+        {{ form_errors(form.classHoursDay) }}
+        {{ form_widget(form.classHoursDay, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.hoursDay) }}
+        {{ form_errors(form.hoursDay) }}
+        {{ form_widget(form.hoursDay, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.courseType) }}
+        {{ form_errors(form.courseType) }}
+        {{ form_widget(form.courseType, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.days) }}
+        {{ form_errors(form.days) }}
+        {{ form_widget(form.days, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.family) }}
+        {{ form_errors(form.family) }}
+        {{ form_widget(form.family, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.level) }}
+        {{ form_errors(form.level) }}
+        {{ form_widget(form.level, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.classroom) }}
+        {{ form_errors(form.classroom) }}
+        {{ form_widget(form.classroom, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.startSecondTerm) }}
+        {{ form_errors(form.startSecondTerm) }}
+        {{ form_widget(form.startSecondTerm, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.priceFirstTerm) }}
+        {{ form_errors(form.priceFirstTerm) }}
+        {{ form_widget(form.priceFirstTerm, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.priceSecondTerm) }}
+        {{ form_errors(form.priceSecondTerm) }}
+        {{ form_widget(form.priceSecondTerm, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.book) }}
+        {{ form_errors(form.book) }}
+        {{ form_widget(form.book, {'attr': {'class': 'form-control'}}) }}
+    </div>
      <div class="form-group">
           {{ form_row(form._token) }}
           {{ form_widget(form.save, {'attr': {'class': 'form-control'}}) }}

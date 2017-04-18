@@ -1,7 +1,7 @@
 <tr>
      <td>{{ course.id }}</td> 
      <td>{{ course.name }}</td>
-    <td>{{ course.startDate }}</td>
+    <td>{{ course.startDate|date('d-m-Y') }}</td>
     {#% if is_granted('ROLE_ADMIN') %#}
     <td>
         <a href="{{ path('cuatrovientos_artean_course_detail', {'id': course.id }) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>

@@ -10,8 +10,25 @@
     <a href="{{ path('cuatrovientos_artean_course_update', {'id': course.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> Modificar</a>
     <ul>
      <li><strong>Id: </strong>{{ course.id }}</li> 
-     <li><strong>Name: </strong>{{ course.name }}</li> 
-</ul>
+     <li><strong>Name: </strong>{{ course.name }}</li>
+        <li><strong>Fecha inicio: </strong>{{ course.startDate|date('d-m-Y') }}</li>
+        <li><strong>Fecha fin: </strong>{{ course.endDate|date('d-m-Y') }}</li>
+        <li><strong>Total horas: </strong>{{ course.hours }}</li>
+        <li><strong>Horario: </strong>{{ course.timetable }}</li>
+        <li><strong>Días de clase: </strong>{{ course.classHoursDay }}</li>
+        <li><strong>Horas por día: </strong>{{ course.hoursDay }}</li>
+        <li><strong>Tipo de curso: </strong>{{ course.courseType }}</li>
+        <li><strong>Días: </strong>{{ course.days }}</li>
+        <li><strong>Familia: </strong>{{ course.family }}</li>
+        <li><strong>Nivel: </strong>{{ course.level }}</li>
+        <li><strong>Aula: </strong>{{ course.classroom }}</li>
+        <li><strong>Inicio segundo cuatrimestre: </strong>{{ course.startSecondTerm }}</li>
+        <li><strong>Precio primer trimestre: </strong>{{ course.priceFirstTerm }}</li>
+        <li><strong>Precio segundo trimestre: </strong>{{ course.priceSecondTerm }}</li>
+        <li><strong>Reserva matrícula: </strong>{{ course.book }}</li>
+
+
+    </ul>
 		{#% if is_granted('ROLE_ADMIN') %#}
                 <a href="{{ path('cuatrovientos_artean_course') }}">Index</a> |
                 <a href="{{ path('cuatrovientos_artean_course_update', {'id': course.id }) }}">Update</a> |

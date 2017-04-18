@@ -99,7 +99,7 @@ class CourseController extends Controller
                 // redirect to index
                 $response = $this->forward('CuatrovientosArteanBundle:Course:courseDetail', array('id' => $course->getId()));
             } else  {
-                 $response = $this->render('CuatrovientosArteanBundle:Course:updatePost.html.twig', array('form'=> $form->createView()));
+                 $response = $this->render('CuatrovientosArteanBundle:Course:update.html.twig', array('form'=> $form->createView(),'id' => $course->getId()));
             }
         }
         return $response;

@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="tbcourse")
+ * @ORM\Table(name="tbcursos")
  */
 class Course extends Entity
 {
@@ -23,7 +23,7 @@ class Course extends Entity
     private $courseCode1;
 
     /**
-     * @ORM\Column(name="codigo_cursillo",type="string", length=50)
+     * @ORM\Column(name="codigo_curso",type="string", length=50)
      */
     private $courseCode2;
 
