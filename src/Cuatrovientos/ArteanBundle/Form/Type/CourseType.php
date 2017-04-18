@@ -18,8 +18,10 @@ class CourseType extends AbstractType {
         $builder
             ->add('id',HiddenType::class)
             ->add('name', TextType::class, array('label' => 'Nombre',"required"=>true))
-            ->add('startDate', DateTimeType::class, array('label' => 'Fecha inicio',"required"=>false))
-            ->add('endDate', DateTimeType::class, array('label' => 'Fecha fin',"required"=>false))
+            ->add('startDate', DateTimeType::class, array('label' => 'Fecha inicio',
+                'years'=> range(date('Y')-15, date('Y')+2),"required"=>false))
+            ->add('endDate', DateTimeType::class, array('label' => 'Fecha fin',
+                'years'=> range(date('Y')-15, date('Y')+2),"required"=>false))
             ->add('hours', TextType::class, array('label' => 'Total horas',"required"=>false))
             ->add('timetable', TextareaType::class, array('label' => 'Horario',"required"=>false))
             ->add('classHoursDay', TextareaType::class, array('label' => 'Días de clase',"required"=>false))

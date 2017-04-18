@@ -40,7 +40,8 @@ class FctType extends AbstractType {
             ->add('companyTutor', TextType::class, array('label' => 'Tutor empresa',"required"=>false))
             ->add('companyContact', TextType::class, array('label' => 'Contacto empresa',"required"=>false))
             ->add('schoolTutor', TextType::class, array('label' => 'Tutor del instituto',"required"=>false))
-            ->add('fctDate', DateType::class, array('label' => 'Fecha',"required"=>false))
+            ->add('fctDate', DateType::class, array('label' => 'Fecha',
+                'years'=> range(date('Y')-15, date('Y')+2),"required"=>false))
             ->add('description', TextareaType::class, array('label' => 'Descripción',"required"=>false))
             ->add('resultados', TextareaType::class, array('label' => 'Resultados',"required"=>false))
             ->add('applicantRating', TextareaType::class, array('label' => 'Valoración del estudiante',"required"=>false))
