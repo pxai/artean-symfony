@@ -121,6 +121,8 @@ class Applicant extends Entity
      */
     private $jobs;
 
+
+
     public function __construct () {
         $this->studies = array();
     }
@@ -403,6 +405,22 @@ class Applicant extends Entity
     public function setJobs($jobs)
     {
         $this->jobs = $jobs;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCourses()
+    {
+        return $this->courses;
+    }
+
+    /**
+     * @param mixed $courses
+     */
+    public function setCourses($courses)
+    {
+        $this->courses = $courses;
     }
 
 

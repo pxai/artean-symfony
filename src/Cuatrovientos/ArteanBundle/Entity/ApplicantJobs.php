@@ -17,6 +17,7 @@ class ApplicantJobs extends Entity
      */
     private $id;
 
+
     /**
      * @ORM\ManyToOne(targetEntity="Applicant")
      * @ORM\JoinColumn(name="idapplicant", referencedColumnName="id")

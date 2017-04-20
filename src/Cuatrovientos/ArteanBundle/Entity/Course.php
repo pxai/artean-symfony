@@ -108,7 +108,7 @@ class Course extends Entity
     private $book;
 
     /**
-     * @ORM\OneToMany(targetEntity="StudentCourse", mappedBy="applicant",fetch="EXTRA_LAZY")
+     * @ORM\OneToMany(targetEntity="StudentCourse", mappedBy="course",fetch="EXTRA_LAZY")
      */
     private $students;
 

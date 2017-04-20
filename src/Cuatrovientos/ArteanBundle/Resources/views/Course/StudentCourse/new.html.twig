@@ -12,11 +12,6 @@
       </select>
    </div>
    <div class="form-group">
-      {{ form_label(form.courseCode) }}
-      {{ form_errors(form.courseCode) }}
-      {{ form_widget(form.courseCode, {'attr': {'class': 'form-control'}}) }}
-   </div>
-   <div class="form-group">
       {{ form_label(form.employmentOffice) }}
       {{ form_errors(form.employmentOffice) }}
       {{ form_widget(form.employmentOffice, {'attr': {'class': 'form-control'}}) }}
@@ -116,55 +111,3 @@
       {{ form_widget(form.save, {'attr': {'class': 'form-control'}}) }}
    </div>
 </form>
-{% block extrascripts %}
-    {% javascripts
-    '@CuatrovientosArteanBundle/Resources/public/js/selectize.js'
-    '@CuatrovientosArteanBundle/Resources/public/js/es5.js'
-    %}
-<!-- Optionally enable responsive features in IE8 -->
-<script src="{{ asset_url }}"></script>
-{% endjavascripts %}
-<script language="javascript">
-
-   $('#studentcourse_applicant').selectize({
-      valueField: 'id',
-      labelField: 'name',
-      searchField: 'name',
-      options: [],
-      create: true,
-      render: {
-         option: function(item, escape) {
-            return '<div>' +
-                    '<span class="title">' +
-                    '<span class="nombre">' + escape(item.name) +  '</span>' +
-                    '</span>' +
-                    '</div>';
-         }
-      },
-      load: function(query, callback) {
-         if (!query.length) return callback();
-         $.ajax({
-            url: '{{ path('cuatrovientos_artean_api_applicant_index') }}',
-            type: 'GET',
-            dataType: 'json',
-            data: {
-               term: query,
-               page_limit: 100,
-            },
-            error: function() {
-               callback();
-            },
-            success: function(res) {
-               if (res.length === 0) {
-                  console.log('Nothing found');
-               } else {
-                  console.log(res);
-                  callback(res);
-               }
-            }
-         });
-      }
-   });
-
-</script>
-{% endblock %}

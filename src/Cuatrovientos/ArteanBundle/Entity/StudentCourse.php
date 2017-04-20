@@ -23,23 +23,19 @@ class StudentCourse extends Entity
     private $dni;
 
     /**
-     * @var Applicant
      * @ORM\ManyToOne(targetEntity="Applicant")
-     * @ORM\JoinColumn(name="dni", referencedColumnName="id")
+     * @ORM\JoinColumn(name="idalumno", referencedColumnName="id")
      */
     private $applicant;
 
     private $applicantName;
 
-
-    /**
-     * @ORM\Column(name="codcursillo",type="string", length=50)
-     */
     /**
      * @ORM\ManyToOne(targetEntity="Course")
-     * @ORM\JoinColumn(name="codcursillo", referencedColumnName="codcursillo")
+     * @ORM\JoinColumn(name="codcursillo", referencedColumnName="id")
      */
-    private $courseCode;
+    private $course;
+
 
     /**
      * @ORM\Column(name="n_alum",type="string", length=50)
@@ -225,18 +221,19 @@ class StudentCourse extends Entity
     /**
      * @return mixed
      */
-    public function getCourseCode()
+    public function getCourse()
     {
-        return $this->courseCode;
+        return $this->course;
     }
 
     /**
-     * @param mixed $courseCode
+     * @param mixed $course
      */
-    public function setCourseCode($courseCode)
+    public function setCourse($course)
     {
-        $this->courseCode = $courseCode;
+        $this->course = $course;
     }
+
 
     /**
      * @return mixed

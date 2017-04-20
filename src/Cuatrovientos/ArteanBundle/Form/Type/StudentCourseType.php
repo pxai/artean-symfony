@@ -10,7 +10,7 @@ use Cuatrovientos\ArteanBundle\Entity\StudentCourse;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\DatetimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class StudentCourseType extends AbstractType {
@@ -18,12 +18,11 @@ class StudentCourseType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('id',HiddenType::class)
-            ->add('courseCode', TextType::class, array('label' => 'Código de curso',"required"=>false))
             ->add('applicantName', TextType::class, array('label' => 'Estudiante',"required"=>false))
             ->add('employmentOffice', TextType::class, array('label' => 'Oficina de empleo',"required"=>false))
             ->add('getsPaid', TextType::class, array('label' => 'Cobra',"required"=>false))
-            ->add('signUpDate', DatetimeType::class, array('label' => 'Fecha alta',"required"=>false))
-            ->add('dropInDate', DatetimeType::class, array('label' => 'Fecha baja',"required"=>false))
+            ->add('signUpDate', DateTimeType::class, array('label' => 'Fecha alta',"required"=>false))
+            ->add('dropInDate', DateTimeType::class, array('label' => 'Fecha baja',"required"=>false))
             ->add('dropIn', TextType::class, array('label' => 'Baja',"required"=>false))
             ->add('endsCourse', TextType::class, array('label' => 'Finaliza curso',"required"=>false))
             ->add('dropInResult', TextType::class, array('label' => 'Resultado de baja',"required"=>false))
