@@ -29,6 +29,7 @@
 
 
     </ul>
+    {% include "CuatrovientosArteanBundle:Course/StudentCourse:index.html.twig" %}
 		{#% if is_granted('ROLE_ADMIN') %#}
                 <a href="{{ path('cuatrovientos_artean_course') }}">Index</a> |
                 <a href="{{ path('cuatrovientos_artean_course_update', {'id': course.id }) }}">Update</a> |

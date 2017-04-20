@@ -1,0 +1,183 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean :: Fcts : modificar{% endblock %}
+{% block extrastyles %}
+     <style>
+          {% include "CuatrovientosArteanBundle:Applicant/Studies:studies.select.css" %}
+     </style>
+{% endblock %}
+{% block body %}
+
+     <h2><i class="fa fa-industry" aria-hidden="true"></i> Fcts</h2>
+
+     <a href="{{ path('cuatrovientos_artean_studentcourse') }}" class="btn">
+          <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todas
+     </a>
+
+     <h3><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Actualizar Fct {{ id }}</h3>
+<form method="post" action="{{ path('cuatrovientos_artean_studentcourse_update_save') }}">
+     {{ form_errors(form) }}
+     {{ form_widget(form.id) }}
+     <div class="form-group">
+          <label for="studentcourse_applicant" class="required">Estudiante</label>
+          <select id="studentcourse_applicant" name="studentcourse[applicantName]">
+               <option value="{{ studentCourse.applicant.id }}">{{ studentCourse.applicant.surname }}, {{ studentCourse.applicant.name }}</option>
+          </select>
+     </div>
+     <div class="form-group">
+          {{ form_label(form.courseCode) }}
+          {{ form_errors(form.courseCode) }}
+          {{ form_widget(form.courseCode, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_label(form.employmentOffice) }}
+          {{ form_errors(form.employmentOffice) }}
+          {{ form_widget(form.employmentOffice, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_label(form.getsPaid) }}
+          {{ form_errors(form.getsPaid) }}
+          {{ form_widget(form.getsPaid, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_label(form.signUpDate) }}
+          {{ form_errors(form.signUpDate) }}
+          {{ form_widget(form.signUpDate, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_label(form.dropInDate) }}
+          {{ form_errors(form.dropInDate) }}
+          {{ form_widget(form.dropInDate, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_label(form.dropIn) }}
+          {{ form_errors(form.dropIn) }}
+          {{ form_widget(form.dropIn, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_label(form.endsCourse) }}
+          {{ form_errors(form.endsCourse) }}
+          {{ form_widget(form.endsCourse, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_label(form.dropInResult) }}
+          {{ form_errors(form.dropInResult) }}
+          {{ form_widget(form.dropInResult, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_label(form.grant) }}
+          {{ form_errors(form.grant) }}
+          {{ form_widget(form.grant, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_label(form.assessment) }}
+          {{ form_errors(form.assessment) }}
+          {{ form_widget(form.assessment, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_label(form.observations) }}
+          {{ form_errors(form.observations) }}
+          {{ form_widget(form.observations, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_label(form.deposit) }}
+          {{ form_errors(form.deposit) }}
+          {{ form_widget(form.deposit, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_label(form.pendingDeposit) }}
+          {{ form_errors(form.pendingDeposit) }}
+          {{ form_widget(form.pendingDeposit, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_label(form.chargeInvoice) }}
+          {{ form_errors(form.chargeInvoice) }}
+          {{ form_widget(form.chargeInvoice, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_label(form.invoiceAmount) }}
+          {{ form_errors(form.invoiceAmount) }}
+          {{ form_widget(form.invoiceAmount, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_label(form.secondInvoice) }}
+          {{ form_errors(form.secondInvoice) }}
+          {{ form_widget(form.secondInvoice, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_label(form.recountingDays) }}
+          {{ form_errors(form.recountingDays) }}
+          {{ form_widget(form.recountingDays, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_label(form.insurance) }}
+          {{ form_errors(form.insurance) }}
+          {{ form_widget(form.insurance, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_label(form.insuranceDays) }}
+          {{ form_errors(form.insuranceDays) }}
+          {{ form_widget(form.insuranceDays, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_label(form.turns) }}
+          {{ form_errors(form.turns) }}
+          {{ form_widget(form.turns, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_row(form._token) }}
+          {{ form_widget(form.save, {'attr': {'class': 'form-control'}}) }}
+     </div>
+</form>
+{% endblock %}
+{% block extrascripts %}
+     {% javascripts
+     '@CuatrovientosArteanBundle/Resources/public/js/selectize.js'
+     '@CuatrovientosArteanBundle/Resources/public/js/es5.js'
+     %}
+     <!-- Optionally enable responsive features in IE8 -->
+     <script src="{{ asset_url }}"></script>
+     {% endjavascripts %}
+     <script language="javascript">
+
+          $('#studentcourse_applicant').selectize({
+               valueField: 'id',
+               labelField: 'name',
+               searchField: 'name',
+               options: [],
+               create: true,
+               render: {
+                    option: function(item, escape) {
+                         return '<div>' +
+                                 '<span class="title">' +
+                                 '<span class="nombre">' + escape(item.name) +  '</span>' +
+                                 '</span>' +
+                                 '</div>';
+                    }
+               },
+               load: function(query, callback) {
+                    if (!query.length) return callback();
+                    $.ajax({
+                         url: '{{ path('cuatrovientos_artean_api_applicant_index') }}',
+                         type: 'GET',
+                         dataType: 'json',
+                         data: {
+                              term: query,
+                              page_limit: 100,
+                         },
+                         error: function() {
+                              callback();
+                         },
+                         success: function(res) {
+                              if (res.length === 0) {
+                                   console.log('Nothing found');
+                              } else {
+                                   console.log(res);
+                                   callback(res);
+                              }
+                         }
+                    });
+               }
+          });
+
+     </script>
+{% endblock %}

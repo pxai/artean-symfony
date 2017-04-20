@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="tbalumnoscursos")
  */
-class Course extends Entity
+class StudentCourse extends Entity
 {
     /**
      * @ORM\Column(name="id",type="integer")
@@ -23,7 +23,21 @@ class Course extends Entity
     private $dni;
 
     /**
+     * @var Applicant
+     * @ORM\ManyToOne(targetEntity="Applicant")
+     * @ORM\JoinColumn(name="dni", referencedColumnName="id")
+     */
+    private $applicant;
+
+    private $applicantName;
+
+
+    /**
      * @ORM\Column(name="codcursillo",type="string", length=50)
+     */
+    /**
+     * @ORM\ManyToOne(targetEntity="Course")
+     * @ORM\JoinColumn(name="codcursillo", referencedColumnName="codcursillo")
      */
     private $courseCode;
 
@@ -75,7 +89,7 @@ class Course extends Entity
     /**
      * @ORM\Column(name="evaluacion",type="string", length=50)
      */
-    private $assesment;
+    private $assessment;
 
     /**
      * @ORM\Column(name="observaciones",type="string")
@@ -93,7 +107,7 @@ class Course extends Entity
     private $pendingDeposit;
 
     /**
-     * @ORM\Column(name=""cargar_recibo",type="string", length=50)
+     * @ORM\Column(name="cargar_recibo",type="string", length=50)
      */
     private $chargeInvoice;
 
@@ -129,7 +143,7 @@ class Course extends Entity
     private $turns;
 
     public function __construct () {
-
+        $this->signUpDate = new \DateTime();
     }
 
     /**
@@ -162,6 +176,51 @@ class Course extends Entity
     {
         $this->dni = $dni;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getApplicant()
+    {
+        return $this->applicant;
+    }
+
+    /**
+     * @param mixed $applicant
+     */
+    public function setApplicant($applicant)
+    {
+        $this->applicant = $applicant;
+    }
+
+    /**
+     * @param mixed $company
+     */
+    public function setNewApplicant()
+    {
+        $applicant = new Applicant();
+        $applicant->setId($this->applicantName);
+        $this->setApplicant($applicant);
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getApplicantName()
+    {
+        return $this->applicantName;
+    }
+
+    /**
+     * @param mixed $applicantName
+     */
+    public function setApplicantName($applicantName)
+    {
+        $this->applicantName = $applicantName;
+    }
+
+
 
     /**
      * @return mixed
@@ -326,17 +385,17 @@ class Course extends Entity
     /**
      * @return mixed
      */
-    public function getAssesment()
+    public function getAssessment()
     {
-        return $this->assesment;
+        return $this->assessment;
     }
 
     /**
-     * @param mixed $assesment
+     * @param mixed $assessment
      */
-    public function setAssesment($assesment)
+    public function setAssessment($assessment)
     {
-        $this->assesment = $assesment;
+        $this->assessment = $assessment;
     }
 
     /**

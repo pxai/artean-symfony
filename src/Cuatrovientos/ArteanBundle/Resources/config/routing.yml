@@ -652,6 +652,43 @@ cuatrovientos_artean_course_delete_save:
     defaults: { _controller: CuatrovientosArteanBundle:Course:courseDeleteSave }
     requirements: 
             'id' : '\d+'
+         
+################# studentcourse ##################
+
+cuatrovientos_artean_studentcourse_new:
+    path:     /artean/admin/studentcourse/new
+    defaults: { _controller: CuatrovientosArteanBundle:Course:newCourse }
+
+cuatrovientos_artean_studentcourse_new_save:
+    path:     /artean/admin/studentcourse/new/save
+    defaults: { _controller: CuatrovientosArteanBundle:Course:newCourseSave }
+
+cuatrovientos_artean_studentcourse_detail:
+    path:     /artean/admin/studentcourse/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Course:studentCourseDetail }
+
+
+cuatrovientos_artean_studentcourse_update_save:
+    path:     /artean/admin/studentcourse/update/save
+    defaults: { _controller: CuatrovientosArteanBundle:Course:studentCourseUpdateSave }
+
+cuatrovientos_artean_studentcourse_update:
+    path:     /artean/admin/studentcourse/update/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Course:studentCourseUpdate }
+    requirements: 
+            'id' : '\d+'
+            
+cuatrovientos_artean_studentcourse_delete:
+    path:     /artean/admin/studentcourse/delete/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Course:studentCourseDelete }
+    requirements: 
+            'id' : '\d+'
+
+cuatrovientos_artean_course_delete_save:
+    path:     /artean/admin/course/delete/save/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Course:courseDeleteSave }
+    requirements: 
+            'id' : '\d+'
             
 ################# mailing ##################
 

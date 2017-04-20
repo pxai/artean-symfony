@@ -5,7 +5,9 @@ namespace  Cuatrovientos\ArteanBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Cuatrovientos\ArteanBundle\Entity\Course;
+use Cuatrovientos\ArteanBundle\Entity\StudentCourse;
 use Cuatrovientos\ArteanBundle\Form\Type\CourseType;
+use Cuatrovientos\ArteanBundle\Form\Type\StudentCourseType;
 
 class CourseController extends Controller
 {
@@ -73,8 +75,9 @@ class CourseController extends Controller
 
    public function courseDetailAction($id=1)
     {
+        $form = $this->createForm(StudentCourseType::class, new StudentCourse());
         $course = $this->get("cuatrovientos_artean.bo.course")->selectById($id);
-        return $this->render('CuatrovientosArteanBundle:Course:detail.html.twig',array('course'=> $course));
+        return $this->render('CuatrovientosArteanBundle:Course:detail.html.twig',array('course'=> $course,'form'=>$form->createView()));
     }
 
 

@@ -107,10 +107,16 @@ class Course extends Entity
      */
     private $book;
 
+    /**
+     * @ORM\OneToMany(targetEntity="StudentCourse", mappedBy="applicant",fetch="EXTRA_LAZY")
+     */
+    private $students;
+
 
     public function __construct () {
         $this->startDate = new \DateTime();
         $this->endDate = new \DateTime();
+        $this->students = array();
     }
 
     /**
@@ -415,6 +421,22 @@ class Course extends Entity
     public function setBook($book)
     {
         $this->book = $book;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStudents()
+    {
+        return $this->students;
+    }
+
+    /**
+     * @param mixed $students
+     */
+    public function setStudents($students)
+    {
+        $this->students = $students;
     }
 
 

@@ -88,13 +88,17 @@ services:
          class: Cuatrovientos\ArteanBundle\Service\Business\FctBusiness
          arguments: ['@cuatrovientos_artean.dao.fct','@cuatrovientos_artean.dao.company','@cuatrovientos_artean.dao.applicant']
 
+    cuatrovientos_artean.dao.studentcourse:
+         class: Cuatrovientos\ArteanBundle\Service\DAO\StudentCourseDAO
+         arguments: ['CuatrovientosArteanBundle:StudentCourse', '@doctrine.orm.entity_manager' ]
+
     cuatrovientos_artean.dao.course:
          class: Cuatrovientos\ArteanBundle\Service\DAO\CourseDAO
          arguments: ['CuatrovientosArteanBundle:Course', '@doctrine.orm.entity_manager' ]
 
     cuatrovientos_artean.bo.course:
          class: Cuatrovientos\ArteanBundle\Service\Business\CourseBusiness
-         arguments: ['@cuatrovientos_artean.dao.course','@cuatrovientos_artean.dao.applicant']
+         arguments: ['@cuatrovientos_artean.dao.course','@cuatrovientos_artean.dao.applicant','@cuatrovientos_artean.dao.studentcourse']
          
     cuatrovientos_artean.dao.mailing:
          class: Cuatrovientos\ArteanBundle\Service\DAO\MailingDAO

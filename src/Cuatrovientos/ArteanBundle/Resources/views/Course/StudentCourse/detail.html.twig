@@ -1,0 +1,21 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean :: Fcts : Detalle de solicitud{% endblock %}
+{% block body %}
+    <h2><i class="fa fa-industry" aria-hidden="true"></i> Fcts</h2>
+
+    <a href="{{ path('cuatrovientos_artean_studentcourse') }}" class="btn">
+        <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
+    </a>
+    <h3><i class="fa fa-search-plus" aria-hidden="true"></i> Detalle de Fct</h3>
+    <a href="{{ path('cuatrovientos_artean_studentcourse_update', {'id': studentcourse.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> Modificar</a>
+    <ul>
+     <li><strong>Id: </strong>{{ studentCourse.id }}</li>
+        <li><strong>Alumno/a: </strong>{{ studentCourse.applicant.surname }}, {{ studentCourse.applicant.name }}</li>
+        <li><strong>Curso: </strong>{{ studentcourse.courseCode }}</li>
+    </ul>
+		{#% if is_granted('ROLE_ADMIN') %#}
+                <a href="{{ path('cuatrovientos_artean_studentcourse') }}">Index</a> |
+                <a href="{{ path('cuatrovientos_artean_studentcourse_update', {'id': studentcourse.id }) }}">Modificar</a> |
+                <a href="{{ path('cuatrovientos_artean_studentcourse_delete', {'id': studentcourse.id }) }}">Eliminar</a>
+		{#% endif % #}
+{% endblock %}
