@@ -7,6 +7,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Cuatrovientos\ArteanBundle\Entity\StudentCourse;
+use Cuatrovientos\ArteanBundle\Entity\Course;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -18,6 +20,7 @@ class StudentCourseType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('id',HiddenType::class)
+            ->add('course', EntityType::class, array('class'=>'CuatrovientosArteanBundle:Course'))
             ->add('applicantName', TextType::class, array('label' => 'Estudiante',"required"=>false))
             ->add('employmentOffice', TextType::class, array('label' => 'Oficina de empleo',"required"=>false))
             ->add('getsPaid', TextType::class, array('label' => 'Cobra',"required"=>false))

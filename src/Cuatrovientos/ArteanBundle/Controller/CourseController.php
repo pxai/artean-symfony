@@ -75,8 +75,11 @@ class CourseController extends Controller
 
    public function courseDetailAction($id=1)
     {
-        $form = $this->createForm(StudentCourseType::class, new StudentCourse());
+        $studentCourse = new StudentCourse();
         $course = $this->get("cuatrovientos_artean.bo.course")->selectById($id);
+        $studentCourse->setCourse($course);
+        $form = $this->createForm(StudentCourseType::class, $studentCourse);
+
         return $this->render('CuatrovientosArteanBundle:Course:detail.html.twig',array('course'=> $course,'form'=>$form->createView()));
     }
 
@@ -121,4 +124,30 @@ class CourseController extends Controller
        return $this->forward('CuatrovientosArteanBundle:Course:index');
     }
 
+    public function newStudentCourseSaveAction(Request $request)
+    {
+        //$form = $this->createForm(new CourseType(), new Course());
+        $form = $this->createForm(StudentCourseType::class, new StudentCourse());
+        if ($request->getMethod() == 'POST') {
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                $studentCourse = $form->getData();
+                $this->get("cuatrovientos_artean.bo.course")->saveStudentCourse($studentCourse);
+              //  $response =  $this->redirectToRoute("cuatrovientos_artean_course_detail");
+                return $this->courseDetailAction(304);
+            } else {
+                $response = $this->render('CuatrovientosArteanBundle:Course:new.html.twig', array('form'=> $form->createView()));
+            }
+        }
+
+        return $response;
+    }
+
+    public function studentCourseDeleteSaveAction($id=1)
+    {
+        $studentCourse = $this->get("cuatrovientos_artean.bo.course")->selectStudentCourse($id);
+        $this->get("cuatrovientos_artean.bo.course")->deleteStudentCourse($studentCourse);
+        return $this->courseDetailAction($studentCourse->getCourse()->getId());
+    }
 }

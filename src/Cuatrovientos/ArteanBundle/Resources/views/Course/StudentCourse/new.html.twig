@@ -6,9 +6,11 @@
 <form method="post" action="{{ path('cuatrovientos_artean_studentcourse_new_save') }}">
    {{ form_errors(form) }}
    {{ form_widget(form.id) }}
+   <input type="hidden" id="{{ form.course.vars.id }}"
+          name="{{ form.course.vars.full_name }}" value="{{ form.course.vars.value }}" >
    <div class="form-group">
       <label for="studentcourse_applicant" class="required">Estudiante</label>
-      <select id="studentcourse_applicant" name="studentcourse[applicantName]">
+      <select id="studentcourse_applicant" name="student_course[applicantName]">
       </select>
    </div>
    <div class="form-group">

@@ -661,7 +661,7 @@ cuatrovientos_artean_studentcourse_new:
 
 cuatrovientos_artean_studentcourse_new_save:
     path:     /artean/admin/studentcourse/new/save
-    defaults: { _controller: CuatrovientosArteanBundle:Course:newCourseSave }
+    defaults: { _controller: CuatrovientosArteanBundle:Course:newStudentCourseSave }
 
 cuatrovientos_artean_studentcourse_detail:
     path:     /artean/admin/studentcourse/{id}
@@ -684,9 +684,9 @@ cuatrovientos_artean_studentcourse_delete:
     requirements: 
             'id' : '\d+'
 
-cuatrovientos_artean_course_delete_save:
-    path:     /artean/admin/course/delete/save/{id}
-    defaults: { _controller: CuatrovientosArteanBundle:Course:courseDeleteSave }
+cuatrovientos_artean_studentcourse_delete_save:
+    path:     /artean/admin/studentcourse/delete/save/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Course:studentCourseDeleteSave }
     requirements: 
             'id' : '\d+'
             
