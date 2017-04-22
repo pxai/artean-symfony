@@ -7,18 +7,22 @@ use Cuatrovientos\ArteanBundle\Entity\Applicant;
 use Cuatrovientos\ArteanBundle\Service\DAO\CourseDAO;
 use Cuatrovientos\ArteanBundle\Service\DAO\ApplicantDAO;
 use Cuatrovientos\ArteanBundle\Service\DAO\StudentCourseDAO;
+use Cuatrovientos\ArteanBundle\Service\DAO\TeacherCourseDAO;
 
 class CourseBusiness extends GenericBusiness {
 
     private $applicantDAO;
     private $studentCourseDAO;
+    private $teacherCourseDAO;
 
     public function __construct (CourseDAO $courseDAO,
                                  ApplicantDAO $applicantDAO,
-                                 StudentCourseDAO $studentCourseDAO) {
+                                 StudentCourseDAO $studentCourseDAO,
+                                 TeacherCourseDAO $teacherCourseDAO) {
         $this->entityDAO = $courseDAO;
         $this->applicantDAO = $applicantDAO;
         $this->studentCourseDAO = $studentCourseDAO;
+        $this->teacherCourseDAO = $teacherCourseDAO;
     }
 
     public function findAllCourses($id=0, $start=0,$total=100)
@@ -60,6 +64,24 @@ class CourseBusiness extends GenericBusiness {
         $this->studentCourseDAO->remove($applicantCourse);
     }
 
+    public function selectTeacherCourse($id) {
+        return $this->teacherCourseDAO->selectById($id);
+    }
+
+    public function saveTeacherCourse($teacherCourse) {
+        $this->setCourseTeacher($teacherCourse);
+        $this->teacherCourseDAO->create($teacherCourse);
+    }
+
+    public function updateTeacherCourse($teacherCourse) {
+        $this->setCourseTeacher($teacherCourse);
+        $this->teacherCourseDAO->update($teacherCourse);
+    }
+
+    public function deleteTeacherCourse($teacherCourse) {
+        $this->teacherCourseDAO->remove($teacherCourse);
+    }
+
 
     private function setCourseApplicant($applicantCourse)
     {
@@ -75,6 +97,23 @@ class CourseBusiness extends GenericBusiness {
             $applicant->setName($applicantCourse->getApplicantName());
             $this->applicantDAO->create($applicant);
             $applicantCourse->setApplicant($applicant);
+        }
+    }
+
+    private function setCourseTeacher($teacherCourse)
+    {
+        if (preg_match("/^[0-9]+$/", $teacherCourse->getApplicantName())) {
+            // Check that exists
+            if ($applicant = $this->applicantDAO->selectById($teacherCourse->getApplicantName())) {
+                $teacherCourse->setApplicant($applicant);
+            } else { // else, insert that number as the name
+                $teacherCourse->setNewApplicant();
+            }
+        } else { // Else, new Applicant must be created
+            $applicant = new Applicant();
+            $applicant->setName($teacherCourse->getApplicantName());
+            $this->applicantDAO->create($applicant);
+            $teacherCourse->setApplicant($applicant);
         }
     }
 }

@@ -1,6 +1,6 @@
 <tr>
      <td>{{ teacherCourse.id }}</td>
-    <td>{{ teacherCourse.user.surname }}, {{ teacherCourse.applicant.name }}</td>
+    <td>{{ teacherCourse.applicant.surname }}, {{ teacherCourse.applicant.name }}</td>
     <td>{{ teacherCourse.applicant.email }}</td>
     <td>{{ teacherCourse.applicant.mobile }}</td>
     {#% if is_granted('ROLE_ADMIN') %#}

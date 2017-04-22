@@ -715,16 +715,16 @@ cuatrovientos_artean_teachercourse_update:
     requirements: 
             'id' : '\d+'
             
-cuatrovientos_artean_studentcourse_delete:
-    path:     /artean/admin/studentcourse/delete/{id}
-    defaults: { _controller: CuatrovientosArteanBundle:Course:studentCourseDelete }
+cuatrovientos_artean_teachercourse_delete:
+    path:     /artean/admin/teachercourse/delete/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Course:teacherCourseDelete }
     requirements: 
             'id' : '\d+'
 
-cuatrovientos_artean_studentcourse_delete_save:
-    path:     /artean/admin/studentcourse/delete/save/{id}
-    defaults: { _controller: CuatrovientosArteanBundle:Course:studentCourseDeleteSave }
-    requirements: 
+cuatrovientos_artean_teachercourse_delete_save:
+    path:     /artean/admin/teachercourse/delete/save/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Course:teacherCourseDeleteSave }
+    requirements:
             'id' : '\d+'
             
 ################# mailing ##################
