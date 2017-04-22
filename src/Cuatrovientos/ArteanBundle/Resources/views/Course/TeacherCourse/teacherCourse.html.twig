@@ -1,0 +1,14 @@
+<tr>
+     <td>{{ teacherCourse.id }}</td>
+    <td>{{ teacherCourse.applicant.surname }}, {{ teacherCourse.applicant.name }}</td>
+    <td>{{ teacherCourse.applicant.email }}</td>
+    <td>{{ teacherCourse.applicant.mobile }}</td>
+    {#% if is_granted('ROLE_ADMIN') %#}
+    <td>
+        <a href="{{ path('cuatrovientos_artean_teachercourse_detail', {'id': teacherCourse.id }) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
+        <a href="{{ path('cuatrovientos_artean_teachercourse_update', {'id': teacherCourse.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> </a>
+        <a href="{{ path('cuatrovientos_artean_teachercourse_delete_save', {'id': teacherCourse.id }) }}" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> </a>
+    </td>
+
+		{#% endif % #}
+</tr>
