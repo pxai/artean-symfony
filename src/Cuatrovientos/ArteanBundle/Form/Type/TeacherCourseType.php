@@ -20,9 +20,9 @@ class TeacherCourseType extends AbstractType {
         $builder
             ->add('id',HiddenType::class)
             ->add('course', EntityType::class, array('class'=>'CuatrovientosArteanBundle:Course'))
-            ->add('userName', TextType::class, array('label' => 'Profesor',"required"=>false))
+            ->add('applicantName', TextType::class, array('label' => 'Profesor',"required"=>false))
             ->add('hours', TextType::class, array('label' => 'Horas',"required"=>false))
-            ->add('save', SubmitType::class, array('label' => 'Fecha'));
+            ->add('save', SubmitType::class, array('label' => 'Guardar'));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver) {

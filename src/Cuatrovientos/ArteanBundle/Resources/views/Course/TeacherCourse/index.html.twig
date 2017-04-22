@@ -1,29 +1,16 @@
- <h3><i class="fa fa-industry" aria-hidden="true"></i> Estudiantes de cursos </h3>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newStudentCourseModal" data-whatever="searchCenter">
+ <h3><i class="fa fa-industry" aria-hidden="true"></i> Profesorado del curso </h3>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newTeacherCourseModal" data-whatever="searchCenter">
                 <i class="fa fa-search" aria-hidden="true"></i> Nuevo
             </button>
-        <div class="modal fade" id="newStudentCourseModal" tabindex="-1" role="dialog" aria-labelledby="newStudentCourseModal" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-header">
-                    <h4 class="modal-title">Add teacher</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="close">
-                        <i class="fa fa-search" aria-hidden="true"></i> Cerrar
-                    </button>
-                </div>
-                <div class="modal-body">
-            {% include "CuatrovientosArteanBundle:Course/StudentCourse:new.html.twig" %}
-                </div>
-                <div class="modal-footer">
-                    For my balls, it works
-                </div>
-            </div>
+        <div class="modal fade" id="newTeacherCourseModal" tabindex="-1" role="dialog" aria-labelledby="newTeacherCourseModal" aria-hidden="true">
+            {% include "CuatrovientosArteanBundle:Course/TeacherCourse:new.html.twig" %}
         </div>
 <div class="table-responsive">
   <table class="table .table-condensed">
      <div id='teachercourses'>
-         <tr><th>Id</th><th>Alumno</th><th>Email</th><th>Teléfono</th><th></th></tr>
+         <tr><th>Id</th><th>Profesor</th><th>Email</th><th>Teléfono</th><th></th></tr>
         {% for teacherCourse in course.teachers %}
-            {% include "CuatrovientosArteanBundle:Course/StudentCourse:teacherCourse.html.twig" %}
+            {% include "CuatrovientosArteanBundle:Course/TeacherCourse:teacherCourse.html.twig" %}
         {% endfor %}
     </div>
   </table>

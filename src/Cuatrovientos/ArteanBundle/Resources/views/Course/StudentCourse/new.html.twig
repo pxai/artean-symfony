@@ -1,8 +1,6 @@
 
-   <style>
-      {% include "CuatrovientosArteanBundle:Applicant/Studies:studies.select.css" %}
-   </style>
-   <h3><i class="fa fa-plus" aria-hidden="true"></i> Nueva Fcts</h3>
+
+   <h3><i class="fa fa-plus" aria-hidden="true"></i> Nuevo estudiante</h3>
 <form method="post" action="{{ path('cuatrovientos_artean_studentcourse_new_save') }}">
    {{ form_errors(form) }}
    {{ form_widget(form.id) }}

@@ -41,7 +41,7 @@ class StudentCourseType extends AbstractType {
             ->add('insurance', TextType::class, array('label' => 'Asegurar',"required"=>false))
             ->add('insuranceDays', TextType::class, array('label' => 'Días seguro',"required"=>false))
             ->add('turns', TextType::class, array('label' => 'Turnos',"required"=>false))
-            ->add('save', SubmitType::class, array('label' => 'Fecha'));
+            ->add('save', SubmitType::class, array('label' => 'Guardar'));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver) {

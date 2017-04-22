@@ -17,3 +17,7 @@
     position: fixed;
     top: 0;
 }
+
+.modal-dialog {
+    background-color: white;
+}

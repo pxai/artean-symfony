@@ -1,115 +1,37 @@
-
-   <style>
-      {% include "CuatrovientosArteanBundle:Applicant/Studies:studies.select.css" %}
-   </style>
-   <h3><i class="fa fa-plus" aria-hidden="true"></i> Nueva Fcts</h3>
+<div class="modal-dialog">
+   <div class="modal-header">
+      <h4 class="modal-title">Añadir profesor</h4>
+      <button type="button" class="close" data-dismiss="modal" aria-label="close">
+         <i class="fa fa-search" aria-hidden="true"></i> Cerrar
+      </button>
+   </div>
+   <div class="modal-body">
+<h3><i class="fa fa-plus" aria-hidden="true"></i> Nuevo/a profesor/a</h3>
 <form method="post" action="{{ path('cuatrovientos_artean_teachercourse_new_save') }}">
-   {{ form_errors(form) }}
-   {{ form_widget(form.id) }}
-   <input type="hidden" id="{{ form.course.vars.id }}"
-          name="{{ form.course.vars.full_name }}" value="{{ form.course.vars.value }}" >
+   {{ form_errors(teacherForm) }}
+   {{ form_widget(teacherForm.id) }}
+   <input type="hidden" id="{{ teacherForm.course.vars.id }}"
+          name="{{ teacherForm.course.vars.full_name }}" value="{{ teacherForm.course.vars.value }}" >
    <div class="form-group">
-      <label for="teachercourse_applicant" class="required">Estudiante</label>
+      <label for="teachercourse_applicant" class="required">Profesor/a</label>
       <select id="teachercourse_applicant" name="teacher_course[applicantName]">
       </select>
    </div>
+
    <div class="form-group">
-      {{ form_label(form.employmentOffice) }}
-      {{ form_errors(form.employmentOffice) }}
-      {{ form_widget(form.employmentOffice, {'attr': {'class': 'form-control'}}) }}
+      {{ form_label(teacherForm.hours) }}
+      {{ form_errors(teacherForm.hours) }}
+      {{ form_widget(teacherForm.hours, {'attr': {'class': 'form-control'}}) }}
    </div>
    <div class="form-group">
-      {{ form_label(form.getsPaid) }}
-      {{ form_errors(form.getsPaid) }}
-      {{ form_widget(form.getsPaid, {'attr': {'class': 'form-control'}}) }}
-   </div>
-   <div class="form-group">
-      {{ form_label(form.signUpDate) }}
-      {{ form_errors(form.signUpDate) }}
-      {{ form_widget(form.signUpDate, {'attr': {'class': 'form-control'}}) }}
-   </div>
-   <div class="form-group">
-      {{ form_label(form.dropInDate) }}
-      {{ form_errors(form.dropInDate) }}
-      {{ form_widget(form.dropInDate, {'attr': {'class': 'form-control'}}) }}
-   </div>
-   <div class="form-group">
-      {{ form_label(form.dropIn) }}
-      {{ form_errors(form.dropIn) }}
-      {{ form_widget(form.dropIn, {'attr': {'class': 'form-control'}}) }}
-   </div>
-   <div class="form-group">
-      {{ form_label(form.endsCourse) }}
-      {{ form_errors(form.endsCourse) }}
-      {{ form_widget(form.endsCourse, {'attr': {'class': 'form-control'}}) }}
-   </div>
-   <div class="form-group">
-      {{ form_label(form.dropInResult) }}
-      {{ form_errors(form.dropInResult) }}
-      {{ form_widget(form.dropInResult, {'attr': {'class': 'form-control'}}) }}
-   </div>
-   <div class="form-group">
-      {{ form_label(form.grant) }}
-      {{ form_errors(form.grant) }}
-      {{ form_widget(form.grant, {'attr': {'class': 'form-control'}}) }}
-   </div>
-   <div class="form-group">
-      {{ form_label(form.assessment) }}
-      {{ form_errors(form.assessment) }}
-      {{ form_widget(form.assessment, {'attr': {'class': 'form-control'}}) }}
-   </div>
-   <div class="form-group">
-      {{ form_label(form.observations) }}
-      {{ form_errors(form.observations) }}
-      {{ form_widget(form.observations, {'attr': {'class': 'form-control'}}) }}
-   </div>
-   <div class="form-group">
-      {{ form_label(form.deposit) }}
-      {{ form_errors(form.deposit) }}
-      {{ form_widget(form.deposit, {'attr': {'class': 'form-control'}}) }}
-   </div>
-   <div class="form-group">
-      {{ form_label(form.pendingDeposit) }}
-      {{ form_errors(form.pendingDeposit) }}
-      {{ form_widget(form.pendingDeposit, {'attr': {'class': 'form-control'}}) }}
-   </div>
-   <div class="form-group">
-      {{ form_label(form.chargeInvoice) }}
-      {{ form_errors(form.chargeInvoice) }}
-      {{ form_widget(form.chargeInvoice, {'attr': {'class': 'form-control'}}) }}
-   </div>
-   <div class="form-group">
-      {{ form_label(form.invoiceAmount) }}
-      {{ form_errors(form.invoiceAmount) }}
-      {{ form_widget(form.invoiceAmount, {'attr': {'class': 'form-control'}}) }}
-   </div>
-   <div class="form-group">
-      {{ form_label(form.secondInvoice) }}
-      {{ form_errors(form.secondInvoice) }}
-      {{ form_widget(form.secondInvoice, {'attr': {'class': 'form-control'}}) }}
-   </div>
-   <div class="form-group">
-      {{ form_label(form.recountingDays) }}
-      {{ form_errors(form.recountingDays) }}
-      {{ form_widget(form.recountingDays, {'attr': {'class': 'form-control'}}) }}
-   </div>
-   <div class="form-group">
-      {{ form_label(form.insurance) }}
-      {{ form_errors(form.insurance) }}
-      {{ form_widget(form.insurance, {'attr': {'class': 'form-control'}}) }}
-   </div>
-   <div class="form-group">
-      {{ form_label(form.insuranceDays) }}
-      {{ form_errors(form.insuranceDays) }}
-      {{ form_widget(form.insuranceDays, {'attr': {'class': 'form-control'}}) }}
-   </div>
-   <div class="form-group">
-      {{ form_label(form.turns) }}
-      {{ form_errors(form.turns) }}
-      {{ form_widget(form.turns, {'attr': {'class': 'form-control'}}) }}
-   </div>
-   <div class="form-group">
-      {{ form_row(form._token) }}
-      {{ form_widget(form.save, {'attr': {'class': 'form-control'}}) }}
+      {{ form_row(teacherForm._token) }}
+      {{ form_widget(teacherForm.save, {'attr': {'class': 'form-control'}}) }}
    </div>
 </form>
+   </div>
+   <div class="modal-footer">
+      <button type="button" class="close" data-dismiss="modal" aria-label="close">
+         <i class="fa fa-search" aria-hidden="true"></i> Cerrar
+      </button>
+   </div>
+</div>

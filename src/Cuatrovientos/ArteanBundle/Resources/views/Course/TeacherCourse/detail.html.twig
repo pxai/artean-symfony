@@ -1,5 +1,5 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
-{% block title %}Artean :: Fcts : Detalle de solicitud{% endblock %}
+{% block title %}Artean :: Cursos :: Detalle de profesor {% endblock %}
 {% block body %}
     <h2><i class="fa fa-industry" aria-hidden="true"></i> Fcts</h2>
 
@@ -10,8 +10,9 @@
     <a href="{{ path('cuatrovientos_artean_teachercourse_update', {'id': teachercourse.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> Modificar</a>
     <ul>
      <li><strong>Id: </strong>{{ teacherCourse.id }}</li>
-        <li><strong>Alumno/a: </strong>{{ teacherCourse.applicant.surname }}, {{ teacherCourse.applicant.name }}</li>
+        <li><strong>Profesor/a: </strong>{{ teacherCourse.applicant.surname }}, {{ teacherCourse.applicant.name }}</li>
         <li><strong>Curso: </strong>{{ teachercourse.courseCode }}</li>
+        <li><strong>Horas: </strong>{{ teachercourse.hours }}</li>
     </ul>
 		{#% if is_granted('ROLE_ADMIN') %#}
                 <a href="{{ path('cuatrovientos_artean_teachercourse') }}">Index</a> |

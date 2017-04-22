@@ -18,11 +18,12 @@ class TeacherCourse extends Entity
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="Applicant")
      * @ORM\JoinColumn(name="idprofesor", referencedColumnName="id")
      */
-    private $user;
-    private $userName;
+    private $applicant;
+
+    private $applicantName;
 
     /**
      * @ORM\ManyToOne(targetEntity="Course")
@@ -32,7 +33,7 @@ class TeacherCourse extends Entity
 
 
     /**
-     * @ORM\Column(name="horas",type="string", length=50)
+     * @ORM\Column(name="horas_",type="string", length=50)
      */
     private $hours;
 
@@ -59,34 +60,46 @@ class TeacherCourse extends Entity
     /**
      * @return mixed
      */
-    public function getUser()
+    public function getApplicant()
     {
-        return $this->user;
+        return $this->applicant;
     }
 
     /**
-     * @param mixed $user
+     * @param mixed $applicant
      */
-    public function setUser($user)
+    public function setApplicant($applicant)
     {
-        $this->user = $user;
+        $this->applicant = $applicant;
+    }
+
+    /**
+     * @param mixed $company
+     */
+    public function setNewApplicant()
+    {
+        $applicant = new Applicant();
+        $applicant->setId($this->applicantName);
+        $this->setApplicant($applicant);
+        return $this;
     }
 
     /**
      * @return mixed
      */
-    public function getUserName()
+    public function getApplicantName()
     {
-        return $this->userName;
+        return $this->applicantName;
     }
 
     /**
-     * @param mixed $userName
+     * @param mixed $applicantName
      */
-    public function setUserName($userName)
+    public function setApplicantName($applicantName)
     {
-        $this->userName = $userName;
+        $this->applicantName = $applicantName;
     }
+
 
     /**
      * @return mixed
