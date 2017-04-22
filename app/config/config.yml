@@ -77,7 +77,8 @@ fos_rest:
       # setting fallback_format to null means that in case of a priority mismatch the next rule will be considered
       # http://symfony.com/doc/current/bundles/FOSRestBundle/format_listener.html
           - { path: '^/api', methods: ['GET', 'POST','PUT','DELETE'], priorities: ['json', 'jsonp'], fallback_format: json, prefer_extension: true }
-          - { path: '^/', priorities: ['text/html', '*/*'], fallback_format: html, prefer_extension: true }
+          - { path: '^/', stop: true }
+#          - { path: '^/', priorities: ['text/html', '*/*'], fallback_format: html, prefer_extension: true }
 
     view:
         view_response_listener: force

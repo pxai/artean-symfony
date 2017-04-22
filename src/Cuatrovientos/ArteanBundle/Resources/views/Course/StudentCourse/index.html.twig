@@ -2,8 +2,21 @@
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newStudentCourseModal" data-whatever="searchCenter">
                 <i class="fa fa-search" aria-hidden="true"></i> Nuevo
             </button>
-        <div id="newStudentCourseModal" style="display:none"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal fade" id="newStudentCourseModal" tabindex="-1" role="dialog" aria-labelledby="newStudentCourseModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add student</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                        <i class="fa fa-search" aria-hidden="true"></i> Cerrar
+                    </button>
+                </div>
+                <div class="modal-body">
             {% include "CuatrovientosArteanBundle:Course/StudentCourse:new.html.twig" %}
+                </div>
+                <div class="modal-footer">
+                    For my balls, it works
+                </div>
+            </div>
         </div>
 <div class="table-responsive">
   <table class="table .table-condensed">
