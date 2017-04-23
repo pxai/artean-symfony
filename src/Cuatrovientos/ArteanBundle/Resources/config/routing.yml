@@ -14,7 +14,11 @@ cuatrovientos_artean_samples:
 
 user_logout:
     path:   /logout
-    
+
+cuatrovientos_artean_admin_dashboard:
+    path:     /artean/admin/dashboard
+    defaults: { _controller: FrameworkBundle:Template:template, template: CuatrovientosArteanBundle:Default:adminDashboard.html.twig }
+
 ################# center ##################
 
 cuatrovientos_artean_center:
@@ -675,9 +679,9 @@ cuatrovientos_artean_studentcourse_update_save:
 cuatrovientos_artean_studentcourse_update:
     path:     /artean/admin/studentcourse/update/{id}
     defaults: { _controller: CuatrovientosArteanBundle:Course:studentCourseUpdate }
-    requirements: 
+    requirements:
             'id' : '\d+'
-            
+
 cuatrovientos_artean_studentcourse_delete:
     path:     /artean/admin/studentcourse/delete/{id}
     defaults: { _controller: CuatrovientosArteanBundle:Course:studentCourseDelete }

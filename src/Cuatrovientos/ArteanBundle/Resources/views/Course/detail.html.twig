@@ -130,5 +130,34 @@
                 });
             }
         });
+
+        $('.studentcourse_update').click(function (e) {
+            e.preventDefault();
+            console.log($(this).attr('href'));
+            load($(this).attr('href'));
+            function load (url) {
+             $.ajax({
+                 url: url,
+                 type: 'GET',
+                 dataType: 'html',
+                 data: {
+                 },
+             error: function() {
+                 $('#updateStudentCourseModal div.modal-body').html('Error al modificar.');//res;
+                 $('#updateStudentCourseModal').modal('show');
+             },
+             success: function(res) {
+                 if (res.length === 0) {
+                    console.log('Nothing found');
+                 } else {
+                    console.log("SUCCESS");
+                     $('#updateStudentCourseModal div.modal-body').html(res);//res;
+                     $('#updateStudentCourseModal').modal('show');
+                 }
+             }
+             });
+             }
+        });
+
     </script>
 {% endblock %}

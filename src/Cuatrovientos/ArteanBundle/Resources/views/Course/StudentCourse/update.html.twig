@@ -1,17 +1,4 @@
-{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
-{% block title %}Artean :: Fcts : modificar{% endblock %}
-{% block extrastyles %}
-     <style>
-          {% include "CuatrovientosArteanBundle:Applicant/Studies:studies.select.css" %}
-     </style>
-{% endblock %}
-{% block body %}
-
-     <h2><i class="fa fa-industry" aria-hidden="true"></i> Actualizar estudiante</h2>
-
-     <a href="{{ path('cuatrovientos_artean_studentcourse') }}" class="btn">
-          <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todas
-     </a>
+<h2><i class="fa fa-industry" aria-hidden="true"></i> Actualizar estudiante</h2>
 
      <h3><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Actualizar Fct {{ id }}</h3>
 <form method="post" action="{{ path('cuatrovientos_artean_studentcourse_update_save') }}">
@@ -125,56 +112,3 @@
           {{ form_widget(form.save, {'attr': {'class': 'form-control'}}) }}
      </div>
 </form>
-{% endblock %}
-{% block extrascripts %}
-     {% javascripts
-     '@CuatrovientosArteanBundle/Resources/public/js/selectize.js'
-     '@CuatrovientosArteanBundle/Resources/public/js/es5.js'
-     %}
-     <!-- Optionally enable responsive features in IE8 -->
-     <script src="{{ asset_url }}"></script>
-     {% endjavascripts %}
-     <script language="javascript">
-
-          $('#studentcourse_applicant').selectize({
-               valueField: 'id',
-               labelField: 'name',
-               searchField: 'name',
-               options: [],
-               create: true,
-               render: {
-                    option: function(item, escape) {
-                         return '<div>' +
-                                 '<span class="title">' +
-                                 '<span class="nombre">' + escape(item.name) +  '</span>' +
-                                 '</span>' +
-                                 '</div>';
-                    }
-               },
-               load: function(query, callback) {
-                    if (!query.length) return callback();
-                    $.ajax({
-                         url: '{{ path('cuatrovientos_artean_api_applicant_index') }}',
-                         type: 'GET',
-                         dataType: 'json',
-                         data: {
-                              term: query,
-                              page_limit: 100,
-                         },
-                         error: function() {
-                              callback();
-                         },
-                         success: function(res) {
-                              if (res.length === 0) {
-                                   console.log('Nothing found');
-                              } else {
-                                   console.log(res);
-                                   callback(res);
-                              }
-                         }
-                    });
-               }
-          });
-
-     </script>
-{% endblock %}

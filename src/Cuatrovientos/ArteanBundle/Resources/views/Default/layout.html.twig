@@ -30,19 +30,22 @@
                   <div class="collapse navbar-collapse" id="navbarNavDropdown">
                       <ul class="navbar-nav">
                           <li class="nav-item active">
-                              <a class="nav-link" href='https://artean.cuatrovientos.org/?ap_manage_tbempresas' title='Gestión de empresas'><i class="fa fa-building-o"></i> Empresas</a>
+                              <a class="nav-link" href='{{ path('cuatrovientos_artean_company') }}' title='Gestión de empresas'><i class="fa fa-building-o"></i> Empresas</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href='https://artean.cuatrovientos.org/?ap_manage_candidatos'><i class="fa fa-user"></i> Candidatos</a>
+                              <a class="nav-link" href='{{ path('cuatrovientos_artean_company') }}'  title='Candidatos'><i class="fa fa-user"></i> Candidatos</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href='?ap_manage_tbsolicitudes' title='Solicitudes'><i class="fa fa-bullhorn"></i> Solicitudes</a>
+                              <a class="nav-link" href='{{ path('cuatrovientos_artean_jobrequest') }}' title='Solicitudes'><i class="fa fa-bullhorn"></i> Solicitudes</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href='https://artean.cuatrovientos.org/?ap_manage_mailing' title='Mailing'><i class="fa fa-mail-forward"></i> Mailing</a>
+                              <a class="nav-link" href='{{ path('cuatrovientos_artean_news') }}' title='Noticias'><i class="fa fa-news"></i> Noticias</a>
                           </li>
                           <li class="nav-item">
-                              <a  class="nav-link" href='https://artean.cuatrovientos.org/?ap_manage_cursos' title='Cursos'><i class="fa fa-graduation-cap"></i> Cursos</a>
+                              <a class="nav-link" href='{{ path('cuatrovientos_artean_mailing') }}' title='Mailing'><i class="fa fa-mail-forward"></i> Mailing</a>
+                          </li>
+                          <li class="nav-item">
+                              <a  class="nav-link" href='{{ path('cuatrovientos_artean_course') }}' title='Cursos'><i class="fa fa-graduation-cap"></i> Cursos</a>
                           </li>
                           <li class="nav-item dropdown">
                               <a class="nav-link" class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

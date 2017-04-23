@@ -146,6 +146,29 @@ class CourseController extends Controller
         return $response;
     }
 
+    public function studentCourseUpdateAction($id) {
+        $studentCourse = $this->get("cuatrovientos_artean.bo.course")->selectStudentCourse($id);
+        $form = $this->createForm(StudentCourseType::class, $studentCourse);
+        return $this->render('CuatrovientosArteanBundle:Course/StudentCourse:update.html.twig',array('form'=> $form->createView(), 'studentCourse' => $studentCourse,'id'=>$id));
+    }
+
+    public function studentCourseUpdateSaveAction(Request $request)
+    {
+        $form = $this->createForm(StudentCourseType::class, new StudentCourse());
+        if ($request->getMethod() == 'POST') {
+            $form->handleRequest($request);
+            $studentCourse = $form->getData();
+            if ($form->isValid()) {
+
+               $this->get("cuatrovientos_artean.bo.course")->updateStudentCourse($studentCourse);
+                return $this->courseDetailAction($studentCourse->getCourse()->getId());
+            } else {
+                return $this->courseDetailAction($studentCourse->getCourse()->getId());
+               }
+        }
+        return $this->indexAction();
+    }
+
     public function studentCourseDeleteSaveAction($id=1)
     {
         $studentCourse = $this->get("cuatrovientos_artean.bo.course")->selectStudentCourse($id);
@@ -168,7 +191,7 @@ class CourseController extends Controller
             }
         }
 
-        return $response;
+        return $this->indexAction();
     }
 
     public function teacherCourseDeleteSaveAction($id=1)

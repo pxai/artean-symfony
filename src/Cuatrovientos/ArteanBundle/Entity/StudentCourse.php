@@ -53,12 +53,12 @@ class StudentCourse extends Entity
     private $getsPaid;
 
     /**
-     * @ORM\Column(name="fecha_alta",type="datetime", length=14)
+     * @ORM\Column(name="fecha_alta",type="datetime")
      */
     private $signUpDate;
 
     /**
-     * @ORM\Column(name="fecha_baja",type="datetime", length=255)
+     * @ORM\Column(name="fecha_baja",type="datetime")
      */
     private $dropInDate;
 
@@ -139,7 +139,8 @@ class StudentCourse extends Entity
     private $turns;
 
     public function __construct () {
-        $this->signUpDate = new \DateTime();
+        $this->signUpDate = new \DateTime("now");
+        $this->dropInDate = new \DateTime();
     }
 
     /**
@@ -555,6 +556,10 @@ class StudentCourse extends Entity
         $this->turns = $turns;
     }
 
-    
+    function __toString()
+    {
+        // TODO: Implement __toString() method.
+    }
+
 
 }
