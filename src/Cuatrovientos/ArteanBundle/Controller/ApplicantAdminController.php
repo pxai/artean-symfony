@@ -17,9 +17,11 @@ class ApplicantAdminController extends Controller
 
     public function indexAction()
     {
-         $form = $this->createForm(ApplicantSignInType::class);
-        return $this->render('CuatrovientosArteanBundle:Applicant:signIn.html.twig', array('form'=> $form->createView()));
-    }  
+        $form = $this->createForm(CenterType::class);
+        $centers = $this->get("cuatrovientos_artean.bo.center")->findAllCenters(0, $init, $limit);
+        $total = $this->get("cuatrovientos_artean.bo.center")->countAllCenters();
+        return $this->render('CuatrovientosArteanBundle:Center:index.html.twig', array('centers'=>$centers, 'init'=>$init, 'limit'=> $limit, 'total'=> $total,'form'=> $form->createView()));
+    }
     
 
    public function applicantSignInAction()

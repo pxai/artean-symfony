@@ -431,6 +431,7 @@ cuatrovientos_artean_api_applicant_index:
     path: "/api/admin/applicant/"
     defaults: { _controller: CuatrovientosArteanBundle:Api\ApplicantApi:index }
 
+##################### applicant dashboard
 cuatrovientos_artean_applicant_dashboard:
     path:     /artean/applicant/dashboard
     defaults: { _controller: CuatrovientosArteanBundle:Applicant:dashboard}
@@ -500,7 +501,13 @@ cuatrovientos_artean_applicant_dashboard_update_job:
 cuatrovientos_artean_applicant_dashboard_update_job_save:
     path:     /artean/applicant/job/update/save
     defaults: { _controller: CuatrovientosArteanBundle:Applicant:updateJobSave}
-    
+
+
+################# admin applicant ###################
+cuatrovientos_artean_applicant_admin:
+    path:     /artean/admin/applicant
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:index }
+
 ################# jobrequest ##################
 
 cuatrovientos_artean_jobrequest:
