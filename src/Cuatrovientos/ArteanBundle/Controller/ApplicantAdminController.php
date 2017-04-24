@@ -11,16 +11,23 @@ use Cuatrovientos\ArteanBundle\Entity\UserRole;
 use Cuatrovientos\ArteanBundle\Entity\ApplicantStudies;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantSignInType;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantSignUpType;
+use Cuatrovientos\ArteanBundle\Entity\ApplicantJobs;
+use Cuatrovientos\ArteanBundle\Entity\ApplicantLanguages;
+use Cuatrovientos\ArteanBundle\Form\Type\ApplicantType;
+use Cuatrovientos\ArteanBundle\Form\Type\ApplicantStudiesType;
+use Cuatrovientos\ArteanBundle\Form\Type\ApplicantLanguageType;
+use Cuatrovientos\ArteanBundle\Form\Type\ApplicantJobType;
 
 class ApplicantAdminController extends Controller
 {
 
-    public function indexAction()
+    public function indexAction($init=0,$limit=100)
     {
-        $form = $this->createForm(CenterType::class);
-        $centers = $this->get("cuatrovientos_artean.bo.center")->findAllCenters(0, $init, $limit);
-        $total = $this->get("cuatrovientos_artean.bo.center")->countAllCenters();
-        return $this->render('CuatrovientosArteanBundle:Center:index.html.twig', array('centers'=>$centers, 'init'=>$init, 'limit'=> $limit, 'total'=> $total,'form'=> $form->createView()));
+        $form = $this->createForm(ApplicantType::class);
+        $applicants = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicants(0, $init, $limit);
+        $total = $this->get("cuatrovientos_artean.bo.applicant")->countAllApplicants();
+
+        return $this->render('CuatrovientosArteanBundle:Applicant:indexAdmin.html.twig', array('applicants'=>$applicants, 'init'=>$init, 'limit'=> $limit, 'total'=> $total,'form'=> $form->createView()));
     }
     
 
@@ -267,78 +274,6 @@ class ApplicantAdminController extends Controller
 
         $this->get('mailer')->send($message);
 
-    }
-    /**
-    *
-    *
-    */
-   public function applicantDetailAction($id=1)
-    {
-
-        $applicant = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Applicant")->find($id);
-   
-        return $this->render('CuatrovientosArteanBundle:Applicant:detail.html.twig',array('applicant'=> $applicant));
-    }
-
-    /**
-    *
-    *
-    */
-    public function applicantUpdateAction($id) {
-        $applicant = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Applicant")->find($id);
-      
-        $form = $this->createForm(ApplicantType::class, $applicant);
-
-        return $this->render('CuatrovientosArteanBundle:Applicant:update.html.twig',array('form'=> $form->createView(),'id'=>$id));
-    }
-    
-    /**
-    *
-    *
-    */
-    public function applicantUpdateSaveAction(Request $request) {
-      
-        $form = $this->createForm(ApplicantType::class, new Applicant());
-      //  $form->submit($request->request->get($form->getName()));
-        if ($request->getMethod() == 'POST') {
-            $form->handleRequest($request);
-            if ($form->isValid()) {
-                $applicant = $form->getData();
-                
-                $em = $this->getDoctrine()->getEntityManager();
-                $em->merge($applicant);
-                $em->flush();
-                
-                // redirect to index
-                $response = $this->forward('CuatrovientosArteanBundle:Applicant:applicantDetail', array('id' => $applicant->getId()));
-            } else  {
-                 $response = $this->render('CuatrovientosArteanBundle:Applicant:updatePost.html.twig', array('form'=> $form->createView()));
-            }
-        }
-        return $response;
-    }
-
-    /**
-    *
-    *
-    */
-   public function applicantDeleteAction($id=1)
-    {
-        $applicant = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:Applicant")->find($id);
-        return $this->render('CuatrovientosArteanBundle:Applicant:delete.html.twig',array('applicant'=> $applicant));
-    }
-
-    /**
-    *
-    *
-    */
-   public function applicantDeleteSaveAction(Applicant $applicant)
-    {
-
-       $em = $this->getDoctrine()->getEntityManager();
-       $em->remove($applicant);
-       $em->flush();
-       return $this->forward('CuatrovientosArteanBundle:Applicant:index');
     }
 
 }

@@ -508,6 +508,33 @@ cuatrovientos_artean_applicant_admin:
     path:     /artean/admin/applicant
     defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:index }
 
+cuatrovientos_artean_applicant_admin_paged:
+        path:     /artean/admin/applicant/init/{init}/limit/{limit}
+        defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:index }
+        requirements:
+            'init' : '\d+'
+            'limit' : '\d+'
+
+cuatrovientos_artean_applicant_admin_new:
+    path:     /artean/admin/applicant/new
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:index }
+
+cuatrovientos_artean_applicant_admin_search:
+    path:     /artean/admin/applicant
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:index }
+
+cuatrovientos_artean_applicant_admin_detail:
+    path:     /artean/admin/applicant
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:index }
+
+cuatrovientos_artean_applicant_admin_update:
+    path:     /artean/admin/applicant
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:index }
+
+cuatrovientos_artean_applicant_admin_delete:
+    path:     /artean/admin/applicant
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:index }
+
 ################# jobrequest ##################
 
 cuatrovientos_artean_jobrequest:

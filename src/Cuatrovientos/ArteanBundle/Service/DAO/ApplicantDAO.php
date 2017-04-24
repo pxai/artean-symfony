@@ -9,6 +9,40 @@ namespace Cuatrovientos\ArteanBundle\Service\DAO;
  */
 class ApplicantDAO extends GenericDAO {
 
+    public function findAllApplicants($id=0, $start=0,$total=100)
+    {
+        return $this->repository->createQueryBuilder('m')
+            ->where('m.id > :id')
+            ->setParameter('id',$id)
+            ->orderBy('m.id', 'DESC')
+            ->getQuery()
+            ->setFirstResult($start)
+            ->setMaxResults($total)
+            ->getResult();
+    }
+
+
+    public function countAllApplicants()
+    {
+        return $this->repository->createQueryBuilder('m')
+            ->select('count(m.id)')
+            ->from('CuatrovientosArteanBundle:Applicant','applicant')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function searchApplicants($applicant, $start=0,$total=100)
+    {
+        return  $this->repository->createQueryBuilder('m')
+            ->where('m.name LIKE :name')
+            ->setParameter('name','%'.$applicant->getName().'%')
+            ->orderBy('m.id', 'DESC')
+            ->getQuery()
+            ->setFirstResult($start)
+            ->setMaxResults($total)
+            ->getResult();
+    }
+    
     public function findAllApplicantData($userid)
     {
         $repository = $this->em->getRepository($this->entityType);
