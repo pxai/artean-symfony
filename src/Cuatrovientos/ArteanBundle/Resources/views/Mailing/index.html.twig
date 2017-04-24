@@ -1,7 +1,7 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
     {% block title %}Artean :: Mailing : índice{% endblock %}
     {% block body %}
-        <h2><i class="fa fa-industry" aria-hidden="true"></i> Mailing({{ total }}) </h2>
+        <h2><i class="fa fa-envelope" aria-hidden="true"></i> Mailing({{ total }}) </h2>
         <div><a href="{{ path('cuatrovientos_artean_mailing') }}">{% trans %}Recargar{% endtrans %}</a>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#searchformModal" data-whatever="searchMailing">
                 <i class="fa fa-search" aria-hidden="true"></i> Buscar

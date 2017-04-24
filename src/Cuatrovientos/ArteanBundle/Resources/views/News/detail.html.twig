@@ -1,7 +1,12 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}News bundle::News detail{% endblock %}
 {% block body %}
-<h1>Noticias</h1>
+    <h2><i class="fa fa-newspaper-o" aria-hidden="true"></i> Noticias</h2>
+
+    <a href="{{ path('cuatrovientos_artean_news') }}" class="btn">
+        <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todas
+    </a>
+    <h3><i class="fa fa-search-plus" aria-hidden="true"></i> Detalle de noticia</h3>
 <section>
     <h3>{{ news.title }}</h3> 
     <div><small>{{ news.newsdate|date('d/m/Y') }}</small></div>

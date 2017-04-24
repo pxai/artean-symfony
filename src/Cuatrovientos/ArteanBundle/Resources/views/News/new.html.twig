@@ -3,8 +3,13 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}News bundle::new News{% endblock %}
 {% block body %}
+    <h2><i class="fa fa-newspaper-o" aria-hidden="true"></i> Noticias</h2>
 
-<h3>Nueva noticia</h3>
+    <a href="{{ path('cuatrovientos_artean_news') }}" class="btn">
+        <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todas
+    </a>
+
+    <h3><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Nueva noticia</h3>
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script><script>tinymce.init({ selector:'textarea' , automatic_uploads: true });</script>
 <form method="post" action="{{ path('cuatrovientos_artean_news_new_save') }}">
  {{ form_errors(form) }}

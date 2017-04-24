@@ -1,9 +1,15 @@
 
 {# src/Samples/BlogBundle/Resources/views/simple.html.twig #}
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
-{% block title %}Artean::Save News{% endblock %}
+{% block title %}Artean:: Noticias :: Save News{% endblock %}
 {% block body %}
-Hello, saved new News 
+ <h2><i class="fa fa-newspaper-o" aria-hidden="true"></i> Noticias</h2>
+
+ <a href="{{ path('cuatrovientos_artean_news') }}" class="btn">
+  <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todas
+ </a>
+
+ <h3><i class="fa fa-pencil-square-o" aria-hidden="true"></i> ¡Noticia guardada!</h3>
  <strong>{{ news.title }}</strong>
  <div><a href="{{ path('cuatrovientos_artean_news') }}">{% trans %}See all{% endtrans %}</a> </div>
 {% endblock %}

@@ -1,12 +1,18 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}News bundle:: delete News{% endblock %}
 {% block body %}
-{% trans %}Delete news{% endtrans %}
+	<h2><i class="fa fa-newspaper-o" aria-hidden="true"></i> Noticias</h2>
+
+	<a href="{{ path('cuatrovientos_artean_news') }}" class="btn">
+		<i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
+	</a>
+
+	<h3><i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar noticia {{ news.id }}</h3>
  <div id='news'>
 		<div>
-			{% trans %}Are you sure{% endtrans %}			
+			{% trans %}¿Está seguro?{% endtrans %}
 			<div class='title'>{{ news.title }}</div>
-			<div><a href="{{ path('cuatrovientos_artean_news_delete_save',  {'id': news.id }) }}"  class="btn btn-danger">Confirm deletion</a> | 
+			<div><a href="{{ path('cuatrovientos_artean_news_delete_save',  {'id': news.id }) }}"  class="btn btn-danger">Confirmar borrado</a> |
 			 <a href="javascript:history.back()"  class="btn btn-warning">Cancel</a> </div>
 		</div>
 </div>

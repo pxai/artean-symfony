@@ -1,12 +1,12 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}Artean :: Mailings : Detalle mailing{% endblock %}
 {% block body %}
-    <h2><i class="fa fa-industry" aria-hidden="true"></i> Mailing</h2>
+    <h2><i class="fa fa-envelope" aria-hidden="true"></i> Mailing</h2>
 
     <a href="{{ path('cuatrovientos_artean_mailing') }}" class="btn">
         <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
     </a>
-    <h3><i class="fa fa-search-plus" aria-hidden="true"></i> Detalle de curso</h3>
+    <h3><i class="fa fa-search-plus" aria-hidden="true"></i> Detalle de mailing</h3>
     <a href="{{ path('cuatrovientos_artean_mailing_update', {'id': mailing.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> Modificar</a>
     <ul>
      <li><strong>Id: </strong>{{ mailing.id }}</li> 

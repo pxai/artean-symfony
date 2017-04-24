@@ -4,7 +4,13 @@
 {% block title %}Samples blog bundle::update news{% endblock %}
 {% block body %}
 
-<h3>Actualizar noticia: {{ id }}</h3>
+    <h2><i class="fa fa-newspaper-o" aria-hidden="true"></i> Noticias</h2>
+
+    <a href="{{ path('cuatrovientos_artean_news') }}" class="btn">
+        <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todas
+    </a>
+
+    <h3><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Actualizar noticia {{ id }}</h3>
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script><script>tinymce.init({ selector:'textarea' , automatic_uploads: true });</script>
 <form method="post" action="{{ path('cuatrovientos_artean_news_update_save') }}">
  {{ form_errors(form) }}
