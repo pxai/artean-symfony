@@ -9,10 +9,7 @@ use Cuatrovientos\ArteanBundle\Form\Type\StudiesType;
 
 class StudiesController extends Controller
 {
-    /**
-    *
-    *
-    */
+
     public function indexAction($init=0,$limit=100) {
         $form = $this->createForm(StudiesType::class);
         $studies = $this->get("cuatrovientos_artean.bo.studies")->findAllStudies(0, $init, $limit);
@@ -52,6 +49,7 @@ class StudiesController extends Controller
 
     public function newStudiesSaveAction(Request $request)
     {
+
         //$form = $this->createForm(new StudiesType(), new Studies());
         $form = $this->createForm(StudiesType::class, new Studies());
         if ($request->getMethod() == 'POST') {

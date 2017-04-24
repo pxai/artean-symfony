@@ -130,12 +130,16 @@ class CourseController extends Controller
 
     public function newStudentCourseSaveAction(Request $request)
     {
+        $logger = $this->get('logger');
+        $logger->info('YEAH');
+
         $form = $this->createForm(StudentCourseType::class, new StudentCourse());
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
-
+            $logger->info('YEAH 2');
             if ($form->isValid()) {
                 $studentCourse = $form->getData();
+                $logger->info('YEAH 3');
                 $this->get("cuatrovientos_artean.bo.course")->saveStudentCourse($studentCourse);
                 return $this->courseDetailAction($studentCourse->getCourse()->getId());
             } else {
@@ -143,7 +147,7 @@ class CourseController extends Controller
             }
         }
 
-        return $response;
+       return $this->courseDetailAction($request->request->get('id'));
     }
 
     public function studentCourseUpdateAction($id) {

@@ -1,6 +1,5 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}Artean :: Cursos : Detalle curso{% endblock %}
-
 {% block body %}
     <style>
         {% include "CuatrovientosArteanBundle:Applicant/Studies:studies.select.css" %}
@@ -30,8 +29,6 @@
         <li><strong>Precio primer trimestre: </strong>{{ course.priceFirstTerm }}</li>
         <li><strong>Precio segundo trimestre: </strong>{{ course.priceSecondTerm }}</li>
         <li><strong>Reserva matrícula: </strong>{{ course.book }}</li>
-
-
     </ul>
     {% include "CuatrovientosArteanBundle:Course/StudentCourse:index.html.twig" %}
     {% include "CuatrovientosArteanBundle:Course/TeacherCourse:index.html.twig" %}
@@ -50,7 +47,6 @@
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     <script language="javascript">
-
         $('#studentcourse_applicant').selectize({
             valueField: 'id',
             labelField: 'name',

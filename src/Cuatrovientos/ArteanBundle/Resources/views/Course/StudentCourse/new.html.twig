@@ -1,6 +1,4 @@
-
-
-   <h3><i class="fa fa-plus" aria-hidden="true"></i> Nuevo estudiante</h3>
+<h3><i class="fa fa-plus" aria-hidden="true"></i> Nuevo estudiante</h3>
 <form method="post" action="{{ path('cuatrovientos_artean_studentcourse_new_save') }}">
    {{ form_errors(form) }}
    {{ form_widget(form.id) }}
@@ -21,10 +19,12 @@
       {{ form_errors(form.getsPaid) }}
       {{ form_widget(form.getsPaid, {'attr': {'class': 'form-control'}}) }}
    </div>
+
    <div class="form-group">
-      {{ form_label(form.signUpDate) }}
-      {{ form_errors(form.signUpDate) }}
-      {{ form_widget(form.signUpDate, {'attr': {'class': 'form-control'}}) }}
+      <div class="form-group">
+         {{ form_label(form.signUpDate) }}
+         {{ form_errors(form.signUpDate) }}
+         {{ form_widget(form.signUpDate, {'attr': {'class': 'form-control'}}) }}
    </div>
    <div class="form-group">
       {{ form_label(form.dropInDate) }}

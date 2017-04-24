@@ -43,7 +43,7 @@ class StudentCourse extends Entity
     private $studentNumber;
 
     /**
-     * @ORM\Column(name="oficina_empleo",type="datetime", length=50)
+     * @ORM\Column(name="oficina_empleo",type="string", length=50)
      */
     private $employmentOffice;
 
@@ -140,7 +140,6 @@ class StudentCourse extends Entity
 
     public function __construct () {
         $this->signUpDate = new \DateTime("now");
-        $this->dropInDate = new \DateTime();
     }
 
     /**
@@ -298,6 +297,7 @@ class StudentCourse extends Entity
     public function setSignUpDate($signUpDate)
     {
         $this->signUpDate = $signUpDate;
+        return $this;
     }
 
     /**
@@ -313,7 +313,8 @@ class StudentCourse extends Entity
      */
     public function setDropInDate($dropInDate)
     {
-        $this->dropInDate = $dropInDate;
+        $this->signUpDate = $dropInDate;
+        return $this;
     }
 
     /**

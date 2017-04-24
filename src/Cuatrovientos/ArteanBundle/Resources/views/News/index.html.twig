@@ -1,9 +1,12 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
-{% block title %}Blog sample::Index{% endblock %}
+{% block title %}Artean :: Noticias ::Index{% endblock %}
 {% block body %}
-<h2>{% trans %}news{% endtrans %} <span class="glyphicon glyphicon-heart"></span></h2>
-<div><a href="{{ path('cuatrovientos_artean_news') }}">{% trans %}Reload{% endtrans %}</a> 
-    <a href="{{ path('cuatrovientos_artean_news_new') }}">{% trans %}New{% endtrans %}</a> </div>
+<h2>{% trans %}Noticias{% endtrans %} <span class="glyphicon glyphicon-heart"></span></h2>
+    <div><a href="{{ path('cuatrovientos_artean_news') }}">{% trans %}Recargar{% endtrans %}</a>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#searchformModal" data-whatever="searchMailing">
+            <i class="fa fa-search" aria-hidden="true"></i> Buscar
+        </button>
+        <a href="{{ path('cuatrovientos_artean_news_new') }}" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Nueva noticia</a> </div>
 <div class="table-responsive">
   <table class="table .table-condensed">
         {% for news in news %}
