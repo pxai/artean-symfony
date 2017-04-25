@@ -1,7 +1,7 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
     {% block title %}Artean :: Panel de administración{% endblock %}
     {% block body %}
-        <h2><i class="fa fa-industry" aria-hidden="true"></i> Panel de administración </h2>
+        <h2><i class="fa fa-home" aria-hidden="true"></i> Panel de administración </h2>
     <div class="container">
         <div class="row">
             <div class="col-4">
@@ -11,6 +11,7 @@
                     <img src="{{ asset_url }}"  alt="Empresas" title="Empresas"/>
                     {% endimage %}
                 </a>
+                <div><a href="{{ path('cuatrovientos_artean_offer') }}">Ofertas publicadas por empresas</a></div>
             </div>
             <div class="col-4">
                 <h3>Candidatos</h3>
@@ -31,14 +32,6 @@
             </div>
         <div class="row">
             <div class="col-4">
-                <h3>Noticias</h3>
-                <a href="{{ path('cuatrovientos_artean_news') }}" title="" class="btn">
-                    {% image '@CuatrovientosArteanBundle/Resources/public/img/news.jpg' %}
-                    <img src="{{ asset_url }}"  alt="Noticias" title="Noticias"/>
-                    {% endimage %}
-                </a>
-            </div>
-            <div class="col-4">
                 <h3>Cursos</h3>
                 <a href="{{ path('cuatrovientos_artean_course') }}" title="" class="btn">
                     {% image '@CuatrovientosArteanBundle/Resources/public/img/cursos.jpg' %}
@@ -47,16 +40,31 @@
                 </a>
             </div>
             <div class="col-4">
+                <h3>Noticias</h3>
+                <a href="{{ path('cuatrovientos_artean_news') }}" title="" class="btn">
+                    {% image '@CuatrovientosArteanBundle/Resources/public/img/news.jpg' %}
+                    <img src="{{ asset_url }}"  alt="Noticias" title="Noticias"/>
+                    {% endimage %}
+                </a>
+            </div>
+            <div class="col-4">
+                 <h3>FCTs</h3>
+                <a href="{{ path('cuatrovientos_artean_fct') }}" title="" class="btn">
+                    {% image '@CuatrovientosArteanBundle/Resources/public/img/fct.jpg' %}
+                    <img src="{{ asset_url }}"  alt="FCTs" title="FCTs"/>
+                    {% endimage %}
+                </a>
+                <div><a href="{{ path('cuatrovientos_artean_company_agreement') }}">Empresas con convenio</a></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
                 <h3>Mailing</h3>
                 <a href="{{ path('cuatrovientos_artean_mailing') }}" title="" class="btn">
                     {% image '@CuatrovientosArteanBundle/Resources/public/img/mailing.jpg' %}
                     <img src="{{ asset_url }}"  alt="Mailing" title="Mailing"/>
                     {% endimage %}
                 </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-4">
             </div>
             <div class="col-4">
                 <h3>Indicadores</h3>

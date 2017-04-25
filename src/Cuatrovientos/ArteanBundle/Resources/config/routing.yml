@@ -273,6 +273,10 @@ cuatrovientos_artean_company:
     path:     /artean/admin/company
     defaults: { _controller: CuatrovientosArteanBundle:Company:index }
 
+cuatrovientos_artean_company_agreement:
+    path:     /artean/admin/company/agreement
+    defaults: { _controller: CuatrovientosArteanBundle:Company:agreement }
+
 cuatrovientos_artean_company_paged:
     path:     /artean/admin/company/init/{init}/limit/{limit}
     defaults: { _controller: CuatrovientosArteanBundle:Company:index }

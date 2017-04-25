@@ -1,0 +1,31 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean :: Empresa : índice{% endblock %}
+{% block body %}
+<h2><i class="fa fa-industry" aria-hidden="true"></i> Empresas ({{ total }}) </h2>
+<div><a href="{{ path('cuatrovientos_artean_company') }}">{% trans %}Recargar{% endtrans %}</a>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#searchformModal" data-whatever="searchCompany">
+    <i class="fa fa-search" aria-hidden="true"></i> Buscar
+  </button>
+
+    <a href="{{ path('cuatrovientos_artean_company_new') }}" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Nueva empresa</a> </div>
+<div id="searchformModal" style="display:none" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+
+  {% include "CuatrovientosArteanBundle:Company:search.html.twig" %}
+  </div>
+  <div class="table-responsive">
+  <table class="table .table-condensed">
+     <div id='companys'>
+        {% for company in companies %}
+            {% include "CuatrovientosArteanBundle:Company:company.html.twig" %}
+        {% endfor %}
+    </div>
+  </table>
+    <a href="{{ path('cuatrovientos_artean_company_paged', {'init': 0, 'limit':100 }) }}" class="btn "><i class="fa fa-fast-backward" aria-hidden="true"></i> Inicio</a>
+    {% if init > 0 %}
+    <a href="{{ path('cuatrovientos_artean_company_paged', {'init': init-100, 'limit':100 }) }}" class="btn "><i class="fa fa-forward" aria-hidden="true"></i> Atrás</a>
+    {% endif %}
+    <a href="{{ path('cuatrovientos_artean_company_paged', {'init': init+100, 'limit':100 }) }}" class="btn "><i class="fa fa-forward" aria-hidden="true"></i> Siguiente</a>
+    <a href="{{ path('cuatrovientos_artean_company_paged', {'init': (total/100)|round(0,'floor'), 'limit':100 }) }}" class="btn "><i class="fa fa-fast-forward" aria-hidden="true"></i> Último</a>
+</div>
+
+{% endblock %}
