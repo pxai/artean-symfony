@@ -1,7 +1,7 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
-{% block title %}Artean :: Empresa : índice{% endblock %}
+{% block title %}Artean :: Empresa con convenio firmado : índice{% endblock %}
 {% block body %}
-<h2><i class="fa fa-industry" aria-hidden="true"></i> Empresas ({{ total }}) </h2>
+<h2><i class="fa fa-industry" aria-hidden="true"></i> Empresas con convenio firmado ({{ total }}) </h2>
 <div><a href="{{ path('cuatrovientos_artean_company') }}">{% trans %}Recargar{% endtrans %}</a>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#searchformModal" data-whatever="searchCompany">
     <i class="fa fa-search" aria-hidden="true"></i> Buscar
@@ -12,20 +12,35 @@
 
   {% include "CuatrovientosArteanBundle:Company:search.html.twig" %}
   </div>
+    <h3>Mostrar por ciclo</h3>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <a href="{{ path('cuatrovientos_artean_company_agreement_degree', {'degree': 1 }) }}" class="btn btn-secondary">ACOM</a>
+        <a href="{{ path('cuatrovientos_artean_company_agreement_degree', {'degree': 2 }) }}" class="btn btn-secondary">GA</a>
+        <a href="{{ path('cuatrovientos_artean_company_agreement_degree', {'degree': 1 }) }}" class="btn btn-secondary">SMR</a>
+        <a href="{{ path('cuatrovientos_artean_company_agreement_degree', {'degree': 3 }) }}" class="btn btn-secondary">AF</a>
+        <a href="{{ path('cuatrovientos_artean_company_agreement_degree', {'degree': 4 }) }}" class="btn btn-secondary">GVEC</a>
+        <a href="{{ path('cuatrovientos_artean_company_agreement_degree', {'degree': 5 }) }}" class="btn btn-secondary">CI</a>
+        <a href="{{ path('cuatrovientos_artean_company_agreement_degree', {'degree': 6 }) }}" class="btn btn-secondary">TL</a>
+        <a href="{{ path('cuatrovientos_artean_company_agreement_degree', {'degree': 7 }) }}" class="btn btn-secondary">ASIR</a>
+        <a href="{{ path('cuatrovientos_artean_company_agreement_degree', {'degree': 8 }) }}" class="btn btn-secondary">DAM</a>
+        <a href="{{ path('cuatrovientos_artean_company_agreement_degree', {'degree': 1 }) }}" class="btn btn-secondary">FPB</a>
+    </div>
   <div class="table-responsive">
   <table class="table .table-condensed">
      <div id='companys'>
+       <tr>
+           <th>Id</th>
+           <th>Empresa</th>
+           <th>Actividad</th>
+           <th>Contacto</th>
+           <th>Ciclos</th>
+           <th></th>
+         </tr>
         {% for company in companies %}
-            {% include "CuatrovientosArteanBundle:Company:company.html.twig" %}
+            {% include "CuatrovientosArteanBundle:Company:companyAgreement.html.twig" %}
         {% endfor %}
     </div>
   </table>
-    <a href="{{ path('cuatrovientos_artean_company_paged', {'init': 0, 'limit':100 }) }}" class="btn "><i class="fa fa-fast-backward" aria-hidden="true"></i> Inicio</a>
-    {% if init > 0 %}
-    <a href="{{ path('cuatrovientos_artean_company_paged', {'init': init-100, 'limit':100 }) }}" class="btn "><i class="fa fa-forward" aria-hidden="true"></i> Atrás</a>
-    {% endif %}
-    <a href="{{ path('cuatrovientos_artean_company_paged', {'init': init+100, 'limit':100 }) }}" class="btn "><i class="fa fa-forward" aria-hidden="true"></i> Siguiente</a>
-    <a href="{{ path('cuatrovientos_artean_company_paged', {'init': (total/100)|round(0,'floor'), 'limit':100 }) }}" class="btn "><i class="fa fa-fast-forward" aria-hidden="true"></i> Último</a>
-</div>
+   </div>
 
 {% endblock %}

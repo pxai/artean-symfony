@@ -3,8 +3,10 @@
      <td>{{ company.empresa }}</td>
     <td>{{ company.actividad }}</td>
     <td>{{ company.contacto }}</td>
-    <td>{{ company.telefono }}</td>
-    <td>{{ company.email }}</td>
+
+    <td>        {% for degree in company.degrees %}
+            {{ degree.degree.name }},
+        {% endfor %}</td>
 		{#% if is_granted('ROLE_ADMIN') %#}
 			<td>        
                 <a href="{{ path('cuatrovientos_artean_company_detail', {'id': company.id }) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>

@@ -132,6 +132,11 @@ class Company  extends Entity
     private $convenio_pipdual;
 
     /**
+     * @ORM\OneToMany(targetEntity="CompanyDegrees", mappedBy="company",fetch="EXTRA_LAZY")
+     */
+    private $degrees;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -498,6 +503,24 @@ class Company  extends Entity
     {
         $this->convenio_pipdual = $convenio_pipdual;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDegrees()
+    {
+        return $this->degrees;
+    }
+
+    /**
+     * @param mixed $degrees
+     */
+    public function setDegrees($degrees)
+    {
+        $this->degrees = $degrees;
+    }
+
+
 
     function __toString()
     {

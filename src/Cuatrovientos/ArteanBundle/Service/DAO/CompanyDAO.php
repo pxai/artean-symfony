@@ -2,6 +2,8 @@
 
 namespace Cuatrovientos\ArteanBundle\Service\DAO;
 
+use Cuatrovientos\ArteanBundle\Entity\Company;
+
 /**
  * Pello Altad
  * MessageDAO
@@ -61,6 +63,18 @@ class CompanyDAO extends GenericDAO {
             ->setFirstResult($start)
             ->setMaxResults($total)
             ->getResult();
+    }
+
+    public function findCompaniesWithAgreement($term='')
+    {
+        $query = $this->em->createQuery('SELECT c, d FROM Cuatrovientos\ArteanBundle\Entity\Company c JOIN c.degrees d WHERE c.convenio is not null');
+        return $query->getResult();
+    }
+
+    public function findCompaniesWithAgreementForDegree($degree)
+    {
+        $query = $this->em->createQuery('SELECT c, d FROM Cuatrovientos\ArteanBundle\Entity\Company c JOIN c.degrees d WHERE c.convenio is not null');
+        return $query->getResult();
     }
 
 }

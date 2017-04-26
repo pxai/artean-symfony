@@ -23,9 +23,17 @@ class CompanyController extends Controller
     public function agreementAction($init=0,$limit=100)
     {
         $form = $this->createForm(CompanySearchType::class);
-        $companies = $this->get("cuatrovientos_artean.bo.company")->findAllCompanies(0, $init, $limit);
+        $companies = $this->get("cuatrovientos_artean.bo.company")->findCompaniesWithAgreement(0);
         $total = $this->get("cuatrovientos_artean.bo.company")->countAllCompanies();
         return $this->render('CuatrovientosArteanBundle:Company:agreement.html.twig', array('companies'=>$companies, 'init'=>$init, 'limit'=> $limit, 'total'=> $total,'form'=> $form->createView()));
+    }
+
+    public function agreementDegreeAction ($degree)
+    {
+        $form = $this->createForm(CompanySearchType::class);
+        $companies = $this->get("cuatrovientos_artean.bo.company")->findCompaniesWithAgreementForDegree($degree);
+        $total = $this->get("cuatrovientos_artean.bo.company")->countAllCompanies();
+        return $this->render('CuatrovientosArteanBundle:Company:agreement.html.twig', array('companies'=>$companies, 'total'=> $total,'form'=> $form->createView()));
     }
 
     public function searchAction(Request $request)

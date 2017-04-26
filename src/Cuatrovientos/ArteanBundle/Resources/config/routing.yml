@@ -277,6 +277,12 @@ cuatrovientos_artean_company_agreement:
     path:     /artean/admin/company/agreement
     defaults: { _controller: CuatrovientosArteanBundle:Company:agreement }
 
+cuatrovientos_artean_company_agreement_degree:
+    path:     /artean/admin/company/agreement/{degree}
+    defaults: { _controller: CuatrovientosArteanBundle:Company:agreementDegree }
+    requirements:
+        'degree' : '\d+'
+
 cuatrovientos_artean_company_paged:
     path:     /artean/admin/company/init/{init}/limit/{limit}
     defaults: { _controller: CuatrovientosArteanBundle:Company:index }
