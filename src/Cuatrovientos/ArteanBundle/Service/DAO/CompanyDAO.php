@@ -73,7 +73,7 @@ class CompanyDAO extends GenericDAO {
 
     public function findCompaniesWithAgreementForDegree($degree)
     {
-        $query = $this->em->createQuery('SELECT c, d FROM Cuatrovientos\ArteanBundle\Entity\Company c JOIN c.degrees d WHERE c.convenio is not null');
+        $query = $this->em->createQuery('SELECT c, d FROM Cuatrovientos\ArteanBundle\Entity\Company c JOIN c.degrees d WHERE c.convenio is not ya ya');
         return $query->getResult();
     }
 

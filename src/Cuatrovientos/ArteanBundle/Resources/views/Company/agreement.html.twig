@@ -14,16 +14,17 @@
   </div>
     <h3>Mostrar por ciclo</h3>
     <div class="btn-group" role="group" aria-label="Basic example">
-        <a href="{{ path('cuatrovientos_artean_company_agreement_degree', {'degree': 1 }) }}" class="btn btn-secondary">ACOM</a>
-        <a href="{{ path('cuatrovientos_artean_company_agreement_degree', {'degree': 2 }) }}" class="btn btn-secondary">GA</a>
-        <a href="{{ path('cuatrovientos_artean_company_agreement_degree', {'degree': 1 }) }}" class="btn btn-secondary">SMR</a>
-        <a href="{{ path('cuatrovientos_artean_company_agreement_degree', {'degree': 3 }) }}" class="btn btn-secondary">AF</a>
-        <a href="{{ path('cuatrovientos_artean_company_agreement_degree', {'degree': 4 }) }}" class="btn btn-secondary">GVEC</a>
-        <a href="{{ path('cuatrovientos_artean_company_agreement_degree', {'degree': 5 }) }}" class="btn btn-secondary">CI</a>
-        <a href="{{ path('cuatrovientos_artean_company_agreement_degree', {'degree': 6 }) }}" class="btn btn-secondary">TL</a>
-        <a href="{{ path('cuatrovientos_artean_company_agreement_degree', {'degree': 7 }) }}" class="btn btn-secondary">ASIR</a>
-        <a href="{{ path('cuatrovientos_artean_company_agreement_degree', {'degree': 8 }) }}" class="btn btn-secondary">DAM</a>
-        <a href="{{ path('cuatrovientos_artean_company_agreement_degree', {'degree': 1 }) }}" class="btn btn-secondary">FPB</a>
+        <a href="" id="TODOS" class="btn btn-secondary active">TODOS</a>
+        <a id ="ACOM" class="btn btn-secondary degree">ACOM</a>
+        <a id="GA" class="btn btn-secondary degree">GA</a>
+        <a id="SMR" class="btn btn-secondary degree">SMR</a>
+        <a id="AF" class="btn btn-secondary degree">AF</a>
+        <a id="GVEC" class="btn btn-secondary degree">GVEC</a>
+        <a id="CI" class="btn btn-secondary degree">CI</a>
+        <a id="TL" class="btn btn-secondary degree">TL</a>
+        <a id="ASIR" class="btn btn-secondary degree">ASIR</a>
+        <a id="DAM" class="btn btn-secondary degree">DAM</a>
+        <a id="FPB" class="btn btn-secondary degree">FPB</a>
     </div>
   <div class="table-responsive">
   <table class="table .table-condensed">
@@ -43,4 +44,39 @@
   </table>
    </div>
 
+{% endblock %}
+{% block extrascripts %}
+    {% javascripts
+    '@CuatrovientosArteanBundle/Resources/public/js/selectize.js'
+    '@CuatrovientosArteanBundle/Resources/public/js/es5.js'
+    %}
+<!-- Optionally enable responsive features in IE8 -->
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+<script language="javascript">
+    var degree = 'TODOS';
+
+    $('.degree').click(function (e) {
+        e.preventDefault();
+        $('#'+degree).removeClass('active');
+        degree = $(this).html();
+        $('#'+degree).addClass('active');
+        $( "td.degrees" ).each(function( index ) {
+            //console.log(index + ": " + $(this).text() + " and: " + $( this ).text().indexOf(degree));
+            if ($( this ).text().indexOf(degree) != -1) {
+                $(this).parent().fadeIn();
+            } else {
+                $(this).parent().fadeOut();
+            }
+        });
+    });
+    $('#TODOS').click(function (e) {
+        e.preventDefault();
+        $('#'+degree).removeClass('active');
+        $(this).addClass('active');
+        $( "td.degrees" ).each(function( index ) {
+            $(this).parent().slideToggle();
+        });
+    });
+    </script>
 {% endblock %}
