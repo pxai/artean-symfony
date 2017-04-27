@@ -305,7 +305,8 @@ cuatrovientos_artean_company_new_save:
 cuatrovientos_artean_company_detail:
     path:     /artean/admin/company/{id}
     defaults: { _controller: CuatrovientosArteanBundle:Company:companyDetail }
-
+    requirements:
+            'id' : '\d+'
 
 cuatrovientos_artean_company_update_save:
     path:     /artean/admin/company/update/save
