@@ -8,6 +8,12 @@
     margin-left: 0.2em;
 }
 
+input[type=checkbox]{
+    margin-right: 0.2em;
+    margin-left: 2em;
+}
+
+
 #lopd-modal {
     background-color: white;
     text-align: left;

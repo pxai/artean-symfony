@@ -27,6 +27,11 @@ class Degree extends Entity
      */
     private $description;
 
+    /**
+     * @ORM\OneToMany(targetEntity="CompanyDegrees", mappedBy="degree",fetch="EXTRA_LAZY")
+     */
+    private $companies;
+
     public function __construct () {
     }
 
@@ -75,6 +80,22 @@ class Degree extends Entity
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCompanies()
+    {
+        return $this->companies;
+    }
+
+    /**
+     * @param mixed $companies
+     */
+    public function setCompanies($companies)
+    {
+        $this->companies = $companies;
     }
 
 

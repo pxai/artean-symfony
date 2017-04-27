@@ -4,6 +4,7 @@ namespace Cuatrovientos\ArteanBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="Cuatrovientos\ArteanBundle\EntityRepository\CompanyRepository")
@@ -132,9 +133,22 @@ class Company  extends Entity
     private $convenio_pipdual;
 
     /**
-     * @ORM\OneToMany(targetEntity="CompanyDegrees", mappedBy="company",fetch="EXTRA_LAZY")
+     * @ORM\OneToMany(targetEntity="CompanyDegrees", mappedBy="company",fetch="EXTRA_LAZY",cascade={"all"})
+     */
+    /**
+     * Many Users have Many Groups.
+     * @ORM\ManyToMany(targetEntity="Degree")
+     * @ORM\JoinTable(name="tbempresas_ciclos",
+     *      joinColumns={@ORM\JoinColumn(name="IdEmpresa", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="idCiclo", referencedColumnName="id")}
+     *      )
      */
     private $degrees;
+
+    public function __construct()
+    {
+        $this->degrees = new ArrayCollection();
+    }
 
     /**
      * @return mixed

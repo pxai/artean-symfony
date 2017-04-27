@@ -9,7 +9,10 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class CompanyType extends AbstractType {
@@ -103,7 +106,7 @@ class CompanyType extends AbstractType {
     /**
      * @ORM\Column(name="fct",type="integer")
      */
-    ->add('fct', TextType::class, array('label' => 'FCT',"required"=>true))
+    ->add('fct', TextType::class, array('label' => 'FCT',"required"=>false))
 
 
     /**
@@ -125,8 +128,21 @@ class CompanyType extends AbstractType {
      * @ORM\Column(name="convenio_pipdual",type="string", length=15)
      */
     ->add('convenio_pipdual', TextType::class, array('label' => 'Convenio PIP Dual',"required"=>false))
+    ->add('degrees', EntityType::class, array(
+                    'label' => 'Convenios para los ciclos',
+                    'class' => 'CuatrovientosArteanBundle:Degree',
+                    'attr' => array('class' => 'checkboxblock'),
+                    'query_builder' => function (EntityRepository $er) {
+                                        return $er->createQueryBuilder('u')
+                                        ->where('u.id < 10');
+                                    },
+                    'expanded' => true,
+                    'multiple' => true
+                )
+            )
             ->add('save', SubmitType::class);
     }
+
 
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(

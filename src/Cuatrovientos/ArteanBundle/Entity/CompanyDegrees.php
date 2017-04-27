@@ -81,6 +81,10 @@ class CompanyDegrees  extends Entity
         $this->degree = $degree;
     }
 
+    function __toString()
+    {
+        return $this->degree->getName().'';
+    }
 
 
 }

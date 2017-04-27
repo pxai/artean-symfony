@@ -5,7 +5,7 @@
     <td>{{ company.contacto }}</td>
 
     <td class="degrees">        {% for degree in company.degrees %}
-            {{ degree.degree.name }},
+            {{ degree.name }},
         {% endfor %}</td>
 		{#% if is_granted('ROLE_ADMIN') %#}
 			<td>        
