@@ -1,11 +1,16 @@
 <div class="table-responsive">
 <h2>Estudios</h2>
+    {% if applicant.studies is not null %}
   <table class="table .table-condensed">
          <tr><th>Id</th><th>Nombre</th><th>Descripción</th><th>Centro</th><th>Año fin</th><th></th></tr>
+
         {% for study in applicant.studies %}
             {% include "CuatrovientosArteanBundle:Applicant/Studies:study.html.twig" %}
         {% endfor %}
     </table>
+    {% else %}
+        Sin estudios añadidos
+    {% endif %}
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#applicantStudiesModal" data-whatever="searchCompany">
           <i class="fa fa-search" aria-hidden="true"></i> Añadir estudios
       </button>

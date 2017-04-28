@@ -29,7 +29,24 @@ class ApplicantAdminController extends Controller
 
         return $this->render('CuatrovientosArteanBundle:Applicant:indexAdmin.html.twig', array('applicants'=>$applicants, 'init'=>$init, 'limit'=> $limit, 'total'=> $total,'form'=> $form->createView()));
     }
-    
+
+
+    public function detailAction($id)
+    {
+        $this->user = $this->get('security.token_storage')->getToken()->getUser();
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($id);
+
+        $form = $this->createForm(ApplicantType::class, $applicant);
+        $formStudies = $this->createForm(ApplicantStudiesType::class, new ApplicantStudies());
+        $formLanguage = $this->createForm(ApplicantLanguageType::class, new ApplicantLanguages());
+        $formJob = $this->createForm(ApplicantJobType::class, new ApplicantJobs());
+        return $this->render('CuatrovientosArteanBundle:Applicant:dashboard.html.twig',
+            array(  'form'=> $form->createView(),
+                'formStudies'=>$formStudies->createView(),
+                'formLanguage'=>$formLanguage->createView(),
+                'formJob'=>$formJob->createView(),
+                'applicant'=>$applicant));
+    }
 
    public function applicantSignInAction()
     {

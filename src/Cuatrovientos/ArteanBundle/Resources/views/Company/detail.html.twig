@@ -11,6 +11,17 @@
 <ul>
      <li><strong>Id: </strong>{{ company.id }}</li>
      <li><strong>Nombre: </strong>{{ company.empresa }}</li>
+    <li><strong>Actividad: </strong>{{ company.actividad }}</li>
+    <li><strong>Contacto: </strong>{{ company.contacto }}</li>
+    <li><strong>Email: </strong>{{ company.email }}</li>
+    <li><strong>Teléfono: </strong>{{ company.telefono }}</li>
+    <li><strong>Convenio: </strong>
+        {{  company.convenio }} ,
+        {% for degree in company.degrees %}
+            {{ degree.name }},
+        {% endfor %}
+    </li>
+
 </ul>
 		{#% if is_granted('ROLE_ADMIN') %#}
                 <a href="{{ path('cuatrovientos_artean_company') }}">Index</a> |
