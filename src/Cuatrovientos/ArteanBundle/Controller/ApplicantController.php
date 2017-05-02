@@ -19,7 +19,7 @@ class ApplicantController extends Controller
     public function dashboardAction()
     {
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($this->user->getId());
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantDataByUserId($this->user->getId());
 
         $form = $this->createForm(ApplicantType::class, $applicant);
         $formStudies = $this->createForm(ApplicantStudiesType::class, new ApplicantStudies());
@@ -57,7 +57,7 @@ class ApplicantController extends Controller
     public function newStudiesAction(Request $request) {
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
 
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($this->user->getId());
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantDataByUserId($this->user->getId());
         $form = $this->createForm(ApplicantStudiesType::class, new ApplicantStudies());
 
         if ($request->getMethod() == 'POST') {
@@ -77,7 +77,7 @@ class ApplicantController extends Controller
 
     public function deleteStudiesAction($id) {
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($this->user->getId());
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantDataByUserId($this->user->getId());
         $applicantStudies= $this->get("cuatrovientos_artean.bo.applicant")->selectApplicantStudies($id, $applicant);
         if (null !=  $applicantStudies) {
             $this->get("cuatrovientos_artean.bo.applicant")->deleteApplicantStudies($applicantStudies);
@@ -88,7 +88,7 @@ class ApplicantController extends Controller
 
     public function updateStudiesAction($id) {
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($this->user->getId());
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantDataByUserId($this->user->getId());
         $applicantStudies= $this->get("cuatrovientos_artean.bo.applicant")->selectApplicantStudies($id, $applicant);
         $applicantStudies->getCenter();
         $applicantStudies->getStudies();
@@ -102,7 +102,7 @@ class ApplicantController extends Controller
 
     public function updateStudiesSaveAction(Request $request) {
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($this->user->getId());
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantDataByUserId($this->user->getId());
         $form = $this->createForm(ApplicantStudiesType::class, new ApplicantStudies());
 
         if ($request->getMethod() == 'POST') {
@@ -123,7 +123,7 @@ class ApplicantController extends Controller
     public function newLanguageAction(Request $request) {
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
 
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($this->user->getId());
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantDataByUserId($this->user->getId());
         $form = $this->createForm(ApplicantLanguageType::class, new ApplicantLanguages());
 
         if ($request->getMethod() == 'POST') {
@@ -143,7 +143,7 @@ class ApplicantController extends Controller
 
     public function updateLanguageAction($id) {
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($this->user->getId());
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantDataByUserId($this->user->getId());
         $applicantLanguages= $this->get("cuatrovientos_artean.bo.applicant")->selectApplicantLanguages($id, $applicant);
 
         if (null !=  $applicantLanguages) {
@@ -157,7 +157,7 @@ class ApplicantController extends Controller
     public function updateLanguageSaveAction(Request $request) {
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
 
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($this->user->getId());
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantDataByUserId($this->user->getId());
         $form = $this->createForm(ApplicantLanguageType::class, new ApplicantLanguages());
 
         if ($request->getMethod() == 'POST') {
@@ -177,7 +177,7 @@ class ApplicantController extends Controller
 
     public function deleteLanguageAction($id) {
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($this->user->getId());
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantDataByUserId($this->user->getId());
         $applicantLanguages= $this->get("cuatrovientos_artean.bo.applicant")->selectApplicantLanguages($id, $applicant);
         if (null !=  $applicantLanguages) {
             $this->get("cuatrovientos_artean.bo.applicant")->deleteApplicantLanguages($applicantLanguages);
@@ -188,7 +188,7 @@ class ApplicantController extends Controller
     public function newJobAction(Request $request) {
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
 
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($this->user->getId());
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantDataByUserId($this->user->getId());
         $form = $this->createForm(ApplicantJobType::class, new ApplicantJobs());
 
         if ($request->getMethod() == 'POST') {
@@ -208,7 +208,7 @@ class ApplicantController extends Controller
 
     public function updateJobAction($id) {
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($this->user->getId());
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantDataByUserId($this->user->getId());
         $applicantJob= $this->get("cuatrovientos_artean.bo.applicant")->selectApplicantJobs($id, $applicant);
         $applicantJob->getCompany();
 
@@ -223,7 +223,7 @@ class ApplicantController extends Controller
     public function updateJobSaveAction(Request $request) {
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
 
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($this->user->getId());
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantDataByUserId($this->user->getId());
         $form = $this->createForm(ApplicantJobType::class, new ApplicantJobs());
 
         if ($request->getMethod() == 'POST') {
@@ -243,7 +243,7 @@ class ApplicantController extends Controller
 
     public function deleteJobAction($id) {
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($this->user->getId());
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantDataByUserId($this->user->getId());
         $applicantJobs= $this->get("cuatrovientos_artean.bo.applicant")->selectApplicantJobs($id, $applicant);
         if (null !=  $applicantJobs) {
             $this->get("cuatrovientos_artean.bo.applicant")->deleteApplicantJobs($applicantJobs);

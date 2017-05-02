@@ -1,6 +1,22 @@
-<form method="post" action="{{ path('cuatrovientos_artean_applicant_dashboard_new_studies_save') }}">
+<div class="modal-dialog">
+    <div class="modal-header">
+        <h4 class="modal-title"><i class="fa fa-user-plus"></i> Añadir estudios</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="close">
+            <i class="fa fa-search" aria-hidden="true"></i> Cerrar
+        </button>
+    </div>
+    <div class="modal-body">
+        <h3><i class="fa fa-plus" aria-hidden="true"></i> Nuevos estudios</h3>
+        {% if is_granted('ROLE_ADMIN') %}
+        <form method="post" action="{{ path('cuatrovientos_artean_applicant_admin_new_studies_save') }}">
+            {% else %}
+            <form method="post" action="{{ path('cuatrovientos_artean_applicant_dashboard_new_studies_save') }}">
+                {% endif %}
+
     {{ form_errors(formStudies) }}
     {{ form_widget(formStudies.id) }}
+    <input type="hidden" id="{{ formStudies.applicant.vars.id }}"
+           name="{{ formStudies.applicant.vars.full_name }}" value="{{ applicant.id }}" >
     <div class="form-group">
         {{ form_label(formStudies.description) }}
         {{ form_errors(formStudies.description) }}
@@ -28,3 +44,11 @@
         {{ form_widget(formStudies.save, {'attr': {'class': 'form-control'}}) }}
     </div>
 </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="close">
+            <i class="fa fa-search" aria-hidden="true"></i> Cerrar
+        </button>
+    </div>
+</div>
+

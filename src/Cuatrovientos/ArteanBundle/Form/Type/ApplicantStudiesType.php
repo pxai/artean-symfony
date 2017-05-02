@@ -18,6 +18,7 @@ class ApplicantStudiesType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('id',HiddenType::class)
+            ->add('applicant', EntityType::class, array('class'=>'CuatrovientosArteanBundle:Applicant'))
             ->add('description', TextareaType::class, array('label' => 'Descripción', 'required'=>true))
             ->add('studiesValue', TextType::class, array('label' => 'Estudios', 'required'=>true))
             ->add('centerValue', TextType::class, array('label' => 'Centro', 'required'=>true))

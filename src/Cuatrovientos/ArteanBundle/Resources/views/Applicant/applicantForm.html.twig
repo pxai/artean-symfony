@@ -1,4 +1,9 @@
+{% if is_granted('ROLE_ADMIN') %}
+<form method="post" action="{{ path('cuatrovientos_artean_applicant_admin_update') }}">
+    {% else %}
 <form method="post" action="{{ path('cuatrovientos_artean_applicant_dashboard_update') }}">
+{% endif %}
+
     {{ form_errors(form) }}
     {{ form_widget(form.id) }}
     <div class="form-group">

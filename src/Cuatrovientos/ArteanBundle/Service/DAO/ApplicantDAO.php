@@ -43,7 +43,17 @@ class ApplicantDAO extends GenericDAO {
             ->getResult();
     }
     
-    public function findAllApplicantData($userid)
+    public function findAllApplicantData($id)
+    {
+        $repository = $this->em->getRepository($this->entityType);
+        return $repository->createQueryBuilder('a')
+            ->where('a.id = :id')
+            ->setParameter('id',$id)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    public function findAllApplicantDataByUserId ($userid)
     {
         $repository = $this->em->getRepository($this->entityType);
         return $repository->createQueryBuilder('a')

@@ -18,6 +18,7 @@ class ApplicantJobType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('id',HiddenType::class)
+            ->add('applicant', EntityType::class, array('class'=>'CuatrovientosArteanBundle:Applicant'))
             ->add('companyName', TextType::class, array('label' => 'Empresa', 'required'=>true))
             ->add('contractType', TextType::class, array('label' => 'Tipo de contrato', 'required'=>true))
             ->add('description', TextareaType::class, array('label' => 'Descripción', 'required'=>true))

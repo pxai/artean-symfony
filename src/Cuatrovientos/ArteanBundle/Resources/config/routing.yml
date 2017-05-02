@@ -541,12 +541,34 @@ cuatrovientos_artean_applicant_admin_detail:
             'id' : '\d+'
 
 cuatrovientos_artean_applicant_admin_update:
-    path:     /artean/admin/applicant
-    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:index }
+    path:     /artean/admin/applicant/update
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:update }
 
 cuatrovientos_artean_applicant_admin_delete:
     path:     /artean/admin/applicant
     defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:index }
+
+
+cuatrovientos_artean_applicant_admin_new_studies_save:
+    path:     /artean/admin/applicant/studies/new/save
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:newStudies}
+
+cuatrovientos_artean_applicant_admin_delete_studies_save:
+    path:     /artean/admin/applicant/studies/delete/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:deleteStudies}
+    requirements:
+            'id' : '\d+'
+
+cuatrovientos_artean_applicant_admin_update_studies:
+    path:     /artean/admin/applicant/studies/update/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:updateStudies}
+    requirements:
+            'id' : '\d+'
+
+cuatrovientos_artean_applicant_admin_update_studies_save:
+    path:     /artean/admin/applicant/studies/update/save
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:updateStudiesSave}
+
 
 ################# jobrequest ##################
 

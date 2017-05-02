@@ -1,6 +1,19 @@
+<div class="modal-dialog">
+    <div class="modal-header">
+        <h4 class="modal-title"><i class="fa fa-user-plus"></i> Añadir idiomas</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="close">
+            <i class="fa fa-search" aria-hidden="true"></i> Cerrar
+        </button>
+    </div>
+    <div class="modal-body">
+        <h3><i class="fa fa-plus" aria-hidden="true"></i> Nuevo idioma</h3>
+
 <form method="post" action="{{ path('cuatrovientos_artean_applicant_dashboard_new_language_save') }}">
+
     {{ form_errors(formLanguage) }}
     {{ form_widget(formLanguage.id) }}
+    <input type="hidden" id="{{ formLanguage.applicant.vars.id }}"
+           name="{{ formLanguage.applicant.vars.full_name }}" value="{{ applicant.id }}" >
     <div class="form-group">
         {{ form_label(formLanguage.language) }}
         {{ form_errors(formLanguage.language) }}
@@ -28,3 +41,10 @@
         {{ form_widget(formLanguage.save, {'attr': {'class': 'form-control'}}) }}
     </div>
 </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="close" data-dismiss="modal" aria-label="close">
+        <i class="fa fa-search" aria-hidden="true"></i> Cerrar
+    </button>
+</div>
+</div>

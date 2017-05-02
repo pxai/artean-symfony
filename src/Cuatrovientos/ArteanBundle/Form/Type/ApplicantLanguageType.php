@@ -19,6 +19,7 @@ class ApplicantLanguageType extends AbstractType {
         $builder
             ->add('id',HiddenType::class)
 
+            ->add('applicant', EntityType::class, array('class'=>'CuatrovientosArteanBundle:Applicant'))
             ->add('language', EntityType::class, array(
                     'class' => 'CuatrovientosArteanBundle:Language',
                    'label' => 'Idioma' )
