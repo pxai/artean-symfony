@@ -250,4 +250,6 @@ class ApplicantController extends Controller
         }
         return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');
     }
+
+
 }

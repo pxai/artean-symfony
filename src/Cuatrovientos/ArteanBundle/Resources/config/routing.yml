@@ -218,6 +218,14 @@ cuatrovientos_artean_login_redirect:
     path:     /artean/redirect
     defaults: { _controller: CuatrovientosArteanBundle:Security:arteanRedirect }
 
+cuatrovientos_artean_profile:
+        path:     /profile
+        defaults: { _controller: CuatrovientosArteanBundle:Security:profile }
+
+cuatrovientos_artean_profile_save:
+        path:     /profile
+        defaults: { _controller: CuatrovientosArteanBundle:Security:profileSave }
+
 ### workOrder
 cuatrovientos_artean_workorder:
     path:     /artean/student/workorders

@@ -232,6 +232,7 @@ class ApplicantAdminController extends Controller
         return $this->detailAction($applicantJobs->getApplicant()->getId());
     }
 
+
    public function applicantSignInAction()
     {
         $form = $this->createForm(ApplicantSignInType::class);
@@ -260,10 +261,7 @@ class ApplicantAdminController extends Controller
                     $form = $this->createForm(ApplicantSignUpType::class, $new_applicant);
                     $response = $this->render('CuatrovientosArteanBundle:Applicant:signUp.html.twig', array('form'=> $form->createView()));
                 }
-               /* $em = $this->getDoctrine()->getEntityManager();
-                $em->merge($applicant);
-                $em->flush();
-                $this->sendEmail($applicant);*/
+
             } else {
                 $response = $this->render('CuatrovientosArteanBundle:Applicant:signIn.html.twig', array('form'=> $form->createView()));
             }
@@ -376,48 +374,7 @@ class ApplicantAdminController extends Controller
     }
     
     
-        /**
-         * Start new session
-         * @param type $user
-         */
-    	private function newsession ($user)
-	{
-            session_start();
-            $sess = new Session();
-            
-            $sess->setUserid($user->getId());
-            
-	
-            $secureid = "";
 
-            $secureid = $_SERVER['HTTP_USER_AGENT'] . ":";
-	    $secureid .= $_SERVER['REMOTE_ADDR'] . ":";
-		
-	    $sessionkey = $this->genpass(16);
-            $sess->setSesskey($sessionkey);
-            $sess->setActive(1);
-            $em = $this->getDoctrine()->getEntityManager();
-            $em->persist($sess);
-            $em->flush();
-
-            $secureid .= $sessionkey;
-	    $secureid = md5($secureid);
-
-    	    // Crear nueva sesión borrando la anterior
-	    session_regenerate_id(true);
-    	   
-           // 
-	   // $this->db->db_query("new_session",$user->userid,$sessionkey);	
-            
-	    $roles = array(1,2,19);
-			
-
-	    $_SESSION["userid"] = $user->getId();
-            $_SESSION["key"] = $secureid;
-            $_SESSION["login"] = $user->getLogin();
-	    $_SESSION["roles"] = $roles; 
-	    $_SESSION["lopd"] = 0; 
-	}
         
         	/**
 	* genpass

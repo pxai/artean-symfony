@@ -5,8 +5,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use ApiBundle\Entity\User;
-use ApiBundle\Form\Type\UserSignInType;
+use Cuatrovientos\ArteanBundle\Entity\User;
+use Cuatrovientos\ArteanBundle\Form\Type\UserProfileType;
 
 class SecurityController extends Controller
 {
@@ -53,11 +53,11 @@ class SecurityController extends Controller
      *
      * @Route("/profile", name="profile")
      */
-    public function profileAction (Request $request)
+    public function profileAction ()
     {
-        $user = new User();
-        $user->setUsername('Test');
-        $response =  $this->render('CuatrovientosArteanBundle:Security:profile.html.twig', array('user' => $user));
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $form = $this->createForm(UserProfileType::class, $user);
+        return $this->render('CuatrovientosArteanBundle:Security:profile.html.twig', array('formProfile'=> $form->createView(),'user' => $user));
     }
 
 
@@ -71,7 +71,9 @@ class SecurityController extends Controller
 
         if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
            return  $this->render('CuatrovientosArteanBundle:Default:adminDashboard.html.twig');
-        } elseif ($this->get('security.authorization_checker')->isGranted('ROLE_USER')) {
+        } elseif ($this->get('security.authorization_checker')->isGranted('ROLE_STUDENT')) {
+            return $this->redirectToRoute("cuatrovientos_artean_workorder");
+        } elseif ($this->get('security.authorization_checker')->isGranted('ROLE_USER')){
             return $this->redirectToRoute("cuatrovientos_artean_workorder");
         }
     }
