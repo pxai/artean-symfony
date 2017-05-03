@@ -176,19 +176,17 @@ class ApplicantAdminController extends Controller
     }
 
     public function newJobAction(Request $request) {
-        $id  = $request->get("id");
 
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($id);
         $form = $this->createForm(ApplicantJobType::class, new ApplicantJobs());
 
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $applicantJob = $form->getData();
-                $applicantJob ->setApplicant($applicant);
+
                 $this->get("cuatrovientos_artean.bo.applicant")->saveApplicantJobs($applicantJob);
 
-                return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');
+                return $this->detailAction($applicantJob->getApplicant()->getId());
             } else  {
                 $response = $this->render('CuatrovientosArteanBundle:Applicant:dashboard.html.twig', array('form'=> $form->createView()));
             }
@@ -197,31 +195,28 @@ class ApplicantAdminController extends Controller
     }
 
     public function updateJobAction($id) {
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($id);
-        $applicantJob= $this->get("cuatrovientos_artean.bo.applicant")->selectApplicantJobs($id, $applicant);
+        $applicantJob= $this->get("cuatrovientos_artean.bo.applicant")->selectApplicantJobsById($id);
         $applicantJob->getCompany();
 
         if (null !=  $applicantJob) {
             $formJob = $this->createForm(ApplicantJobType::class, $applicantJob);
             return $this->render('CuatrovientosArteanBundle:Applicant/Jobs:update.html.twig', array('formJob' => $formJob->createView(),'applicantJob'=>$applicantJob));
         } else {
-            return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');
+            return $this->detailAction($applicantJob->getApplicant()->getId());
         }
     }
 
     public function updateJobSaveAction(Request $request) {
-        $id  = $request->get("id");
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($id);
+
         $form = $this->createForm(ApplicantJobType::class, new ApplicantJobs());
 
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $applicantJob = $form->getData();
-                $applicantJob->setApplicant($applicant);
                 $this->get("cuatrovientos_artean.bo.applicant")->updateApplicantJobs($applicantJob);
 
-                return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');
+                return $this->detailAction($applicantJob->getApplicant()->getId());
             } else  {
                 $response = $this->render('CuatrovientosArteanBundle:Applicant:dashboard.html.twig', array('form'=> $form->createView()));
             }
@@ -230,12 +225,11 @@ class ApplicantAdminController extends Controller
     }
 
     public function deleteJobAction($id) {
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($id);
-        $applicantJobs= $this->get("cuatrovientos_artean.bo.applicant")->selectApplicantJobs($id, $applicant);
+        $applicantJobs= $this->get("cuatrovientos_artean.bo.applicant")->selectApplicantJobsById($id);
         if (null !=  $applicantJobs) {
             $this->get("cuatrovientos_artean.bo.applicant")->deleteApplicantJobs($applicantJobs);
         }
-        return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');
+        return $this->detailAction($applicantJobs->getApplicant()->getId());
     }
 
    public function applicantSignInAction()

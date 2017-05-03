@@ -7,9 +7,16 @@
 {% endblock %}
 {% block body %}
 <h1>Aspirante</h1>
+        {% if is_granted('ROLE_ADMIN') %}
+ <form method="post" action="{{ path('cuatrovientos_artean_applicant_admin_update_job_save') }}">
+     {% else %}
 <form method="post" action="{{ path('cuatrovientos_artean_applicant_dashboard_update_job_save') }}">
+{% endif %}
+
     {{ form_errors(formJob) }}
     {{ form_widget(formJob.id) }}
+             <input type="hidden" id="{{ formJob.applicant.vars.id }}"
+                   name="{{ formJob.applicant.vars.full_name }}" value="{{ formJob.applicant.vars.value }}" >
     <div class="form-group">
         <label for="applicant_job_company" class="required">Empresa</label>
         <select id="applicant_job_company" name="applicant_job[companyName]">

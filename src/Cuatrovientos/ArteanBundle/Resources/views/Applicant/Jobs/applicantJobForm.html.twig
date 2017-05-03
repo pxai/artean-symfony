@@ -7,7 +7,12 @@
     </div>
     <div class="modal-body">
         <h3><i class="fa fa-plus" aria-hidden="true"></i> Nueva experiencia laboral</h3>
-<form method="post" action="{{ path('cuatrovientos_artean_applicant_dashboard_new_job_save') }}">
+        {% if is_granted('ROLE_ADMIN') %}
+        <form method="post" action="{{ path('cuatrovientos_artean_applicant_admin_new_job_save') }}">
+            {% else %}
+            <form method="post" action="{{ path('cuatrovientos_artean_applicant_dashboard_new_job_save') }}">
+                {% endif %}
+
     {{ form_errors(formJob) }}
     {{ form_widget(formJob.id) }}
     <input type="hidden" id="{{ formJob.applicant.vars.id }}"
