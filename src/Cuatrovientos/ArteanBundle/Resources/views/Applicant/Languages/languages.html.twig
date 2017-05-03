@@ -1,5 +1,5 @@
 <div class="table-responsive">
-<h2>Idiomas</h2>
+<h2><i class="fa fa-language" aria-hidden="true"></i> Idiomas</h2>
   <table class="table .table-condensed">
          <tr><th>Id</th><th>Idioma</th><th>Hablado</th><th>Escrito</th><th>Notas</th><th></th></tr>
         {% for language in applicant.languages %}
@@ -7,7 +7,7 @@
         {% endfor %}
       </table>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#applicantLanguagesModal" data-whatever="searchCompany">
-          <i class="fa fa-search" aria-hidden="true"></i> Añadir idioma
+          <i class="fa fa-plus" aria-hidden="true"></i> Añadir idioma
       </button>
 
       <div id="applicantLanguagesModal" style="display:none";  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">

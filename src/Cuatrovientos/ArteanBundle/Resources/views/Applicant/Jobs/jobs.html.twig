@@ -1,13 +1,13 @@
 <div class="table-responsive">
-<h2>Experiencia laboral</h2>
+<h2><i class="fa fa-industry" aria-hidden="true"></i> Experiencia laboral</h2>
   <table class="table-responsive table .table-condensed">
-         <tr><th>Id</th><th>Empresa</th><th>Tipp de contrato</th><th>Descripción</th><th>Fecha fin</th><th></th></tr>
+         <tr><th>Id</th><th>Empresa</th><th>Tipo de contrato</th><th>Descripción</th><th>Fecha fin</th><th></th></tr>
         {% for job in applicant.jobs %}
             {% include "CuatrovientosArteanBundle:Applicant/Jobs:job.html.twig" %}
         {% endfor %}
     </table>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#applicantJobModal" data-whatever="searchCompany">
-          <i class="fa fa-search" aria-hidden="true"></i> Añadir experiencia laboral
+          <i class="fa fa-plus" aria-hidden="true"></i> Añadir experiencia laboral
       </button>
 
       <div id="applicantJobModal" style="display:none";  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">

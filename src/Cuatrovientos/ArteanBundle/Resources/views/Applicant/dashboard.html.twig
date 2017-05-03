@@ -6,25 +6,35 @@
     </style>
 {% endblock %}
 {% block body %}
-<h1><i class="fa fa-user"></i> {{ applicant.name }} {{ applicant.surname }}</h1>
+<h1><i class="fa fa-user"></i> {{ applicant.surname }}, {{ applicant.name }} </h1>
     <div>
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab1" data-toggle="tab">Aspirante</a></li>
-            <li ><a href="#tab2" data-toggle="tab">Estudios</a></li>
-            <li ><a href="#tab3" data-toggle="tab">Idiomas</a></li>
-            <li ><a href="#tab4" data-toggle="tab">Experiencia laboral</a></li>
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" href="#profile" role="tab" data-toggle="tab"><i class="fa fa-user"></i> Datos personales</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#stud" role="tab" data-toggle="tab"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Estudios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#lang" role="tab" data-toggle="tab"><i class="fa fa-language" aria-hidden="true"></i> Idiomas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#exp" role="tab" data-toggle="tab"><i class="fa fa-industry" aria-hidden="true"></i> Experiencia laboral</a>
+            </li>
         </ul>
+
+        <!-- Tab panes -->
         <div class="tab-content">
-            <div class="tab-pane active" id="tab1">
+            <div role="tabpanel" class="tab-pane in active" id="profile">
                 {% include "CuatrovientosArteanBundle:Applicant:applicantForm.html.twig" %}
             </div>
-            <div class="tab-pane" id="tab2">
+            <div role="tabpanel" class="tab-pane fade" id="stud">
                 {% include "CuatrovientosArteanBundle:Applicant/Studies:studies.html.twig" %}
             </div>
-            <div class="tab-pane" id="tab3">
+            <div role="tabpanel" class="tab-pane fade" id="lang">
                 {% include "CuatrovientosArteanBundle:Applicant/Languages:languages.html.twig" %}
             </div>
-            <div class="tab-pane" id="tab4">
+            <div role="tabpanel" class="tab-pane fade" id="exp">
                 {% include "CuatrovientosArteanBundle:Applicant/Jobs:jobs.html.twig" %}
             </div>
         </div>
