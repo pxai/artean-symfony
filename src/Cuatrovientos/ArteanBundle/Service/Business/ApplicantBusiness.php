@@ -75,6 +75,10 @@ class ApplicantBusiness extends GenericBusiness {
         return $this->applicantStudiesDAO->selectByIdAndApplicant($id, $applicant);
     }
 
+    public function selectApplicantStudiesById($id) {
+        return $this->applicantStudiesDAO->selectById($id);
+    }
+
     public function saveApplicantStudies($applicantStudies) {
         $this->setStudiesCenter($applicantStudies);
         $this->setStudiesStudies($applicantStudies);
@@ -97,6 +101,10 @@ class ApplicantBusiness extends GenericBusiness {
         return $this->applicantLanguagesDAO->selectByIdAndApplicant($id, $applicant);
     }
 
+    public function selectApplicantLanguagesById($id) {
+        return $this->applicantLanguagesDAO->selectById($id);
+    }
+
     public function saveApplicantLanguages($applicantLanguages) {
         $this->applicantLanguagesDAO->create($applicantLanguages);
     }
@@ -111,6 +119,10 @@ class ApplicantBusiness extends GenericBusiness {
 
     public function selectApplicantJobs($id, $applicant) {
         return $this->applicantJobsDAO->selectByIdAndApplicant($id, $applicant);
+    }
+
+    public function selectApplicantJobsById($id) {
+        return $this->applicantJobsDAO->selectById($id);
     }
 
     public function saveApplicantJobs($applicantJobs) {

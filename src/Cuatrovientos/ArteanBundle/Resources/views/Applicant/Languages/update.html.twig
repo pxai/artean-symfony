@@ -8,10 +8,18 @@
 {% endblock %}
 {% block body %}
 <h1>Aspirante</h1>
-<form method="post" action="{{ path('cuatrovientos_artean_applicant_dashboard_update_language_save') }}">
+    {% if is_granted('ROLE_ADMIN') %}
+     <form method="post" action="{{ path('cuatrovientos_artean_applicant_admin_update_language_save') }}">
+    {% else %}
+    <form method="post" action="{{ path('cuatrovientos_artean_applicant_dashboard_update_language_save') }}">
+        {% endif %}
+
     {{ form_errors(formLanguage) }}
     {{ form_widget(formLanguage.id) }}
-    <div class="form-group">
+        <input type="hidden" id="{{ formLanguage.applicant.vars.id }}"
+               name="{{ formLanguage.applicant.vars.full_name }}" value="{{ formLanguage.applicant.vars.value }}" >
+
+        <div class="form-group">
         {{ form_label(formLanguage.language) }}
         {{ form_errors(formLanguage.language) }}
         {{ form_widget(formLanguage.language, {'attr': {'class': 'form-control'}}) }}

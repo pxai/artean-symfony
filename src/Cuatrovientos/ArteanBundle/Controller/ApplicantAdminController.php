@@ -66,7 +66,6 @@ class ApplicantAdminController extends Controller
 
 
     public function newStudiesAction(Request $request) {
-
         $form = $this->createForm(ApplicantStudiesType::class, new ApplicantStudies());
 
         if ($request->getMethod() == 'POST') {
@@ -75,7 +74,7 @@ class ApplicantAdminController extends Controller
                 $applicantStudies = $form->getData();
                 $this->get("cuatrovientos_artean.bo.applicant")->saveApplicantStudies($applicantStudies);
 
-                return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');
+                return $this->detailAction($applicantStudies->getApplicant()->getId());
             } else  {
                 $response = $this->render('CuatrovientosArteanBundle:Applicant:dashboard.html.twig', array('form'=> $form->createView()));
             }
@@ -84,63 +83,53 @@ class ApplicantAdminController extends Controller
     }
 
     public function deleteStudiesAction($id) {
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($id);
-        $applicantStudies= $this->get("cuatrovientos_artean.bo.applicant")->selectApplicantStudies($id, $applicant);
+        $applicantStudies= $this->get("cuatrovientos_artean.bo.applicant")->selectApplicantStudiesById($id);
         if (null !=  $applicantStudies) {
             $this->get("cuatrovientos_artean.bo.applicant")->deleteApplicantStudies($applicantStudies);
         }
-        return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');
-
+        return $this->detailAction($applicantStudies->getApplicant()->getId());
     }
 
     public function updateStudiesAction($id) {
 
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($id);
-        $applicantStudies= $this->get("cuatrovientos_artean.bo.applicant")->selectApplicantStudies($id, $applicant);
+        $applicantStudies= $this->get("cuatrovientos_artean.bo.applicant")->selectApplicantStudiesById($id);
         $applicantStudies->getCenter();
         $applicantStudies->getStudies();
         if (null !=  $applicantStudies) {
             $formStudies = $this->createForm(ApplicantStudiesType::class, $applicantStudies);
             return $this->render('CuatrovientosArteanBundle:Applicant/Studies:update.html.twig', array('formStudies' => $formStudies->createView(),'applicantStudies'=>$applicantStudies));
         } else {
-            return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');
+            return $this->detailAction($applicantStudies->getApplicant()->getId());
         }
     }
 
     public function updateStudiesSaveAction(Request $request) {
-        $id  = $request->get("id");
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($id);
+
         $form = $this->createForm(ApplicantStudiesType::class, new ApplicantStudies());
 
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $applicantStudies = $form->getData();
-                $applicantStudies->setApplicant($applicant);
                 $this->get("cuatrovientos_artean.bo.applicant")->updateApplicantStudies($applicantStudies);
 
-                return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');
+                return $this->detailAction($applicantStudies->getApplicant()->getId());
             } else  {
-                $response = $this->render('CuatrovientosArteanBundle:Applicant:dashboard.html.twig', array('form'=> $form->createView()));
+                return $this->updateAction($request->get->get("id"));
             }
         }
-        return $response;
+         return $this->updateAction($request->get->get("id"));
     }
 
     public function newLanguageAction(Request $request) {
-        $id  = $request->get("id");
-
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($id);
         $form = $this->createForm(ApplicantLanguageType::class, new ApplicantLanguages());
-
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $applicantLanguages = $form->getData();
-                $applicantLanguages->setApplicant($applicant);
                 $this->get("cuatrovientos_artean.bo.applicant")->saveApplicantLanguages($applicantLanguages);
 
-                return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');
+                return $this->detailAction($applicantLanguages->getApplicant()->getId());
             } else  {
                 $response = $this->render('CuatrovientosArteanBundle:Applicant:dashboard.html.twig', array('form'=> $form->createView()));
             }
@@ -149,31 +138,28 @@ class ApplicantAdminController extends Controller
     }
 
     public function updateLanguageAction($id) {
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($id);
-        $applicantLanguages= $this->get("cuatrovientos_artean.bo.applicant")->selectApplicantLanguages($id, $applicant);
+
+        $applicantLanguages= $this->get("cuatrovientos_artean.bo.applicant")->selectApplicantLanguagesById($id);
 
         if (null !=  $applicantLanguages) {
             $formLanguage = $this->createForm(ApplicantLanguageType::class, $applicantLanguages);
             return $this->render('CuatrovientosArteanBundle:Applicant/Languages:update.html.twig', array('formLanguage' => $formLanguage->createView()));
         } else {
-            return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');
+            return $this->detailAction($applicantLanguages->getApplicant()->getId());
         }
     }
 
     public function updateLanguageSaveAction(Request $request) {
-        $id  = $request->get("id");
 
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($id);
         $form = $this->createForm(ApplicantLanguageType::class, new ApplicantLanguages());
 
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $applicantLanguages = $form->getData();
-                $applicantLanguages->setApplicant($applicant);
                 $this->get("cuatrovientos_artean.bo.applicant")->updateApplicantLanguages($applicantLanguages);
 
-                return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');
+                return $this->detailAction($applicantLanguages->getApplicant()->getId());
             } else  {
                 $response = $this->render('CuatrovientosArteanBundle:Applicant:dashboard.html.twig', array('form'=> $form->createView()));
             }
@@ -182,13 +168,11 @@ class ApplicantAdminController extends Controller
     }
 
     public function deleteLanguageAction($id) {
-        $id  = 0;
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($id);
-        $applicantLanguages= $this->get("cuatrovientos_artean.bo.applicant")->selectApplicantLanguages($id, $applicant);
+        $applicantLanguages= $this->get("cuatrovientos_artean.bo.applicant")->selectApplicantLanguagesById($id);
         if (null !=  $applicantLanguages) {
             $this->get("cuatrovientos_artean.bo.applicant")->deleteApplicantLanguages($applicantLanguages);
         }
-        return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');
+        return $this->detailAction($applicantLanguages->getApplicant()->getId());
     }
 
     public function newJobAction(Request $request) {

@@ -569,6 +569,26 @@ cuatrovientos_artean_applicant_admin_update_studies_save:
     path:     /artean/admin/applicant/studies/update/save
     defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:updateStudiesSave}
 
+# applicant languages
+cuatrovientos_artean_applicant_admin_new_language_save:
+    path:     /artean/admin/applicant/language/new/save
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:newLanguage}
+
+cuatrovientos_artean_applicant_admin_delete_language_save:
+    path:     /artean/admin/applicant/language/delete/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:deleteLanguage}
+    requirements:
+            'id' : '\d+'
+
+cuatrovientos_artean_applicant_admin_update_language:
+    path:     /artean/admin/applicant/language/update/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:updateLanguage}
+    requirements:
+            'id' : '\d+'
+
+cuatrovientos_artean_applicant_admin_update_language_save:
+    path:     /artean/admin/applicant/language/update/save
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:updateLanguageSave}
 
 ################# jobrequest ##################
 

@@ -7,9 +7,16 @@
 {% endblock %}
 {% block body %}
 <h1>Aspirante</h1>
-<form method="post" action="{{ path('cuatrovientos_artean_applicant_dashboard_update_studies_save') }}">
+    {% if is_granted('ROLE_ADMIN') %}
+        <form method="post" action="{{ path('cuatrovientos_artean_applicant_admin_update_studies_save') }}">
+    {% else %}
+        <form method="post" action="{{ path('cuatrovientos_artean_applicant_dashboard_update_studies_save') }}">
+            {% endif %}
+
     {{ form_errors(formStudies) }}
     {{ form_widget(formStudies.id) }}
+            <input type="hidden" id="{{ formStudies.applicant.vars.id }}"
+                   name="{{ formStudies.applicant.vars.full_name }}" value="{{ formStudies.applicant.vars.value }}" >
     <div class="form-group">
         {{ form_label(formStudies.description) }}
         {{ form_errors(formStudies.description) }}

@@ -5,7 +5,12 @@
     <td>{{ language.writing.level }}</td>
     <td>{{ language.description }}</td>
     <td>
-        <a href="{{ path('cuatrovientos_artean_applicant_dashboard_update_language', {'id': language.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> U</a>
-        <a href="{{ path('cuatrovientos_artean_applicant_dashboard_delete_language_save', {'id': language.id }) }}" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> D</a>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('cuatrovientos_artean_applicant_admin_update_language', {'id': language.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> U</a>
+            <a href="{{ path('cuatrovientos_artean_applicant_admin_delete_language_save', {'id': language.id }) }}" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> D</a>
+        {% else %}
+            <a href="{{ path('cuatrovientos_artean_applicant_dashboard_update_language', {'id': language.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> U</a>
+            <a href="{{ path('cuatrovientos_artean_applicant_dashboard_delete_language_save', {'id': language.id }) }}" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> D</a>
+        {% endif %}
     </td>
 </tr>

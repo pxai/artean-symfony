@@ -8,10 +8,17 @@
     <div class="modal-body">
         <h3><i class="fa fa-plus" aria-hidden="true"></i> Nuevo idioma</h3>
 
-<form method="post" action="{{ path('cuatrovientos_artean_applicant_dashboard_new_language_save') }}">
+        {% if is_granted('ROLE_ADMIN') %}
+        <form method="post" action="{{ path('cuatrovientos_artean_applicant_admin_new_language_save') }}">
+            {% else %}
+            <form method="post" action="{{ path('cuatrovientos_artean_applicant_dashboard_new_language_save') }}">
+                {% endif %}
+
 
     {{ form_errors(formLanguage) }}
     {{ form_widget(formLanguage.id) }}
+                <input type="hidden" id="{{ formStudies.applicant.vars.id }}"
+                       name="{{ formStudies.applicant.vars.full_name }}" value="{{ applicant.id }}" >
     <input type="hidden" id="{{ formLanguage.applicant.vars.id }}"
            name="{{ formLanguage.applicant.vars.full_name }}" value="{{ applicant.id }}" >
     <div class="form-group">

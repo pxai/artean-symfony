@@ -11,7 +11,7 @@
         <form method="post" action="{{ path('cuatrovientos_artean_applicant_admin_new_studies_save') }}">
             {% else %}
             <form method="post" action="{{ path('cuatrovientos_artean_applicant_dashboard_new_studies_save') }}">
-                {% endif %}
+       {% endif %}
 
     {{ form_errors(formStudies) }}
     {{ form_widget(formStudies.id) }}

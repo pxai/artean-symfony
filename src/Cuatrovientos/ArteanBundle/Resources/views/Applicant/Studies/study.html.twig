@@ -9,8 +9,8 @@
             <a href="{{ path('cuatrovientos_artean_applicant_admin_update_studies', {'id': study.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> U</a>
             <a href="{{ path('cuatrovientos_artean_applicant_admin_delete_studies_save', {'id': study.id }) }}" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> D</a>
         {% else %}
-        <a href="{{ path('cuatrovientos_artean_applicant_dashboard_update_studies', {'id': study.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> U</a>
-        <a href="{{ path('cuatrovientos_artean_applicant_dashboard_delete_studies_save', {'id': study.id }) }}" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> D</a>
+            <a href="{{ path('cuatrovientos_artean_applicant_dashboard_update_studies', {'id': study.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> U</a>
+            <a href="{{ path('cuatrovientos_artean_applicant_dashboard_delete_studies_save', {'id': study.id }) }}" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> D</a>
         {% endif %}
     </td>
 </tr>
