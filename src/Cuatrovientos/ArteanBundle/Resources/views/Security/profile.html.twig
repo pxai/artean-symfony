@@ -3,29 +3,59 @@
 {% block body %}
 
     <h1>Perfil de usuario {{ user.username }}</h1>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" href="#user_profile" role="tab" data-toggle="tab"><i class="fa fa-user"></i> Datos usuario</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#user_password" role="tab" data-toggle="tab"><i class="fa fa-key" aria-hidden="true"></i> Cambiar contraseña</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane in active" id="user_profile">
+            <h3><i class="fa fa-user" aria-hidden="true"></i> Datos de usuario</h3>
+            <form method="post" action="{{ path('cuatrovientos_artean_profile_save') }}">
+                {{ form_errors(formProfile) }}
+                <div class="form-group">
+                    {{ form_label(formProfile.username) }}
+                    {{ form_errors(formProfile.username) }}
+                    {{ form_widget(formProfile.username, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(formProfile.email) }}
+                    {{ form_errors(formProfile.email) }}
+                    {{ form_widget(formProfile.email, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(formProfile._token) }}
+                    {{ form_widget(formProfile.save, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </form>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="user_password">
+            <h3><i class="fa fa-key" aria-hidden="true"></i> Cambiar contraseña</h3>
+            <form method="post" action="{{ path('cuatrovientos_artean_profile_change_password_save') }}">
+                {{ form_errors(formChangePassword) }}
+                <div class="form-group">
+                    {{ form_label(formChangePassword.oldPassword) }}
+                    {{ form_errors(formChangePassword.oldPassword) }}
+                    {{ form_widget(formChangePassword.oldPassword, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(formChangePassword.newPassword) }}
+                    {{ form_errors(formChangePassword.newPassword) }}
+                    {{ form_widget(formChangePassword.newPassword, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(formChangePassword._token) }}
+                    {{ form_widget(formChangePassword.save, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </form>
+            <div><a href="{{ path('cuatrovientos_artean_workorder') }}">Cancelar</div>
+        </div>
+    </div>
 
-    <form method="post" action="{{ path('cuatrovientos_artean_profile_save') }}">
-        <div class="form-group">
-            {{ form_label(formProfile.username) }}
-            {{ form_errors(formProfile.username) }}
-            {{ form_widget(formProfile.username, {'attr': {'class': 'form-control'}}) }}
-        </div>
-        <div class="form-group">
-            {{ form_label(formProfile.email) }}
-            {{ form_errors(formProfile.email) }}
-            {{ form_widget(formProfile.email, {'attr': {'class': 'form-control'}}) }}
-        </div>
-        <div class="form-group">
 
-        </div>
-        <div class="form-group">
 
-        </div>
-        <div class="form-group">
-            {{ form_row(formProfile._token) }}
-            {{ form_widget(formProfile.save, {'attr': {'class': 'form-control'}}) }}
-        </div>
-    </form>
-    <div><a href="{{ path('cuatrovientos_artean_workorder') }}">Cancelar</div>
 
 {% endblock %}

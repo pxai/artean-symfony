@@ -26,7 +26,7 @@ class UserProfileType extends AbstractType {
                 "required"=>true
             ))
             ->add('save', SubmitType::class,array(
-                "label"=>"Entrar"
+                "label"=>"Modificar usuario"
                 ));
         
     }

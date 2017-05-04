@@ -1,11 +1,13 @@
 <?php
 namespace Cuatrovientos\ArteanBundle\Controller;
 
+use Cuatrovientos\ArteanBundle\Form\Type\ChangePasswordType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Cuatrovientos\ArteanBundle\Entity\User;
+use Cuatrovientos\ArteanBundle\Entity\ChangePassword;
 use Cuatrovientos\ArteanBundle\Form\Type\UserProfileType;
 
 class SecurityController extends Controller
@@ -57,9 +59,26 @@ class SecurityController extends Controller
     {
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $form = $this->createForm(UserProfileType::class, $user);
-        return $this->render('CuatrovientosArteanBundle:Security:profile.html.twig', array('formProfile'=> $form->createView(),'user' => $user));
+        $formChange = $this->createForm(ChangePasswordType::class);
+        return $this->render('CuatrovientosArteanBundle:Security:profile.html.twig', array('formProfile'=> $form->createView(), 'formChangePassword'=>$formChange->createView(),'user' => $user));
     }
 
+    public function changePasswordAction (Request $request)
+    {
+        $formChange = $this->createForm(new ChangePasswordType(), new ChangePassword());
+
+        $formChange->handleRequest($request);
+
+        if ($formChange->isSubmitted() && $formChange->isValid()) {
+            // perform some action,
+            // such as encoding with MessageDigestPasswordEncoder and persist
+            return $this->redirect($this->generateUrl('change_passwd_success'));
+        } else {
+            $user = $this->get('security.token_storage')->getToken()->getUser();
+            $form = $this->createForm(UserProfileType::class, $user);
+            return $this->render('CuatrovientosArteanBundle:Security:profile.html.twig', array('formProfile'=> $form->createView(), 'formChangePassword'=>$formChange->createView(),'user' => $user));
+        }
+    }
 
     /**
      * @Route("/artean/redirect", name="artean_redirect")
