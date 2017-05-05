@@ -111,3 +111,11 @@ services:
     cuatrovientos_artean.bo.mailing:
          class: Cuatrovientos\ArteanBundle\Service\Business\MailingBusiness
          arguments: ['@cuatrovientos_artean.dao.mailing','@cuatrovientos_artean.dao.company','@cuatrovientos_artean.dao.applicant']
+
+    cuatrovientos_artean.dao.user:
+         class: Cuatrovientos\ArteanBundle\Service\DAO\UserDAO
+         arguments: ['CuatrovientosArteanBundle:User', '@doctrine.orm.entity_manager' ]
+
+    cuatrovientos_artean.bo.security:
+         class: Cuatrovientos\ArteanBundle\Service\Business\SecurityBusiness
+         arguments: ['@cuatrovientos_artean.dao.user']

@@ -65,16 +65,19 @@ class SecurityController extends Controller
 
     public function changePasswordAction (Request $request)
     {
-        $formChange = $this->createForm(new ChangePasswordType(), new ChangePassword());
-
+        $logger = $this->get('logger');
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $formChange = $this->createForm(ChangePasswordType::class, new ChangePassword());
+        $logger->info('YEAH> '  );
         $formChange->handleRequest($request);
-
+        $changePassword = $formChange->getData();
+        $logger->info('YEAH> '  . $changePassword->getOldPassword() . ':'.$changePassword->getNewPassword() );
         if ($formChange->isSubmitted() && $formChange->isValid()) {
             // perform some action,
             // such as encoding with MessageDigestPasswordEncoder and persist
+            $this->get("cuatrovientos_artean.bo.security")->updatePassword($user);
             return $this->redirect($this->generateUrl('change_passwd_success'));
         } else {
-            $user = $this->get('security.token_storage')->getToken()->getUser();
             $form = $this->createForm(UserProfileType::class, $user);
             return $this->render('CuatrovientosArteanBundle:Security:profile.html.twig', array('formProfile'=> $form->createView(), 'formChangePassword'=>$formChange->createView(),'user' => $user));
         }

@@ -227,7 +227,7 @@ cuatrovientos_artean_profile_save:
         defaults: { _controller: CuatrovientosArteanBundle:Security:profileSave }
 
 cuatrovientos_artean_profile_change_password_save:
-        path:     /profile
+        path:     /profile/password/change
         defaults: { _controller: CuatrovientosArteanBundle:Security:changePassword }
 
 ### workOrder
