@@ -24,17 +24,7 @@ class ApplicantSignInType extends AbstractType {
             ->add('save', SubmitType::class,array(
                 "label"=>"Alta en Artean"
                 ));
-        
-         /* $builder->addEventListener(
-            FormEvents::PRE_SUBMIT,
-            function (FormEvent $event) {
-                $data = $event->getData();
-                if (isset($data['position'])) {
-                     $data['position'] = $data['company'] .': ' .$data['position'];
-                }
 
-                $event->setData($data);
-        });*/
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
@@ -46,11 +36,11 @@ class ApplicantSignInType extends AbstractType {
       public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'csrf_protection' => false,
+            'csrf_protection' => true,
         ));
     }
     
     public function getName() {
-        return 'center';
+        return 'applicant';
     }
 }

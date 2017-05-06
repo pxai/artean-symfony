@@ -19,7 +19,18 @@
         <div class="site-wrapper-inner">
 
             <div class="cover-container">
-
+                {% for type, flash_messages in app.session.flashBag.all %}
+                    {% for flash_message in flash_messages %}
+                        <div class="card {{ type }}">
+                            <div class="card-header">
+                                {{ type }}
+                            </div>
+                            <div class="card-block">
+                                {{ flash_message }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
                 <div class="inner cover">
                     <h1 class="cover-heading">Login</h1>
                     <form class="form-signin" method="post" action="{{ path('cuatrovientos_artean_login_check') }}">
@@ -36,6 +47,7 @@
                     </form>
 
                 </div>
+                <div><a href="{{ path('cuatrovientos_artean_forgot_password') }}">¿Olvidaste tu contraseña?</a></div>
 
 
 

@@ -31,3 +31,7 @@ input[type=checkbox]{
 .tab-pane {
     padding: 1em;
 }
+
+.passwordChange input, .passwordChange label {
+   // display: block;
+}

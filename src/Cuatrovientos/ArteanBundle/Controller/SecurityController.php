@@ -7,8 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Cuatrovientos\ArteanBundle\Entity\User;
+use Cuatrovientos\ArteanBundle\Entity\Applicant;
 use Cuatrovientos\ArteanBundle\Entity\ChangePassword;
 use Cuatrovientos\ArteanBundle\Form\Type\UserProfileType;
+use Cuatrovientos\ArteanBundle\Form\Type\ApplicantSignInType;
 
 class SecurityController extends Controller
 {
@@ -59,30 +61,63 @@ class SecurityController extends Controller
     {
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $form = $this->createForm(UserProfileType::class, $user);
-        $formChange = $this->createForm(ChangePasswordType::class);
-        return $this->render('CuatrovientosArteanBundle:Security:profile.html.twig', array('formProfile'=> $form->createView(), 'formChangePassword'=>$formChange->createView(),'user' => $user));
+        $formChangePassword = $this->createForm(ChangePasswordType::class, new ChangePassword());
+        return $this->render('CuatrovientosArteanBundle:Security:profile.html.twig', array('formProfile'=> $form->createView(), 'formChangePassword'=>$formChangePassword->createView(),'user' => $user));
     }
 
     public function changePasswordAction (Request $request)
     {
-        $logger = $this->get('logger');
+
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $formChange = $this->createForm(ChangePasswordType::class, new ChangePassword());
-        $logger->info('YEAH> '  );
+
         $formChange->handleRequest($request);
         $changePassword = $formChange->getData();
-        $logger->info('YEAH> '  . $changePassword->getOldPassword() . ':'.$changePassword->getNewPassword() );
+
         if ($formChange->isSubmitted() && $formChange->isValid()) {
-            // perform some action,
-            // such as encoding with MessageDigestPasswordEncoder and persist
-            $this->get("cuatrovientos_artean.bo.security")->updatePassword($user);
-            return $this->redirect($this->generateUrl('change_passwd_success'));
+            $this->get("cuatrovientos_artean.bo.security")->updatePassword($user, $changePassword);
+            $this->addFlash('notice',
+                            'Contraseña modificada con éxito');
         } else {
-            $form = $this->createForm(UserProfileType::class, $user);
-            return $this->render('CuatrovientosArteanBundle:Security:profile.html.twig', array('formProfile'=> $form->createView(), 'formChangePassword'=>$formChange->createView(),'user' => $user));
+            $this->addFlash('error',
+                'Error al modificar contraseña');
         }
+        $form = $this->createForm(UserProfileType::class, $user);
+        return $this->render('CuatrovientosArteanBundle:Security:profile.html.twig', array('formProfile'=> $form->createView(), 'formChangePassword'=>$formChange->createView(),'user' => $user));
+
     }
 
+    public function forgotPasswordAction ()
+    {
+        $form = $this->createForm(ApplicantSignInType::class);
+        return $this->render('CuatrovientosArteanBundle:Security:forgotPassword.html.twig', array('form'=> $form->createView()));
+    }
+
+
+    public function forgotPasswordSaveAction (Request $request)
+    {
+        $logger = $this->get('logger');
+        $logger->info('Yeah, it works??');
+        $form = $this->createForm(ApplicantSignInType::class, new Applicant());
+        $logger->info('Yeah, it works');
+        $form->handleRequest($request);
+        $logger->info('Yeah, it works or not');
+        $changePassword = $form->getData();
+        $logger->info('Yeah, it works, oh si');
+        if ($form->isSubmitted() && $form->isValid()) {
+            // perform some action,
+            // such as encoding with MessageDigestPasswordEncoder and persist
+           // $this->get("cuatrovientos_artean.bo.security")->updatePassword($user, $changePassword);
+            $this->addFlash('notice',
+                'Contraseña modificada con éxito');
+        } else {
+            $this->addFlash('error',
+                'Error al modificar contraseña');
+        }
+
+        return $this->render('CuatrovientosArteanBundle:Security:forgotPasswordSave.html.twig', array());
+
+    }
     /**
      * @Route("/artean/redirect", name="artean_redirect")
      */

@@ -20,8 +20,8 @@ class ChangePasswordType extends AbstractType {
             'label'=> 'Nueva contraseña',
             'invalid_message' => 'Las contraseñas deben coincidir.',
             'required' => true,
-            'first_options'  => array('label' => 'Nuevo Password'),
-            'second_options' => array('label' => 'Repetir nuevo Password'),
+            'first_options'  => array('label' => 'Nueva contraseña','attr' => array('class'=>"form-control")),
+            'second_options' => array('label' => 'Escribir nueva contraseña','attr' => array('class'=>"form-control")),
         ));
         $builder->add('save', SubmitType::class,array(
             "label"=>"Cambiar contraseña"

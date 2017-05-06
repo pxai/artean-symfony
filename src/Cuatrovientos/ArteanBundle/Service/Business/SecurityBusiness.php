@@ -9,7 +9,7 @@ use Cuatrovientos\ArteanBundle\Service\DAO\UserDAO;
 class SecurityBusiness extends GenericBusiness {
 
     public function updatePassword($user, $changePassword) {
-
+        $user->setPassword($changePassword->getNewPassword());
         $this->entityDAO->update($user);
         return true;
     }

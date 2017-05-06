@@ -230,6 +230,14 @@ cuatrovientos_artean_profile_change_password_save:
         path:     /profile/password/change
         defaults: { _controller: CuatrovientosArteanBundle:Security:changePassword }
 
+cuatrovientos_artean_forgot_password:
+        path:     /forgot/password
+        defaults: { _controller: CuatrovientosArteanBundle:Security:forgotPassword }
+
+cuatrovientos_artean_forgot_password_save:
+        path:     /forgot/password/save
+        defaults: { _controller: CuatrovientosArteanBundle:Security:forgotPasswordSave }
+
 ### workOrder
 cuatrovientos_artean_workorder:
     path:     /artean/student/workorders
