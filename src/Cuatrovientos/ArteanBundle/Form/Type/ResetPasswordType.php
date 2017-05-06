@@ -8,13 +8,15 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\Requiredype;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
-class ChangePasswordType extends AbstractType {
+class ResetPasswordType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('oldPassword', PasswordType::class, array(
-        'label' => 'Contraseña anterior'));
+        $builder->add('validate', HiddenType::class, array(
+        'required' => 'true'));
         $builder->add('newPassword',RepeatedType::class, array(
             'type' => PasswordType::class,
             'label'=> 'Nueva contraseña',
@@ -31,7 +33,7 @@ class ChangePasswordType extends AbstractType {
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Cuatrovientos\ArteanBundle\Entity\ResetPassword',
+            'data_class' => 'Cuatrovientos\ArteanBundle\Entity\ChangePassword',
         ));
     }
 

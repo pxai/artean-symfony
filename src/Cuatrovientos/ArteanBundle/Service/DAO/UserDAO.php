@@ -67,8 +67,26 @@ class UserDAO extends GenericDAO {
             ->getResult();
     }
 
+    public function findUserByEmail($email)
+    {
+        $repository = $this->em->getRepository('CuatrovientosArteanBundle:User');
+        return $repository->createQueryBuilder('m')
+            ->where('m.login=:email')
+            ->orWhere('m.email=:email')
+            ->setParameter('email',$email)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 
-
+    public function findUserByValidate($validate)
+    {
+        $repository = $this->em->getRepository('CuatrovientosArteanBundle:User');
+        return $repository->createQueryBuilder('m')
+            ->where('m.validate=:validate')
+            ->setParameter('validate',$validate)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 
 }
 

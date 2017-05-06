@@ -50,7 +50,7 @@ class User implements UserInterface, \Serializable
 
     
          /**
-     * @ORM\Column(name="validate",type="string", length=50)
+     * @ORM\Column(name="validate",type="string", length=100)
      */
     private $validate = '';
 

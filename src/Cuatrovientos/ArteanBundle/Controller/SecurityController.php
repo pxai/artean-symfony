@@ -9,8 +9,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Cuatrovientos\ArteanBundle\Entity\User;
 use Cuatrovientos\ArteanBundle\Entity\Applicant;
 use Cuatrovientos\ArteanBundle\Entity\ChangePassword;
+use Cuatrovientos\ArteanBundle\Entity\ResetPassword;
 use Cuatrovientos\ArteanBundle\Form\Type\UserProfileType;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantSignInType;
+use Cuatrovientos\ArteanBundle\Form\Type\ResetPasswordType;
 
 class SecurityController extends Controller
 {
@@ -96,28 +98,54 @@ class SecurityController extends Controller
 
     public function forgotPasswordSaveAction (Request $request)
     {
-        $logger = $this->get('logger');
-        $logger->info('Yeah, it works??');
+
         $form = $this->createForm(ApplicantSignInType::class, new Applicant());
-        $logger->info('Yeah, it works');
         $form->handleRequest($request);
-        $logger->info('Yeah, it works or not');
         $changePassword = $form->getData();
-        $logger->info('Yeah, it works, oh si');
+
         if ($form->isSubmitted() && $form->isValid()) {
-            // perform some action,
-            // such as encoding with MessageDigestPasswordEncoder and persist
-           // $this->get("cuatrovientos_artean.bo.security")->updatePassword($user, $changePassword);
-            $this->addFlash('notice',
-                'Contraseña modificada con éxito');
+           if ( $user = $this->get("cuatrovientos_artean.bo.security")->prepareForPasswordReset($changePassword->getEmail()) ) {
+               $this->addFlash('notice', 'Contraseña modificada con éxito. ' . $user->getValidate());
+               return $this->render('CuatrovientosArteanBundle:Security:forgotPasswordSave.html.twig', array());
+           } else {
+               $this->addFlash('error', 'Error, ese email no está registrado.');
+               return $this->render('CuatrovientosArteanBundle:Security:forgotPassword.html.twig', array('form'=> $form->createView()));
+           }
         } else {
-            $this->addFlash('error',
-                'Error al modificar contraseña');
+            $this->addFlash('error', 'Error al modificar contraseña');
+            return $this->render('CuatrovientosArteanBundle:Security:forgotPassword.html.twig', array('form'=> $form->createView()));
         }
-
-        return $this->render('CuatrovientosArteanBundle:Security:forgotPasswordSave.html.twig', array());
-
     }
+
+    public function resetPasswordAction ($id)
+    {
+        $formResetPassword = $this->createForm(ResetPasswordType::class);
+        return $this->render('CuatrovientosArteanBundle:Security:resetPassword.html.twig', array('formResetPassword'=> $formResetPassword->createView(), 'id'=>$id));
+    }
+
+
+    public function resetPasswordSaveAction (Request $request)
+    {
+
+        $formResetPassword = $this->createForm(ResetPasswordType::class, new ResetPassword());
+        $formResetPassword->handleRequest($request);
+        $resetPassword = $formResetPassword->getData();
+
+        if ($formResetPassword->isSubmitted() && $formResetPassword->isValid()) {
+            if ( $user = $this->get("cuatrovientos_artean.bo.security")->resetPassword($resetPassword) ) {
+                $this->addFlash('notice', 'Contraseña modificada con éxito. ' . $user->getValidate());
+                return $this->render('CuatrovientosArteanBundle:Security:resetPasswordSave.html.twig', array());
+            } else {
+                $this->addFlash('error', 'Error, código de validación incorrecto.');
+                return $this->render('CuatrovientosArteanBundle:Security:resetPassword.html.twig', array('formResetPassword'=> $formResetPassword->createView(), 'id'=>$resetPassword->getValidate()));
+            }
+        } else {
+            $this->addFlash('error', 'Error al modificar contraseña');
+            return $this->render('CuatrovientosArteanBundle:Security:resetPassword.html.twig', array('formResetPassword'=> $formResetPassword->createView(), 'id'=>$resetPassword->getValidate()));
+        }
+    }
+
+
     /**
      * @Route("/artean/redirect", name="artean_redirect")
      */

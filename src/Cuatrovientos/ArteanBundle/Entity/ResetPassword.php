@@ -1,17 +1,11 @@
 <?php
 
 namespace Cuatrovientos\ArteanBundle\Entity;
-use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class ChangePassword
+class ResetPassword
 {
-    /**
-    * @SecurityAssert\UserPassword(
-    *     message = "Wrong value for your current password"
-    * )
-    */
-    protected $oldPassword;
+
 
     /**
     * @Assert\Length(
@@ -37,21 +31,6 @@ class ChangePassword
      */
     private $validate;
 
-    /**
-     * @return mixed
-     */
-    public function getOldPassword()
-    {
-        return $this->oldPassword;
-    }
-
-    /**
-     * @param mixed $oldPassword
-     */
-    public function setOldPassword($oldPassword)
-    {
-        $this->oldPassword = $oldPassword;
-    }
 
     /**
      * @return mixed
