@@ -105,14 +105,15 @@ class SecurityController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
            if ( $user = $this->get("cuatrovientos_artean.bo.security")->prepareForPasswordReset($changePassword->getEmail()) ) {
-               $this->addFlash('notice', 'Contraseña modificada con éxito. ' . $user->getValidate());
+               $this->sendEmailForgotPassword($user);
+               $this->addFlash('notice', 'Email enviado con éxito. ');
                return $this->render('CuatrovientosArteanBundle:Security:forgotPasswordSave.html.twig', array());
            } else {
                $this->addFlash('error', 'Error, ese email no está registrado.');
                return $this->render('CuatrovientosArteanBundle:Security:forgotPassword.html.twig', array('form'=> $form->createView()));
            }
         } else {
-            $this->addFlash('error', 'Error al modificar contraseña');
+            $this->addFlash('error', 'Error al tratar de resetear contraseña');
             return $this->render('CuatrovientosArteanBundle:Security:forgotPassword.html.twig', array('form'=> $form->createView()));
         }
     }
@@ -145,6 +146,23 @@ class SecurityController extends Controller
         }
     }
 
+    private function sendEmailForgotPassword ($user) {
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Artean: ¡Bienvenid@ la bolsa de empleo!')
+            ->setFrom('artean@cuatrovientos.org')
+            ->setTo($user->getEmail())
+            ->setBody(
+                $this->renderView(
+                // app/Resources/views/Emails/registration.html.twig
+                    'Emails/forgotPassword.html.twig',
+                    array('user' => $user)
+                ),
+                'text/html'
+            );
+
+        $this->get('mailer')->send($message);
+
+    }
 
     /**
      * @Route("/artean/redirect", name="artean_redirect")
