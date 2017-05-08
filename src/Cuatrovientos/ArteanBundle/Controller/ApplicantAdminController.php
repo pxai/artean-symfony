@@ -47,6 +47,8 @@ class ApplicantAdminController extends Controller
                 'applicant'=>$applicant));
     }
 
+
+
     public function updateAction(Request $request) {
         $form = $this->createForm(ApplicantType::class, new Applicant());
 

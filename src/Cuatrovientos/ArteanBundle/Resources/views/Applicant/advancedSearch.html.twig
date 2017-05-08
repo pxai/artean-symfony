@@ -1,0 +1,73 @@
+<div class="modal-dialog" role="document">
+   <div class="modal-content">
+      <form method="post" action="{{ path('cuatrovientos_artean_applicant_admin_search') }}" id="applicant_search_form" class="arteanform">
+      <div class="modal-header">
+   <h3><i class="fa fa-search" aria-hidden="true"></i> Buscar candidatos</h3>
+      </div>
+      <div class="modal-body">
+
+   {{ form_errors(form) }}
+   <div class="form-group">
+      {{ form_label(form.name) }}
+      {{ form_errors(form.name) }}
+      {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+   </div>
+         <div class="form-group">
+            {{ form_label(form.surname) }}
+            {{ form_errors(form.surname) }}
+            {{ form_widget(form.surname, {'attr': {'class': 'form-control'}}) }}
+         </div>
+         <div class="form-group">
+            {{ form_label(form.studies) }}
+            {{ form_errors(form.studies) }}
+            {{ form_widget(form.studies, {'attr': {'class': 'form-control'}}) }}
+         </div>
+         <div class="form-group">
+            {{ form_label(form.languages) }}
+            {{ form_errors(form.languages) }}
+            {{ form_widget(form.languages, {'attr': {'class': 'form-control'}}) }}
+         </div>
+          <div class="form-group">
+              {{ form_label(form.drivingLicense) }}
+              {{ form_errors(form.drivingLicense) }}
+              {{ form_widget(form.drivingLicense, {'attr': {'class': 'form-control'}}) }}
+          </div>
+          <div class="form-group">
+              {{ form_label(form.move) }}
+              {{ form_errors(form.move) }}
+              {{ form_widget(form.move, {'attr': {'class': 'form-control'}}) }}
+          </div>
+          <div class="form-group">
+              {{ form_label(form.birth) }}
+              {{ form_errors(form.birth) }}
+              {{ form_widget(form.birth, {'attr': {'class': 'form-control'}}) }}
+          </div>
+         {{ form_row(form._token) }}
+
+      </div>
+
+      <div class="modal-footer">
+         <a href="{{ path('cuatrovientos_artean_applicant_admin_advanced_search') }}" class="btn btn-primary" id="applicant_search"><i class="fa fa-search" aria-hidden="true"></i> Buscar candidatos</a>
+      </div>
+      </form>
+
+   </div>
+
+    <div id="applicant_search_result" class="search-results">
+        <h4>Preseleccionar candidatos <i class="fa fa-users" aria-hidden="true"></i></h4>
+        <div class="results"></div>
+        <div class="form-group">
+            <label for="applicant_advanced_search_name">Preseleccionados</label>
+            <form method="post" action="{{ path('cuatrovientos_artean_jobrequest_add_preselected') }}">
+                <input type="hidden" name="jobrequest_id" value="{{ jobRequest.id }}" />
+            <select id="preselected_applicant_list" name="preselected_applicant_list[]" class="form-control" multiple size="10">
+            </select>
+
+            <div><label><input type="checkbox" id="select_all"> Todas/os</label></div>
+                <button type="submit" class="btn btn-info"><i class="fa fa-plus" aria-hidden="true"></i> Agregar precandidatos
+                </button>
+
+            </form>
+        </div>
+    </div>
+</div>

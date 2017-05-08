@@ -564,6 +564,10 @@ cuatrovientos_artean_applicant_admin_search:
     path:     /artean/admin/applicant
     defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:index }
 
+cuatrovientos_artean_applicant_admin_advanced_search:
+    path:     /api/admin/applicant/search
+    defaults: { _controller: CuatrovientosArteanBundle:Api\ApplicantApi:advancedSearch }
+
 cuatrovientos_artean_applicant_admin_detail:
     path:     /artean/admin/applicant/{id}
     defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:detail }
@@ -670,7 +674,6 @@ cuatrovientos_artean_jobrequest_detail:
     path:     /artean/admin/jobrequest/{id}
     defaults: { _controller: CuatrovientosArteanBundle:JobRequest:jobrequestDetail }
 
-
 cuatrovientos_artean_jobrequest_update_save:
     path:     /artean/admin/jobrequest/update/save
     defaults: { _controller: CuatrovientosArteanBundle:JobRequest:jobrequestUpdateSave }
@@ -692,6 +695,10 @@ cuatrovientos_artean_jobrequest_delete_save:
     defaults: { _controller: CuatrovientosArteanBundle:JobRequest:jobrequestDeleteSave }
     requirements: 
             'id' : '\d+'
+
+cuatrovientos_artean_jobrequest_add_preselected:
+    path:     /artean/admin/jobrequest/add/preselected
+    defaults: { _controller: CuatrovientosArteanBundle:JobRequest:addPreselected }
 
 ################# fct ##################
 

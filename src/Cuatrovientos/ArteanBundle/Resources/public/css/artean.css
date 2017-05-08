@@ -35,3 +35,7 @@ input[type=checkbox]{
 .passwordChange input, .passwordChange label {
    // display: block;
 }
+
+.search-results {
+    display: none;
+}
