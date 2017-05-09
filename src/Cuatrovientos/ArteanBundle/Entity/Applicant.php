@@ -121,7 +121,10 @@ class Applicant extends Entity
      */
     private $jobs;
 
-
+    /**
+     * @ORM\OneToMany(targetEntity="JobRequestPreselected", mappedBy="jobRequest",fetch="EXTRA_LAZY")
+     */
+    private $jobOffers;
 
     public function __construct () {
         $this->studies = array();
@@ -428,6 +431,22 @@ class Applicant extends Entity
     function __toString()
     {
         return $this->getId().'';
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getJobOffers()
+    {
+        return $this->jobOffers;
+    }
+
+    /**
+     * @param mixed $jobOffers
+     */
+    public function setJobOffers($jobOffers)
+    {
+        $this->jobOffers = $jobOffers;
     }
 
 

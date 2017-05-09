@@ -134,7 +134,23 @@ class JobRequest extends Entity
     private $rating;
 
 
+    /**
+     * ORM\OneToMany(targetEntity="JobRequestPreselected", mappedBy="applicant",fetch="EXTRA_LAZY", cascade={"all"})
+     */
+    /**
+     * Many Companies have many degrees
+     * @ORM\ManyToMany(targetEntity="Applicant")
+     * @ORM\JoinTable(name="tbsolicitudes_alpre",
+     *      joinColumns={@ORM\JoinColumn(name="idoffer", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="idapplicant", referencedColumnName="id")}
+     *      )
+     */
+    private $preselectedApplicants;
 
+    /**
+     * @ORM\OneToMany(targetEntity="JobRequestSelected", mappedBy="applicant",fetch="EXTRA_LAZY")
+     */
+    private $selectedApplicants;
        
     public function __construct () {
     }
@@ -533,6 +549,38 @@ class JobRequest extends Entity
     public function setCategory($category)
     {
         $this->category = $category;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPreselectedApplicants()
+    {
+        return $this->preselectedApplicants;
+    }
+
+    /**
+     * @param mixed $preselectedApplicants
+     */
+    public function setPreselectedApplicants($preselectedApplicants)
+    {
+        $this->preselectedApplicants = $preselectedApplicants;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSelectedApplicants()
+    {
+        return $this->selectedApplicants;
+    }
+
+    /**
+     * @param mixed $selectedApplicants
+     */
+    public function setSelectedApplicants($selectedApplicants)
+    {
+        $this->selectedApplicants = $selectedApplicants;
     }
 
 

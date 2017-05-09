@@ -2,6 +2,7 @@
 
 namespace  Cuatrovientos\ArteanBundle\Controller;
 
+use Cuatrovientos\ArteanBundle\Entity\JobRequestPreselected;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Cuatrovientos\ArteanBundle\Entity\JobRequest;
@@ -9,6 +10,7 @@ use Cuatrovientos\ArteanBundle\Entity\Applicant;
 use Cuatrovientos\ArteanBundle\Form\Type\JobRequestSearchType;
 use Cuatrovientos\ArteanBundle\Form\Type\JobRequestType;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantAdvancedSearchType;
+use Cuatrovientos\ArteanBundle\Form\Type\JobRequestPreselectedType;
 
 class JobRequestController extends Controller
 {
@@ -16,6 +18,7 @@ class JobRequestController extends Controller
     public function indexAction($init=0,$limit=100)
     {
         $form = $this->createForm(JobRequestSearchType::class);
+
         $jobRequests = $this->get("cuatrovientos_artean.bo.jobrequest")->findAllJobRequests(0, $init, $limit);
         $total = $this->get("cuatrovientos_artean.bo.jobrequest")->countAllJobRequests();
         return $this->render('CuatrovientosArteanBundle:JobRequest:index.html.twig', array('jobRequests'=>$jobRequests, 'init'=>$init, 'limit'=> $limit, 'total'=> $total,'form'=> $form->createView()));
@@ -47,9 +50,21 @@ class JobRequestController extends Controller
 
     public function addPreselectedAction(Request $request)
     {
-        $form = $this->createForm(ApplicantAdvancedSearchType::class, new Applicant());
-        $jobRequest = $this->get("cuatrovientos_artean.bo.jobrequest")->selectById($request->request->get('jobrequest_id'));
-        return $this->render('CuatrovientosArteanBundle:JobRequest:detail.html.twig',array('jobRequest'=> $jobRequest, 'form'=>$form->createView()));
+        $form = $this->createForm(JobRequestPreselectedType::class, new JobRequest());
+        $jobRequest ="";
+
+        if ($request->getMethod() == 'POST') {
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                $jobRequest = $form->getData();
+                $this->get("cuatrovientos_artean.bo.jobrequest")->update($jobRequest);
+                return $this->jobrequestDetailAction($jobRequest->getId());
+            } else {
+                return $this->jobrequestDetailAction($jobRequest->getId());
+            }
+        }
+        return $this->jobrequestDetailAction($jobRequest->getId());
     }
 
    public function newJobRequestAction()
@@ -82,8 +97,9 @@ class JobRequestController extends Controller
    public function jobrequestDetailAction($id=1)
     {
         $form = $this->createForm(ApplicantAdvancedSearchType::class, new Applicant());
+        $formPreselected = $this->createForm(JobRequestPreselectedType::class);
         $jobRequest = $this->get("cuatrovientos_artean.bo.jobrequest")->selectById($id);
-        return $this->render('CuatrovientosArteanBundle:JobRequest:detail.html.twig',array('jobRequest'=> $jobRequest, 'form'=>$form->createView()));
+        return $this->render('CuatrovientosArteanBundle:JobRequest:detail.html.twig',array('jobRequest'=> $jobRequest, 'form'=>$form->createView(), 'formPreselected'=>$formPreselected->createView()));
     }
 
 

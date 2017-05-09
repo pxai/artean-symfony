@@ -136,7 +136,7 @@ class Company  extends Entity
      * @ORM\OneToMany(targetEntity="CompanyDegrees", mappedBy="company",fetch="EXTRA_LAZY",cascade={"all"})
      */
     /**
-     * Many Users have Many Groups.
+     * Many Companies have many degrees
      * @ORM\ManyToMany(targetEntity="Degree")
      * @ORM\JoinTable(name="tbempresas_ciclos",
      *      joinColumns={@ORM\JoinColumn(name="IdEmpresa", referencedColumnName="id")},

@@ -40,11 +40,25 @@
         <i class="fa fa-users" aria-hidden="true"></i>
         Añadir candidatos
     </button>
+    <table class="table .table-condensed">
+        <tr><th>Id</th><th>Apellidos</th><th>Nombre</th><th>Telefono</th><th>Email</th><th></th></tr>
+        {% for applicant in jobRequest.selectedApplicants %}
+            {% include "CuatrovientosArteanBundle:JobRequest:preSelected.html.twig" %}
+        {% endfor %}
+    </table>
      <h3>2. Seleccionar candidatos <i class="fa fa-user-plus" aria-hidden="true"></i></h3>
+    <table class="table .table-condensed">
+        <tr><th>Id</th><th>Apellidos</th><th>Nombre</th><th>Telefono</th><th>Email</th><th></th></tr>
+        {% for applicant in jobRequest.preselectedApplicants %}
+            {% include "CuatrovientosArteanBundle:JobRequest:selected.html.twig" %}
+        {% endfor %}
+    </table>
     <a href="{{ path('cuatrovientos_artean_jobrequest_update', {'id': jobRequest.id }) }}" class="btn btn-primary"><i class="fa fa-user-plus" aria-hidden="true"></i> Añadir candidatos</a>
+
+
+
     <h3>3. Enviar email <i class="fa fa-envelope" aria-hidden="true"></i></h3>
     <a href="{{ path('cuatrovientos_artean_jobrequest_update', {'id': jobRequest.id }) }}" class="btn btn-success"><i class="fa fa-envelope" aria-hidden="true"></i> Añadir candidatos</a>
-
 
     <!-- Modal -->
     <div class="modal fade" id="addPrecandidates" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
