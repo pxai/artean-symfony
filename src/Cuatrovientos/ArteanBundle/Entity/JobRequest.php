@@ -139,7 +139,7 @@ class JobRequest extends Entity
      */
     /**
      * Many Companies have many degrees
-     * @ORM\ManyToMany(targetEntity="Applicant")
+     * @ORM\ManyToMany(targetEntity="Applicant", cascade={"all"})
      * @ORM\JoinTable(name="tbsolicitudes_alpre",
      *      joinColumns={@ORM\JoinColumn(name="idoffer", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="idapplicant", referencedColumnName="id")}

@@ -133,11 +133,11 @@ class Company  extends Entity
     private $convenio_pipdual;
 
     /**
-     * @ORM\OneToMany(targetEntity="CompanyDegrees", mappedBy="company",fetch="EXTRA_LAZY",cascade={"all"})
+     * ORM\OneToMany(targetEntity="CompanyDegrees", mappedBy="company",fetch="EXTRA_LAZY",cascade={"all"})
      */
     /**
      * Many Companies have many degrees
-     * @ORM\ManyToMany(targetEntity="Degree")
+     * @ORM\ManyToMany(targetEntity="Degree",cascade={"all"})
      * @ORM\JoinTable(name="tbempresas_ciclos",
      *      joinColumns={@ORM\JoinColumn(name="IdEmpresa", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="idCiclo", referencedColumnName="id")}

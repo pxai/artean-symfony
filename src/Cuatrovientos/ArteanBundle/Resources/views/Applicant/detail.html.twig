@@ -1,14 +1,28 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
-{% block title %}Center bundle::Center detail{% endblock %}
+{% block title %}Artean :: Datos aspirante{% endblock %}
 {% block body %}
-<h1>Center detail</h1>
-<ul>
-     <li><strong>Id: </strong>{{ center.id }}</li> 
-     <li><strong>Name: </strong>{{ center.name }}</li> 
-</ul>
-		{#% if is_granted('ROLE_ADMIN') %#}
-                <a href="{{ path('cuatrovientos_artean_center') }}">Index</a> |
-                <a href="{{ path('cuatrovientos_artean_center_update', {'id': center.id }) }}">Update</a> |
-                <a href="{{ path('cuatrovientos_artean_center_delete', {'id': center.id }) }}">Delete</a>                      
-		{#% endif % #}
+    <h1><i class="fa fa-user"></i> {{ applicant.surname }}, {{ applicant.name }} </h1>
+    <div>
+            <div id="profile">
+                <ul>
+                    <li><b>Email:</b> {{ applicant.email }}</li>
+                    <li><b>Télefono:</b> {{ applicant.phone }}</li>
+                    <li><b>Fecha nacimiento:</b> {{ applicant.birth }}</li>
+                    <li><b>Carnet:</b> {{ applicant.drivingLicense }}</li>
+                    <li><b>Desplazamiento:</b> {{ applicant.move }}</li>
+                </ul>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="stud">
+                {% include "CuatrovientosArteanBundle:Applicant/Studies:studies.html.twig" %}
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="lang">
+                {% include "CuatrovientosArteanBundle:Applicant/Languages:languages.html.twig" %}
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="exp">
+                {% include "CuatrovientosArteanBundle:Applicant/Jobs:jobs.html.twig" %}
+            </div>
+        </div>
+    </div>
+
+
 {% endblock %}

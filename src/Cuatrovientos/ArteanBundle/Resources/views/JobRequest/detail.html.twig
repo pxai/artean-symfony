@@ -37,23 +37,32 @@
     </ul>
     <h3>1. Preseleccionar candidatos <i class="fa fa-users" aria-hidden="true"></i></h3>
     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addPrecandidates">
-        <i class="fa fa-users" aria-hidden="true"></i>
-        Añadir candidatos
+        <i class="fa fa-user-plus" aria-hidden="true"></i>
+        Preseleccionar candidatos
     </button>
-    <table class="table .table-condensed">
-        <tr><th>Id</th><th>Apellidos</th><th>Nombre</th><th>Telefono</th><th>Email</th><th></th></tr>
-        {% for applicant in jobRequest.selectedApplicants %}
-            {% include "CuatrovientosArteanBundle:JobRequest:preSelected.html.twig" %}
-        {% endfor %}
-    </table>
-     <h3>2. Seleccionar candidatos <i class="fa fa-user-plus" aria-hidden="true"></i></h3>
+    {% if jobRequest.preselectedApplicants is not null %}
     <table class="table .table-condensed">
         <tr><th>Id</th><th>Apellidos</th><th>Nombre</th><th>Telefono</th><th>Email</th><th></th></tr>
         {% for applicant in jobRequest.preselectedApplicants %}
+            {% include "CuatrovientosArteanBundle:JobRequest:preSelected.html.twig" %}
+        {% endfor %}
+    </table>
+    {% else %}
+        <div> No hay candidatos preseleccionados</div>
+    {% endif %}
+     <h3>2. Seleccionar candidatos <i class="fa fa-user-plus" aria-hidden="true"></i></h3>
+    <a href="{{ path('cuatrovientos_artean_jobrequest_update', {'id': jobRequest.id }) }}" class="btn btn-primary"><i class="fa fa-user-plus" aria-hidden="true"></i> Añadir candidatos</a>
+
+    {% if jobRequest.selectedApplicants is not null %}
+    <table class="table .table-condensed">
+        <tr><th>Id</th><th>Apellidos</th><th>Nombre</th><th>Telefono</th><th>Email</th><th></th></tr>
+        {% for applicant in jobRequest.selectedApplicants %}
             {% include "CuatrovientosArteanBundle:JobRequest:selected.html.twig" %}
         {% endfor %}
     </table>
-    <a href="{{ path('cuatrovientos_artean_jobrequest_update', {'id': jobRequest.id }) }}" class="btn btn-primary"><i class="fa fa-user-plus" aria-hidden="true"></i> Añadir candidatos</a>
+        {% else %}
+       <div> No hay candidatos preseleccionados</div>
+            {% endif %}
 
 
 

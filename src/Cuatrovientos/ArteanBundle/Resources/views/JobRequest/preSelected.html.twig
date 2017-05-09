@@ -7,7 +7,7 @@
     {#% if is_granted('ROLE_ADMIN') %#}
     <td>
         <a href="{{ path('cuatrovientos_artean_jobrequest_detail', {'id': jobRequest.id }) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
-        <a href="{{ path('cuatrovientos_artean_jobrequest_update', {'id': jobRequest.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> </a>
+        <a href="{{ path('cuatrovientos_artean_applicant_admin_detail_resumed', {'id': applicant.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> </a>
         <a href="{{ path('cuatrovientos_artean_jobrequest_delete', {'id': jobRequest.id }) }}" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> </a>
     </td>
 

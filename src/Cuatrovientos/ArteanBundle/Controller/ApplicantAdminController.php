@@ -47,6 +47,21 @@ class ApplicantAdminController extends Controller
                 'applicant'=>$applicant));
     }
 
+    public function detailResumedAction($id)
+    {
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($id);
+
+        $form = $this->createForm(ApplicantType::class, $applicant);
+        $formStudies = $this->createForm(ApplicantStudiesType::class, new ApplicantStudies());
+        $formLanguage = $this->createForm(ApplicantLanguageType::class, new ApplicantLanguages());
+        $formJob = $this->createForm(ApplicantJobType::class, new ApplicantJobs());
+        return $this->render('CuatrovientosArteanBundle:Applicant:detail.html.twig',
+            array(  'form'=> $form->createView(),
+                'formStudies'=>$formStudies->createView(),
+                'formLanguage'=>$formLanguage->createView(),
+                'formJob'=>$formJob->createView(),
+                'applicant'=>$applicant));
+    }
 
 
     public function updateAction(Request $request) {
