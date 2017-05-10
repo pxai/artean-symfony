@@ -63,5 +63,16 @@ class JobRequestDAO extends GenericDAO {
             ->getResult();
     }
 
+    public function deletePreselected($jobrequestid, $applicantid)
+    {
+        return $this->repository->createQueryBuilder('m')
+            ->delete('Cuatrovientos\ArteanBundle\Entity\JobRequestPreselected', 's')
+            ->where('s.jobRequest = :jobrequestid')
+            ->andWhere('s.applicant = :applicantid')
+            ->setParameter('jobrequestid', $jobrequestid)
+            ->setParameter('applicantid', $applicantid)
+            ->getQuery()->execute();
+    }
+
 }
 
