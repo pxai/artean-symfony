@@ -148,7 +148,12 @@ class JobRequest extends Entity
     private $preselectedApplicants;
 
     /**
-     * @ORM\OneToMany(targetEntity="JobRequestSelected", mappedBy="applicant",fetch="EXTRA_LAZY")
+     * Many Companies have many degrees
+     * @ORM\ManyToMany(targetEntity="Applicant", cascade={"all"})
+     * @ORM\JoinTable(name="tbsolicitudes_alsel",
+     *      joinColumns={@ORM\JoinColumn(name="idoffer", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="idapplicant", referencedColumnName="id")}
+     *      )
      */
     private $selectedApplicants;
        

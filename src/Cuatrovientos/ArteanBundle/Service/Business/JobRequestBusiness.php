@@ -5,17 +5,22 @@ namespace Cuatrovientos\ArteanBundle\Service\Business;
 use Cuatrovientos\ArteanBundle\Entity\Entity;
 use Cuatrovientos\ArteanBundle\Entity\JobRequest;
 use Cuatrovientos\ArteanBundle\Entity\Company;
+use Cuatrovientos\ArteanBundle\Entity\JobRequestSelected;
 use Cuatrovientos\ArteanBundle\Service\DAO\JobRequestDAO;
 use Cuatrovientos\ArteanBundle\Service\DAO\CompanyDAO;
+use Cuatrovientos\ArteanBundle\Service\DAO\JobRequestSelectedDAO;
 
 class JobRequestBusiness extends GenericBusiness {
 
     private $companyDAO;
+    private $jobRequestSelectedDAO;
 
     public function __construct (JobRequestDAO $jobRequestDAO,
-                                 CompanyDAO $companyDAO) {
+                                 CompanyDAO $companyDAO,
+                                 JobRequestSelectedDAO $jobRequestSelectedDAO) {
         $this->entityDAO = $jobRequestDAO;
         $this->companyDAO = $companyDAO;
+        $this->jobRequestSelectedDAO = $jobRequestSelectedDAO;
     }
 
     public function findAllJobRequests($id=0, $start=0,$total=100)
@@ -49,6 +54,13 @@ class JobRequestBusiness extends GenericBusiness {
 
     public function deletePreselected ($jobrequestid, $applicantid) {
         return $this->entityDAO->deletePreselected($jobrequestid, $applicantid);
+    }
+
+    public function addSelected ($jobrequestid, $applicantid) {
+        $jobrequestSelected = new JobRequestSelected();
+        $jobrequestSelected->getJobRequest()->setId($jobrequestid);
+        $jobrequestSelected->getApplicant()->setId($applicantid);
+        return  $this->jobRequestSelectedDAO->create($jobrequestSelected) && $this->entityDAO->deletePreselected($jobrequestid, $applicantid);
     }
 
     private function setJobCompany($jobRequest)

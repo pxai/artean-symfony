@@ -31,9 +31,9 @@ class JobRequestSelected extends Entity
 
 
 
-
-
     public function __construct () {
+        $this->applicant = new Applicant();
+        $this->jobRequest = new JobRequest();
     }
 
     /**
