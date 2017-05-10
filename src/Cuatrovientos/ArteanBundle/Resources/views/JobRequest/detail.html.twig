@@ -70,7 +70,7 @@
     <a href="{{ path('cuatrovientos_artean_jobrequest_update', {'id': jobRequest.id }) }}" class="btn btn-success"><i class="fa fa-envelope" aria-hidden="true"></i> Añadir candidatos</a>
 
     <!-- Modal -->
-    <div class="modal fade" id="addPrecandidates" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addPrecandidates" tabindex="-1" role="dialog" aria-labelledby="addPrecandidates" aria-hidden="true">
         <div class="modal-dialog  modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -81,6 +81,25 @@
                 </div>
                 <div class="modal-body">
                     {% include "CuatrovientosArteanBundle:Applicant:advancedSearch.html.twig" %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="showApplicant" tabindex="-1" role="dialog" aria-labelledby="showApplicant" aria-hidden="true">
+        <div class="modal-dialog  modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> <i class="fa fa-users" aria-hidden="true"></i> Añadir precandidatos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -144,6 +163,34 @@
         $('#select_all').click(function() {
             selected = !selected;
             $('#preselected_applicant_list option').prop('selected', selected);
+        });
+
+        $('.applicant_detail').click(function (e) {
+            e.preventDefault();
+            console.log($(this).attr('href'));
+            load($(this).attr('href'));
+            function load (url) {
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    dataType: 'html',
+                    data: {
+                    },
+                    error: function() {
+                        $('#showApplicant div.modal-body').html('Error al modificar.');//res;
+                        $('#showApplicant').modal('show');
+                    },
+                    success: function(res) {
+                        if (res.length === 0) {
+                            console.log('Nothing found');
+                        } else {
+                            console.log("SUCCESS");
+                            $('#showApplicant div.modal-body').html(res);//res;
+                            $('#showApplicant').modal('show');
+                        }
+                    }
+                });
+            }
         });
     </script>
 {% endblock %}
