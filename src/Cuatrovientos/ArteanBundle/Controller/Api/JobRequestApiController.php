@@ -2,10 +2,13 @@
 
 namespace  Cuatrovientos\ArteanBundle\Controller\Api;
 
+use Cuatrovientos\ArteanBundle\Form\Type\JobRequestSelectedType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use FOS\RestBundle\View\View;
 use Symfony\Component\HttpFoundation\Request;
 use Cuatrovientos\ArteanBundle\Entity\Applicant;
+use Cuatrovientos\ArteanBundle\Entity\JobRequest;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantType;
 
 class JobRequestApiController extends Controller
@@ -40,10 +43,11 @@ class JobRequestApiController extends Controller
 {
     $statusCode = 201;
     $this->get('logger')->info($request);
-    $form = $this->createForm(ItemType::class, new JobRequest(),array('method' => 'PUT'));
+    $form = $this->createForm(JobRequestSelectedType::class, new JobRequest(),array('method' => 'PUT'));
     $form->handleRequest($request);
-
-    $this->get('logger')->info('Here we go with update.');
+    $serializer = $this->get('jms_serializer');
+    $this->get('logger')->info('Here we go with update.' . $serializer->serialize($form->getData(), 'json'));
+    var_dump($request->request->all());
 
     if ($form->isValid()) {
         $jobrequest = $form->getData();
@@ -56,9 +60,11 @@ class JobRequestApiController extends Controller
         $response->setStatusCode($statusCode);
 
         // return $response;
-        return View::create($item, $statusCode);
+        return View::create($jobrequest, $statusCode);
+    } else {
+        $this->get('logger')->info('Form is not valid: ');
     }
-    $this->get('logger')->info('UPDATE NOT CORRECT');
+
     return View::create($form, 400);
 
 }

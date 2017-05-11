@@ -52,12 +52,18 @@ class JobRequestController extends Controller
     {
         $form = $this->createForm(JobRequestPreselectedType::class, new JobRequest());
         $jobRequest ="";
+        //$serializer = $this->get('jms_serializer');
+
 
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
+           // $this->get('logger')->info('yeah:' .json_decode($request->getContent()));
+            //$this->get('logger')->info('Data, before handle: ' . $serializer->serialize($form->getData(), 'json'));
 
             if ($form->isValid()) {
                 $jobRequest = $form->getData();
+
+               //$this->get('logger')->info('Here we go with real data: ' . $serializer->serialize($form->getData(), 'json'));
                 $this->get("cuatrovientos_artean.bo.jobrequest")->update($jobRequest);
                 return $this->jobrequestDetailAction($jobRequest->getId());
             } else {

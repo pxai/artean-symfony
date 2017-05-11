@@ -21,7 +21,7 @@ class JobRequestSelectedType extends AbstractType {
                 "required"=>true
                 ))
             ->add('selectedApplicants', EntityType::class, array(
-                    'label' => 'Preseleccionados',
+                    'label' => 'Seleccionados',
                     'class' => 'CuatrovientosArteanBundle:Applicant',
                     'expanded' => true,
                     'multiple' => true
@@ -36,6 +36,7 @@ class JobRequestSelectedType extends AbstractType {
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
             'data_class' => 'Cuatrovientos\ArteanBundle\Entity\JobRequest',
+            'csrf_protection' => false
         ));
     }
 
