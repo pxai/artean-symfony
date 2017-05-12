@@ -158,6 +158,8 @@ class JobRequest extends Entity
     private $selectedApplicants;
        
     public function __construct () {
+        $this->selectedApplicant = array();
+        $this->preselectedApplicants = array();
     }
 
     /**
@@ -578,6 +580,14 @@ class JobRequest extends Entity
     public function getSelectedApplicants()
     {
         return $this->selectedApplicants;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function addSelected($applicant)
+    {
+        $this->selectedApplicants[] = $applicant;
     }
 
     /**

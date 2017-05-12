@@ -4,23 +4,28 @@ namespace Cuatrovientos\ArteanBundle\Service\Business;
 
 use Cuatrovientos\ArteanBundle\Entity\Entity;
 use Cuatrovientos\ArteanBundle\Entity\JobRequest;
+use Cuatrovientos\ArteanBundle\Entity\Applicant;
 use Cuatrovientos\ArteanBundle\Entity\Company;
 use Cuatrovientos\ArteanBundle\Entity\JobRequestSelected;
 use Cuatrovientos\ArteanBundle\Service\DAO\JobRequestDAO;
 use Cuatrovientos\ArteanBundle\Service\DAO\CompanyDAO;
+use Cuatrovientos\ArteanBundle\Service\DAO\ApplicantDAO;
 use Cuatrovientos\ArteanBundle\Service\DAO\JobRequestSelectedDAO;
 
 class JobRequestBusiness extends GenericBusiness {
 
     private $companyDAO;
     private $jobRequestSelectedDAO;
+    private $applicantDAO;
 
     public function __construct (JobRequestDAO $jobRequestDAO,
                                  CompanyDAO $companyDAO,
-                                 JobRequestSelectedDAO $jobRequestSelectedDAO) {
+                                 JobRequestSelectedDAO $jobRequestSelectedDAO,
+                                    ApplicantDAO $applicantDAO) {
         $this->entityDAO = $jobRequestDAO;
         $this->companyDAO = $companyDAO;
         $this->jobRequestSelectedDAO = $jobRequestSelectedDAO;
+        $this->applicantDAO = $applicantDAO;
     }
 
     public function findAllJobRequests($id=0, $start=0,$total=100)
@@ -56,11 +61,18 @@ class JobRequestBusiness extends GenericBusiness {
         return $this->entityDAO->deletePreselected($jobrequestid, $applicantid);
     }
 
+    public function deleteSelected ($jobrequestid, $applicantid) {
+        return $this->entityDAO->deleteSelected($jobrequestid, $applicantid);
+    }
+
+
     public function addSelected ($jobrequestid, $applicantid) {
-        $jobrequestSelected = new JobRequestSelected();
-        $jobrequestSelected->getJobRequest()->setId($jobrequestid);
-        $jobrequestSelected->getApplicant()->setId($applicantid);
-        return  $this->jobRequestSelectedDAO->create($jobrequestSelected) && $this->entityDAO->deletePreselected($jobrequestid, $applicantid);
+        $jobRequest = $this->entityDAO->selectById($jobrequestid);
+        $applicant = $this->applicantDAO->selectById($applicantid);
+        $applicant->setId($applicantid);
+        $jobRequest->addSelected($applicant);
+        $this->entityDAO->update($jobRequest);
+        return  $this->entityDAO->deletePreselected($jobrequestid, $applicantid);
     }
 
     private function setJobCompany($jobRequest)

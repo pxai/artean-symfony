@@ -4,6 +4,7 @@ namespace  Cuatrovientos\ArteanBundle\Controller;
 
 use Cuatrovientos\ArteanBundle\Entity\JobRequestPreselected;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Cuatrovientos\ArteanBundle\Entity\JobRequest;
 use Cuatrovientos\ArteanBundle\Entity\Applicant;
@@ -28,6 +29,8 @@ class JobRequestController extends Controller
     public function searchAction(Request $request)
     {
         $form = $this->createForm(JobRequestSearchType::class, new JobRequest());
+        $init = 0;
+        $limit = 100;
 
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
@@ -48,17 +51,14 @@ class JobRequestController extends Controller
         }
     }
 
+
     public function addPreselectedAction(Request $request)
     {
         $form = $this->createForm(JobRequestPreselectedType::class, new JobRequest());
         $jobRequest ="";
-        //$serializer = $this->get('jms_serializer');
-
 
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
-           // $this->get('logger')->info('yeah:' .json_decode($request->getContent()));
-            //$this->get('logger')->info('Data, before handle: ' . $serializer->serialize($form->getData(), 'json'));
 
             if ($form->isValid()) {
                 $jobRequest = $form->getData();
@@ -71,6 +71,22 @@ class JobRequestController extends Controller
             }
         }
         return $this->jobrequestDetailAction($jobRequest->getId());
+    }
+
+   public function addSelectedSaveAction($jobrequestid, $applicantid) {
+       $result  = $this->get("cuatrovientos_artean.bo.jobrequest")->addSelected($jobrequestid, $applicantid);
+
+       if ($result) {
+           $applicant = $this->get("cuatrovientos_artean.bo.applicant")->selectById($applicantid);
+           $jobrequest = $this->get("cuatrovientos_artean.bo.jobrequest")->selectById($jobrequestid);
+
+           $response = $this->render('CuatrovientosArteanBundle:JobRequest:selected.html.twig', array('jobrequest'=>"$jobrequest",applicant =>$applicant));
+       } else {
+           $response = new Response(json_encode(array('result' => $result)));
+           $response->headers->set('Content-Type', 'application/json');
+       }
+
+       return $response;
     }
 
    public function newJobRequestAction()

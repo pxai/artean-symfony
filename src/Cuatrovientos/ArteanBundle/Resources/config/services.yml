@@ -82,7 +82,7 @@ services:
 
     cuatrovientos_artean.bo.jobrequest:
          class: Cuatrovientos\ArteanBundle\Service\Business\JobRequestBusiness
-         arguments: ['@cuatrovientos_artean.dao.jobrequest','@cuatrovientos_artean.dao.company','@cuatrovientos_artean.dao.jobrequestselected']
+         arguments: ['@cuatrovientos_artean.dao.jobrequest','@cuatrovientos_artean.dao.company','@cuatrovientos_artean.dao.jobrequestselected','@cuatrovientos_artean.dao.applicant']
 
 
     cuatrovientos_artean.dao.fct:
