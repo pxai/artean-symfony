@@ -196,9 +196,10 @@
 
         $('.add_selected').click(function (e) {
             e.preventDefault();
-            console.log($(this).attr('href')+ ':'+$("#theform").serialize());
+            var applicantid = $(this).data("id");
+            console.log($(this).attr('href') + ":" + applicantid);
             load($(this).attr('href'));
-            var item = {"jobrequest":{"id": 1, "selected_applicants": [{"applicant" : {"id": 1}}] }};
+
             //var itemForSymfony['jobrequest'] = item;
             function load (url) {
                 $.ajax({
@@ -210,12 +211,15 @@
                         $('#showApplicant').modal('show');
                     },
                     success: function(res) {
-                        if (res.length === 0) {
-                            console.log('Nothing found');
-                        } else {
-                            console.log("SUCCESS");
-                            $('#showApplicant div.modal-body').html(res);//res;
+                        if (res !== 0) {
+                            console.log("SUCCESS: " + res);
+                           // $('#showApplicant div.modal-body').html(res);//res;
+                           // $('#showApplicant').modal('show');
+                            $('#preselected_applicant_id_'+applicantid).fadeOut(1000);
+                            $('#preselected_applicant_id_'+applicantid).remove();  } else {
+                            $('#showApplicant div.modal-body').html('No se pudo mover.');//res;
                             $('#showApplicant').modal('show');
+
                         }
                     }
                 });

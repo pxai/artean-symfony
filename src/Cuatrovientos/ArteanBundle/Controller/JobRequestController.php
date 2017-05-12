@@ -76,11 +76,11 @@ class JobRequestController extends Controller
    public function addSelectedSaveAction($jobrequestid, $applicantid) {
        $result  = $this->get("cuatrovientos_artean.bo.jobrequest")->addSelected($jobrequestid, $applicantid);
 
-       if ($result) {
+       if ($result==1) {
            $applicant = $this->get("cuatrovientos_artean.bo.applicant")->selectById($applicantid);
            $jobrequest = $this->get("cuatrovientos_artean.bo.jobrequest")->selectById($jobrequestid);
 
-           $response = $this->render('CuatrovientosArteanBundle:JobRequest:selected.html.twig', array('jobrequest'=>"$jobrequest",applicant =>$applicant));
+           $response = $this->render('CuatrovientosArteanBundle:JobRequest:selected.html.twig', array('jobRequest'=> $jobrequest,'applicant' =>$applicant));
        } else {
            $response = new Response(json_encode(array('result' => $result)));
            $response->headers->set('Content-Type', 'application/json');

@@ -1,4 +1,4 @@
-<tr>
+<tr id="preselected_applicant_id_{{ applicant.id }}">
     <td>{{ applicant.id }}</td>
     <td>{{ applicant.surname }}</td>
     <td>{{ applicant.name }}</td>
@@ -7,8 +7,8 @@
     {#% if is_granted('ROLE_ADMIN') %#}
     <td>
         <a href="{{ path('cuatrovientos_artean_applicant_admin_detail_resumed', {'id': applicant.id }) }}" class="btn btn-primary applicant_detail"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
-        <a href="{{ path('cuatrovientos_artean_jobrequest_add_selected', {'jobrequestid': jobRequest.id,'applicantid': applicant.id }) }}" class="btn btn-success add_selected"><i class="fa fa-plus" aria-hidden="true"></i> </a>
-        <a href="{{ path('cuatrovientos_artean_jobrequest_delete_preselected', {'jobrequestid': jobRequest.id,'applicantid': applicant.id }) }}" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> </a>
+        <a href="{{ path('cuatrovientos_artean_jobrequest_add_selected', {'jobrequestid': jobRequest.id,'applicantid': applicant.id }) }}" class="btn btn-success add_selected"  data-id="{{ applicant.id }}"><i class="fa fa-plus" aria-hidden="true"></i> </a>
+        <a href="{{ path('cuatrovientos_artean_jobrequest_delete_preselected', {'jobrequestid': jobRequest.id,'applicantid': applicant.id }) }}" class="btn btn-danger"  data-id="{{ applicant.id }}"><i class="fa fa-trash-o" aria-hidden="true"></i> </a>
     </td>
 
     {#% endif % #}
