@@ -8,14 +8,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8e471461-a8a1-4423-98b7-019ee3911c23" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/Api/JobRequestApiController.php" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/Api/JobRequestApiController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/JobRequestController.php" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/JobRequestController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/JobRequest/detail.html.twig" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/JobRequest/detail.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/JobRequest/preSelected.html.twig" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/JobRequest/preSelected.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/JobRequest/selected.html.twig" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/JobRequest/selected.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/Business/JobRequestBusiness.php" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/Business/JobRequestBusiness.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/DAO/JobRequestDAO.php" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/DAO/JobRequestDAO.php" />
     </list>
     <ignored path="arteans.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -56,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/config/routing.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="699" column="21" selection-start-line="699" selection-start-column="21" selection-end-line="699" selection-end-column="21" />
+            <state relative-caret-position="404">
+              <caret line="735" column="34" selection-start-line="735" selection-start-column="34" selection-end-line="735" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -109,8 +104,8 @@
       <file leaf-file-name="JobRequestController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/JobRequestController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
-              <caret line="98" column="48" selection-start-line="98" selection-start-column="48" selection-end-line="98" selection-end-column="48" />
+            <state relative-caret-position="149">
+              <caret line="92" column="75" selection-start-line="92" selection-start-column="75" selection-end-line="92" selection-end-column="75" />
               <folding>
                 <element signature="e#58#118#0#PHP" expanded="true" />
               </folding>
@@ -118,11 +113,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JobRequestBusiness.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="JobRequestBusiness.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/Business/JobRequestBusiness.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="72" column="43" selection-start-line="72" selection-start-column="43" selection-end-line="72" selection-end-column="43" />
+            <state relative-caret-position="404">
+              <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
               <folding>
                 <element signature="e#63#108#0#PHP" expanded="true" />
               </folding>
@@ -209,11 +204,11 @@
         <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/JobRequest/preSelected.html.twig" />
         <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/JobRequest/selected.html.twig" />
         <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/Api/JobRequestApiController.php" />
-        <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/Business/JobRequestBusiness.php" />
         <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/DAO/JobRequestDAO.php" />
-        <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/JobRequestController.php" />
         <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/JobRequest/detail.html.twig" />
         <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/config/routing.yml" />
+        <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/JobRequestController.php" />
+        <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/Business/JobRequestBusiness.php" />
       </list>
     </option>
   </component>
@@ -1051,14 +1046,7 @@
       <workItem from="1494102627845" duration="22888000" />
       <workItem from="1494312863849" duration="19302000" />
       <workItem from="1494452689922" duration="10373000" />
-      <workItem from="1494574351674" duration="13060000" />
-    </task>
-    <task id="LOCAL-00075" summary="Ok, Job Request CRUD almost done, but search">
-      <created>1492342093820</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1492342093821</updated>
+      <workItem from="1494574351674" duration="13706000" />
     </task>
     <task id="LOCAL-00076" summary="JobRequest CRUD ok,now FCT almost there">
       <created>1492358510888</created>
@@ -1396,11 +1384,18 @@
       <option name="project" value="LOCAL" />
       <updated>1494584226318</updated>
     </task>
-    <option name="localTasksCounter" value="124" />
+    <task id="LOCAL-00124" summary="OK, delete all in both cases works">
+      <created>1494698365207</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1494698365207</updated>
+    </task>
+    <option name="localTasksCounter" value="125" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="485761000" />
+    <option name="totallyTimeSpent" value="486407000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1474,7 +1469,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="More UI Corrections" />
     <MESSAGE value="Some files I left behind... :(" />
     <MESSAGE value="Company Degrees" />
     <MESSAGE value="FCT show by degree" />
@@ -1499,7 +1493,8 @@
     <MESSAGE value="Api, PUT implemented for jobrequest selected. Almost there" />
     <MESSAGE value="Works, not very elegantly..." />
     <MESSAGE value="Almost there..." />
-    <option name="LAST_COMMIT_MESSAGE" value="Almost there..." />
+    <MESSAGE value="OK, delete all in both cases works" />
+    <option name="LAST_COMMIT_MESSAGE" value="OK, delete all in both cases works" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1861,16 +1856,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/Business/JobRequestBusiness.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="72" column="43" selection-start-line="72" selection-start-column="43" selection-end-line="72" selection-end-column="43" />
-          <folding>
-            <element signature="e#63#108#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/DAO/GenericDAO.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1903,21 +1888,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/JobRequestController.php">
+    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="404">
-          <caret line="98" column="48" selection-start-line="98" selection-start-column="48" selection-end-line="98" selection-end-column="48" />
+          <caret line="735" column="34" selection-start-line="735" selection-start-column="34" selection-end-line="735" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/JobRequestController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="92" column="75" selection-start-line="92" selection-start-column="75" selection-end-line="92" selection-end-column="75" />
           <folding>
             <element signature="e#58#118#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/config/routing.yml">
+    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/Business/JobRequestBusiness.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="699" column="21" selection-start-line="699" selection-start-column="21" selection-end-line="699" selection-end-column="21" />
-          <folding />
+        <state relative-caret-position="404">
+          <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+          <folding>
+            <element signature="e#63#108#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -82,6 +82,10 @@ class JobRequestBusiness extends GenericBusiness {
         return  $this->entityDAO->deletePreselected($jobrequestid, $applicantid);
     }
 
+    public function addAllSelected ($jobrequestid) {
+
+    }
+
     private function setJobCompany($jobRequest)
     {
         if (preg_match("/^[0-9]+$/", $jobRequest->getCompanyName())) {
