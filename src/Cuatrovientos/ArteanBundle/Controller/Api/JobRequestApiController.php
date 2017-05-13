@@ -30,7 +30,7 @@ class JobRequestApiController extends Controller
      */
     public function deletePreselectedSaveAction($jobrequestid, $applicantid) {
         $result = $this->get("cuatrovientos_artean.bo.jobrequest")->deletePreselected($jobrequestid, $applicantid);
-        return "{'requestid':'".$jobrequestid."','result':'".$result."'}";
+        return '{"requestid":'.$jobrequestid.',"result":'.$result.'}';
     }
 
     /**
@@ -38,7 +38,7 @@ class JobRequestApiController extends Controller
      */
     public function deleteSelectedSaveAction($jobrequestid, $applicantid) {
         $result = $this->get("cuatrovientos_artean.bo.jobrequest")->deleteSelected($jobrequestid, $applicantid);
-        return "{'requestid':'".$jobrequestid."','result':'".$result."'}";
+        return '{"requestid":'.$jobrequestid.',"result":'.$result.'}';
     }
 
     /*

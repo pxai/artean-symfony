@@ -65,6 +65,13 @@ class JobRequestBusiness extends GenericBusiness {
         return $this->entityDAO->deleteSelected($jobrequestid, $applicantid);
     }
 
+    public function deleteAllPreselected ($jobrequestid) {
+        return $this->entityDAO->deleteAllPreselected($jobrequestid);
+    }
+
+    public function deleteAllSelected ($jobrequestid) {
+        return $this->entityDAO->deleteAllSelected($jobrequestid);
+    }
 
     public function addSelected ($jobrequestid, $applicantid) {
         $jobRequest = $this->entityDAO->selectById($jobrequestid);

@@ -42,7 +42,10 @@
     </button>
     {% if jobRequest.preselectedApplicants is not null %}
     <table class="table .table-condensed">
-        <tr><th>Id</th><th>Apellidos</th><th>Nombre</th><th>Telefono</th><th>Email</th><th></th></tr>
+        <tr><th>Id</th><th>Apellidos</th><th>Nombre</th><th>Telefono</th><th>Email</th><th>
+                <a href="{{ path('cuatrovientos_artean_jobrequest_delete_all_preselected', {'id': jobRequest.id }) }}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Todos</a>
+
+            </th></tr>
         {% for applicant in jobRequest.preselectedApplicants %}
             {% include "CuatrovientosArteanBundle:JobRequest:preSelected.html.twig" %}
         {% endfor %}
@@ -54,8 +57,12 @@
     <a href="{{ path('cuatrovientos_artean_jobrequest_update', {'id': jobRequest.id }) }}" class="btn btn-primary"><i class="fa fa-user-plus" aria-hidden="true"></i> Añadir candidatos</a>
 
     {% if jobRequest.selectedApplicants is not null %}
-    <table class="table .table-condensed">
-        <tr><th>Id</th><th>Apellidos</th><th>Nombre</th><th>Telefono</th><th>Email</th><th></th></tr>
+    <table class="table .table-condensed" id="selected_applicants">
+        <tr><th>Id</th><th>Apellidos</th><th>Nombre</th><th>Telefono</th><th>Email</th>
+            <th>
+                <a href="{{ path('cuatrovientos_artean_jobrequest_delete_all_selected', {'id': jobRequest.id }) }}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Todos</a>
+
+            </th></tr>
         {% for applicant in jobRequest.selectedApplicants %}
             {% include "CuatrovientosArteanBundle:JobRequest:selected.html.twig" %}
         {% endfor %}
@@ -194,6 +201,39 @@
             }
         });
 
+        $('.delete_preselected').click(function (e) {
+            e.preventDefault();
+            var applicantid = $(this).data("id");
+            console.log($(this).attr('href') + ":" + applicantid);
+            load($(this).attr('href'));
+
+            //var itemForSymfony['jobrequest'] = item;
+            function load (url) {
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    dataType: 'json',
+                    error: function() {
+                        $('#showApplicant div.modal-body').html('Error al eliminar.');//res;
+                        $('#showApplicant').modal('show');
+                    },
+                    success: function(res) {
+                        console.log("Result: " + res);
+                        var result = JSON.parse(res);
+                        if (result.result === 1) {
+                            $('#preselected_applicant_id_'+applicantid).fadeOut(1000);
+                            $('#preselected_applicant_id_'+applicantid).remove();
+                        } else {
+                            $('#showApplicant div.modal-body').html('No se pudo eliminar.');//res;
+                            $('#showApplicant').modal('show');
+
+                        }
+                    }
+                });
+            }
+        });
+
+
         $('.add_selected').click(function (e) {
             e.preventDefault();
             var applicantid = $(this).data("id");
@@ -211,12 +251,14 @@
                         $('#showApplicant').modal('show');
                     },
                     success: function(res) {
-                        if (res !== 0) {
-                            console.log("SUCCESS: " + res);
-                           // $('#showApplicant div.modal-body').html(res);//res;
-                           // $('#showApplicant').modal('show');
+                        console.log("Result: " + res);
+                            if (res !== 0) {
+                                // $('#showApplicant div.modal-body').html(res);//res;
+                                // $('#showApplicant').modal('show');
                             $('#preselected_applicant_id_'+applicantid).fadeOut(1000);
-                            $('#preselected_applicant_id_'+applicantid).remove();  } else {
+                            $('#preselected_applicant_id_'+applicantid).remove();
+                                $('table#selected_applicant').append(res);
+                        } else {
                             $('#showApplicant div.modal-body').html('No se pudo mover.');//res;
                             $('#showApplicant').modal('show');
 

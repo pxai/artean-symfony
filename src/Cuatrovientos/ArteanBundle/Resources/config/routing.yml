@@ -696,6 +696,18 @@ cuatrovientos_artean_jobrequest_delete:
     requirements: 
             'id' : '\d+'
 
+cuatrovientos_artean_jobrequest_delete_all_preselected:
+    path:     /artean/admin/jobrequest/delete/all/preselected/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:JobRequest:deleteAllPreselectedSave }
+    requirements:
+            'id' : '\d+'
+
+cuatrovientos_artean_jobrequest_delete_all_selected:
+    path:     /artean/admin/jobrequest/delete/all/selected/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:JobRequest:deleteAllSelectedSave }
+    requirements:
+            'id' : '\d+'
+
 cuatrovientos_artean_jobrequest_delete_preselected:
     path:     /api/admin/jobrequest/delete/preselected/{jobrequestid}/{applicantid}
     defaults: { _controller: CuatrovientosArteanBundle:Api/JobRequestApi:deletePreselectedSave }

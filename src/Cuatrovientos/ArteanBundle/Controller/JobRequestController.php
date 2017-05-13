@@ -89,6 +89,16 @@ class JobRequestController extends Controller
        return $response;
     }
 
+    public function deleteAllPreselectedSaveAction($id) {
+        $result  = $this->get("cuatrovientos_artean.bo.jobrequest")->deleteAllPreselected($id);
+        return $this->jobrequestDetailAction($id);
+    }
+
+    public function deleteAllSelectedSaveAction($id) {
+        $result  = $this->get("cuatrovientos_artean.bo.jobrequest")->deleteAllSelected($id);
+        return $this->jobrequestDetailAction($id);
+    }
+
    public function newJobRequestAction()
     {
         $form = $this->createForm(JobRequestType::class, new JobRequest());
