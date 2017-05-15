@@ -36,7 +36,7 @@ class ApplicantApiController extends Controller
             if ($form->isValid()) {
                 $applicant = $form->getData();
                 $form = $this->createForm(ApplicantType::class);
-                $applicants = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicants(0, 0, 10);
+                $applicants = $this->get("cuatrovientos_artean.bo.applicant")->detailedSearchApplicants($applicant);
                 return $applicants;
             } else  {
                 $applicants = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicants(0, 0, 10);

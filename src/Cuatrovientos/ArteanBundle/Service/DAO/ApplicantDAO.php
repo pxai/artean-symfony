@@ -88,6 +88,18 @@ class ApplicantDAO extends GenericDAO {
         ->getResult();
     }*/
 
+    public function detailedSearchApplicants($applicant)
+    {
+        $repository = $this->em->getRepository($this->entityType);
+        return $repository->createQueryBuilder('m')
+            ->where('m.name like :name')
+            ->orWhere('m.surname like :surname')
+            ->setParameter('name','%'.$applicant->getName().'%')
+            ->setParameter('name','%'.$applicant->getSurname().'%')
+            ->orderBy('m.surname', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 
 
 }

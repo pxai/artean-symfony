@@ -44,6 +44,10 @@ class ApplicantBusiness extends GenericBusiness {
         return $this->entityDAO->findAllApplicants($id, $start,$total);
     }
 
+    public function detailedSearchApplicants($applicant)
+    {
+        return $this->entityDAO->detailedSearchApplicants($applicant);
+    }
 
     public function countAllApplicants()
     {
