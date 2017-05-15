@@ -1,7 +1,14 @@
 <tr>
      <td>{{ news.id }}</td> 
-     <td>{{ news.title }}</td> 
-		{#% if is_granted('ROLE_ADMIN') %#}
+     <td>{{ news.title }}</td>
+    <td>
+        {% if news.who == 1 %}
+            Artean
+        {% else %}
+            La empresa
+        {% endif %}
+    </td>
+    {#% if is_granted('ROLE_ADMIN') %#}
 			<td>
                 <a href="{{ path('cuatrovientos_artean_news_detail', {'id': news.id }) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
                 <a href="{{ path('cuatrovientos_artean_news_update', {'id': news.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> </a>

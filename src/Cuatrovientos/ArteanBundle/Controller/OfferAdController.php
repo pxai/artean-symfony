@@ -10,6 +10,8 @@ use Cuatrovientos\ArteanBundle\Entity\News;
 
 class OfferAdController extends Controller
 {
+    const EXTERNAL_PUBLISHER = 0;
+
     /**
     *
     *
@@ -61,7 +63,7 @@ class OfferAdController extends Controller
                 $news->setWhat(base64_encode($newsContent));
                 $news->setTags($offer->getRequiredStudiesString());
                 $news->setNewsdate(time());
-                $news->setWho(1);
+                $news->setWho(self::EXTERNAL_PUBLISHER); // 0 means
                 $news->setStatus(0);
             
                 $em = $this->getDoctrine()->getEntityManager();

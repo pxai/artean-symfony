@@ -9,7 +9,10 @@
         <a href="{{ path('cuatrovientos_artean_news_new') }}" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Nueva noticia</a> </div>
 <div class="table-responsive">
   <table class="table .table-condensed">
-        {% for news in news %}
+      <tr><th>Id</th><th>Título</th><th>Publicada por</th><th></th>
+ </tr>
+
+      {% for news in news %}
             {% include "CuatrovientosArteanBundle:News:news.html.twig" %}
         {% endfor %}
   </table>
