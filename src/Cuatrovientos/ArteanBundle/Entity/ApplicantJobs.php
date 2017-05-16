@@ -19,13 +19,13 @@ class ApplicantJobs extends Entity
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Applicant")
+     * @ORM\ManyToOne(targetEntity="Applicant",fetch="EXTRA_LAZY")
      * @ORM\JoinColumn(name="idapplicant", referencedColumnName="id")
      */
     private $applicant;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Company")
+     * @ORM\ManyToOne(targetEntity="Company",fetch="EXTRA_LAZY")
      * @ORM\JoinColumn(name="idemployer", referencedColumnName="id")
      */
     private $company;

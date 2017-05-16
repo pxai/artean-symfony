@@ -3,6 +3,8 @@
     <td>{{ jobRequest.description }}</td>
     <td>{{ jobRequest.profile }}</td>
     <td>{{ jobRequest.offerdate }}</td>
+    <td>{{ jobRequest.company.telefono }}</td>
+    <td>{{ jobRequest.company.email }}</td>
     {#% if is_granted('ROLE_ADMIN') %#}
     <td>
         <a href="{{ path('cuatrovientos_artean_jobrequest_detail', {'id': jobRequest.id }) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>

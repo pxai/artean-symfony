@@ -11,6 +11,9 @@
     <ul>
      <li><strong>Id: </strong>{{ jobRequest.id }}</li>
      <li><strong>Fecha orferta: </strong>{{ jobRequest.offerdate }}</li>
+        <li><strong>Empresa: </strong>{{ jobRequest.company.empresa }}</li>
+        <li><strong>Email: </strong>{{ jobRequest.company.email }}</li>
+        <li><strong>Teléfono: </strong>{{ jobRequest.company.telefono }}</li>
      <li><strong>Descripción: </strong>{{ jobRequest.description }}</li>
         {%   if (jobRequest.company != null ) %}
         <li><strong>Empresa: </strong>{#}{ jobRequest.company.empresa }#}</li>

@@ -561,8 +561,8 @@ cuatrovientos_artean_applicant_admin_new:
     defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:index }
 
 cuatrovientos_artean_applicant_admin_search:
-    path:     /artean/admin/applicant
-    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:index }
+    path:     /artean/admin/applicant/admin/search
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:search }
 
 cuatrovientos_artean_applicant_admin_advanced_search:
     path:     /api/admin/applicant/search

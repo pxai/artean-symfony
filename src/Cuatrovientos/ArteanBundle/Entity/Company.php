@@ -137,7 +137,7 @@ class Company  extends Entity
      */
     /**
      * Many Companies have many degrees
-     * @ORM\ManyToMany(targetEntity="Degree",cascade={"all"})
+     * @ORM\ManyToMany(targetEntity="Degree",cascade={"all"},fetch="EXTRA_LAZY")
      * @ORM\JoinTable(name="tbempresas_ciclos",
      *      joinColumns={@ORM\JoinColumn(name="IdEmpresa", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="idCiclo", referencedColumnName="id")}

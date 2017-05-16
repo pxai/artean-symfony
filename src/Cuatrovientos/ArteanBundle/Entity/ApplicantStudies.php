@@ -20,13 +20,13 @@ class ApplicantStudies extends Entity
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Applicant")
+     * @ORM\ManyToOne(targetEntity="Applicant",fetch="EXTRA_LAZY")
      * @ORM\JoinColumn(name="idapplicant", referencedColumnName="id")
      */
     private $applicant;
   
     /**
-     * @ORM\ManyToOne(targetEntity="Studies")
+     * @ORM\ManyToOne(targetEntity="Studies",fetch="EXTRA_LAZY")
      * @ORM\JoinColumn(name="codestudios", referencedColumnName="id")
      */
     private $studies;
@@ -37,7 +37,7 @@ class ApplicantStudies extends Entity
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Center")
+     * @ORM\ManyToOne(targetEntity="Center",fetch="EXTRA_LAZY")
      * @ORM\JoinColumn(name="codcentro", referencedColumnName="codcentro")
      */
     private $center;

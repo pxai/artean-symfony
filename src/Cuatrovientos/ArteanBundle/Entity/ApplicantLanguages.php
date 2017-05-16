@@ -18,26 +18,26 @@ class ApplicantLanguages extends Entity
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Applicant")
+     * @ORM\ManyToOne(targetEntity="Applicant",fetch="EXTRA_LAZY")
      * @ORM\JoinColumn(name="idapplicant", referencedColumnName="id")
      */
     private $applicant;
   
     /**
-     * @ORM\ManyToOne(targetEntity="Language")
+     * @ORM\ManyToOne(targetEntity="Language",fetch="EXTRA_LAZY")
      * @ORM\JoinColumn(name="idlanguage", referencedColumnName="Codidioma")
      */
     private $language;
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="LanguageLevel")
+     * @ORM\ManyToOne(targetEntity="LanguageLevel",fetch="EXTRA_LAZY")
      * @ORM\JoinColumn(name="hablado", referencedColumnName="id")
      */
     private $speaking;
 
     /**
-     * @ORM\ManyToOne(targetEntity="LanguageLevel")
+     * @ORM\ManyToOne(targetEntity="LanguageLevel",fetch="EXTRA_LAZY")
      * @ORM\JoinColumn(name="escrito", referencedColumnName="id")
      */
     private $writing;

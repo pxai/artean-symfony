@@ -35,7 +35,9 @@ class ApplicantDAO extends GenericDAO {
     {
         return  $this->repository->createQueryBuilder('m')
             ->where('m.name LIKE :name')
+            ->andWhere('m.surname like :surname')
             ->setParameter('name','%'.$applicant->getName().'%')
+            ->setParameter('surname','%'.$applicant->getSurname().'%')
             ->orderBy('m.id', 'DESC')
             ->getQuery()
             ->setFirstResult($start)
@@ -92,11 +94,11 @@ class ApplicantDAO extends GenericDAO {
     {
         $repository = $this->em->getRepository($this->entityType);
         return $repository->createQueryBuilder('m')
-            ->where('m.name like :name')
-            ->orWhere('m.surname like :surname')
+            ->where('m.name LIKE :name')
+            ->andWhere('m.surname like :surname')
             ->setParameter('name','%'.$applicant->getName().'%')
-            ->setParameter('name','%'.$applicant->getSurname().'%')
-            ->orderBy('m.surname', 'ASC')
+            ->setParameter('surname','%'.$applicant->getSurname().'%')
+            ->orderBy('m.surname', 'DESC')
             ->getQuery()
             ->getResult();
     }

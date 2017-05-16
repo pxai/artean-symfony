@@ -1,6 +1,8 @@
 <tr>
      <td>{{ fct.id }}</td>
     <td>{{ fct.company.empresa }}</td>
+    <td>{{ fct.company.telefono }}</td>
+    <td>{{ fct.company.email }}</td>
     <td>{{ fct.applicant.surname }}, {{ fct.applicant.name }}</td>
     <td>{{ fct.course }}</td>
     {#% if is_granted('ROLE_ADMIN') %#}
