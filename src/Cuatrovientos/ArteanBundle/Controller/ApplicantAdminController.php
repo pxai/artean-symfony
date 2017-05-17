@@ -17,6 +17,7 @@ use Cuatrovientos\ArteanBundle\Form\Type\ApplicantType;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantStudiesType;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantLanguageType;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantJobType;
+use Cuatrovientos\ArteanBundle\Form\Type\ApplicantAdvancedSearchType;
 
 class ApplicantAdminController extends Controller
 {
@@ -51,6 +52,27 @@ class ApplicantAdminController extends Controller
             $total = $this->get("cuatrovientos_artean.bo.applicant")->countAllApplicants();
             return $this->render('CuatrovientosArteanBundle:Applicant:indexAdmin.html.twig', array('applicants'=>$applicants, 'init'=>$init, 'limit'=> $limit, 'total'=> $total,'form'=> $form->createView()));
         }
+    }
+
+    public function advancedSearchAction(Request $request) {
+        $form = $this->createForm(ApplicantAdvancedSearchType::class, new Applicant());
+        $logger = $this->get('logger');
+        $response = "";
+        $applicants = array();
+        $total = 0;
+
+        if ($request->getMethod() == 'POST') {
+            $form->handleRequest($request);
+            // if ($form->isValid()) {
+            $applicant = $form->getData();
+            $applicants = $this->get("cuatrovientos_artean.bo.applicant")->detailedSearchApplicants($applicant);
+            /*} else  {
+                $applicants = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicants(0, 0, 10);
+                $total = $this->get("cuatrovientos_artean.bo.applicant")->countAllApplicants();
+                return $applicants;
+            }*/
+        }
+        return $this->render('CuatrovientosArteanBundle:Applicant:applicantList.html.twig', array('applicants' => $applicants  ));
     }
 
     public function detailAction($id)

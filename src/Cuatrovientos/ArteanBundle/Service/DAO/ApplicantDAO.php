@@ -94,11 +94,18 @@ class ApplicantDAO extends GenericDAO {
     {
         $repository = $this->em->getRepository($this->entityType);
         return $repository->createQueryBuilder('m')
+            ->leftJoin('m.languages','l','language')
             ->where('m.name LIKE :name')
             ->andWhere('m.surname like :surname')
-            ->setParameter('name','%'.$applicant->getName().'%')
+            ->andWhere('m.drivingLicense like :drivingLicense')
+            ->andWhere('m.move like :move')
+             ->andWhere('l.language IN (:languages)')
+             ->setParameter('languages', $applicant->getLanguages())
+        ->setParameter('name','%'.$applicant->getName().'%')
             ->setParameter('surname','%'.$applicant->getSurname().'%')
-            ->orderBy('m.surname', 'DESC')
+            ->setParameter('drivingLicense','%'.$applicant->getDrivingLicense().'%')
+            ->setParameter('move','%'.$applicant->getMove().'%')
+            ->orderBy('m.surname', 'ASC')
             ->getQuery()
             ->getResult();
     }

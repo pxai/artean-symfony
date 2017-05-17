@@ -133,7 +133,7 @@
                 $.ajax({
                     url: url,
                     type: 'POST',
-                    dataType: 'json',
+                    dataType: 'html',
                     data: formSerialized,
                     error: function() {
                         showResults('Error en la búsqueda');
@@ -142,8 +142,8 @@
                         if (res.length === 0) {
                             showResults('No se encontró ningún registro');
                         } else {
-                            console.log("SUCCESS");
-                            updateArray(res);
+                            //console.log("SUCCESS " + res);
+                            //updateArray(res);
                             showResults(res);
                         }
                     }
@@ -166,6 +166,7 @@
             }
 
             function showResults(msg) {
+                $("#preselected_applicant_list").html(msg);
                 $('#applicant_search_result').css("display", "block");
             }
         });

@@ -3,6 +3,7 @@
 namespace Cuatrovientos\ArteanBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints\Count;
 
 /**
@@ -126,8 +127,11 @@ class Applicant extends Entity
      */
     private $jobOffers;
 
+    private $courses;
+
     public function __construct () {
         $this->studies = array();
+        $this->courses = array();
     }
 
     /**

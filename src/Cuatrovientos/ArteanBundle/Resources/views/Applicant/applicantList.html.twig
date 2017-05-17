@@ -1,0 +1,3 @@
+{% for applicant in applicants %}
+    <option value="{{ applicant.id }}">{{ applicant.surname }}, {{ applicant.name }}</option>
+{% endfor %}
