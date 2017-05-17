@@ -93,19 +93,31 @@ class ApplicantDAO extends GenericDAO {
     public function detailedSearchApplicants($applicant)
     {
         $repository = $this->em->getRepository($this->entityType);
-        return $repository->createQueryBuilder('m')
-            ->leftJoin('m.languages','l','language')
+        $queryBuilder =  $repository->createQueryBuilder('m');
+        $queryBuilder
             ->where('m.name LIKE :name')
             ->andWhere('m.surname like :surname')
             ->andWhere('m.drivingLicense like :drivingLicense')
             ->andWhere('m.move like :move')
-             ->andWhere('l.language IN (:languages)')
-             ->setParameter('languages', $applicant->getLanguages())
-        ->setParameter('name','%'.$applicant->getName().'%')
+            ->setParameter('name','%'.$applicant->getName().'%')
             ->setParameter('surname','%'.$applicant->getSurname().'%')
             ->setParameter('drivingLicense','%'.$applicant->getDrivingLicense().'%')
             ->setParameter('move','%'.$applicant->getMove().'%')
-            ->orderBy('m.surname', 'ASC')
+            ->orderBy('m.surname', 'ASC');
+
+        if (count($applicant->getLanguages())) {
+            $queryBuilder->leftJoin('m.languages', 'l', 'language')
+                ->andWhere('l.language IN (:languages)')
+                ->setParameter('languages', $applicant->getLanguages());
+        }
+
+        if (count($applicant->getStudies())) {
+            $queryBuilder->leftJoin('m.studies', 's', 'studies')
+                ->andWhere('s.studies IN (:studies)')
+                ->setParameter('studies', $applicant->getStudies());
+        }
+
+        return $queryBuilder
             ->getQuery()
             ->getResult();
     }

@@ -1,3 +1,12 @@
 {% for applicant in applicants %}
-    <option value="{{ applicant.id }}">{{ applicant.surname }}, {{ applicant.name }}</option>
+    <option value="{{ applicant.id }}">
+        {{ applicant.surname }}, {{ applicant.name }}. Id:
+        {% for language in applicant.languages %}
+          {{ language.language.id }},
+        {% endfor %}
+        . Ciclos:
+        {% for studies in applicant.studies %}
+            {{ studies.studies.id }},
+        {% endfor %}
+    </option>
 {% endfor %}
