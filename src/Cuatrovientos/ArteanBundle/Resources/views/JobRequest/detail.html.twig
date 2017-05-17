@@ -38,15 +38,16 @@
         <li><strong>Notas: </strong>{{ jobRequest.notes }}</li>
         <li><strong>Valoración: </strong>{{ jobRequest.rating }}</li>
     </ul>
-    <h3>1. Preseleccionar candidatos <i class="fa fa-users" aria-hidden="true"></i></h3>
+    <h3>1. Preseleccionar candidatos <i class="fa fa-user-plus" aria-hidden="true"></i></h3>
     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addPrecandidates">
         <i class="fa fa-user-plus" aria-hidden="true"></i>
         Preseleccionar candidatos
     </button>
-    {% if jobRequest.preselectedApplicants is not null %}
+    {% if jobRequest.preselectedApplicants|length > 0 %}
     <table class="table .table-condensed">
         <tr><th>Id</th><th>Apellidos</th><th>Nombre</th><th>Telefono</th><th>Email</th><th>
                 <a href="{{ path('cuatrovientos_artean_jobrequest_delete_all_preselected', {'id': jobRequest.id }) }}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Todos</a>
+                <a href="{{ path('cuatrovientos_artean_jobrequest_add_all_selected', {'jobrequestid': jobRequest.id }) }}" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Todos</a>
 
             </th></tr>
         {% for applicant in jobRequest.preselectedApplicants %}
@@ -56,10 +57,9 @@
     {% else %}
         <div> No hay candidatos preseleccionados</div>
     {% endif %}
-     <h3>2. Seleccionar candidatos <i class="fa fa-user-plus" aria-hidden="true"></i></h3>
-    <a href="{{ path('cuatrovientos_artean_jobrequest_update', {'id': jobRequest.id }) }}" class="btn btn-primary"><i class="fa fa-user-plus" aria-hidden="true"></i> Añadir candidatos</a>
+     <h3>2. Candidatos seleccionados <i class="fa fa-users" aria-hidden="true"></i></h3>
 
-    {% if jobRequest.selectedApplicants is not null %}
+    {% if jobRequest.selectedApplicants|length > -1 %}
     <table class="table .table-condensed" id="selected_applicants">
         <tr><th>Id</th><th>Apellidos</th><th>Nombre</th><th>Telefono</th><th>Email</th>
             <th>
@@ -70,14 +70,16 @@
             {% include "CuatrovientosArteanBundle:JobRequest:selected.html.twig" %}
         {% endfor %}
     </table>
-        {% else %}
+        <a href="{{ path('cuatrovientos_artean_jobrequest_detail', {'id': jobRequest.id }) }}" class="btn btn-primary"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Preparar Email</a>
+
+    {% else %}
        <div> No hay candidatos preseleccionados</div>
             {% endif %}
 
 
 
     <h3>3. Enviar email <i class="fa fa-envelope" aria-hidden="true"></i></h3>
-    <a href="{{ path('cuatrovientos_artean_jobrequest_update', {'id': jobRequest.id }) }}" class="btn btn-success"><i class="fa fa-envelope" aria-hidden="true"></i> Añadir candidatos</a>
+    <a href="{{ path('cuatrovientos_artean_jobrequest_update', {'id': jobRequest.id }) }}" class="btn btn-success"><i class="fa fa-envelope" aria-hidden="true"></i> Enviar Email</a>
 
     <!-- Modal -->
     <div class="modal fade" id="addPrecandidates" tabindex="-1" role="dialog" aria-labelledby="addPrecandidates" aria-hidden="true">

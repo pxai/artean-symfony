@@ -7,11 +7,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Cuatrovientos\ArteanBundle\Entity\JobRequest;
+use Cuatrovientos\ArteanBundle\Entity\JobRequestMail;
 use Cuatrovientos\ArteanBundle\Entity\Applicant;
 use Cuatrovientos\ArteanBundle\Form\Type\JobRequestSearchType;
 use Cuatrovientos\ArteanBundle\Form\Type\JobRequestType;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantAdvancedSearchType;
 use Cuatrovientos\ArteanBundle\Form\Type\JobRequestPreselectedType;
+use Cuatrovientos\ArteanBundle\Form\Type\JobRequestMailType;
 
 class JobRequestController extends Controller
 {
@@ -89,9 +91,9 @@ class JobRequestController extends Controller
        return $response;
     }
 
-    public function addAddSelectedSaveAction($jobrequestid) {
+    public function addAllSelectedSaveAction($jobrequestid) {
         $result  = $this->get("cuatrovientos_artean.bo.jobrequest")->addAllSelected($jobrequestid);
-        return $this->jobrequestDetailAction($id);
+        return $this->jobrequestDetailAction($jobrequestid);
     }
 
     public function deleteAllPreselectedSaveAction($id) {
@@ -182,5 +184,28 @@ class JobRequestController extends Controller
         $this->get("cuatrovientos_artean.bo.jobrequest")->remove($jobRequest);
        return $this->forward('CuatrovientosArteanBundle:JobRequest:index');
     }
+
+
+    public function sendEmailAction(Request $request)
+    {
+        $jobRequestMail = 0;
+        $form = $this->createForm(JobRequestMailType::class, new JobRequestMail());
+        if ($request->getMethod() == 'POST') {
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                $jobRequestMail = $form->getData();
+
+                //$this->get("cuatrovientos_artean.bo.jobrequest")->create($jobRequest);
+
+                return $this->jobrequestDetailAction($jobRequestMail->getId());
+            } else {
+                return $this->indexAction();
+            }
+        }
+
+        return $this->indexAction();
+    }
+
 
 }

@@ -83,7 +83,10 @@ class JobRequestBusiness extends GenericBusiness {
     }
 
     public function addAllSelected ($jobrequestid) {
-
+        $jobRequest = $this->entityDAO->selectById($jobrequestid);
+        $jobRequest->setSelectedApplicants($jobRequest->getPreselectedApplicants());
+        $jobRequest->setPreselectedApplicants(null);
+        return $this->entityDAO->update($jobRequest);
     }
 
     private function setJobCompany($jobRequest)

@@ -730,7 +730,7 @@ cuatrovientos_artean_jobrequest_add_selected:
             'applicantid' : '\d+'
 
 cuatrovientos_artean_jobrequest_add_all_selected:
-    path:     /artean/admin/jobrequest/add/selected/{id}
+    path:     /artean/admin/jobrequest/add/selected/{jobrequestid}
     defaults: { _controller: CuatrovientosArteanBundle:JobRequest:addAllSelectedSave }
     requirements:
             'jobrequestid' : '\d+'
@@ -744,6 +744,10 @@ cuatrovientos_artean_jobrequest_delete_save:
 cuatrovientos_artean_jobrequest_add_preselected:
     path:     /artean/admin/jobrequest/add/preselected
     defaults: { _controller: CuatrovientosArteanBundle:JobRequest:addPreselected }
+
+cuatrovientos_artean_jobrequest_send_email:
+    path:     /artean/admin/jobrequest/send/email
+    defaults: { _controller: CuatrovientosArteanBundle:JobRequest:sendEmail }
 
 ################# fct ##################
 
