@@ -79,8 +79,13 @@ class JobRequestType extends AbstractType {
                     'expanded' => true,
                 )
             )
-            ->add('status', EntityType::class, array(
-                    'class' => 'CuatrovientosArteanBundle:JobRequestStatus',
+            ->add('status', ChoiceType::class, array(
+                'choices'  => array(
+                    'INICIADO' => 'INICIADO',
+                    'PRESELECCIÓN'     => 'PRESELECCIÓN',
+                    'SELECCIÓN'     => 'SELECCIÓN',
+                    'EMAIL ENVIADO' => 'EMAIL ENVIADO',
+                    'VALORADO'     => 'VALORADO'),
                     'label' => 'Estado de Solicitud' )
             )
             ->add('save', SubmitType::class);

@@ -64,10 +64,12 @@ class JobRequestController extends Controller
             $form->handleRequest($request);
 
             if ($form->isValid()) {
-                $jobRequest = $form->getData();
-                $jobRequest->setStatus(new JobRequestStatus(JobRequestStatus::PRESELECTED));
-               //$this->get('logger')->info('Here we go with real data: ' . $serializer->serialize($form->getData(), 'json'));
-                $this->get("cuatrovientos_artean.bo.jobrequest")->update($jobRequest);
+                $jb = $form->getData();
+                $jobRequest = $this->get("cuatrovientos_artean.bo.jobrequest")->selectById($jb->getId());
+                $jobRequest->setStatus(jobRequestStatus::PRESELECTED);
+                $jobRequest->setPreselectedApplicants($jb->getPreselectedApplicants());
+
+                $this->get("cuatrovientos_artean.bo.jobrequest")->updateApplicantSelection($jobRequest);
                 return $this->jobrequestDetailAction($jobRequest->getId());
             } else {
                 return $this->jobrequestDetailAction($jobRequest->getId());

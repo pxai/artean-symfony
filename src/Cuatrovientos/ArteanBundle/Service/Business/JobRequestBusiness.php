@@ -44,6 +44,10 @@ class JobRequestBusiness extends GenericBusiness {
         $this->entityDAO->update($jobRequest);
     }
 
+    public function updateApplicantSelection(Entity $jobRequest) {
+        $this->entityDAO->update($jobRequest);
+    }
+
     public function findJobRequests($term) {
         return $this->entityDAO->findJobRequests($term);
     }
@@ -81,10 +85,10 @@ class JobRequestBusiness extends GenericBusiness {
         $applicant = $this->applicantDAO->selectById($applicantid);
         $applicant->setId($applicantid);
         $jobRequest->addSelected($applicant);
-        $jobRequestStatus = $jobRequest->getStatus();
-        $jobRequestStatus->setId(JobRequestStatus::SELECTED);
-        $jobRequest->setStatus($jobRequestStatus);
+
+        $jobRequest->setStatus(JobRequestStatus::SELECTED);
         $this->entityDAO->update($jobRequest);
+
         return  $this->entityDAO->deletePreselected($jobrequestid, $applicantid);
     }
 
@@ -92,9 +96,8 @@ class JobRequestBusiness extends GenericBusiness {
         $jobRequest = $this->entityDAO->selectById($jobrequestid);
         $jobRequest->setSelectedApplicants($jobRequest->getPreselectedApplicants());
         $jobRequest->setPreselectedApplicants(null);
-        $jobRequestStatus = $jobRequest->getStatus();
-        $jobRequestStatus->setId(JobRequestStatus::SELECTED);
-        $jobRequest->setStatus($jobRequestStatus);
+
+        $jobRequest->setStatus(JobRequestStatus::SELECTED);
         return $this->entityDAO->update($jobRequest);
     }
 
@@ -117,9 +120,7 @@ class JobRequestBusiness extends GenericBusiness {
 
     public function  changeStatus ($jobrequestid, $status) {
         $jobRequest = $this->entityDAO->selectById($jobrequestid);
-        $jobRequestStatus = $jobRequest->getStatus();
-        $jobRequestStatus->setId($status);
-        $jobRequest->getStatus()->setId($status);//setStatus($jobRequestStatus);
+        $jobRequest->setStatus($status);
         $this->entityDAO->update($jobRequest);
     }
 

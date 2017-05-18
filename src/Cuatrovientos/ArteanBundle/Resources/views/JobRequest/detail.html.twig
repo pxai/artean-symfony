@@ -12,7 +12,7 @@
     <ul>
      <li><strong>Id: </strong>{{ jobRequest.id }}</li>
      <li><strong>Fecha orferta: </strong>{{ jobRequest.offerdate }}</li>
-        <li><strong>Estado: </strong>{{ jobRequest.status.name }}</li>
+        <li><strong>Estado: </strong>{{ jobRequest.status }}</li>
         <li><strong>Empresa: </strong>{{ jobRequest.company.empresa }}</li>
         <li><strong>Email: </strong>{{ jobRequest.company.email }}</li>
         <li><strong>Teléfono: </strong>{{ jobRequest.company.telefono }}</li>
@@ -267,7 +267,7 @@
                                 // $('#showApplicant').modal('show');
                             $('#preselected_applicant_id_'+applicantid).fadeOut(1000);
                             $('#preselected_applicant_id_'+applicantid).remove();
-                                $('table#c').append(res);
+                                $('table#selected_applicants').append(res);
                         } else {
                             $('#showApplicant div.modal-body').html('No se pudo mover.');//res;
                             $('#showApplicant').modal('show');

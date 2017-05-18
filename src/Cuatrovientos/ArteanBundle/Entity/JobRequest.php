@@ -27,6 +27,7 @@ class JobRequest extends Entity
      */
     private $offerdate;
 
+
     /**
      * @ORM\ManyToOne(targetEntity="Company")
      * @ORM\JoinColumn(name="idempresa", referencedColumnName="id")
@@ -136,8 +137,7 @@ class JobRequest extends Entity
     private $rating;
 
     /**
-     * @ORM\ManyToOne(targetEntity="JobRequestStatus",fetch="EXTRA_LAZY")
-     * @ORM\JoinColumn(name="status", referencedColumnName="id")
+     * @ORM\Column(name="status",type="string", length=20)
      */
     private $status;
 
@@ -165,9 +165,9 @@ class JobRequest extends Entity
     private $selectedApplicants;
        
     public function __construct () {
-        $this->selectedApplicant = array();
-        $this->preselectedApplicants = array();
-        $this->status = new JobRequestStatus();
+        //$this->selectedApplicants = array();
+        //$this->preselectedApplicants = array();
+       $this->status = "INICIO";
     }
 
     /**
