@@ -1,35 +1,52 @@
 <div class="modal-dialog" role="document">
    <div class="modal-content">
-      <form method="post" action="{{ path('cuatrovientos_artean_applicant_admin_search') }}" class="arteanform">
-      <div class="modal-header">
-
-   <a href="{{ path('cuatrovientos_artean_applicant_admin') }}" class="btn">
-      <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
-   </a>
-
-   <h3><i class="fa fa-search" aria-hidden="true"></i> Buscar candidatos</h3>
-         <h4 class="modal-title" id="exampleModalLabel">Buscar candidatos</h4>
-      </div>
-      <div class="modal-body">
-
-   {{ form_errors(form) }}
-   <div class="form-group">
-      {{ form_label(form.name) }}
-      {{ form_errors(form.name) }}
-      {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
-   </div>
-         <div class="form-group">
-            {{ form_label(form.surname) }}
-            {{ form_errors(form.surname) }}
-            {{ form_widget(form.surname, {'attr': {'class': 'form-control'}}) }}
+      <form method="post" action="{{ path('cuatrovientos_artean_applicant_admin_search') }}" id="applicant_search_form" class="arteanform">
+         <div class="modal-header">
+            <h3><i class="fa fa-search" aria-hidden="true"></i> Buscar candidatos</h3>
          </div>
-      {{ form_row(form._token) }}
+         <div class="modal-body">
 
-      </div>
-      <div class="modal-footer">
-         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-         <button type="submit" class="btn btn-primary">Buscar candidatos</button>
-      </div>
-      </form>
+            {{ form_errors(formSearch) }}
+            <div class="form-group">
+               {{ form_label(formSearch.name) }}
+               {{ form_errors(formSearch.name) }}
+               {{ form_widget(formSearch.name, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
+               {{ form_label(formSearch.surname) }}
+               {{ form_errors(formSearch.surname) }}
+               {{ form_widget(formSearch.surname, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
+               {{ form_label(formSearch.studies) }}
+               {{ form_errors(formSearch.studies) }}
+               {{ form_widget(formSearch.studies, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
+               {{ form_label(formSearch.languages) }}
+               {{ form_errors(formSearch.languages) }}
+               {{ form_widget(formSearch.languages, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
+               {{ form_label(formSearch.drivingLicense) }}
+               {{ form_errors(formSearch.drivingLicense) }}
+               {{ form_widget(formSearch.drivingLicense, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
+               {{ form_label(formSearch.move) }}
+               {{ form_errors(formSearch.move) }}
+               {{ form_widget(formSearch.move, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
+               {{ form_label(formSearch.birth) }}
+               {{ form_errors(formSearch.birth) }}
+               {{ form_widget(formSearch.birth, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            {{ form_row(formSearch._token) }}
+            <button type="submit" class="btn btn-primary">Buscar candidatos</button>
+
+         </div>
+     </form>
+
    </div>
 </div>

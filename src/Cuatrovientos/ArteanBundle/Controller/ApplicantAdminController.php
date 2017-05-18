@@ -25,15 +25,17 @@ class ApplicantAdminController extends Controller
     public function indexAction($init=0,$limit=100)
     {
         $form = $this->createForm(ApplicantType::class);
+        $formSearch = $this->createForm(ApplicantAdvancedSearchType::class);
         $applicants = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicants(0, $init, $limit);
         $total = $this->get("cuatrovientos_artean.bo.applicant")->countAllApplicants();
 
-        return $this->render('CuatrovientosArteanBundle:Applicant:indexAdmin.html.twig', array('applicants'=>$applicants, 'init'=>$init, 'limit'=> $limit, 'total'=> $total,'form'=> $form->createView()));
+        return $this->render('CuatrovientosArteanBundle:Applicant:indexAdmin.html.twig', array('applicants'=>$applicants, 'init'=>$init, 'limit'=> $limit, 'total'=> $total,'form'=> $form->createView(),'formSearch'=> $formSearch->createView()));
     }
 
     public function searchAction(Request $request)
     {
-        $form = $this->createForm(ApplicantType::class, new Applicant());
+        $form = $this->createForm(ApplicantAdvancedSearchType::class, new Applicant());
+        $formSearch = $this->createForm(ApplicantAdvancedSearchType::class);
         $init = 0;
         $limit = 100;
 
@@ -43,14 +45,15 @@ class ApplicantAdminController extends Controller
             if ($form->isValid()) {
                 $applicant = $form->getData();
 
-                $applicants = $this->get("cuatrovientos_artean.bo.applicant")->searchApplicants($applicant, 0, 100);
+                $applicants = $this->get("cuatrovientos_artean.bo.applicant")->detailedSearchApplicants($applicant);
                 $total = count($applicants);
-                return $this->render('CuatrovientosArteanBundle:Applicant:indexAdmin.html.twig', array('applicants' => $applicants, 'init' => $init, 'limit' => $limit, 'total' => $total, 'form' => $form->createView()));
+                return $this->render('CuatrovientosArteanBundle:Applicant:indexAdmin.html.twig', array('applicants' => $applicants, 'init' => $init, 'limit' => $limit, 'total' => $total, 'form' => $form->createView(),'formSearch'=> $formSearch->createView()));
             }
         } else {
             $applicants = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicants(0, $init, $limit);
             $total = $this->get("cuatrovientos_artean.bo.applicant")->countAllApplicants();
-            return $this->render('CuatrovientosArteanBundle:Applicant:indexAdmin.html.twig', array('applicants'=>$applicants, 'init'=>$init, 'limit'=> $limit, 'total'=> $total,'form'=> $form->createView()));
+            return $this->render('CuatrovientosArteanBundle:Applicant:indexAdmin.html.twig', array('applicants'=>$applicants, 'init'=>$init, 'limit'=> $limit, 'total'=> $total,'form'=> $form->createView(),'formSearch'=> $formSearch->createView()));
+            return $this->render('CuatrovientosArteanBundle:Applicant:indexAdmin.html.twig', array('applicants'=>$applicants, 'init'=>$init, 'limit'=> $limit, 'total'=> $total,'form'=> $form->createView(),'formSearch'=> $formSearch->createView()));
         }
     }
 
