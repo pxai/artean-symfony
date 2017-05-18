@@ -15,3 +15,22 @@
 - Added tbschooldegree
 - Added idalumno in tbalumnosestudios, change dni to id
 - Added idprofesor in tbprofescursos, change nif to id
+
+- Added status field on tbsolicitudes, default value 1
+ALTER TABLE `tbsolicitudes` ADD `status` INT NOT NULL DEFAULT '1' AFTER `valoracion`;
+- Created new table: 
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `description` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tbsolicitudes_estado`
+--
+
+INSERT INTO `tbsolicitudes_estado` (`id`, `name`, `description`) VALUES
+(1, 'INICIADA', ''),
+(2, 'PRESELECCIÓN', ''),
+(4, 'SELECCIÓN', ''),
+(5, 'EMAIL ENVIADO', ''),
+(6, 'VALORADA', '');

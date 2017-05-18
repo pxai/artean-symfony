@@ -14,7 +14,7 @@
 <div class="table-responsive">
   <table class="table .table-condensed">
      <div id='jobrequests'>
-         <tr><th>Id</th><th>Descripción</th><th>Perfil</th><th>Fecha</th><th>Tfno  Emp</th><th>Email Emp.</th><th></th></tr>
+         <tr><th>Id</th><th>Estado</th><th>Descripción</th><th>Fecha</th><th>Tfno  Emp</th><th>Email Emp.</th><th></th></tr>
         {% for jobRequest in jobRequests %}
             {% include "CuatrovientosArteanBundle:JobRequest:jobRequest.html.twig" %}
         {% endfor %}

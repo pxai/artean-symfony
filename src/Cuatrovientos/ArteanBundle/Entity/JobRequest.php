@@ -12,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class JobRequest extends Entity
 {
+
+
     /**
      * @ORM\Column(name="id",type="integer")
      * @ORM\Id
@@ -133,6 +135,11 @@ class JobRequest extends Entity
      */
     private $rating;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="JobRequestStatus",fetch="EXTRA_LAZY")
+     * @ORM\JoinColumn(name="status", referencedColumnName="id")
+     */
+    private $status;
 
     /**
      * ORM\OneToMany(targetEntity="JobRequestPreselected", mappedBy="applicant",fetch="EXTRA_LAZY", cascade={"all"})
@@ -160,6 +167,7 @@ class JobRequest extends Entity
     public function __construct () {
         $this->selectedApplicant = array();
         $this->preselectedApplicants = array();
+        $this->status = new JobRequestStatus();
     }
 
     /**
@@ -557,6 +565,23 @@ class JobRequest extends Entity
     {
         $this->category = $category;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param mixed $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
 
     /**
      * @return mixed

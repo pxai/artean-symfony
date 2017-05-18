@@ -7,6 +7,7 @@ use Cuatrovientos\ArteanBundle\Entity\JobRequest;
 use Cuatrovientos\ArteanBundle\Entity\Applicant;
 use Cuatrovientos\ArteanBundle\Entity\Company;
 use Cuatrovientos\ArteanBundle\Entity\JobRequestSelected;
+use Cuatrovientos\ArteanBundle\Entity\JobRequestStatus;
 use Cuatrovientos\ArteanBundle\Service\DAO\JobRequestDAO;
 use Cuatrovientos\ArteanBundle\Service\DAO\CompanyDAO;
 use Cuatrovientos\ArteanBundle\Service\DAO\ApplicantDAO;
@@ -66,10 +67,12 @@ class JobRequestBusiness extends GenericBusiness {
     }
 
     public function deleteAllPreselected ($jobrequestid) {
+        $this->changeStatus($jobrequestid, JobRequestStatus::INIT);
         return $this->entityDAO->deleteAllPreselected($jobrequestid);
     }
 
     public function deleteAllSelected ($jobrequestid) {
+        $this->changeStatus($jobrequestid, JobRequestStatus::PRESELECTED);
         return $this->entityDAO->deleteAllSelected($jobrequestid);
     }
 
@@ -78,6 +81,9 @@ class JobRequestBusiness extends GenericBusiness {
         $applicant = $this->applicantDAO->selectById($applicantid);
         $applicant->setId($applicantid);
         $jobRequest->addSelected($applicant);
+        $jobRequestStatus = $jobRequest->getStatus();
+        $jobRequestStatus->setId(JobRequestStatus::SELECTED);
+        $jobRequest->setStatus($jobRequestStatus);
         $this->entityDAO->update($jobRequest);
         return  $this->entityDAO->deletePreselected($jobrequestid, $applicantid);
     }
@@ -86,6 +92,9 @@ class JobRequestBusiness extends GenericBusiness {
         $jobRequest = $this->entityDAO->selectById($jobrequestid);
         $jobRequest->setSelectedApplicants($jobRequest->getPreselectedApplicants());
         $jobRequest->setPreselectedApplicants(null);
+        $jobRequestStatus = $jobRequest->getStatus();
+        $jobRequestStatus->setId(JobRequestStatus::SELECTED);
+        $jobRequest->setStatus($jobRequestStatus);
         return $this->entityDAO->update($jobRequest);
     }
 
@@ -104,6 +113,14 @@ class JobRequestBusiness extends GenericBusiness {
             $this->companyDAO->create($company);
             $jobRequest->setCompany($company);
         }
+    }
+
+    public function  changeStatus ($jobrequestid, $status) {
+        $jobRequest = $this->entityDAO->selectById($jobrequestid);
+        $jobRequestStatus = $jobRequest->getStatus();
+        $jobRequestStatus->setId($status);
+        $jobRequest->getStatus()->setId($status);//setStatus($jobRequestStatus);
+        $this->entityDAO->update($jobRequest);
     }
 
 

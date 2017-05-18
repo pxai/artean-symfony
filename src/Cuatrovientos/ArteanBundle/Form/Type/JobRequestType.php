@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class JobRequestType extends AbstractType {
 
@@ -77,6 +78,10 @@ class JobRequestType extends AbstractType {
                     'required'=>false,
                     'expanded' => true,
                 )
+            )
+            ->add('status', EntityType::class, array(
+                    'class' => 'CuatrovientosArteanBundle:JobRequestStatus',
+                    'label' => 'Estado de Solicitud' )
             )
             ->add('save', SubmitType::class);
     }

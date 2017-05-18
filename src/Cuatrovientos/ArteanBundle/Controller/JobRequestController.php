@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Cuatrovientos\ArteanBundle\Entity\JobRequest;
 use Cuatrovientos\ArteanBundle\Entity\JobRequestMail;
+use Cuatrovientos\ArteanBundle\Entity\JobRequestStatus;
 use Cuatrovientos\ArteanBundle\Entity\Applicant;
 use Cuatrovientos\ArteanBundle\Form\Type\JobRequestSearchType;
 use Cuatrovientos\ArteanBundle\Form\Type\JobRequestType;
@@ -64,7 +65,7 @@ class JobRequestController extends Controller
 
             if ($form->isValid()) {
                 $jobRequest = $form->getData();
-
+                $jobRequest->setStatus(new JobRequestStatus(JobRequestStatus::PRESELECTED));
                //$this->get('logger')->info('Here we go with real data: ' . $serializer->serialize($form->getData(), 'json'));
                 $this->get("cuatrovientos_artean.bo.jobrequest")->update($jobRequest);
                 return $this->jobrequestDetailAction($jobRequest->getId());
@@ -202,6 +203,7 @@ class JobRequestController extends Controller
                 $jobRequestMail->encodeContent();
 
                 $this->sendEmail($jobRequestMail);
+                $this->get("cuatrovientos_artean.bo.jobrequest")->changeStatus($jobRequestMail->getId(),JobRequestStatus::MAIL_SENT);
                 $request->getSession()->getFlashBag()->add('success', 'El email ha sido enviado.');
                 return $this->jobrequestDetailAction($jobRequestMail->getId());
             } else {
