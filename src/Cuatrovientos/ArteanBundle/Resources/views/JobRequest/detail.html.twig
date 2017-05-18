@@ -7,6 +7,7 @@
         <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
     </a>
     <h3><i class="fa fa-search-plus" aria-hidden="true"></i> Detalle de solicitud</h3>
+    {% include "CuatrovientosArteanBundle:Default:flash.html.twig" %}
     <a href="{{ path('cuatrovientos_artean_jobrequest_update', {'id': jobRequest.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> Modificar</a>
     <ul>
      <li><strong>Id: </strong>{{ jobRequest.id }}</li>
@@ -79,8 +80,10 @@
 
 
     <h3>3. Enviar email <i class="fa fa-envelope" aria-hidden="true"></i></h3>
-    <a href="{{ path('cuatrovientos_artean_jobrequest_update', {'id': jobRequest.id }) }}" class="btn btn-success"><i class="fa fa-envelope" aria-hidden="true"></i> Enviar Email</a>
+    {% if jobRequest.selectedApplicants|length > 0 %}
+    {% include "CuatrovientosArteanBundle:JobRequest:email.html.twig" %}
 
+    {% endif %}
     <!-- Modal -->
     <div class="modal fade" id="addPrecandidates" tabindex="-1" role="dialog" aria-labelledby="addPrecandidates" aria-hidden="true">
         <div class="modal-dialog  modal-lg" role="document">

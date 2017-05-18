@@ -1,0 +1,38 @@
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script><script>tinymce.init({ selector:'textarea' , automatic_uploads: true });</script>
+<form method="post" action="{{ path('cuatrovientos_artean_jobrequest_send_email') }}">
+   {{ form_errors(formEmail) }}
+   {{ form_widget(formEmail.id) }}
+   <div class="form-group">
+      {{ form_label(formEmail.from) }}
+      {{ form_errors(formEmail.from) }}
+      {{ form_widget(formEmail.from, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(formEmail.to) }}
+      {{ form_errors(formEmail.to) }}
+      {{ form_widget(formEmail.to, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(formEmail.bcc) }}
+      {{ form_errors(formEmail.bcc) }}
+      {{ form_widget(formEmail.bcc, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(formEmail.subject) }}
+      {{ form_errors(formEmail.subject) }}
+      {{ form_widget(formEmail.subject, {'attr': {'class': 'form-control'}}) }}
+   </div>
+   <div class="form-group">
+      {{ form_label(formEmail.content) }}
+      {{ form_errors(formEmail.content) }}
+
+      <textarea id="job_request_mail_content" name="job_request_mail[content]" rows="10" required="required" class="form-control">
+         {{ formEmail.content.vars.value|nl2br }}
+      </textarea>
+
+   </div>
+   <div class="form-group">
+      {{ form_row(formEmail._token) }}
+      <button class="form-control btn-success"><i class="fa fa-envelope" aria-hidden="true"></i> Enviar Email</button>
+   </div>
+</form>

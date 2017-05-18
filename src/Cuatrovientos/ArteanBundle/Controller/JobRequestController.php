@@ -137,8 +137,13 @@ class JobRequestController extends Controller
     {
         $form = $this->createForm(ApplicantAdvancedSearchType::class, new Applicant());
         $formPreselected = $this->createForm(JobRequestPreselectedType::class);
+        $jobRequestMail = new JobRequestMail();
         $jobRequest = $this->get("cuatrovientos_artean.bo.jobrequest")->selectById($id);
-        return $this->render('CuatrovientosArteanBundle:JobRequest:detail.html.twig',array('jobRequest'=> $jobRequest, 'form'=>$form->createView(), 'formPreselected'=>$formPreselected->createView()));
+        if (count($jobRequest->getSelectedApplicants()) > 0) {
+            $jobRequestMail = $this->prepareEmailContent($jobRequest);
+        }
+        $formEmail = $this->createForm(JobRequestMailType::class,$jobRequestMail);
+        return $this->render('CuatrovientosArteanBundle:JobRequest:detail.html.twig',array('jobRequest'=> $jobRequest, 'form'=>$form->createView(), 'formEmail'=>$formEmail->createView(), 'formPreselected'=>$formPreselected->createView()));
     }
 
 
@@ -154,14 +159,13 @@ class JobRequestController extends Controller
     public function jobrequestUpdateSaveAction(Request $request) {
       
         $form = $this->createForm(JobRequestType::class, new JobRequest());
-      //  $form->submit($request->request->get($form->getName()));
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $jobReques = $form->getData();
 
                 $this->get("cuatrovientos_artean.bo.jobrequest")->update($jobReques);
-                
+
                 // redirect to index
                 $response = $this->forward('CuatrovientosArteanBundle:JobRequest:jobrequestDetail', array('id' => $jobReques->getId()));
             } else  {
@@ -190,14 +194,15 @@ class JobRequestController extends Controller
     {
         $jobRequestMail = 0;
         $form = $this->createForm(JobRequestMailType::class, new JobRequestMail());
+
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
-
             if ($form->isValid()) {
                 $jobRequestMail = $form->getData();
+                $jobRequestMail->encodeContent();
 
-                //$this->get("cuatrovientos_artean.bo.jobrequest")->create($jobRequest);
-
+                $this->sendEmail($jobRequestMail);
+                $request->getSession()->getFlashBag()->add('success', 'El email ha sido enviado.');
                 return $this->jobrequestDetailAction($jobRequestMail->getId());
             } else {
                 return $this->indexAction();
@@ -207,5 +212,46 @@ class JobRequestController extends Controller
         return $this->indexAction();
     }
 
+    private function sendEmail ($jobRequestMail) {
+        $jobRequestMail->decodeContent();
+        $message = \Swift_Message::newInstance()
+            ->setSubject($jobRequestMail->getSubject())
+            ->setFrom($jobRequestMail->getFrom())
+            ->setTo($jobRequestMail->getTo())
+            ->setBcc($jobRequestMail->getBcc())
+            ->setBody($this->renderView(
+                'Emails/jobRequest.html.twig',
+                array('content' => $jobRequestMail->getContent())
+            ),'text/html'
+
+            );
+
+        $this->get('mailer')->send($message);
+    }
+
+    private function  prepareEmailContent   ($jobRequest){
+        $jobRequestMail = new JobRequestMail();
+        $jobRequestMail->setId($jobRequest->getId());
+        $jobRequestMail->setSubject('Candidaturas para la oferta: ' . $jobRequest->getDescription());
+        $jobRequestMail->setTo($jobRequest->getCompany()->getEmail());
+
+        $content = 'Estimado/a ' . $jobRequest->getAtt().'<br>';
+        $content .= 'Estas son las candidaturas que hemos considerado para su puesto:<br><br>';
+
+        foreach ($jobRequest->getSelectedApplicants() as $applicants) {
+            $content .= $applicants->getName() .' '.$applicants->getSurname().'<br>';
+            if ($applicants->getMobile()!="") {
+                $content .= $applicants->getMobile() .' '.$applicants->getPhone().'<br>';
+            }
+            if ($applicants->getEmail()!="") {
+                $content .= $applicants->getEmail() . '<br><br>';
+            }
+            $content .= '<br>';
+        }
+
+        $content .= 'Reciban un saludo desde Artean\n artean@cuatrovientos.org<br>';
+        $jobRequestMail->setContent($content);
+        return $jobRequestMail;
+    }
 
 }

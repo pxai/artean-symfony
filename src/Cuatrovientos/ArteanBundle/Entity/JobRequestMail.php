@@ -10,7 +10,7 @@ class JobRequestMail extends Entity
 
     private $id;
 
-    private $from;
+    private $from = 'artean@cuatrovientos.org';
     private $to;
     private $bcc;
     private $subject;
@@ -115,6 +115,12 @@ class JobRequestMail extends Entity
         $this->content = $content;
     }
 
-    
+    public function encodeContent () {
+        $this->content = base64_encode($this->content);
+    }
+
+    public function decodeContent () {
+        $this->content = base64_decode($this->content);
+    }
 
 }
