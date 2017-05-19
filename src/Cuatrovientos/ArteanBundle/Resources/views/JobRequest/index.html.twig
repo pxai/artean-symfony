@@ -11,7 +11,21 @@
         <div id="searchformModal" style="display:none";  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             {% include "CuatrovientosArteanBundle:JobRequest:search.html.twig" %}
         </div>
+        <form method="post" name="bystatus" action="{{ path('cuatrovientos_artean_jobrequest_bystatus') }}" >
+            <select name="status" onchange="document.forms.bystatus.submit()" class="form-control" >
+                <option value="">Seleccionar por estado</option>
+                <option value="INICIADA">INICIADA</option>
+                <option value="PRESELECCIÓN">PRESELECCIÓN</option>
+                <option value="SELECCIÓN">SELECCIÓN</option>
+                <option value="EMAIL ENVIADO">EMAIL ENVIADO</option>
+                <option value="VALORADO">VALORADO
+                <option value="">TODAS</option>
+            </select>
+        </form>
 <div class="table-responsive">
+    {% if status is defined and status != "" %}
+        <h3>En estado: {{ status }}</h3>
+        {% endif %}
   <table class="table .table-condensed">
      <div id='jobrequests'>
          <tr><th>Id</th><th>Estado</th><th>Descripción</th><th>Fecha</th><th>Tfno  Emp</th><th>Email Emp.</th><th></th></tr>

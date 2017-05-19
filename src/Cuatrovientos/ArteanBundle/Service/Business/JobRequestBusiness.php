@@ -34,6 +34,11 @@ class JobRequestBusiness extends GenericBusiness {
         return $this->entityDAO->findAllJobRequests($id, $start,$total);
     }
 
+    public function findJobRequestsByStatus($status, $start=0,$total=100)
+    {
+        return $this->entityDAO->findJobRequestsByStatus($status, $start,$total);
+    }
+
     public function create(Entity $jobRequest) {
         $this->setJobCompany($jobRequest);
         $this->entityDAO->create($jobRequest);

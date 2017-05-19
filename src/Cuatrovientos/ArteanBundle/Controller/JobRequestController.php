@@ -19,6 +19,7 @@ use Cuatrovientos\ArteanBundle\Form\Type\JobRequestMailType;
 class JobRequestController extends Controller
 {
 
+
     public function indexAction($init=0,$limit=100)
     {
         $form = $this->createForm(JobRequestSearchType::class);
@@ -28,6 +29,20 @@ class JobRequestController extends Controller
         return $this->render('CuatrovientosArteanBundle:JobRequest:index.html.twig', array('jobRequests'=>$jobRequests, 'init'=>$init, 'limit'=> $limit, 'total'=> $total,'form'=> $form->createView()));
     }
 
+    public function indexByStatusAction(Request $request,$init=0,$limit=100)
+    {
+        $form = $this->createForm(JobRequestSearchType::class);
+
+        $status = $request->request->get('status');
+
+        if ($status) {
+            $jobRequests = $this->get("cuatrovientos_artean.bo.jobrequest")->findJobRequestsByStatus($status, $init, $limit);
+            $total = $this->get("cuatrovientos_artean.bo.jobrequest")->countAllJobRequests();
+            return $this->render('CuatrovientosArteanBundle:JobRequest:index.html.twig', array('jobRequests' => $jobRequests,'status'=> $status, 'init' => $init, 'limit' => $limit, 'total' => $total, 'form' => $form->createView()));
+        } else {
+            return $this->indexAction();
+        }
+    }
 
     public function searchAction(Request $request)
     {

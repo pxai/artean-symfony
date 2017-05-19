@@ -664,6 +664,10 @@ cuatrovientos_artean_jobrequest_paged:
         'init' : '\d+'
         'limit' : '\d+'
 
+cuatrovientos_artean_jobrequest_bystatus:
+    path:     /artean/admin/jobrequest/bystatus
+    defaults: { _controller: CuatrovientosArteanBundle:JobRequest:indexByStatus }
+
 cuatrovientos_artean_jobrequest_search:
     path:     /artean/admin/jobrequest/search
     defaults: { _controller: CuatrovientosArteanBundle:JobRequest:search }

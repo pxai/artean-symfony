@@ -31,6 +31,16 @@ class JobRequestDAO extends GenericDAO {
             ->getResult();
     }
 
+    public function findJobRequestsByStatus($status, $start=0,$total=100)
+    {
+        return $this->repository->createQueryBuilder('m')
+            ->where('m.status =:status')
+            ->setParameter('status',$status)
+            ->orderBy('m.offerdate', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
     public function countAllJobRequests()
     {
         return $this->repository->createQueryBuilder('m')
