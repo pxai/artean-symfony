@@ -8,10 +8,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Cuatrovientos\ArteanBundle\Entity\Applicant;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantAdvancedSearchType;
 
-/* With this Circular reference is detected
+// With this Circular reference is detected
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;*/
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 class ApplicantApiController extends Controller
 {
@@ -42,6 +42,19 @@ class ApplicantApiController extends Controller
          $applicant->setName($applicant->getSurname().', ' .$applicant->getName());
         }
         return  $applicants;
+    }
+
+    /**
+     * @Rest\View
+     */
+    public function toggleAction($id, Request $request)
+    {
+        $status = $request->request->get("status");
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($id);
+        $newStatus = $status?0:1;
+        $applicant->setActive($newStatus);
+        $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);
+        return '{"id": '.$id.', "active" : '.$newStatus.'}';
     }
 
     /**

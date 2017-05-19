@@ -5,6 +5,13 @@
     <td>{{ applicant.email }}</td>
     <td>{{ applicant.mobile }}</td>
     <td>
+        {% if applicant.active %}
+            <a href="{{ path('cuatrovientos_artean_applicant_admin_toggle', {'id': applicant.id }) }}" data-id="{{ applicant.id }}" data-status="{{ applicant.active }}" id="applicant_active_{{ applicant.id }}" class="applicant-toggle btn btn-success"><i class="fa fa-toggle-on" aria-hidden="true"> Sí</i></a>
+        {% else %}
+            <a href="{{ path('cuatrovientos_artean_applicant_admin_toggle', {'id': applicant.id }) }}" data-id="{{ applicant.id }}" data-status="{{ applicant.active }}" id="applicant_active_{{ applicant.id }}" class="applicant-toggle  btn btn-warning"><i class="fa fa-toggle-off" aria-hidden="true"> No</i></a>
+        {% endif %}
+    </td>
+    <td>
         <a href="{{ path('cuatrovientos_artean_applicant_admin_detail', {'id': applicant.id }) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
         <a href="{{ path('cuatrovientos_artean_applicant_admin_update', {'id': applicant.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> </a>
         <a href="{{ path('cuatrovientos_artean_applicant_admin_delete', {'id': applicant.id }) }}" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> </a>

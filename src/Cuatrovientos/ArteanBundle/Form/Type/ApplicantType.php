@@ -23,6 +23,12 @@ class ApplicantType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('id',HiddenType::class)
+            ->add('active', ChoiceType::class, array(
+                    'choices'  => array(
+                        'Habilitado' => '1',
+                        'Deshabilitado'     => '0'),
+                    'label' => 'Estado de candidatura' )
+            )
             ->add('name', TextType::class,array(
                 "label"=>"Nombre",
                 "required"=>true

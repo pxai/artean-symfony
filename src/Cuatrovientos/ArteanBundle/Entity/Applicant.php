@@ -129,6 +129,11 @@ class Applicant extends Entity
 
     private $courses;
 
+    /**
+     * @ORM\Column(name="sel",type="integer")
+     */
+    private $active = 0;
+
     public function __construct () {
         $this->studies = array();
         $this->courses = array();
@@ -451,6 +456,22 @@ class Applicant extends Entity
     public function setJobOffers($jobOffers)
     {
         $this->jobOffers = $jobOffers;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * @param mixed $active
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
     }
 
 

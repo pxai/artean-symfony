@@ -15,7 +15,7 @@
     <div class="table-responsive">
         <table class="table .table-condensed">
             <div id='applicants'>
-                <tr><th>Id</th><th>Nombre</th><th>Apellidos</th><th>Email</th><th>Móvil</th><th></th></tr>
+                <tr><th>Id</th><th>Nombre</th><th>Apellidos</th><th>Email</th><th>Móvil</th><th>Habilitado</th><th></th></tr>
                 {% for applicant in applicants %}
                     {% include "CuatrovientosArteanBundle:Applicant:applicant.html.twig" %}
                 {% endfor %}
@@ -29,4 +29,7 @@
         <a href="{{ path('cuatrovientos_artean_applicant_admin_paged', {'init': (total/100)|round(0,'floor'), 'limit':100 }) }}" class="btn "><i class="fa fa-fast-forward" aria-hidden="true"></i> Último</a>
     </div>
 
+{% endblock %}
+{% block extrascripts %}
+{% include "CuatrovientosArteanBundle:Applicant:toggleScript.html.twig" %}
 {% endblock %}

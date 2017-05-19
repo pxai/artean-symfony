@@ -1,0 +1,47 @@
+ <script language="javascript">
+
+
+        $('.applicant-toggle').click(function (e) {
+            e.preventDefault();
+            var applicantid = $(this).data("id");
+            var status = "status="+ $(this).attr("data-status");
+            console.log($(this).attr('href') + ":" + applicantid);
+            load($(this).attr('href'));
+
+            //var itemForSymfony['jobrequest'] = item;
+            function load (url) {
+                $.ajax({
+                    url: url,
+                    data: status,
+                    type: 'POST',
+                    dataType: 'json',
+                    error: function() {
+                        $('#showApplicant div.modal-body').html('Error al modificar.');//res;
+                        $('#showApplicant').modal('show');
+                    },
+                    success: function(res) {
+                        var result = JSON.parse(res);
+                        if (result.active) {
+                            console.log('Activate!');
+                            $('#applicant_active_'+applicantid).removeClass('btn-warning');
+                            $('#applicant_active_'+applicantid).addClass('btn-success');
+                            $('#applicant_active_'+applicantid).html('<i class="fa fa-toggle-on" aria-hidden="true"> Sí</i>');
+                            $('#applicant_active_'+applicantid).attr('data-status','1');
+                            /*$('#preselected_applicant_id_'+applicantid).fadeOut(1000);
+                            $('#preselected_applicant_id_'+applicantid).remove();*/
+                        } else {
+                            console.log('Deactivate!');
+                            $('#applicant_active_'+applicantid).removeClass('btn-success');
+                            $('#applicant_active_'+applicantid).addClass('btn-warning');
+                            $('#applicant_active_'+applicantid).html('<i class="fa fa-toggle-off" aria-hidden="true"> No</i>');
+                            $('#applicant_active_'+applicantid).attr('data-status','0');
+                        }
+
+                        console.log( $('#applicant_active_'+applicantid).data('status'));
+                    }
+                });
+            }
+        });
+
+
+    </script>

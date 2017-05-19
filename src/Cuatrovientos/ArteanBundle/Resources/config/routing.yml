@@ -574,6 +574,12 @@ cuatrovientos_artean_applicant_admin_detail:
     requirements:
             'id' : '\d+'
 
+cuatrovientos_artean_applicant_admin_toggle:
+    path:     /api/admin/applicant/toggle/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Api\ApplicantApi:toggle }
+    requirements:
+            'id' : '\d+'
+
 cuatrovientos_artean_applicant_admin_detail_resumed:
     path:     /artean/admin/applicant/resumed/{id}
     defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:detailResumed }
