@@ -18,7 +18,7 @@ class JobRequestType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('id',HiddenType::class)
-            ->add('offerdate', TextType::class, array('label'=>'Fecha solicitud',"required"=>true))
+            ->add('offerdate', TextType::class, array('label'=>'Fecha solicitud dd/mm/aaaa',"required"=>true))
             ->add('companyName', TextType::class, array('label'=>'Empresa',"required"=>false))
             ->add('att', TextType::class, array('label'=>'Att' ,"required"=>false))
             ->add('greeting', TextType::class, array('label'=>'Saludo',"required"=>false))

@@ -138,7 +138,7 @@ class JobRequestController extends Controller
             
             if ($form->isValid()) {
                 $jobRequest = $form->getData();
-
+                $jobRequest->setStatus(JobRequestStatus::INIT);
                 $this->get("cuatrovientos_artean.bo.jobrequest")->create($jobRequest);
 
                 return $this->forward('CuatrovientosArteanBundle:JobRequest:index');
