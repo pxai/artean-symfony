@@ -187,7 +187,7 @@ class JobRequestController extends Controller
                 // redirect to index
                 $response = $this->forward('CuatrovientosArteanBundle:JobRequest:jobrequestDetail', array('id' => $jobReques->getId()));
             } else  {
-                 $response = $this->render('CuatrovientosArteanBundle:JobRequest:updatePost.html.twig', array('form'=> $form->createView()));
+                 return $this->jobrequestDetailAction(1);
             }
         }
         return $response;

@@ -7,16 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e471461-a8a1-4423-98b7-019ee3911c23" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Twig/JobRequestStatusColorExtension.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/JobRequestController.php" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/JobRequestController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Entity/JobRequest.php" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Entity/JobRequest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Entity/JobRequestStatus.php" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Entity/JobRequestStatus.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Form/Type/JobRequestType.php" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Form/Type/JobRequestType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/JobRequest/detail.html.twig" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/JobRequest/detail.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/JobRequest/index.html.twig" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/JobRequest/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/JobRequest/update.html.twig" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/JobRequest/update.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/Business/JobRequestBusiness.php" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/Business/JobRequestBusiness.php" />
     </list>
     <ignored path="arteans.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -78,8 +70,8 @@
       <file leaf-file-name="JobRequestController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/JobRequestController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="102" column="75" selection-start-line="102" selection-start-column="64" selection-end-line="102" selection-end-column="75" />
+            <state relative-caret-position="299">
+              <caret line="189" column="55" selection-start-line="189" selection-start-column="55" selection-end-line="189" selection-end-column="55" />
               <folding>
                 <element signature="e#58#118#0#PHP" expanded="true" />
               </folding>
@@ -1242,14 +1234,7 @@
       <workItem from="1494772195388" duration="37000" />
       <workItem from="1494777768575" duration="543000" />
       <workItem from="1494833104714" duration="5953000" />
-      <workItem from="1494916023203" duration="56880000" />
-    </task>
-    <task id="LOCAL-00091" summary="ok add/delete works">
-      <created>1492903699937</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1492903699937</updated>
+      <workItem from="1494916023203" duration="57352000" />
     </task>
     <task id="LOCAL-00092" summary="Some cleaning, admin dashboard clean">
       <created>1492944236152</created>
@@ -1587,17 +1572,24 @@
       <option name="project" value="LOCAL" />
       <updated>1495185099760</updated>
     </task>
-    <option name="localTasksCounter" value="140" />
+    <task id="LOCAL-00140" summary="Added fields to JobRequest. Corrected status names">
+      <created>1495188698783</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1495188698783</updated>
+    </task>
+    <option name="localTasksCounter" value="141" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="549908000" />
+    <option name="totallyTimeSpent" value="550380000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21255673" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21255673" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10355487" sideWeight="0.5030349" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928678" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1665,7 +1657,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Email for password reset done" />
     <MESSAGE value="Applicants for jobrequest" />
     <MESSAGE value="Applicants for jobrequest, almost there wuth preselected" />
     <MESSAGE value="Looks good, cascade working" />
@@ -1690,7 +1681,8 @@
     <MESSAGE value="Minor fix in selection list" />
     <MESSAGE value="Adding default state" />
     <MESSAGE value="Corrected new JobRequest" />
-    <option name="LAST_COMMIT_MESSAGE" value="Corrected new JobRequest" />
+    <MESSAGE value="Added fields to JobRequest. Corrected status names" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added fields to JobRequest. Corrected status names" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2137,8 +2129,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/JobRequestController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="102" column="75" selection-start-line="102" selection-start-column="64" selection-end-line="102" selection-end-column="75" />
+        <state relative-caret-position="299">
+          <caret line="189" column="55" selection-start-line="189" selection-start-column="55" selection-end-line="189" selection-end-column="55" />
           <folding>
             <element signature="e#58#118#0#PHP" expanded="true" />
           </folding>
