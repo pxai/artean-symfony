@@ -139,7 +139,7 @@ class JobRequest extends Entity
     /**
      * @ORM\Column(name="status",type="string", length=20)
      */
-    private $status;
+    private $status = JobRequestStatus::INIT;
 
     /**
      * ORM\OneToMany(targetEntity="JobRequestPreselected", mappedBy="applicant",fetch="EXTRA_LAZY", cascade={"all"})
@@ -167,7 +167,7 @@ class JobRequest extends Entity
     public function __construct () {
         //$this->selectedApplicants = array();
         //$this->preselectedApplicants = array();
-       $this->status = "INICIO";
+       $this->status = JobRequestStatus::INIT;
     }
 
     /**
