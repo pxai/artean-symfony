@@ -11,10 +11,10 @@
         <div id="searchformModal" style="display:none";  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             {% include "CuatrovientosArteanBundle:JobRequest:search.html.twig" %}
         </div>
-        <form method="post" name="bystatus" action="{{ path('cuatrovientos_artean_jobrequest_bystatus') }}" >
+        <form method="post" name="bystatus" action="{{ path('cuatrovientos_artean_jobrequest_bystatus') }}" INICI>
             <select name="status" onchange="document.forms.bystatus.submit()" class="form-control" >
                 <option value="">Seleccionar por estado</option>
-                <option value="INICIADA">INICIADA</option>
+                <option value="INICIADO">INICIADO</option>
                 <option value="PRESELECCIÓN">PRESELECCIÓN</option>
                 <option value="SELECCIÓN">SELECCIÓN</option>
                 <option value="EMAIL ENVIADO">EMAIL ENVIADO</option>

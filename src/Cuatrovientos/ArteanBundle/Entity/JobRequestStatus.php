@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class JobRequestStatus extends Entity
 {
-    const INIT = "INICIADA";
+    const INIT = "INICIADO";
     const PRESELECTED = "PRESELECCIÓN";
     const SELECTED = "SELECCIÓN";
     const MAIL_SENT = "EMAIL ENVIADO";
