@@ -137,9 +137,31 @@ class JobRequest extends Entity
     private $rating;
 
     /**
+     * @ORM\Column(name="valoracion_empresa",type="integer")
+     */
+    private $ratingCompany;
+
+    /**
      * @ORM\Column(name="status",type="string", length=20)
      */
     private $status = JobRequestStatus::INIT;
+
+
+    /**
+     * @ORM\Column(name="contratacion",type="integer")
+     */
+    private $hired;
+
+    /**
+     * @ORM\Column(name="persona_contratada",type="string", length=100)
+     */
+    private $hiredPerson;
+
+    /**
+     * ORM\ManyToOne(targetEntity="Degree")
+     * ORM\JoinColumn(name="idciclo", referencedColumnName="id")
+     */
+    private $degree;
 
     /**
      * ORM\OneToMany(targetEntity="JobRequestPreselected", mappedBy="applicant",fetch="EXTRA_LAZY", cascade={"all"})
@@ -581,6 +603,73 @@ class JobRequest extends Entity
     {
         $this->status = $status;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRatingCompany()
+    {
+        return $this->ratingCompany;
+    }
+
+    /**
+     * @param mixed $ratingCompany
+     */
+    public function setRatingCompany($ratingCompany)
+    {
+        $this->ratingCompany = $ratingCompany;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHired()
+    {
+        return $this->hired;
+    }
+
+    /**
+     * @param mixed $hired
+     */
+    public function setHired($hired)
+    {
+        $this->hired = $hired;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHiredPerson()
+    {
+        return $this->hiredPerson;
+    }
+
+    /**
+     * @param mixed $hiredPerson
+     */
+    public function setHiredPerson($hiredPerson)
+    {
+        $this->hiredPerson = $hiredPerson;
+    }
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getDegree()
+    {
+        return $this->degree;
+    }
+
+    /**
+     * @param mixed $degree
+     */
+    public function setDegree($degree)
+    {
+        $this->degree = $degree;
+    }
+
 
 
     /**

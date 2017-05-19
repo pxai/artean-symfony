@@ -10,11 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class JobRequestStatus extends Entity
 {
-    const INIT = "INICIADO";
-    const PRESELECTED = "PRESELECCIÓN";
-    const SELECTED = "SELECCIÓN";
-    const MAIL_SENT = "EMAIL ENVIADO";
-    const ASSESMENT_DONE = "VALORADO";
+    const INIT = "Recepción solicitud";
+    const MAIL_SENT = "Envío candidatos";
+    const ASSESSMENT_DONE = "Valoración";
+    const CLOSE = 'Cierre';
 
     /**
      * @ORM\Column(name="id",type="integer")
@@ -33,7 +32,7 @@ class JobRequestStatus extends Entity
      */
     private $description;
 
-    public function __construct ($default = 1) {
+    public function __construct ($default = INIT) {
       $this->id = $default;
 
     }

@@ -124,14 +124,34 @@
           {{ form_widget(form.notes, {'attr': {'class': 'form-control'}}) }}
      </div>
      <div class="form-group">
+          {{ form_label(form.status) }}
+          {{ form_errors(form.status) }}
+          {{ form_widget(form.status, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
           {{ form_label(form.rating) }}
           {{ form_errors(form.rating) }}
           {{ form_widget(form.rating, {'attr': {'class': 'form-control'}}) }}
      </div>
      <div class="form-group">
-          {{ form_label(form.status) }}
-          {{ form_errors(form.status) }}
-          {{ form_widget(form.status, {'attr': {'class': 'form-control'}}) }}
+          {{ form_label(form.ratingCompany) }}
+          {{ form_errors(form.ratingCompany) }}
+          {{ form_widget(form.ratingCompany, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_label(form.hired) }}
+          {{ form_errors(form.hired) }}
+          {{ form_widget(form.hired, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_label(form.hiredPerson) }}
+          {{ form_errors(form.hiredPerson) }}
+          {{ form_widget(form.hiredPerson, {'attr': {'class': 'form-control'}}) }}
+     </div>
+     <div class="form-group">
+          {{ form_label(form.degree) }}
+          {{ form_errors(form.degree) }}
+          {{ form_widget(form.degree, {'attr': {'class': 'form-control'}}) }}
      </div>
      <div class="form-group">
           {{ form_row(form._token) }}

@@ -73,7 +73,28 @@ class JobRequestType extends AbstractType {
                         '8'     => '8',
                         '9' => '9',
                         '10' => '10'
-                        ),
+                    ),
+                    'label' => 'Valoración de Artean',
+                    'choice_attr' => array('class' => 'form-control'),
+                    'required'=>false,
+                    'expanded' => true,
+                )
+            )
+            ->add('ratingCompany', ChoiceType::class, array(
+                    'choices'  => array(
+                        '0' => '0',
+                        '1'     => '1',
+                        '2'     => '2',
+                        '3' => '3',
+                        '4'     => '4',
+                        '5'     => '5',
+                        '6' => '6',
+                        '7'     => '7',
+                        '8'     => '8',
+                        '9' => '9',
+                        '10' => '10'
+                    ),
+                    'label' => 'Valoración de la Empresa',
                     'choice_attr' => array('class' => 'form-control'),
                     'required'=>false,
                     'expanded' => true,
@@ -81,12 +102,28 @@ class JobRequestType extends AbstractType {
             )
             ->add('status', ChoiceType::class, array(
                 'choices'  => array(
-                    'INICIADO' => 'INICIADO',
-                    'PRESELECCIÓN'     => 'PRESELECCIÓN',
-                    'SELECCIÓN'     => 'SELECCIÓN',
-                    'EMAIL ENVIADO' => 'EMAIL ENVIADO',
-                    'VALORADO'     => 'VALORADO'),
+                    'Recepción solicitud ' => 'Recepción solicitud ',
+                    'Envío candidatos'     => 'Envío candidatos',
+                    'Valoración'     => 'Valoración',
+                    'Cierre'     => 'Cierre'),
                     'label' => 'Estado de Solicitud' )
+            )
+            ->add('hired', ChoiceType::class, array(
+                    'choices'  => array(
+                        'Sí' => 1,
+                        'No' => 0
+                    ),
+                    'label' => '¿Se hace contrato?',
+                    'choice_attr' => array('class' => 'form-control'),
+                    'required'=>false,
+                    'expanded' => true,
+                )
+            )
+            ->add('hiredPerson', TextType::class, array('label' => 'Persona contratada',"required"=>false))
+            ->add('degree', EntityType::class, array(
+                    'class' => 'CuatrovientosArteanBundle:Degree',
+                    'empty_data' => '',
+                    'label' => 'Ciclo de la persona contratada' )
             )
             ->add('save', SubmitType::class);
     }

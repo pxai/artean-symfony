@@ -76,12 +76,10 @@ class JobRequestBusiness extends GenericBusiness {
     }
 
     public function deleteAllPreselected ($jobrequestid) {
-        $this->changeStatus($jobrequestid, JobRequestStatus::INIT);
         return $this->entityDAO->deleteAllPreselected($jobrequestid);
     }
 
     public function deleteAllSelected ($jobrequestid) {
-        $this->changeStatus($jobrequestid, JobRequestStatus::PRESELECTED);
         return $this->entityDAO->deleteAllSelected($jobrequestid);
     }
 
@@ -91,7 +89,6 @@ class JobRequestBusiness extends GenericBusiness {
         $applicant->setId($applicantid);
         $jobRequest->addSelected($applicant);
 
-        $jobRequest->setStatus(JobRequestStatus::SELECTED);
         $this->entityDAO->update($jobRequest);
 
         return  $this->entityDAO->deletePreselected($jobrequestid, $applicantid);
@@ -102,7 +99,7 @@ class JobRequestBusiness extends GenericBusiness {
         $jobRequest->setSelectedApplicants($jobRequest->getPreselectedApplicants());
         $jobRequest->setPreselectedApplicants(null);
 
-        $jobRequest->setStatus(JobRequestStatus::SELECTED);
+
         return $this->entityDAO->update($jobRequest);
     }
 

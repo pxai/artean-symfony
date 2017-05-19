@@ -81,7 +81,7 @@ class JobRequestController extends Controller
             if ($form->isValid()) {
                 $jb = $form->getData();
                 $jobRequest = $this->get("cuatrovientos_artean.bo.jobrequest")->selectById($jb->getId());
-                $jobRequest->setStatus(jobRequestStatus::PRESELECTED);
+
                 $jobRequest->setPreselectedApplicants($jb->getPreselectedApplicants());
 
                 $this->get("cuatrovientos_artean.bo.jobrequest")->updateApplicantSelection($jobRequest);

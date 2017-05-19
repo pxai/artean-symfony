@@ -38,7 +38,13 @@
         <li><strong>Urgencia: </strong>{{ jobRequest.urgent }}</li>
         <li><strong>Incidencias: </strong>{{ jobRequest.issues }}</li>
         <li><strong>Notas: </strong>{{ jobRequest.notes }}</li>
-        <li><strong>Valoración: </strong>{{ jobRequest.rating }}</li>
+        <li><strong>Valoración de Artean: </strong>{{ jobRequest.rating }}</li>
+        <li><strong>Valoración de Empresa: </strong>{{ jobRequest.ratingCompany }}</li>
+        <li><strong>¿Se contrata? </strong>{{ jobRequest.hired }}</li>
+        <li><strong>Persona contratada: </strong>{{ jobRequest.hiredPerson }}</li>
+        {%  if jobRequest.degree is not null %}
+        <li><strong>Ciclo: </strong>{{ jobRequest.degree.name }}</li>
+        {%  endif %}
     </ul>
     <h3>1. Preseleccionar candidatos <i class="fa fa-user-plus" aria-hidden="true"></i></h3>
     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addPrecandidates">
