@@ -1,17 +1,17 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
-{% block title %}Artean :: Pages : Eliminar empresa{% endblock %}
+{% block title %}Artean :: Documentos : Eliminar empresa{% endblock %}
 {% block body %}
-	<h2><i class="fa fa-university" aria-hidden="true"></i> Centro s de enseñanza</h2>
+	<h2><i class="fa fa-university" aria-hidden="true"></i> Documentos</h2>
 
 	<a href="{{ path('cuatrovientos_artean_page') }}" class="btn">
 		<i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
 	</a>
 
-	<h3><i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar centro de enseñanza {{ page.id }}</h3>
+	<h3><i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar documento {{ page.id }}</h3>
  <div id='page'>
 		<div>
 			{% trans %}Are you sure{% endtrans %}			
-			<div class='title'>{{ page.name }}</div>
+			<div class='title'>{{ page.title }}</div>
 			<div><a href="{{ path('cuatrovientos_artean_page_delete_save',  {'id': page.id }) }}">Confirm deletion</a> </div>
 			<div><a href="javascript:history.back()">Cancel</a> </div>
 		</div>

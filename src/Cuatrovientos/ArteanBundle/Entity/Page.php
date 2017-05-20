@@ -33,7 +33,7 @@ class Page extends Entity
     private $what;
 
      /**
-     * @ORM\Column(name="pagedate",type="timestamp")
+     * @ORM\Column(name="pagedate",type="datetime")
      */
     private $newsdate;
 
@@ -54,7 +54,7 @@ class Page extends Entity
 
          
     public function __construct () {
-        $this->newsdate = time();
+        $this->newsdate = new \DateTime();
         $this->who = 1;
     }
 

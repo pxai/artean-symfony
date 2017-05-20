@@ -14,3 +14,8 @@ services:
         public: false
         tags:
             - { name: twig.extension }
+    app.twig_extension.extract:
+        class: Cuatrovientos\ArteanBundle\Twig\ExtractExtension
+        public: false
+        tags:
+            - { name: twig.extension }

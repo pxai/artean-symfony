@@ -1,17 +1,25 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
-{% block title %}Artean :: Centros : Detalle estudios{% endblock %}
+{% block title %}Artean :: Documentos : Detalle estudios{% endblock %}
 {% block body %}
-    <h2><i class="fa fa-university" aria-hidden="true"></i> Centros de enseñanza</h2>
+    <h2><i class="fa fa-university" aria-hidden="true"></i> Documentos</h2>
 
     <a href="{{ path('cuatrovientos_artean_page') }}" class="btn">
         <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
     </a>
-    <h3><i class="fa fa-search-plus" aria-hidden="true"></i> Detalle de centro</h3>
+    <h3><i class="fa fa-search-plus" aria-hidden="true"></i> Detalle de documento</h3>
     <a href="{{ path('cuatrovientos_artean_page_update', {'id': page.id }) }}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> Modificar</a>
     <ul>
      <li><strong>Id: </strong>{{ page.id }}</li> 
-     <li><strong>Título: </strong>{{ page.title }}</li> 
-</ul>
+     <li><strong>Título: </strong>{{ page.title }}</li>
+        <li><strong>Fecha: </strong>{{ page.newsdate|date('d/m/Y') }}</li>
+        <li><strong>Etiquetas: </strong>{{ page.tags }}</li>
+        <li><strong>Estado: </strong>{{ page.status }}</li>
+    </ul>
+        <h4>{{ page.title }}</h4>
+         <div>
+
+            {{ page.what }}
+        </div>
 		{#% if is_granted('ROLE_ADMIN') %#}
                 <a href="{{ path('cuatrovientos_artean_page') }}">Index</a> |
                 <a href="{{ path('cuatrovientos_artean_page_update', {'id': page.id }) }}">Update</a> |

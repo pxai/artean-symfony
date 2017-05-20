@@ -38,9 +38,12 @@ class PageType extends AbstractType {
                     // each entry in the array will be an "email" field
                       'choices'  => array(
                             'No publicada' => '0',
-                            'Publicada solo para candidatos'     => '1',
-                            'Publicada para todos'    => '2'
-                        ),          
+                            'Funcionamiento de bolsa de empleo'     => '1',
+                            'Orientación'    => '2',
+                            'Cuatrovientos Idiomas' => '3',
+                           'Observatorio de empleo' => '4'
+                        ),
+                      'label'=>'Sección del documento',
                     'choice_attr' => array('class' => 'form-control'),
                    'required'=>true,
                    'expanded' => true,

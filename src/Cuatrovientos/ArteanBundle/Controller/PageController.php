@@ -59,6 +59,10 @@ class PageController extends Controller
 
             if ($form->isValid()) {
                 $page = $form->getData();
+                $page->setPermalink($this->permalink($page->getTitle()));
+                $page->setWho(1);
+                $page->setStatus(1);
+                $page->encodeContent();
                 $this->get("cuatrovientos_artean.bo.page")->create($page);
                 $response =  $this->redirectToRoute("cuatrovientos_artean_page");
                 //$response =  $this->render('CuatrovientosArteanBundle:Page:newSave.html.twig', array('page' => $page));
@@ -93,7 +97,8 @@ class PageController extends Controller
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $page = $form->getData();
-
+                $page->encodeContent();
+                $page->setPermalink($this->permalink($page->getTitle()));
                 $this->get("cuatrovientos_artean.bo.page")->update($page);
 
                 // redirect to index
@@ -118,4 +123,11 @@ class PageController extends Controller
         return $this->forward('CuatrovientosArteanBundle:Page:index');
     }
 
+    private function permalink ($title) {
+        $url = '';
+        $patterns = array("/\s+/");
+        $subst = array("-");
+        $url = preg_replace($patterns, $subst, $title);
+        return strtolower($url);
+    }
 }

@@ -1,17 +1,17 @@
 {# src/Samples/BlogBundle/Resources/views/newPost.html.twig #}
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
-{% block title %}Artean :: Página : modificar{% endblock %}
+{% block title %}Artean :: Documentos : modificar{% endblock %}
 {% block body %}
 
-     <h2><i class="fa fa-university" aria-hidden="true"></i> Páginas</h2>
+     <h2><i class="fa fa-university" aria-hidden="true"></i> Páginas/documentos</h2>
 
      <a href="{{ path('cuatrovientos_artean_page') }}" class="btn">
           <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todas
      </a>
 
-     <h3><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Actualizar centro de enseñanza {{ id }}</h3>
+     <h3><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Actualizar de documento {{ id }}</h3>
      <script src="//cdn.tinymce.com/4/tinymce.min.js"></script><script>tinymce.init({ selector:'textarea' , automatic_uploads: true });</script>
-     <form method="post" action="{{ path('cuatrovientos_artean_news_update_save') }}">
+     <form method="post" action="{{ path('cuatrovientos_artean_page_update_save') }}">
           {{ form_errors(form) }}
           <div class="form-group">
                {{ form_widget(form.id, {'attr': {'class': 'form-control'}}) }}
