@@ -1,0 +1,14 @@
+
+{# src/Samples/BlogBundle/Resources/views/simple.html.twig #}
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean :: Página : guardar{% endblock %}
+{% block body %}
+ <h2><i class="fa fa-university" aria-hidden="true"></i> Páginas de enseñanza</h2>
+
+ <a href="{{ path('cuatrovientos_artean_page') }}" class="btn">
+  <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
+ </a>
+ <h3>¡Página guardado correctamente!</h3>
+ <strong>{{ page.name }}</strong>
+ <div><a href="{{ path('cuatrovientos_artean_page') }}">{% trans %}See all{% endtrans %}</a> </div>
+{% endblock %}

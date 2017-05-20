@@ -1,0 +1,26 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+    {% block title %}Artean :: Páginas : índice{% endblock %}
+    {% block body %}
+        <h2><i class="fa fa-university" aria-hidden="true"></i> Documentos/Páginas({{ total }}) </h2>
+        <div><a href="{{ path('cuatrovientos_artean_page') }}">{% trans %}Recargar{% endtrans %}</a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#searchformModal" data-whatever="searchPage">
+                <i class="fa fa-search" aria-hidden="true"></i> Buscar
+            </button>
+
+            <a href="{{ path('cuatrovientos_artean_page_new') }}" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo contenido</a> </div>
+        <div id="searchformModal" style="display:none";  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+
+            {% include "CuatrovientosArteanBundle:Page:search.html.twig" %}
+        </div>
+<div class="table-responsive">
+  <table class="table .table-condensed">
+     <div id='pages'>
+         <tr><th>Id</th><th>Título</th><th>Contenido</th><th></th></tr>
+        {% for page in pages %}
+            {% include "CuatrovientosArteanBundle:Page:page.html.twig" %}
+        {% endfor %}
+    </div>
+  </table>
+</div>
+
+{% endblock %}

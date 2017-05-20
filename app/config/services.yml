@@ -4,3 +4,13 @@ parameters:
 #    parameter_name: value
 
 services:
+    app.twig_extension.color:
+        class: Cuatrovientos\ArteanBundle\Twig\JobRequestStatusColorExtension
+        public: false
+        tags:
+            - { name: twig.extension }
+    app.twig_extension.flag:
+        class: Cuatrovientos\ArteanBundle\Twig\CountryFlagExtension
+        public: false
+        tags:
+            - { name: twig.extension }

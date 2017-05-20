@@ -39,3 +39,18 @@ input[type=checkbox]{
 .search-results {
     display: none;
 }
+
+.status-init {
+    background-color: lightyellow;
+}
+.status-sent {
+    background-color: lightpink;
+}
+
+.status-assessment {
+    background-color: lightBlue;
+}
+
+.status-closed {
+    background-color: lightgreen;
+}

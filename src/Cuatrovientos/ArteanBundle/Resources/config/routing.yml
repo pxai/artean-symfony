@@ -522,8 +522,7 @@ cuatrovientos_artean_applicant_dashboard_update_language_save:
     path:     /artean/applicant/language/update/save
     defaults: { _controller: CuatrovientosArteanBundle:Applicant:updateLanguageSave}
     
-# applicant jobs
-cuatrovientos_artean_applicant_dashboard_new_job_save:
+# cuatrovientos_artean_applicant_dashboard_new_job_save:
     path:     /artean/applicant/job/new/save
     defaults: { _controller: CuatrovientosArteanBundle:Applicant:newJob}
 
@@ -988,3 +987,50 @@ cuatrovientos_artean_mailing_delete_save:
     defaults: { _controller: CuatrovientosArteanBundle:Mailing:mailingDeleteSave }
     requirements: 
             'id' : '\d+'
+            
+################# page ##################
+
+cuatrovientos_artean_page:
+    path:     /artean/admin/page
+    defaults: { _controller: CuatrovientosArteanBundle:Page:index }
+
+cuatrovientos_artean_page_search:
+    path:     /artean/admin/page/search
+    defaults: { _controller: CuatrovientosArteanBundle:Page:search }
+
+cuatrovientos_artean_page_new:
+    path:     /artean/admin/page/new
+    defaults: { _controller: CuatrovientosArteanBundle:Page:newPage }
+
+cuatrovientos_artean_page_new_save:
+    path:     /artean/admin/page/new/save
+    defaults: { _controller: CuatrovientosArteanBundle:Page:newPageSave }
+
+cuatrovientos_artean_page_detail:
+    path:     /artean/admin/page/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Page:pageDetail }
+
+
+cuatrovientos_artean_page_update_save:
+    path:     /artean/admin/page/update/save
+    defaults: { _controller: CuatrovientosArteanBundle:Page:pageUpdateSave }
+
+cuatrovientos_artean_page_update:
+    path:     /artean/admin/page/update/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Page:pageUpdate }
+    requirements: 
+            'id' : '\d+'
+            
+cuatrovientos_artean_page_delete:
+    path:     /artean/admin/page/delete/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Page:pageDelete }
+    requirements: 
+            'id' : '\d+'
+
+cuatrovientos_artean_page_delete_save:
+    path:     /artean/admin/page/delete/save/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Page:pageDeleteSave }
+    requirements: 
+            'id' : '\d+'
+            
+            

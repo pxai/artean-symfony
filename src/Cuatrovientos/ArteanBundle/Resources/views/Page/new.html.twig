@@ -1,0 +1,40 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean :: Centro : nueva{% endblock %}
+{% block body %}
+   <h2><i class="fa fa-university" aria-hidden="true"></i> Centros</h2>
+
+   <a href="{{ path('cuatrovientos_artean_page') }}" class="btn">
+      <i class="fa fa-list-alt" aria-hidden="true"></i> Ver todos
+   </a>
+
+   <h3><i class="fa fa-plus" aria-hidden="true"></i> Nuevo centro de enseñanza</h3>
+   <script src="//cdn.tinymce.com/4/tinymce.min.js"></script><script>tinymce.init({ selector:'textarea' , automatic_uploads: true });</script>
+   <form method="post" action="{{ path('cuatrovientos_artean_news_new_save') }}">
+      {{ form_errors(form) }}
+      <div class="form-group">
+         {{ form_label(form.title) }}
+         {{ form_errors(form.title) }}
+         {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+      </div>
+      <div class="form-group">
+         {{ form_label(form.what) }}
+         {{ form_errors(form.what) }}
+         {{ form_widget(form.what, {'attr': {'class': 'form-control'}}) }}
+      </div>
+      <div class="form-group">
+         {{ form_label(form.tags) }}
+         {{ form_errors(form.tags) }}
+         {{ form_widget(form.tags, {'attr': {'class': 'form-control', 'placeholder' : 'Ej: AF, CI, GVEC...'}}) }}
+      </div>
+      <div class="form-group">
+         {{ form_label(form.status) }}
+         {{ form_errors(form.status) }}
+         {{ form_widget(form.status, {'attr': {'class': 'form-control'}}) }}
+      </div>
+      <div class="form-group">
+         {{ form_row(form._token) }}
+         {{ form_widget(form.save, {'attr': {'class': 'form-control'}}) }}
+      </div>
+   </form>
+
+{% endblock %}

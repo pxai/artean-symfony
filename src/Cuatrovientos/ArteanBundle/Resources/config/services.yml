@@ -124,3 +124,11 @@ services:
     cuatrovientos_artean.bo.security:
          class: Cuatrovientos\ArteanBundle\Service\Business\SecurityBusiness
          arguments: ['@cuatrovientos_artean.dao.user']
+
+    cuatrovientos_artean.dao.page:
+        class: Cuatrovientos\ArteanBundle\Service\DAO\PageDAO
+        arguments: ['CuatrovientosArteanBundle:Page', '@doctrine.orm.entity_manager' ]
+
+    cuatrovientos_artean.bo.page:
+        class: Cuatrovientos\ArteanBundle\Service\Business\PageBusiness
+        arguments: ['@cuatrovientos_artean.dao.page']
