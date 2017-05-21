@@ -78,8 +78,7 @@ input[type=checkbox]{
 }
 
 .jumbotron  {
-    background: url(../img/carousel0.jpg)
-    no-repeat center center fixed;
+    background: url(https://artean.cuatrovientos.org/img/carousel0.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
