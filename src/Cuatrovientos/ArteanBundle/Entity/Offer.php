@@ -18,12 +18,12 @@ class Offer
     private $id;
     
      /**
-     * @ORM\Column(name="company",type="string", length=50)
+     * @ORM\Column(name="empresa",type="string", length=50)
      */
     private $company;
   
      /**
-     * @ORM\Column(name="position",type="string", length=50)
+     * @ORM\Column(name="puesto",type="string", length=50)
      */
     private $position;
   

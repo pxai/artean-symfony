@@ -13,9 +13,13 @@
             {% include "CuatrovientosArteanBundle:Page:search.html.twig" %}
         </div>
 <div class="table-responsive">
+   <div> Estados: <span class="page-draft">Borrador</span> |
+       <span class="page-notpublished">No publicado</span> |
+       <span class="page-published">Publicado</span>
+   </div>
   <table class="table .table-condensed">
      <div id='pages'>
-         <tr><th>Id</th><th>Título</th><th>Contenido</th><th></th></tr>
+         <tr><th>Id</th><th>Título</th><th>Contenido</th><th>Apartado</th><th></th></tr>
         {% for page in pages %}
             {% include "CuatrovientosArteanBundle:Page:page.html.twig" %}
         {% endfor %}

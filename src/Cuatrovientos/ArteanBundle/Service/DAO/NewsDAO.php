@@ -4,12 +4,12 @@ namespace Cuatrovientos\ArteanBundle\Service\DAO;
 
 /**
  * Pello Altad
- * PageDAO
+ * NewsDAO
  * Extends GenericDAO
  */
-class PageDAO extends GenericDAO {
+class NewsDAO extends GenericDAO {
 
-    public function findAllPages($id=0, $start=0,$total=100)
+    public function findAllNews($id=0, $start=0,$total=100)
     {
         return $this->repository->createQueryBuilder('m')
         ->where('m.id > :id')
@@ -21,40 +21,40 @@ class PageDAO extends GenericDAO {
         ->getResult();
     }
 
-    public function findAllPagesByType($id=0)
+    public function findAllNewsByType($id=0)
     {
         return $this->repository->createQueryBuilder('m')
             ->where('m.id > :id')
             ->andWhere('m.status = 2')
             ->setParameter('id',$id)
-            ->orderBy('m.pageType', 'DESC')
+            ->orderBy('m.newsType', 'DESC')
             ->getQuery()
             ->getResult();
     }
-    public function findPages($term)
+    public function findNews($term)
     {
         return $this->repository->createQueryBuilder('m')
-            ->where('m.name like :name')
-            ->setParameter('name','%'.$term.'%')
-            ->orderBy('m.name', 'ASC')
+            ->where('m.title like :title')
+            ->setParameter('title','%'.$term.'%')
+            ->orderBy('m.title', 'ASC')
             ->getQuery()
             ->getResult();
     }
 
-    public function countAllPages()
+    public function countAllNews()
     {
         return $this->repository->createQueryBuilder('m')
             ->select('count(m.id)')
-            ->from('CuatrovientosArteanBundle:Page','page')
+            ->from('CuatrovientosArteanBundle:News','news')
             ->getQuery()
             ->getSingleScalarResult();
     }
 
-    public function searchPages($page, $start=0,$total=100)
+    public function searchNews($news, $start=0,$total=100)
     {
         return  $this->repository->createQueryBuilder('m')
-            ->where('m.name LIKE :name')
-            ->setParameter('name','%'.$page->getName().'%')
+            ->where('m.title LIKE :title')
+            ->setParameter('title','%'.$news->getTitle().'%')
             ->orderBy('m.id', 'DESC')
             ->getQuery()
             ->setFirstResult($start)

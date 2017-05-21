@@ -132,3 +132,19 @@ services:
     cuatrovientos_artean.bo.page:
         class: Cuatrovientos\ArteanBundle\Service\Business\PageBusiness
         arguments: ['@cuatrovientos_artean.dao.page']
+
+    cuatrovientos_artean.dao.news:
+        class: Cuatrovientos\ArteanBundle\Service\DAO\NewsDAO
+        arguments: ['CuatrovientosArteanBundle:News', '@doctrine.orm.entity_manager' ]
+
+    cuatrovientos_artean.bo.news:
+        class: Cuatrovientos\ArteanBundle\Service\Business\NewsBusiness
+        arguments: ['@cuatrovientos_artean.dao.news']
+
+    cuatrovientos_artean.dao.offer:
+        class: Cuatrovientos\ArteanBundle\Service\DAO\OfferDAO
+        arguments: ['CuatrovientosArteanBundle:OfferOpen', '@doctrine.orm.entity_manager' ]
+
+    cuatrovientos_artean.bo.offer:
+        class: Cuatrovientos\ArteanBundle\Service\Business\OfferBusiness
+        arguments: ['@cuatrovientos_artean.dao.offer']

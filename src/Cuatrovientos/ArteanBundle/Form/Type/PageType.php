@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 
@@ -37,17 +38,19 @@ class PageType extends AbstractType {
               ->add('status', ChoiceType::class, array(
                     // each entry in the array will be an "email" field
                       'choices'  => array(
-                            'No publicada' => '0',
-                            'Funcionamiento de bolsa de empleo'     => '1',
-                            'Orientación'    => '2',
-                            'Cuatrovientos Idiomas' => '3',
-                           'Observatorio de empleo' => '4'
+                            'Borrador' => '0',
+                            'No publicado'     => '1',
+                            'Publicado'    => '2'
                         ),
-                      'label'=>'Sección del documento',
+                      'label'=>'Estado',
                     'choice_attr' => array('class' => 'form-control'),
                    'required'=>true,
                    'expanded' => true,
                     )
+            )
+            ->add('pageType', EntityType::class, array(
+                    'class' => 'CuatrovientosArteanBundle:PageType',
+                    'label' => 'Tipo de contenido' )
             )
              ->add('save', SubmitType::class);
         

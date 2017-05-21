@@ -4,12 +4,12 @@ namespace Cuatrovientos\ArteanBundle\Service\DAO;
 
 /**
  * Pello Altad
- * PageDAO
+ * OfferDAO
  * Extends GenericDAO
  */
-class PageDAO extends GenericDAO {
+class OfferDAO extends GenericDAO {
 
-    public function findAllPages($id=0, $start=0,$total=100)
+    public function findAllOffers($id=0, $start=0,$total=100)
     {
         return $this->repository->createQueryBuilder('m')
         ->where('m.id > :id')
@@ -21,17 +21,17 @@ class PageDAO extends GenericDAO {
         ->getResult();
     }
 
-    public function findAllPagesByType($id=0)
+    public function findAllOffersByType($id=0)
     {
         return $this->repository->createQueryBuilder('m')
             ->where('m.id > :id')
             ->andWhere('m.status = 2')
             ->setParameter('id',$id)
-            ->orderBy('m.pageType', 'DESC')
+            ->orderBy('m.offerType', 'DESC')
             ->getQuery()
             ->getResult();
     }
-    public function findPages($term)
+    public function findOffers($term)
     {
         return $this->repository->createQueryBuilder('m')
             ->where('m.name like :name')
@@ -41,20 +41,20 @@ class PageDAO extends GenericDAO {
             ->getResult();
     }
 
-    public function countAllPages()
+    public function countAllOffers()
     {
         return $this->repository->createQueryBuilder('m')
             ->select('count(m.id)')
-            ->from('CuatrovientosArteanBundle:Page','page')
+            ->from('CuatrovientosArteanBundle:Offer','offer')
             ->getQuery()
             ->getSingleScalarResult();
     }
 
-    public function searchPages($page, $start=0,$total=100)
+    public function searchOffers($offer, $start=0,$total=100)
     {
         return  $this->repository->createQueryBuilder('m')
             ->where('m.name LIKE :name')
-            ->setParameter('name','%'.$page->getName().'%')
+            ->setParameter('name','%'.$offer->getName().'%')
             ->orderBy('m.id', 'DESC')
             ->getQuery()
             ->setFirstResult($start)

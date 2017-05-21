@@ -40,10 +40,10 @@ input[type=checkbox]{
     display: none;
 }
 
-.status-init {
+.status-init, .page-draft {
     background-color: lightyellow;
 }
-.status-sent {
+.status-sent,  .page-notpublished {
     background-color: lightpink;
 }
 
@@ -51,6 +51,37 @@ input[type=checkbox]{
     background-color: lightBlue;
 }
 
-.status-closed {
+.status-closed, .page-published {
     background-color: lightgreen;
+}
+
+.page-list {
+    margin-bottom: 2em;
+}
+
+.pagelist ul {
+    list-style-type: none;
+    padding: 0;
+}
+.pagelist ul li {
+    padding: 0.5em;
+}
+
+.offer {
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
+.offer-data {
+    font-size: 0.9em;
+    color: dimgray;
+}
+
+.jumbotron  {
+    background: url(../img/carousel0.jpg)
+    no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }

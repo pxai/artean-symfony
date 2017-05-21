@@ -29,16 +29,24 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#" id="load_candidates">
+                        <i class="fa fa-user"></i> Alta candidatos
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="#" id="load_companies">
+                        <i class="fa fa-building-o"></i> Empresas
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="{{ path('cuatrovientos_artean_login') }}">
+                        <i class="fa fa-industry" aria-hidden="true"></i> FCTs
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
+                    <a class="nav-link" href="{{ path('cuatrovientos_artean_login') }}">
+                        <i class="fa fa-lock" aria-hidden="true"></i> Entrar
+                    </a>
                 </li>
             </ul>
         </div>
@@ -130,57 +138,81 @@
 </div>
 <div class="row">
     <div class="col-md-3">
-        <div>
-            <h4>Bolsa de empleo</h4>
-            <ul class="list-group">
-                <li class="list-group-item disabled">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
+        <div class="pagelist">
+            <h4><i class="fa fa-briefcase" aria-hidden="true"></i> Bolsa de empleo</h4>
+            <ul>
+                {% for page in pages %}
+                    {% if page.pageType.id == 1 %}
+                        <li>{{ page.title }}
+                            </li>
+                    {% endif %}
+                {% endfor %}
             </ul>
         </div>
-        <div>
-            <h4>Orientación</h4>
-            <ul class="list-group">
-                <li class="list-group-item disabled">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
+
+        <div class="pagelist">
+            <h4><i class="fa fa-compass" aria-hidden="true"></i> Orientación</h4>
+            <ul>
+                {% for page in pages %}
+                    {% if page.pageType.id == 2 %}
+                        <li>{{ page.title }}
+                        </li>
+                    {% endif %}
+                {% endfor %}
             </ul>
         </div>
     </div>
     <div class="col-md-6">
-        <h3>Ofertas de empleo</h3>
+        <h3><i class="fa fa-bullhorn" aria-hidden="true"></i> Ofertas de empleo</h3>
+        <div>Últimas ofertas</div>
+        {% for offer in offers %}
+            <div class="offer">
+                <h5>{{ offer.position }}</h5>
+                <div class="offer-details">
+                    {{ offer.company }}
+                </div>
+                <div class="offer-text">
+
+                </div>
+                <div class="offer-data">{{ offer.offerdate|date('d/m/Y') }}</div>
+                </div>
+        {% endfor %}
     </div>
     <div class="col-md-3">
-        <div>
-            <h4>Noticias</h4>
-            <ul class="list-group">
-                <li class="list-group-item disabled">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">
+        <div class="pagelist">
+            <h4><i class="fa fa-newspaper-o" aria-hidden="true"></i> Noticias</h4>
+            <ul>
+                {% for anew in news %}
+
+                        <li>{{ anew.title }}
+                        </li>
+                {% endfor %}
+            </ul>
                     <a href="{{ path('cuatrovientos_artean_headlines') }}"
-                       class="btn btn-lg btn-warning-outline"><i class="fa fa-newspaper-o"
-                                                                 aria-hidden="true"></i> Leer más</a>
-                </li>
+                       class="btn btn-lg btn-warning-outline"><i class="fa fa-newspaper-o"></i>
+                        Ver más</a>
+
+        </div>
+        <div class="pagelist">
+            <h4><i class="fa fa-globe" aria-hidden="true"></i> Cuatrovientos Idiomas</h4>
+            <ul>
+                {% for page in pages %}
+                    {% if page.pageType.id == 3 %}
+                        <li>{{ page.title }}
+                        </li>
+                    {% endif %}
+                {% endfor %}
             </ul>
         </div>
-        <div>
-            <h4>Cuatrovientos Idiomas</h4>
-            <ul class="list-group">
-                <li class="list-group-item disabled">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-            </ul>
-        </div>
-        <div>
-            <h4>Observatorio de empleo</h4>
-            <ul class="list-group">
-                <li class="list-group-item disabled">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
+        <div class="pagelist">
+            <h4><i class="fa fa-binoculars" aria-hidden="true"></i> Observatorio de empleo</h4>
+            <ul>
+                {% for page in pages %}
+                    {% if page.pageType.id == 4 %}
+                        <li>{{ page.title }}
+                        </li>
+                    {% endif %}
+                {% endfor %}
             </ul>
         </div>
     </div>
@@ -209,6 +241,24 @@
         <script src="{{ asset_url }}"></script>
      {  %endjavascripts % #}
 {% endblock %}
-{% block extrascripts %}{% endblock %}
+
+{% block extrascripts %}
+<script language="javascript">
+
+
+    $('#load_candidates').click(function (e) {
+                e.preventDefault();
+                $('.carousel').carousel(0);
+            });
+    $('#load_companies').click(function (e) {
+        e.preventDefault();
+        $('.carousel').carousel(2);
+    });
+    $('#load_login').click(function (e) {
+        e.preventDefault();
+        $('.carousel').carousel(3);
+    });
+    </script>
+{% endblock %}
 </body>
 </html>

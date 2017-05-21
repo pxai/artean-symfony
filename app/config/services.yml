@@ -19,3 +19,8 @@ services:
         public: false
         tags:
             - { name: twig.extension }
+    app.twig_extension.pagecolor:
+        class: Cuatrovientos\ArteanBundle\Twig\PageStatusColorExtension
+        public: false
+        tags:
+            - { name: twig.extension }

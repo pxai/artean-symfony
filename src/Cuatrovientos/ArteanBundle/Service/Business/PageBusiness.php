@@ -13,6 +13,10 @@ class PageBusiness extends GenericBusiness {
         return $this->entityDAO->findAllPages($id, $start,$total);
     }
 
+    public function findAllPagesByType($id=0)
+    {
+        return $this->entityDAO->findAllPagesByType($id);
+    }
 
     public function findPages($term) {
         return $this->entityDAO->findPages($term);

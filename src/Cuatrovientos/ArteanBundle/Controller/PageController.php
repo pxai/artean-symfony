@@ -61,7 +61,6 @@ class PageController extends Controller
                 $page = $form->getData();
                 $page->setPermalink($this->permalink($page->getTitle()));
                 $page->setWho(1);
-                $page->setStatus(1);
                 $page->encodeContent();
                 $this->get("cuatrovientos_artean.bo.page")->create($page);
                 $response =  $this->redirectToRoute("cuatrovientos_artean_page");

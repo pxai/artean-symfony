@@ -52,6 +52,11 @@ class Page extends Entity
      */
     private $tags;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="PageType")
+     * @ORM\JoinColumn(name="idpagetype", referencedColumnName="id")
+     */
+    private $pageType;
          
     public function __construct () {
         $this->newsdate = new \DateTime();
@@ -137,6 +142,22 @@ class Page extends Entity
 
     public function setTags($tags) {
         $this->tags = $tags;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPageType()
+    {
+        return $this->pageType;
+    }
+
+    /**
+     * @param mixed $pageType
+     */
+    public function setPageType($pageType)
+    {
+        $this->pageType = $pageType;
     }
 
 
