@@ -25,7 +25,7 @@
                 data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#"><i class="fa fa-compass"></i> Artean</a>
+        <a class="navbar-brand" href="{{ path('cuatrovientos_artean_homepage') }}"><i class="fa fa-compass"></i> Artean</a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
@@ -143,7 +143,10 @@
             <ul>
                 {% for page in pages %}
                     {% if page.pageType.id == 1 %}
-                        <li>{{ page.title }}
+                        <li>
+                            <a href="{{ path('cuatrovientos_artean_homepage_page', {'permalink': page.permalink }) }}" title="{{ page.title }}">
+                            {{ page.title }}
+                                </a>
                             </li>
                     {% endif %}
                 {% endfor %}
@@ -155,13 +158,17 @@
             <ul>
                 {% for page in pages %}
                     {% if page.pageType.id == 2 %}
-                        <li>{{ page.title }}
+                        <li>
+                            <a href="{{ path('cuatrovientos_artean_homepage_page', {'permalink': page.permalink }) }}" title="{{ page.title }}">
+                                {{ page.title }}
+                            </a>
                         </li>
                     {% endif %}
                 {% endfor %}
             </ul>
         </div>
     </div>
+    {% block body %}
     <div class="col-md-6">
         <h3><i class="fa fa-bullhorn" aria-hidden="true"></i> Ofertas de empleo</h3>
         <div>Últimas ofertas</div>
@@ -178,6 +185,7 @@
                 </div>
         {% endfor %}
     </div>
+    {% endblock body %}
     <div class="col-md-3">
         <div class="pagelist">
             <h4><i class="fa fa-newspaper-o" aria-hidden="true"></i> Noticias</h4>
@@ -198,7 +206,10 @@
             <ul>
                 {% for page in pages %}
                     {% if page.pageType.id == 3 %}
-                        <li>{{ page.title }}
+                        <li>
+                            <a href="{{ path('cuatrovientos_artean_homepage_page', {'permalink': page.permalink }) }}" title="{{ page.title }}">
+                                {{ page.title }}
+                            </a>
                         </li>
                     {% endif %}
                 {% endfor %}
@@ -209,7 +220,10 @@
             <ul>
                 {% for page in pages %}
                     {% if page.pageType.id == 4 %}
-                        <li>{{ page.title }}
+                        <li>
+                            <a href="{{ path('cuatrovientos_artean_homepage_page', {'permalink': page.permalink }) }}" title="{{ page.title }}">
+                                {{ page.title }}
+                            </a>
                         </li>
                     {% endif %}
                 {% endfor %}
@@ -217,7 +231,7 @@
         </div>
     </div>
 </div>
-{% block body %}{% endblock body %}
+
 
 </div>
 {% block javascripts %}

@@ -14,10 +14,14 @@ class DefaultController extends Controller
         return $this->render('CuatrovientosArteanBundle:Default:default.html.twig', array('offers'=>$offers,'news' => $news,'pages'=>$pages));
     }
 
-    public function pageAction($page)
+    public function pageAction($permalink)
     {
-        $news = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:News")->findPublicNews();
-        $pages = $this->get("cuatrovientos_artean.bo.page")->findAllPagesByType(0);
-        return $this->render('CuatrovientosArteanBundle:Default:default.html.twig', array('news' => $news));
+        $offers = $this->get("cuatrovientos_artean.bo.offer")->findAllOffers(0,0,10);
+        $news = $this->get("cuatrovientos_artean.bo.news")->findAllNews(0,0,10);
+        $pages = $this->get("cuatrovientos_artean.bo.page")->findAllPages(0);
+
+        $current = $this->get("cuatrovientos_artean.bo.page")->findPageByPermalink($permalink);
+        return $this->render('CuatrovientosArteanBundle:Default:page.html.twig', array('current'=>$current,'offers'=>$offers,'news' => $news,'pages'=>$pages));
+
     }
 }

@@ -31,6 +31,15 @@ class PageDAO extends GenericDAO {
             ->getQuery()
             ->getResult();
     }
+
+    public function findPageByPermalink($permalink) {
+        return $this->repository->createQueryBuilder('m')
+            ->where('m.permalink = :permalink')
+            ->setParameter('permalink',$permalink)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
     public function findPages($term)
     {
         return $this->repository->createQueryBuilder('m')

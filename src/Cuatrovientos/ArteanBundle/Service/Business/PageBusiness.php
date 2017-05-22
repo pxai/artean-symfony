@@ -22,6 +22,9 @@ class PageBusiness extends GenericBusiness {
         return $this->entityDAO->findPages($term);
     }
 
+    public function findPageByPermalink($permalink) {
+        return $this->entityDAO->findPageByPermalink($permalink);
+    }
 
     public function countAllPages()
     {
