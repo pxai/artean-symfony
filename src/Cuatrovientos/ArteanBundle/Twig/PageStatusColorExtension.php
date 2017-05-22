@@ -16,7 +16,9 @@ class PageStatusColorExtension extends \Twig_Extension
            "0" => "page-draft",
            "1" => "page-notpublished",
             "2" => "page-published",
-            "3" => "page-private"
+            "3" => "page-private",
+            "5" => "page-offer",
+            "6" => "page-published"
         );
         return $cssClass[$status];
     }

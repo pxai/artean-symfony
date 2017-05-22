@@ -96,12 +96,13 @@ class OfferOpen
     /**
      * @ORM\Column(name="publicada",type="integer")
      */
-    private $published;
+    private $published = 0;
 
        
     public function __construct () {
         $this->required_languages = array();
         $this->required_studies = array();
+        $this->published = 0;
     }
 
   

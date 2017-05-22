@@ -21,6 +21,16 @@ class OfferDAO extends GenericDAO {
         ->getResult();
     }
 
+    public function findAllOffersByStatus($status=0)
+    {
+        return $this->repository->createQueryBuilder('m')
+            ->where('m.published = :status')
+            ->setParameter('status',$status)
+            ->orderBy('m.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
     public function findAllOffersByType($id=0)
     {
         return $this->repository->createQueryBuilder('m')

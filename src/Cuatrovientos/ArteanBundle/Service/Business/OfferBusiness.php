@@ -18,6 +18,11 @@ class OfferBusiness extends GenericBusiness {
         return $this->entityDAO->findAllOffersByType($id);
     }
 
+    public function findAllOffersByStatus($status=0)
+    {
+        return $this->entityDAO->findAllOffersByStatus($status);
+    }
+
     public function findOffers($term) {
         return $this->entityDAO->findOffers($term);
     }

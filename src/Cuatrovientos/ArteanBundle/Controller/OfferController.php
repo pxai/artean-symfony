@@ -19,10 +19,16 @@ class OfferController extends Controller
 
         $offers = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:OfferOpen")->findOffers();
         return $this->render('CuatrovientosArteanBundle:Offer:index.html.twig' , array('offers'=>$offers));
-    }  
-    
+    }
 
-   public function newOfferOpenAction()
+    public function indexStatusAction($status)
+    {
+
+        $offers = $this->get("cuatrovientos_artean.bo.offer")->findAllOffersByStatus($status);
+        return $this->render('CuatrovientosArteanBundle:Offer:index.html.twig' , array('offers'=>$offers));
+    }
+
+    public function newOfferOpenAction()
     {
         $form = $this->createForm(OfferType::class);
         return $this->render('CuatrovientosArteanBundle:Offer:new.html.twig' , array('form'=> $form->createView()));
@@ -186,8 +192,8 @@ class OfferController extends Controller
         $statement = $em->getConnection()->prepare($sql);
         $statement->execute($params);
         $id = $em->getConnection()->lastInsertId();
-
-        $em->remove($offer);
+        $offer->setPublished(5);
+        $em->persist($offer);
         $em->flush();
         // return $this->forward('CuatrovientosArteanBundle:Offer:index');
         return $this->redirect('https://artean.cuatrovientos.org/?ap_manage_tbsolicitudes&ta=update&id='.$id);
@@ -213,7 +219,7 @@ class OfferController extends Controller
         
         $em = $this->getDoctrine()->getEntityManager();
         $em->persist($news);
-        $offer->setPublished(1);
+        $offer->setPublished(6);
         $em->persist($offer);
         
         $em->flush();

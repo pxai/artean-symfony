@@ -141,7 +141,13 @@ cuatrovientos_artean_open_offer_ad_save:
 cuatrovientos_artean_offer:
     path:     /artean/admin/offer
     defaults: { _controller: CuatrovientosArteanBundle:Offer:index }
-    
+
+cuatrovientos_artean_offer_status:
+    path:     /artean/admin/offer/status/{status}
+    defaults: { _controller: CuatrovientosArteanBundle:Offer:indexStatus }
+    requirements:
+            'status' : '\d+'
+
 cuatrovientos_artean_offer_new:
     path:     /artean/admin/offer/new
     defaults: { _controller: CuatrovientosArteanBundle:Offer:newOffer }

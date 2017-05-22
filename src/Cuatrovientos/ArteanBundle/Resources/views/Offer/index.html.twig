@@ -1,10 +1,17 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}Ofertas::Index{% endblock %}
 {% block body %}
-{% trans %}Ofertas introducidas por empreass{% endtrans %}
+
+    <h2><i class="fa fa-bullhorn" aria-hidden="true"></i> {% trans %}Ofertas introducidas por empreass{% endtrans %}</h2>
+    <div><a href="{{ path('cuatrovientos_artean_offer') }}">{% trans %}Recargar{% endtrans %}</a>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <a href="{{ path('cuatrovientos_artean_offer_status', {'status': 0 }) }}" class="page-draft btn btn-secondary">No publicado</a>
+        <a href="{{ path('cuatrovientos_artean_offer_status', {'status': 5 }) }}" class="btn btn-secondary page-offer">Convertida en solicitud</a>
+        <a href="{{ path('cuatrovientos_artean_offer_status', {'status': 6 }) }}" class="btn btn-secondary page-published">Publicada como noticia</a>
+    </div>
 <div class="table-responsive">
   <table class="table .table-condensed">
-      <tr><th>Empresa</th><th>Fecha</th><th>Puesto</th><th></th></tr>
+      <tr><th>Empresa</th><th>Fecha</th><th>Puesto</th><th>Estado</th><th></th></tr>
         {% for offer in offers %}
             {% include "CuatrovientosArteanBundle:Offer:offers.html.twig" %}
         {% endfor %}
