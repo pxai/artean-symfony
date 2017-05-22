@@ -38,7 +38,7 @@ class NewsType extends AbstractType {
                     // each entry in the array will be an "email" field
                       'choices'  => array(
                             'No publicada' => '0',
-                            'Publicada solo para candidatos'     => '1',
+                            'Publicada solo para candidatos'     => '3',
                             'Publicada para todos'    => '2'
                         ),          
                     'choice_attr' => array('class' => 'form-control'),

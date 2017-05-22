@@ -71,6 +71,12 @@ cuatrovientos_artean_news:
     path:     /artean/admin/news
     defaults: { _controller: CuatrovientosArteanBundle:News:index }
 
+cuatrovientos_artean_news_status:
+    path:     /artean/admin/news/status/{status}
+    defaults: { _controller: CuatrovientosArteanBundle:News:indexStatus }
+    requirements:
+        'status' : '\d+'
+
 cuatrovientos_artean_headlines:
     path:     /artean/open/news/headlines
     defaults: { _controller: CuatrovientosArteanBundle:News:showHeadlines }

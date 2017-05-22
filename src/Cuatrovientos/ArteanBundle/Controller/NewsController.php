@@ -20,7 +20,12 @@ class NewsController extends Controller
         return $this->render('CuatrovientosArteanBundle:News:index.html.twig', array('news'=>$news));
     }
 
-    
+    public function indexStatusAction($status)
+    {
+        $news = $this->get("cuatrovientos_artean.bo.news")->findAllNewsByStatus($status);
+        return $this->render('CuatrovientosArteanBundle:News:index.html.twig', array('news'=>$news));
+    }
+
         /**
     *
     *

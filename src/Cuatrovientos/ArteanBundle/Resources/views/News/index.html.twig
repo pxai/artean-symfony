@@ -7,7 +7,15 @@
             <i class="fa fa-search" aria-hidden="true"></i> Buscar
         </button>
         <a href="{{ path('cuatrovientos_artean_news_new') }}" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Nueva noticia</a> </div>
-<div class="table-responsive">
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <a href="{{ path('cuatrovientos_artean_news_status', {'status': 0 }) }}" class="page-draft btn btn-secondary">No publicado</a>
+        <a href="{{ path('cuatrovientos_artean_news_status', {'status': 3 }) }}" class="btn btn-secondary page-private">Publicado para candidatos</a>
+        <a href="{{ path('cuatrovientos_artean_news_status', {'status': 2 }) }}" class="btn btn-secondary page-published">Abierto al público</a>
+    </div>
+
+    <div class="table-responsive">
+
+
   <table class="table .table-condensed">
       <tr><th>Id</th><th>Título</th><th>Publicada por</th><th></th>
  </tr>

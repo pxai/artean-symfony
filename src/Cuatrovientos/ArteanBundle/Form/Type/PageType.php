@@ -38,8 +38,8 @@ class PageType extends AbstractType {
               ->add('status', ChoiceType::class, array(
                     // each entry in the array will be an "email" field
                       'choices'  => array(
-                            'Borrador' => '0',
-                            'No publicado'     => '1',
+                            'Borrador' => '1',
+                            'No publicado'     => '0',
                             'Publicado'    => '2'
                         ),
                       'label'=>'Estado',

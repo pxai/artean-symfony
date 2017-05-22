@@ -41,19 +41,20 @@ input[type=checkbox]{
 }
 
 .status-init, .page-draft {
-    background-color: lightyellow;
+    background-color: lightyellow  !important;
 }
 .status-sent,  .page-notpublished {
-    background-color: lightpink;
+    background-color: lightpink  !important;
 }
 
-.status-assessment {
-    background-color: lightBlue;
+.status-assessment, .page-private {
+    background-color: lightBlue  !important;
 }
 
 .status-closed, .page-published {
-    background-color: lightgreen;
+    background-color: lightgreen  !important;
 }
+
 
 .page-list {
     margin-bottom: 2em;
