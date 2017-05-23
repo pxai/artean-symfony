@@ -13,12 +13,28 @@ class CountryFlagExtension extends \Twig_Extension
     public function flagFilter($countryCode)
     {
         $flags = array(
-           "ES" => "status-init",
-            "EU" => "status-sent",
-           "IN" => "status-sent",
-            "EN" => "status-assessment",
-            "FR" => "status-closed"
-        );
-        return $flags[$countryCode];
+           "AL" => "🇩🇪", "CAT" => "CAT",
+            "CA" => "CAT",
+           "EU" => "EU",
+            "FR" => "🇫🇷",
+            "IN" => "🇬🇧",
+            "IT" => "🇮🇹",
+            "PT" => "🇵🇹",
+            "ES" => "🇪🇸",
+            "RU" => "🇷🇺",
+            "RO" => "🇷🇴",
+            "UK" => "🇺🇦",
+            "GAL" => "GAL",
+            "JP" => "🇯🇵",
+            "CH" => "🇨🇳",
+            "BG" => "🇧🇬",
+            "MA" => "🇲🇦",
+            "PO"=> "🇵🇱"
+            );
+            if (array_key_exists($countryCode, $flags)) {
+                return $flags[$countryCode];
+            } else {
+                return $countryCode;
+             }
     }
 }

@@ -2,7 +2,7 @@
     <option value="{{ applicant.id }}">
         {{ applicant.surname }}, {{ applicant.name }}. Id:
         {% for language in applicant.languages %}
-          {{ language.language.id }},
+          {{ language.language.id|flag }},
         {% endfor %}
         . Ciclos:
         {% for studies in applicant.studies %}
