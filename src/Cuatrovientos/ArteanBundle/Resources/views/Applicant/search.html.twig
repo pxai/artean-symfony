@@ -23,6 +23,11 @@
                {{ form_widget(formSearch.studies, {'attr': {'class': 'form-control'}}) }}
             </div>
             <div class="form-group">
+               {{ form_label(formSearch.year) }}
+               {{ form_errors(formSearch.year) }}
+               {{ form_widget(formSearch.year, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
                {{ form_label(formSearch.languages) }}
                {{ form_errors(formSearch.languages) }}
                {{ form_widget(formSearch.languages, {'attr': {'class': 'form-control'}}) }}

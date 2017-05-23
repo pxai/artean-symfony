@@ -129,6 +129,11 @@ class Applicant extends Entity
 
     private $courses;
 
+    /*
+     * studies end year, for searches
+     */
+    private $year;
+
     /**
      * @ORM\Column(name="sel",type="integer")
      */
@@ -472,6 +477,22 @@ class Applicant extends Entity
     public function setActive($active)
     {
         $this->active = $active;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getYear()
+    {
+        return $this->year;
+    }
+
+    /**
+     * @param mixed $year
+     */
+    public function setYear($year)
+    {
+        $this->year = $year;
     }
 
 

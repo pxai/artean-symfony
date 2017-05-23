@@ -42,6 +42,10 @@ class ApplicantAdvancedSearchType extends AbstractType {
                     'multiple' => true
                 )
             )
+            ->add('year', TextType::class,array(
+                "label"=>"Año finalización",
+                "required"=>false
+            ))
             ->add('languages', EntityType::class, array(
                     'label' => 'Idiomas',
                     'class' => 'CuatrovientosArteanBundle:Language',

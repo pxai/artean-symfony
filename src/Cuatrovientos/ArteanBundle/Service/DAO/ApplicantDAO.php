@@ -114,7 +114,9 @@ class ApplicantDAO extends GenericDAO {
         if (count($applicant->getStudies())) {
             $queryBuilder->leftJoin('m.studies', 's', 'studies')
                 ->andWhere('s.studies IN (:studies)')
-                ->setParameter('studies', $applicant->getStudies());
+                ->andWhere('s.endYear  like :year')
+                ->setParameter('studies', $applicant->getStudies())
+                ->setParameter('year', '%'.$applicant->getYear().'%');
         }
 
         return $queryBuilder
