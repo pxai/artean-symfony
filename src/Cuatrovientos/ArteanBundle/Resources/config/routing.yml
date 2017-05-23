@@ -231,7 +231,7 @@ cuatrovientos_artean_logout:
     defaults: { _controller: CuatrovientosArteanBundle:Security:logout }
 
 cuatrovientos_artean_login_redirect:
-    path:     /artean/redirect
+    path:     /artean/login/redirect
     defaults: { _controller: CuatrovientosArteanBundle:Security:arteanRedirect }
 
 cuatrovientos_artean_profile:

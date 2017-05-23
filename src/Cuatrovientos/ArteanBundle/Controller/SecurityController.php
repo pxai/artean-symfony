@@ -165,14 +165,16 @@ class SecurityController extends Controller
     }
 
     /**
-     * @Route("/artean/redirect", name="artean_redirect")
+     * @Route("/artean/login/redirect", name="artean_redirect")
      */
     public function arteanRedirectAction()
     {
         //$this->get('session')->set('loginUserId', $user['user_id']);
         //return $this->redirect("/artean/arteans/admin/workorders");
-
+        $logger = $this->get('logger');
+        $logger->info('I just got the logger: here we are r');
         if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+            $logger->info('I just got the logger: here we are motherfucker');
            return  $this->render('CuatrovientosArteanBundle:Default:adminDashboard.html.twig');
         } elseif ($this->get('security.authorization_checker')->isGranted('ROLE_STUDENT')) {
             return $this->redirectToRoute("cuatrovientos_artean_workorder");
