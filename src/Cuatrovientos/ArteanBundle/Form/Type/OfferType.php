@@ -79,6 +79,18 @@ class OfferType extends AbstractType {
             ->add('other_knowledges', TextareaType::class, array('label'=>'Otros conocimientos'))
             ->add('observations', TextareaType::class, array('label' => 'Observaciones'))
             ->add('contact', TextareaType::class, array('label' => 'Contacto'))
+            ->add('published', ChoiceType::class, array(
+                    // each entry in the array will be an "email" field
+                    'choices'  => array(
+                        'No publicada' => '0',
+                        'Convertida en solicitud'     => '5',
+                        'Publicada'    => '6'
+                    ),
+                    'choice_attr' => array('class' => 'form-control'),
+                    'required'=>false,
+                    'expanded' => true,
+                )
+            )
             ->add('save', SubmitType::class, array('label'=> 'Enviar'));
         
           $builder->addEventListener(
