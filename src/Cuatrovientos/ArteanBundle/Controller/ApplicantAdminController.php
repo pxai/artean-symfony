@@ -94,6 +94,38 @@ class ApplicantAdminController extends Controller
                 'applicant'=>$applicant));
     }
 
+    public function resetPasswordAction($id)
+    {
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($id);
+
+        if ($applicant) {
+            $newPassword = $applicant->getPhone();
+            $applicant->getUser()->setPassword($newPassword );
+            $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);
+            $this->addFlash('notice', 'Contraseña modificada con éxito. Usuario: '. $applicant->getUser()->getUsername().'. Password: ' . $newPassword);
+        }
+        return $this->detailAction($id);
+    }
+
+    public function createAccountAction($id)
+    {
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($id);
+
+        if ($applicant) {
+            $newPassword = $applicant->getPhone();
+            $user = new User();
+            $user->setLogin($applicant->getEmail());
+            $user->setEmail($applicant->getEmail());
+            $user->setPassword($newPassword );
+            $user->setFullname($applicant->getName().' '.$applicant->getSurname());
+            $applicant->setUser($user);
+            $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);
+            $this->addFlash('notice', 'Cuenta creada con éxito. Usuario: '. $applicant->getUser()->getUsername().'. Password: ' . $newPassword);
+        }
+            return $this->detailAction($id);
+    }
+
+
     public function detailResumedAction($id)
     {
         $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($id);

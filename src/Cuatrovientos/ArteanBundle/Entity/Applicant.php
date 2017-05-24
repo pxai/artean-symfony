@@ -127,6 +127,12 @@ class Applicant extends Entity
      */
     private $jobOffers;
 
+    /**
+    * @ORM\OneToOne(targetEntity="User", cascade="ALL")
+    * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+    */
+    private $user;
+
     private $courses;
 
     /*
@@ -493,6 +499,22 @@ class Applicant extends Entity
     public function setYear($year)
     {
         $this->year = $year;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
     }
 
 
