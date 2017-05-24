@@ -177,9 +177,9 @@ class SecurityController extends Controller
             $logger->info('I just got the logger: here we are motherfucker');
            return  $this->render('CuatrovientosArteanBundle:Default:adminDashboard.html.twig');
         } elseif ($this->get('security.authorization_checker')->isGranted('ROLE_STUDENT')) {
-            return $this->redirectToRoute("cuatrovientos_artean_workorder");
+            return $this->redirectToRoute("cuatrovientos_artean_applicant_dashboard");
         } elseif ($this->get('security.authorization_checker')->isGranted('ROLE_USER')){
-            return $this->redirectToRoute("cuatrovientos_artean_workorder");
+            return $this->redirectToRoute("cuatrovientos_artean_applicant_dashboard");
         }
     }
 

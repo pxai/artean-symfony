@@ -538,7 +538,7 @@ cuatrovientos_artean_applicant_dashboard_update_language_save:
     path:     /artean/applicant/language/update/save
     defaults: { _controller: CuatrovientosArteanBundle:Applicant:updateLanguageSave}
     
-# cuatrovientos_artean_applicant_dashboard_new_job_save:
+cuatrovientos_artean_applicant_dashboard_new_job_save:
     path:     /artean/applicant/job/new/save
     defaults: { _controller: CuatrovientosArteanBundle:Applicant:newJob}
 
