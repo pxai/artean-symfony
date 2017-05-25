@@ -1015,7 +1015,12 @@ cuatrovientos_artean_mailing_delete_save:
     defaults: { _controller: CuatrovientosArteanBundle:Mailing:mailingDeleteSave }
     requirements: 
             'id' : '\d+'
-            
+
+cuatrovientos_artean_mailing_add_selected_applicants:
+    path:     /artean/admin/mailing/add/selected/applicants
+    defaults: { _controller: CuatrovientosArteanBundle:Mailing:mailingAddSelectedApplicants }
+
+
 ################# page ##################
 
 cuatrovientos_artean_page:
