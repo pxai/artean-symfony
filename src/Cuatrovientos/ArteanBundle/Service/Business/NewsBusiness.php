@@ -13,6 +13,11 @@ class NewsBusiness extends GenericBusiness {
         return $this->entityDAO->findAllNews($id, $start,$total);
     }
 
+    public function findAllPublishedNews($id=0, $start=0,$total=100)
+    {
+        return $this->entityDAO->findAllPublishedNews($id, $start,$total);
+    }
+
     public function findAllNewsByType($id=0)
     {
         return $this->entityDAO->findAllNewsByType($id);

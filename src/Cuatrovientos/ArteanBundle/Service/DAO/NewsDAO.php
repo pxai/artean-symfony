@@ -21,6 +21,17 @@ class NewsDAO extends GenericDAO {
         ->getResult();
     }
 
+    public function findAllPublishedNews($id=0, $start=0,$total=100)
+    {
+        return $this->repository->createQueryBuilder('m')
+            ->where('m.status=2')
+            ->orderBy('m.id', 'DESC')
+            ->getQuery()
+            ->setFirstResult($start)
+            ->setMaxResults($total)
+            ->getResult();
+    }
+
     public function findAllNewsByType($id=0)
     {
         return $this->repository->createQueryBuilder('m')
