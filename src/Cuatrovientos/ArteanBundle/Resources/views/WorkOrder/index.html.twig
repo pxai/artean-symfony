@@ -9,9 +9,12 @@
 <div class="table-responsive">
   <table class="table .table-condensed">
       <tr><th>Id</th><th>Fecha</th><th>Descripción</th><th>Horas</th><th></th></tr>
+        {% set hours = 0 %}
         {% for workOrder in workOrders %}
             {% include "CuatrovientosArteanBundle:WorkOrder:workOrders.html.twig" %}
+            {% set hours = hours + workOrder.hours %}
         {% endfor %}
   </table>
+    Total horas: {{ hours }}
 </div>
 {% endblock %}
