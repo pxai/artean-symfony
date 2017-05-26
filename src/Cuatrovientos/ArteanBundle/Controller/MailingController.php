@@ -2,10 +2,12 @@
 
 namespace  Cuatrovientos\ArteanBundle\Controller;
 
+use Cuatrovientos\ArteanBundle\Form\Type\CompanySearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Cuatrovientos\ArteanBundle\Entity\Mailing;
 use Cuatrovientos\ArteanBundle\Entity\Applicant;
+use Cuatrovientos\ArteanBundle\Entity\Company;
 use Cuatrovientos\ArteanBundle\Form\Type\MailingType;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantAdvancedSearchType;
 
@@ -76,8 +78,9 @@ class MailingController extends Controller
    public function mailingDetailAction($id=1)
     {
         $form = $this->createForm(ApplicantAdvancedSearchType::class, new Applicant());
+        $formCompany = $this->createForm(CompanySearchType::class, new Company());
         $mailing = $this->get("cuatrovientos_artean.bo.mailing")->selectById($id);
-        return $this->render('CuatrovientosArteanBundle:Mailing:detail.html.twig',array('form'=>$form->createView(),'mailing'=> $mailing));
+        return $this->render('CuatrovientosArteanBundle:Mailing:detail.html.twig',array('form'=>$form->createView(),'formCompany'=>$formCompany->createView(),'mailing'=> $mailing));
     }
 
 

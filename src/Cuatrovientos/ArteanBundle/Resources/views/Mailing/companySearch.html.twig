@@ -14,28 +14,28 @@
 
    {{ form_errors(form) }}
    <div class="form-group">
-      {{ form_label(form.cif) }}
-      {{ form_errors(form.cif) }}
-      {{ form_widget(form.cif, {'attr': {'class': 'form-control'}}) }}
+      {{ form_label(formCompany.cif) }}
+      {{ form_errors(formCompany.cif) }}
+      {{ form_widget(formCompany.cif, {'attr': {'class': 'form-control'}}) }}
    </div>
    <div class="form-group">
-      {{ form_label(form.empresa) }}
-      {{ form_errors(form.empresa) }}
-      {{ form_widget(form.empresa, {'attr': {'class': 'form-control'}}) }}
+      {{ form_label(formCompany.empresa) }}
+      {{ form_errors(formCompany.empresa) }}
+      {{ form_widget(formCompany.empresa, {'attr': {'class': 'form-control'}}) }}
    </div>
 
    <div class="form-group">
-      {{ form_label(form.fct) }}
-      {{ form_errors(form.fct) }}
-      {{ form_widget(form.fct, {'attr': {'class': 'form-control'}}) }}
+      {{ form_label(formCompany.fct) }}
+      {{ form_errors(formCompany.fct) }}
+      {{ form_widget(formCompany.fct, {'attr': {'class': 'form-control'}}) }}
    </div>
 
    <div class="form-group">
-      {{ form_label(form.convenio) }}
-      {{ form_errors(form.convenio) }}
-      {{ form_widget(form.convenio, {'attr': {'class': 'form-control'}}) }}
+      {{ form_label(formCompany.convenio) }}
+      {{ form_errors(formCompany.convenio) }}
+      {{ form_widget(formCompany.convenio, {'attr': {'class': 'form-control'}}) }}
    </div>
-      {{ form_row(form._token) }}
+      {{ form_row(formCompany._token) }}
 
       </div>
       <div class="modal-footer">

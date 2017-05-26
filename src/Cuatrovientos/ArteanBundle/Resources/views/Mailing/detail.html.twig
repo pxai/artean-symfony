@@ -25,15 +25,22 @@
 		{#% endif % #}
 
     <h3>1. Seleccionar destinatarios<i class="fa fa-user-plus" aria-hidden="true"></i></h3>
+    <h4>Candidatos</h4>
     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addPrecandidates">
         <i class="fa fa-user-plus" aria-hidden="true"></i>
         Candidatos
     </button>
+    <h4>Empresas</h4>
     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addCompanies">
         <i class="fa fa-industry" aria-hidden="true"></i>
         Empresas
     </button>
 
+    <h3><i class="fa fa-envelope" aria-hidden="true"></i> 2. Enviar email</h3>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addCompanies">
+        <i class="fa fa-envelope" aria-hidden="true"></i>
+        ¡Enviar email!
+    </button>
     <!-- Modal -->
     <div class="modal fade" id="addPrecandidates" tabindex="-1" role="dialog" aria-labelledby="addPrecandidates" aria-hidden="true">
         <div class="modal-dialog  modal-lg" role="document">
@@ -77,7 +84,7 @@
         <div class="modal-dialog  modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"> <i class="fa fa-users" aria-hidden="true"></i> Añadir precandidatos</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"> <i class="fa fa-users" aria-hidden="true"></i> Añadir empresas</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
