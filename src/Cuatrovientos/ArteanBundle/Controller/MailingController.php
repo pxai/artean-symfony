@@ -10,6 +10,7 @@ use Cuatrovientos\ArteanBundle\Entity\Applicant;
 use Cuatrovientos\ArteanBundle\Entity\Company;
 use Cuatrovientos\ArteanBundle\Form\Type\MailingType;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantAdvancedSearchType;
+use Cuatrovientos\ArteanBundle\Form\Type\MailingSelectedApplicantsType;
 
 class MailingController extends Controller
 {
@@ -124,4 +125,30 @@ class MailingController extends Controller
        return $this->forward('CuatrovientosArteanBundle:Mailing:index');
     }
 
+    public function mailingAddSelectedApplicantsAction($request) {
+        $form = $this->createForm(MailingSelectedApplicantsType::class, new Mailing());
+        $mailing ="";
+
+        if ($request->getMethod() == 'POST') {
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                $mailingForm = $form->getData();
+                $mailing = $this->get("cuatrovientos_artean.bo.mailing")->selectById($mailingForm->getId());
+
+                $mailing->setSelectedApplicants($mailingForm->getSelectedApplicants());
+
+                $this->get("cuatrovientos_artean.bo.mailing")->updateApplicantSelection($mailing);
+                return $this->mailingDetailAction($mailing->getId());
+            } else {
+                return $this->mailingDetailAction($mailing->getId());
+            }
+        }
+        return $this->mailingDetailAction($mailing->getId());
+    }
+
+    public function deleteAllSelectedApplicantsSaveAction($id) {
+        $result  = $this->get("cuatrovientos_artean.bo.mailing")->deleteAllSelected($id);
+        return $this->mailingDetailAction($id);
+    }
 }

@@ -30,6 +30,19 @@
         <i class="fa fa-user-plus" aria-hidden="true"></i>
         Candidatos
     </button>
+    {% if mailing.selectedApplicants|length > 0 %}
+        <table class="table .table-condensed">
+            <tr><th>Id</th><th>Apellidos</th><th>Nombre</th><th>Telefono</th><th>Email</th><th>
+                     <a href="{{ path('cuatrovientos_artean_mailing_delete_all_selected', {'id': mailing.id }) }}" class="btn btn-error"><i class="fa fa-plus" aria-hidden="true"></i> Todos</a>
+
+                </th></tr>
+            {% for applicant in mailing.selectedApplicants %}
+                {% include "CuatrovientosArteanBundle:Mailing:selectedApplicant.html.twig" %}
+            {% endfor %}
+        </table>
+    {% else %}
+        <div> No hay candidatos preseleccionados</div>
+    {% endif %}
     <h4>Empresas</h4>
     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addCompanies">
         <i class="fa fa-industry" aria-hidden="true"></i>

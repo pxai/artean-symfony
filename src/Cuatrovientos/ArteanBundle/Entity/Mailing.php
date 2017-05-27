@@ -52,7 +52,29 @@ class Mailing extends Entity
      */
     private $type;
 
+    /**
+     * Many Companies have many degrees
+     * @ORM\ManyToMany(targetEntity="Applicant", cascade={"all"})
+     * @ORM\JoinTable(name="tbmailing_destinatario",
+     *      joinColumns={@ORM\JoinColumn(name="idmailing", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="idcandidato", referencedColumnName="id")}
+     *      )
+     */
+    private $selectedApplicants;
+
+    /**
+     * Many Companies have many degrees
+     * @ORM\ManyToMany(targetEntity="Company", cascade={"all"})
+     * @ORM\JoinTable(name="tbmailing_destinatario",
+     *      joinColumns={@ORM\JoinColumn(name="idmailing", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="idempresa", referencedColumnName="id")}
+     *      )
+     */
+    private $selectedCompanies;
+
     public function __construct () {
+        $this->selectedApplicants = array();
+        $this->selectedCompanies = array();
     }
 
     /**
@@ -180,6 +202,38 @@ class Mailing extends Entity
     public function setType($type)
     {
         $this->type = $type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSelectedApplicants()
+    {
+        return $this->selectedApplicants;
+    }
+
+    /**
+     * @param mixed $selectedApplicants
+     */
+    public function setSelectedApplicants($selectedApplicants)
+    {
+        $this->selectedApplicants = $selectedApplicants;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSelectedCompanies()
+    {
+        return $this->selectedCompanies;
+    }
+
+    /**
+     * @param mixed $selectedCompanies
+     */
+    public function setSelectedCompanies($selectedCompanies)
+    {
+        $this->selectedCompanies = $selectedCompanies;
     }
 
 
