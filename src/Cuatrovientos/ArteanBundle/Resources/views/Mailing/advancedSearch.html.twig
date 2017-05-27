@@ -64,10 +64,10 @@
         <div class="form-group">
             <label for="applicant_advanced_search_name">Seleccionados</label>
             <form method="post" action="{{ path('cuatrovientos_artean_mailing_add_selected_applicants') }}">
-                <input type="hidden" name="mailing_selected_applicant[id]" value="{{ mailing.id }}" />
-            <select id="preselected_applicant_list" name="mailing_selected_applicant[selectedApplicants][]" class="form-control" multiple size="10">
+                <input type="hidden" name="mailing_selected_applicants[id]" value="{{ mailing.id }}" />
+            <select id="preselected_applicant_list" name="mailing_selected_applicants[selectedApplicants][]" class="form-control" multiple size="10">
             </select>
-                {{ form_row(form._token) }}
+                {{ form_row(formSelectedApplicants._token) }}
             <div><label><input type="checkbox" id="select_all"> Todas/os</label></div>
                 <button type="submit" class="btn btn-info"><i class="fa fa-plus" aria-hidden="true"></i> Agregar destinatarios
                 </button>

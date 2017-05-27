@@ -50,5 +50,26 @@ class MailingDAO extends GenericDAO {
             ->getResult();
     }
 
+    public function deleteSelectedApplicant($mailingid, $applicantid)
+    {
+        return $this->repository->createQueryBuilder('m')
+            ->delete('Cuatrovientos\ArteanBundle\Entity\MailingSelectedApplicant', 's')
+            ->where('s.mailing = :mailingid')
+            ->andWhere('s.applicant = :applicantid')
+            ->setParameter('mailingid', $mailingid)
+            ->setParameter('applicantid', $applicantid)
+            ->getQuery()->execute();
+    }
+
+
+    public function deleteAllSelectedApplicants($mailingid)
+    {
+        return $this->repository->createQueryBuilder('m')
+            ->delete('Cuatrovientos\ArteanBundle\Entity\MailingSelectedApplicant', 's')
+            ->where('s.mailing = :mailingid')
+            ->setParameter('mailingid', $mailingid)
+            ->getQuery()->execute();
+    }
+
 }
 

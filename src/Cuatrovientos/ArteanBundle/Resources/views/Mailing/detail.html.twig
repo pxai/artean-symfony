@@ -26,14 +26,14 @@
 
     <h3>1. Seleccionar destinatarios<i class="fa fa-user-plus" aria-hidden="true"></i></h3>
     <h4>Candidatos</h4>
-    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addPrecandidates">
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addCandidates">
         <i class="fa fa-user-plus" aria-hidden="true"></i>
         Candidatos
     </button>
     {% if mailing.selectedApplicants|length > 0 %}
         <table class="table .table-condensed">
             <tr><th>Id</th><th>Apellidos</th><th>Nombre</th><th>Telefono</th><th>Email</th><th>
-                     <a href="{{ path('cuatrovientos_artean_mailing_delete_all_selected', {'id': mailing.id }) }}" class="btn btn-error"><i class="fa fa-plus" aria-hidden="true"></i> Todos</a>
+                     <a href="{{ path('cuatrovientos_artean_mailing_delete_all_selected_applicants', {'id': mailing.id }) }}" class="btn btn-error"><i class="fa fa-trash" aria-hidden="true"></i> Todos</a>
 
                 </th></tr>
             {% for applicant in mailing.selectedApplicants %}
@@ -55,7 +55,7 @@
         ¡Enviar email!
     </button>
     <!-- Modal -->
-    <div class="modal fade" id="addPrecandidates" tabindex="-1" role="dialog" aria-labelledby="addPrecandidates" aria-hidden="true">
+    <div class="modal fade" id="addCandidates" tabindex="-1" role="dialog" aria-labelledby="addCandidates" aria-hidden="true">
         <div class="modal-dialog  modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -198,7 +198,7 @@
             }
         });
 
-        $('.delete_preselected').click(function (e) {
+        $('.delete_selected').click(function (e) {
             e.preventDefault();
             var applicantid = $(this).data("id");
             console.log($(this).attr('href') + ":" + applicantid);
@@ -218,8 +218,8 @@
                         console.log("Result: " + res);
                         var result = JSON.parse(res);
                         if (result.result === 1) {
-                            $('#preselected_applicant_id_'+applicantid).fadeOut(1000);
-                            $('#preselected_applicant_id_'+applicantid).remove();
+                            $('#selected_applicant_id_'+applicantid).fadeOut(1000);
+                            $('#selected_applicant_id_'+applicantid).remove();
                         } else {
                             $('#showApplicant div.modal-body').html('No se pudo eliminar.');//res;
                             $('#showApplicant').modal('show');

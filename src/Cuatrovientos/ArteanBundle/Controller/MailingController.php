@@ -79,9 +79,10 @@ class MailingController extends Controller
    public function mailingDetailAction($id=1)
     {
         $form = $this->createForm(ApplicantAdvancedSearchType::class, new Applicant());
+        $formSelectedApplicants = $this->createForm(MailingSelectedApplicantsType::class);
         $formCompany = $this->createForm(CompanySearchType::class, new Company());
         $mailing = $this->get("cuatrovientos_artean.bo.mailing")->selectById($id);
-        return $this->render('CuatrovientosArteanBundle:Mailing:detail.html.twig',array('form'=>$form->createView(),'formCompany'=>$formCompany->createView(),'mailing'=> $mailing));
+        return $this->render('CuatrovientosArteanBundle:Mailing:detail.html.twig',array('form'=>$form->createView(),'formSelectedApplicants'=>$formSelectedApplicants->createView(),'formCompany'=>$formCompany->createView(),'mailing'=> $mailing));
     }
 
 
@@ -125,7 +126,7 @@ class MailingController extends Controller
        return $this->forward('CuatrovientosArteanBundle:Mailing:index');
     }
 
-    public function mailingAddSelectedApplicantsAction($request) {
+    public function mailingAddSelectedApplicantsAction(Request $request) {
         $form = $this->createForm(MailingSelectedApplicantsType::class, new Mailing());
         $mailing ="";
 
@@ -148,7 +149,7 @@ class MailingController extends Controller
     }
 
     public function deleteAllSelectedApplicantsSaveAction($id) {
-        $result  = $this->get("cuatrovientos_artean.bo.mailing")->deleteAllSelected($id);
+        $result  = $this->get("cuatrovientos_artean.bo.mailing")->deleteAllSelectedApplicants($id);
         return $this->mailingDetailAction($id);
     }
 }

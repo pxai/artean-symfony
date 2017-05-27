@@ -67,7 +67,7 @@
                 <input type="hidden" name="job_request_preselected[id]" value="{{ jobRequest.id }}" />
             <select id="preselected_applicant_list" name="job_request_preselected[preselectedApplicants][]" class="form-control" multiple size="10">
             </select>
-                {{ form_row(formPreselected._token) }}
+                {{ form_row(formSelectedApplicants._token) }}
             <div><label><input type="checkbox" id="select_all"> Todas/os</label></div>
                 <button type="submit" class="btn btn-info"><i class="fa fa-plus" aria-hidden="true"></i> Agregar precandidatos
                 </button>

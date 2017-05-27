@@ -8,7 +8,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\View\View;
 use Symfony\Component\HttpFoundation\Request;
 use Cuatrovientos\ArteanBundle\Entity\Applicant;
-use Cuatrovientos\ArteanBundle\Entity\JobRequest;
+use Cuatrovientos\ArteanBundle\Entity\MailingJobRequest;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantType;
 
 class MailingApiController extends Controller
@@ -25,62 +25,14 @@ class MailingApiController extends Controller
         return  $applicants;
     }
 
-    /**
-     * @Rest\View
-     */
-    public function deletePreselectedSaveAction($jobrequestid, $applicantid) {
-        $result = $this->get("cuatrovientos_artean.bo.jobrequest")->deletePreselected($jobrequestid, $applicantid);
-        return '{"requestid":'.$jobrequestid.',"result":'.$result.'}';
-    }
 
     /**
      * @Rest\View
      */
-    public function deleteSelectedSaveAction($jobrequestid, $applicantid) {
-        $result = $this->get("cuatrovientos_artean.bo.jobrequest")->deleteSelected($jobrequestid, $applicantid);
-        return '{"requestid":'.$jobrequestid.',"result":'.$result.'}';
+    public function deleteSelectedApplicantSaveAction($mailingid, $applicantid) {
+        $result = $this->get("cuatrovientos_artean.bo.mailing")->deleteSelectedApplicant($mailingid, $applicantid);
+        return '{"mailingid":'.$mailingid.',"result":'.$result.'}';
     }
 
-    /*
-    * @Method({"PUT"})
-    * @Rest\View(statusCode=204)
-    */
-   public function addSelectedSaveAction(Request $request)
-{
-    $statusCode = 201;
-    $this->get('logger')->info($request);
-    $form = $this->createForm(JobRequestSelectedType::class, new JobRequest(),array('method' => 'PUT'));
-    $form->handleRequest($request);
-    $serializer = $this->get('jms_serializer');
-    $this->get('logger')->info('Here we go with update.' . $serializer->serialize($form->getData(), 'json'));
-    var_dump($request->request->all());
 
-    if ($form->isValid()) {
-        $jobrequest = $form->getData();
-        $this->get('logger')->info('ITS CORRECT: ' . $this->serializer->serialize($jobrequest, 'json'));
-
-        $this->get("cuatrovientos_artean.bo.jobrequest")->update($jobrequest);
-
-
-        $response = new Response();
-        $response->setStatusCode($statusCode);
-
-        // return $response;
-        return View::create($jobrequest, $statusCode);
-    } else {
-        $this->get('logger')->info('Form is not valid: ');
-    }
-
-    return View::create($form, 400);
-
-}
-    /**
-     * Rest\View
-     */
-   /* public function addSelectedSaveAction($jobrequestid, $applicantid) {
-        $logger = $this->get('logger');
-        $logger->info('I just got the logger');
-        $result = $this->get("cuatrovientos_artean.bo.jobrequest")->addSelected($jobrequestid, $applicantid);
-        return "{'requestid':'".$jobrequestid."','result':'".$result."'}";
-    }*/
 }

@@ -1020,11 +1020,18 @@ cuatrovientos_artean_mailing_add_selected_applicants:
     path:     /artean/admin/mailing/add/selected/applicants
     defaults: { _controller: CuatrovientosArteanBundle:Mailing:mailingAddSelectedApplicants }
 
-cuatrovientos_artean_mailing_delete_all_selected:
+cuatrovientos_artean_mailing_delete_all_selected_applicants:
     path:     /artean/admin/mailing/delete/all/selected/{id}
     defaults: { _controller: CuatrovientosArteanBundle:Mailing:deleteAllSelectedApplicantsSave }
     requirements:
             'id' : '\d+'
+
+cuatrovientos_artean_mailing_delete_selected_applicant:
+    path:     /api/admin/mailing/delete/selected/{mailingid}/{applicantid}
+    defaults: { _controller: CuatrovientosArteanBundle:Api/MailingApi:deleteSelectedApplicantSave }
+    requirements:
+            'mailingid' : '\d+'
+            'applicantid' : '\d+'
 
 ################# page ##################
 

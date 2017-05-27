@@ -42,5 +42,19 @@ class MailingBusiness extends GenericBusiness {
         return $this->entityDAO->searchMailings($mailing, $start, $total);
     }
 
+    public function updateApplicantSelection(Entity $mailing) {
+        $this->entityDAO->update($mailing);
+    }
+
+    public function deleteSelectedApplicant($mailingid, $applicantid)
+    {
+        return  $this->entityDAO-> deleteSelectedApplicant($mailingid, $applicantid);
+    }
+
+
+    public function deleteAllSelectedApplicants($mailingid)
+    {
+        return  $this->entityDAO->deleteAllSelectedApplicants($mailingid);
+    }
 
 }

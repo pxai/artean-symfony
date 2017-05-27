@@ -7,7 +7,7 @@
     {#% if is_granted('ROLE_ADMIN') %#}
     <td>
         <a href="{{ path('cuatrovientos_artean_applicant_admin_detail_resumed', {'id': applicant.id }) }}" class="btn btn-primary applicant_detail"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
-         <a href="{{ path('cuatrovientos_artean_jobrequest_delete_preselected', {'jobrequestid': mailing.id,'applicantid': applicant.id }) }}" class="btn btn-danger  delete_preselected"  data-id="{{ applicant.id }}"><i class="fa fa-trash-o" aria-hidden="true"></i> </a>
+         <a href="{{ path('cuatrovientos_artean_mailing_delete_selected_applicant', {'mailingid': mailing.id,'applicantid': applicant.id }) }}" class="btn btn-danger  delete_selected"  data-id="{{ applicant.id }}"><i class="fa fa-trash-o" aria-hidden="true"></i> </a>
     </td>
 
     {#% endif % #}
