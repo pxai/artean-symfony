@@ -156,7 +156,7 @@ class MailingController extends Controller
         $form = $this->createForm(MailingSelectedCompaniesType::class, new Mailing());
         $mailing ="";
 
-     /*   if ($request->getMethod() == 'POST') {
+        if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
 
             if ($form->isValid()) {
@@ -170,7 +170,7 @@ class MailingController extends Controller
             } else {
                 return $this->mailingDetailAction($mailing->getId());
             }
-        }*/
+        }
         return $this->mailingDetailAction(56);
     }
 

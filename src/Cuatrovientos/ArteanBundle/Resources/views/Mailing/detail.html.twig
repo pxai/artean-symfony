@@ -41,14 +41,26 @@
             {% endfor %}
         </table>
     {% else %}
-        <div> No hay candidatos preseleccionados</div>
+        <div> No hay candidatos seleccionados</div>
     {% endif %}
     <h4>Empresas</h4>
     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addCompanies">
         <i class="fa fa-industry" aria-hidden="true"></i>
         Empresas
     </button>
+    {% if mailing.selectedCompanies|length > 0 %}
+        <table class="table .table-condensed">
+            <tr><th>Id</th><th>Empresa</th><th>Actividad</th><th>Email</th><th>
+                    <a href="{{ path('cuatrovientos_artean_mailing_delete_all_selected_companies', {'id': mailing.id }) }}" class="btn btn-error"><i class="fa fa-trash" aria-hidden="true"></i> Todos</a>
 
+                </th></tr>
+            {% for company in mailing.selectedCompanies %}
+                {% include "CuatrovientosArteanBundle:Mailing:selectedCompanies.html.twig" %}
+            {% endfor %}
+        </table>
+    {% else %}
+        <div> No hay empresas seleccionadas</div>
+    {% endif %}
     <h3><i class="fa fa-envelope" aria-hidden="true"></i> 2. Enviar email</h3>
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addCompanies">
         <i class="fa fa-envelope" aria-hidden="true"></i>

@@ -44,13 +44,14 @@ class JobRequestBusiness extends GenericBusiness {
         $this->entityDAO->create($jobRequest);
     }
 
+
     public function update(Entity $jobRequest) {
         $this->setJobCompany($jobRequest);
         $this->entityDAO->update($jobRequest);
     }
 
     public function updateApplicantSelection(Entity $jobRequest) {
-        $this->entityDAO->update($jobRequest);
+        $this->entityDAO->create($jobRequest);
     }
 
     public function findJobRequests($term) {

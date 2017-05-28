@@ -24,8 +24,8 @@ class MailingSelectedCompaniesType extends AbstractType {
                     'label' => 'Seleccionados',
                     'class' => 'CuatrovientosArteanBundle:Company',
                 'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('u')
-                        ->where('u.id < 10');
+                    return $er->createQueryBuilder('c')
+                        ->where("c.email <> ''");
                 },
                     'expanded' => true,
                     'multiple' => true

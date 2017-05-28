@@ -3,6 +3,7 @@
 namespace Cuatrovientos\ArteanBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -54,7 +55,7 @@ class Mailing extends Entity
 
     /**
      * Many Companies have many degrees
-     * @ORM\ManyToMany(targetEntity="Applicant", cascade={"all"})
+     * @ORM\ManyToMany(targetEntity="Applicant", indexBy="id", cascade={"all"})
      * @ORM\JoinTable(name="tbmailing_destinatario",
      *      joinColumns={@ORM\JoinColumn(name="idmailing", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="idcandidato", referencedColumnName="id")}
@@ -64,8 +65,8 @@ class Mailing extends Entity
 
     /**
      * Many Companies have many degrees
-     * @ORM\ManyToMany(targetEntity="Company", cascade={"all"})
-     * @ORM\JoinTable(name="tbmailing_destinatario",
+     * @ORM\ManyToMany(targetEntity="Company", indexBy="id",cascade={"all"})
+     * @ORM\JoinTable(name="tbmailing_empresa_destinataria",
      *      joinColumns={@ORM\JoinColumn(name="idmailing", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="idempresa", referencedColumnName="id")}
      *      )
@@ -73,8 +74,8 @@ class Mailing extends Entity
     private $selectedCompanies;
 
     public function __construct () {
-        $this->selectedApplicants = array();
-        $this->selectedCompanies = array();
+        $this->selectedCompanies = new ArrayCollection();
+        $this->selectedApplicants =  new ArrayCollection();
     }
 
     /**
@@ -217,7 +218,17 @@ class Mailing extends Entity
      */
     public function setSelectedApplicants($selectedApplicants)
     {
-        $this->selectedApplicants = $selectedApplicants;
+        foreach($this->selectedApplicants as $id => $applicant) {
+            if(isset($selectedApplicants[$id])) {
+                unset($selectedApplicants[$id]);
+            }
+        }
+
+        //add products that exist in new but not in old
+        foreach($selectedApplicants as $id => $applicant) {
+            $this->selectedApplicants[$id] = $applicant;
+        }
+       // $this->selectedApplicants = $selectedApplicants;
     }
 
     /**
@@ -233,7 +244,16 @@ class Mailing extends Entity
      */
     public function setSelectedCompanies($selectedCompanies)
     {
-        $this->selectedCompanies = $selectedCompanies;
+        foreach($this->selectedCompanies as $id => $company) {
+            if(isset($selectedCompanies[$id])) {
+                unset($selectedCompanies[$id]);
+            }
+        }
+
+        //add products that exist in new but not in old
+        foreach($selectedCompanies as $id => $company) {
+            $this->selectedCompanies[$id] = $company;
+        }
     }
 
 

@@ -3,7 +3,7 @@
 namespace Cuatrovientos\ArteanBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Doctrine\Common\Collections\ArrayCollection;
 
 
 /**
@@ -168,7 +168,7 @@ class JobRequest extends Entity
      */
     /**
      * Many Companies have many degrees
-     * @ORM\ManyToMany(targetEntity="Applicant", cascade={"all"})
+     * @ORM\ManyToMany(targetEntity="Applicant", indexBy="id", cascade={"all"})
      * @ORM\JoinTable(name="tbsolicitudes_alpre",
      *      joinColumns={@ORM\JoinColumn(name="idoffer", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="idapplicant", referencedColumnName="id")}
@@ -187,8 +187,8 @@ class JobRequest extends Entity
     private $selectedApplicants;
        
     public function __construct () {
-        //$this->selectedApplicants = array();
-        //$this->preselectedApplicants = array();
+        $this->selectedApplicants = new ArrayCollection();
+        $this->preselectedApplicants =   new ArrayCollection();
        $this->status = JobRequestStatus::INIT;
     }
 
@@ -685,7 +685,16 @@ class JobRequest extends Entity
      */
     public function setPreselectedApplicants($preselectedApplicants)
     {
-        $this->preselectedApplicants = $preselectedApplicants;
+        foreach($this->preselectedApplicants as $id => $applicant) {
+            if(isset($preselectedApplicants[$id])) {
+                unset($preselectedApplicants[$id]);
+            }
+        }
+
+        //add products that exist in new but not in old
+        foreach($preselectedApplicants as $id => $applicant) {
+            $this->preselectedApplicants[$id] = $applicant;
+        }
     }
 
     /**
@@ -709,7 +718,16 @@ class JobRequest extends Entity
      */
     public function setSelectedApplicants($selectedApplicants)
     {
-        $this->selectedApplicants = $selectedApplicants;
+        foreach($this->selectedApplicants as $id => $applicant) {
+            if(isset($selectedApplicants[$id])) {
+                unset($selectedApplicants[$id]);
+            }
+        }
+
+        //add products that exist in new but not in old
+        foreach($selectedApplicants as $id => $applicant) {
+            $this->selectedApplicants[$id] = $applicant;
+        }
     }
 
 
