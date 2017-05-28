@@ -71,5 +71,26 @@ class MailingDAO extends GenericDAO {
             ->getQuery()->execute();
     }
 
+    public function deleteSelectedCompany($mailingid, $companyid)
+    {
+        return $this->repository->createQueryBuilder('m')
+            ->delete('Cuatrovientos\ArteanBundle\Entity\MailingSelectedCompany', 's')
+            ->where('s.mailing = :mailingid')
+            ->andWhere('s.company = :companyid')
+            ->setParameter('mailingid', $mailingid)
+            ->setParameter('companyid', $companyid)
+            ->getQuery()->execute();
+    }
+
+
+    public function deleteAllSelectedCompanies($mailingid)
+    {
+        return $this->repository->createQueryBuilder('m')
+            ->delete('Cuatrovientos\ArteanBundle\Entity\MailingSelectedCompany', 's')
+            ->where('s.mailing = :mailingid')
+            ->setParameter('mailingid', $mailingid)
+            ->getQuery()->execute();
+    }
+
 }
 

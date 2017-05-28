@@ -46,6 +46,10 @@ class MailingBusiness extends GenericBusiness {
         $this->entityDAO->update($mailing);
     }
 
+    public function updateCompanySelection(Entity $mailing) {
+        $this->entityDAO->update($mailing);
+    }
+
     public function deleteSelectedApplicant($mailingid, $applicantid)
     {
         return  $this->entityDAO-> deleteSelectedApplicant($mailingid, $applicantid);
@@ -57,4 +61,13 @@ class MailingBusiness extends GenericBusiness {
         return  $this->entityDAO->deleteAllSelectedApplicants($mailingid);
     }
 
+    public function deleteSelectedCompany($mailingid, $companyid)
+    {
+        return  $this->entityDAO-> deleteSelectedCompany($mailingid, $companyid);
+    }
+
+    public function deleteAllSelectedCompanies($mailingid)
+    {
+        return  $this->entityDAO->deleteAllSelectedCompanies($mailingid);
+    }
 }

@@ -3,6 +3,7 @@
 namespace  Cuatrovientos\ArteanBundle\Controller;
 
 use Cuatrovientos\ArteanBundle\Form\Type\CompanySearchType;
+use Cuatrovientos\ArteanBundle\Form\Type\MailingSelectedCompaniesType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Cuatrovientos\ArteanBundle\Entity\Mailing;
@@ -80,6 +81,8 @@ class MailingController extends Controller
     {
         $form = $this->createForm(ApplicantAdvancedSearchType::class, new Applicant());
         $formSelectedApplicants = $this->createForm(MailingSelectedApplicantsType::class);
+       $formSelectedCompanies = $this->createForm(MailingSelectedApplicantsType::class);
+        // ,'formSelectedCompanies'=>$formSelectedCompanies->createView()
         $formCompany = $this->createForm(CompanySearchType::class, new Company());
         $mailing = $this->get("cuatrovientos_artean.bo.mailing")->selectById($id);
         return $this->render('CuatrovientosArteanBundle:Mailing:detail.html.twig',array('form'=>$form->createView(),'formSelectedApplicants'=>$formSelectedApplicants->createView(),'formCompany'=>$formCompany->createView(),'mailing'=> $mailing));
@@ -140,6 +143,29 @@ class MailingController extends Controller
                 $mailing->setSelectedApplicants($mailingForm->getSelectedApplicants());
 
                 $this->get("cuatrovientos_artean.bo.mailing")->updateApplicantSelection($mailing);
+                return $this->mailingDetailAction($mailing->getId());
+            } else {
+                return $this->mailingDetailAction($mailing->getId());
+            }
+        }
+        return $this->mailingDetailAction($mailing->getId());
+    }
+
+
+    public function mailingAddSelectedCompaniesAction(Request $request) {
+        $form = $this->createForm(MailingSelectedCompaniesType::class, new Mailing());
+        $mailing ="";
+
+        if ($request->getMethod() == 'POST') {
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                $mailingForm = $form->getData();
+                $mailing = $this->get("cuatrovientos_artean.bo.mailing")->selectById($mailingForm->getId());
+
+                $mailing->setSelectedCompanies($mailingForm->getSelectedCompanies());
+
+                $this->get("cuatrovientos_artean.bo.mailing")->updateCompanySelection($mailing);
                 return $this->mailingDetailAction($mailing->getId());
             } else {
                 return $this->mailingDetailAction($mailing->getId());

@@ -28,7 +28,7 @@ class Company  extends Entity
     /**
      * @ORM\Column(name="empresa",type="string", length=70)
      */
-    private $empresa;
+    private $empresa="";
 
     /**
      * @ORM\Column(name="contacto",type="string", length=255)
@@ -538,7 +538,7 @@ class Company  extends Entity
 
     function __toString()
     {
-        return $this->empresa;
+        return $this->empresa .'';
     }
 
 

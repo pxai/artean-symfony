@@ -141,4 +141,24 @@ class CompanyController extends Controller
        return $this->forward('CuatrovientosArteanBundle:Company:index');
     }
 
+    public function advancedSearchAction(Request $request) {
+        $form = $this->createForm(ApplicantAdvancedSearchType::class, new Applicant());
+        $logger = $this->get('logger');
+        $response = "";
+        $applicants = array();
+        $total = 0;
+
+        if ($request->getMethod() == 'POST') {
+            $form->handleRequest($request);
+            // if ($form->isValid()) {
+            $applicant = $form->getData();
+            $applicants = $this->get("cuatrovientos_artean.bo.applicant")->detailedSearchApplicants($applicant);
+            /*} else  {
+                $applicants = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicants(0, 0, 10);
+                $total = $this->get("cuatrovientos_artean.bo.applicant")->countAllApplicants();
+                return $applicants;
+            }*/
+        }
+        return $this->render('CuatrovientosArteanBundle:Applicant:applicantList.html.twig', array('applicants' => $applicants  ));
+    }
 }

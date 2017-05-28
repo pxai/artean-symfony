@@ -103,7 +103,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    {% include "CuatrovientosArteanBundle:Mailing:companySearch.html.twig" %}
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -263,6 +263,60 @@
                     }
                 });
             }
+        });
+
+        $('#company_search').click(function (e) {
+            e.preventDefault();
+            console.log($(this).attr('href'));
+            var formSerialized = $('#company_search_form').serialize();
+            load($(this).attr('href'));
+            function load (url) {
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    dataType: 'html',
+                    data: formSerialized,
+                    error: function() {
+                        showResults('Error en la búsqueda');
+                    },
+                    success: function(res) {
+                        if (res.length === 0) {
+                            showResults('No se encontró ningún registro');
+                        } else {
+                            //console.log("SUCCESS " + res);
+                            //updateArray(res);
+                            showResults(res);
+                        }
+                    }
+                });
+            }
+
+            function updateArray(companies) {
+                companies.forEach(function (applicant) {
+                    var result = $.grep(preselected, function(e){ return e.id == company.id; });
+                    if (result.length == 0) {
+                        preselected.push(company);
+                    }
+                });
+                $("#selected_company_list").empty();
+                preselected.forEach(function (company) {
+                    $("#selected_company_list").append($("<option></option>")
+                            .attr("value", company.id).text(company.empresa+', '+company.cif));
+                });
+                console.log(companies);
+            }
+
+            function showResults(msg) {
+                $("#selected_company_list").html(msg);
+                $('#company_search_result').css("display", "block");
+            }
+        });
+
+        var selected = false;
+        $('#select_all_companies').click(function() {
+            selected = !selected;
+            $('#preselected_company_list option').prop('selected', selected);
         });
     </script>
 {% endblock %}

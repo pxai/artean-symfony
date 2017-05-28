@@ -1,6 +1,6 @@
 <div class="modal-dialog" role="document">
    <div class="modal-content">
-      <form method="post" action="{{ path('cuatrovientos_artean_company_search') }}" class="arteanform">
+      <form method="post" id="company_search_form" action="{{ path('cuatrovientos_artean_company_search') }}" class="arteanform">
       <div class="modal-header">
 
    <a href="{{ path('cuatrovientos_artean_company') }}" class="btn">
@@ -38,10 +38,29 @@
       {{ form_row(formCompany._token) }}
 
       </div>
-      <div class="modal-footer">
-         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-         <button type="submit" class="btn btn-primary">Buscar empresas</button>
-      </div>
+         <div class="modal-footer">
+            <a href="{{ path('cuatrovientos_artean_company_admin_advanced_search') }}" class="btn btn-primary" id="company_search"><i class="fa fa-search" aria-hidden="true"></i> Buscar empresas</a>
+         </div>
+
+
       </form>
+   </div>
+
+   <div id="company_search_result" class="search-results">
+      <h4>Seleccionar empresas destinatarias <i class="fa fa-users" aria-hidden="true"></i></h4>
+      <div class="results"></div>
+      <div class="form-group">
+         <label for="applicant_advanced_search_name">Seleccionadas</label>
+         <form method="post" action="{{ path('cuatrovientos_artean_mailing_add_selected_companies') }}">
+            <input type="hidden" name="mailing_selected_companies[id]" value="{{ mailing.id }}" />
+            <select id="selected_company_list" name="mailing_selected_companies[selectedCompanies][]" class="form-control" multiple size="10">
+            </select>
+            {{ form_row(formSelectedCompanies._token) }}
+            <div><label><input type="checkbox" id="select_all"> Todas/os</label></div>
+            <button type="submit" class="btn btn-info"><i class="fa fa-plus" aria-hidden="true"></i> Agregar destinatarios
+            </button>
+
+         </form>
+      </div>
    </div>
 </div>

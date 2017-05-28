@@ -1020,6 +1020,7 @@ cuatrovientos_artean_mailing_add_selected_applicants:
     path:     /artean/admin/mailing/add/selected/applicants
     defaults: { _controller: CuatrovientosArteanBundle:Mailing:mailingAddSelectedApplicants }
 
+
 cuatrovientos_artean_mailing_delete_all_selected_applicants:
     path:     /artean/admin/mailing/delete/all/selected/{id}
     defaults: { _controller: CuatrovientosArteanBundle:Mailing:deleteAllSelectedApplicantsSave }
@@ -1032,6 +1033,26 @@ cuatrovientos_artean_mailing_delete_selected_applicant:
     requirements:
             'mailingid' : '\d+'
             'applicantid' : '\d+'
+#cuatrovientos_artean_company_admin_advanced_search:
+#    path:     /artean/admin/company/admin/search/advanced
+#    defaults: { _controller: CuatrovientosArteanBundle:Company:advancedSearch }
+
+cuatrovientos_artean_mailing_add_selected_companies:
+    path:     /artean/admin/mailing/add/selected/companies
+    defaults: { _controller: CuatrovientosArteanBundle:Mailing:mailingAddSelectedCompanies }
+
+cuatrovientos_artean_mailing_delete_all_selected_companies:
+    path:     /artean/admin/mailing/delete/all/selected/companies/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Mailing:deleteAllSelectedCompaniesSave }
+    requirements:
+            'id' : '\d+'
+
+cuatrovientos_artean_mailing_delete_selected_company:
+    path:     /api/admin/mailing/delete/selected/{mailingid}/{companyid}
+    defaults: { _controller: CuatrovientosArteanBundle:Api/MailingApi:deleteSelectedCompanySave }
+    requirements:
+            'mailingid' : '\d+'
+            'companyid' : '\d+'
 
 ################# page ##################
 

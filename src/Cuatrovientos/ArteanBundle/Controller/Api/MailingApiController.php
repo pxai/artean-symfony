@@ -34,5 +34,12 @@ class MailingApiController extends Controller
         return '{"mailingid":'.$mailingid.',"result":'.$result.'}';
     }
 
+    /**
+     * @Rest\View
+     */
+    public function deleteSelectedCompanySaveAction($mailingid, $companyid) {
+        $result = $this->get("cuatrovientos_artean.bo.mailing")->deleteSelectedCompany($mailingid, $companyid);
+        return '{"mailingid":'.$mailingid.',"result":'.$result.'}';
+    }
 
 }
