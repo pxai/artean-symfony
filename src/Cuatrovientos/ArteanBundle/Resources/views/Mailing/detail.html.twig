@@ -30,14 +30,14 @@
         <i class="fa fa-user-plus" aria-hidden="true"></i>
         Candidatos
     </button>
-    {% if mailing.selectedApplicants|length > 0 %}
+    {% if mailing.mailingSelectedApplicants|length > 0 %}
                 <div  style="overflow-y: scroll; height:300px;">
         <table class="table .table-condensed">
             <tr><th>Id</th><th>Apellidos</th><th>Nombre</th><th>Telefono</th><th>Email</th><th>
                      <a href="{{ path('cuatrovientos_artean_mailing_delete_all_selected_applicants', {'id': mailing.id }) }}" class="btn btn-error"><i class="fa fa-trash" aria-hidden="true"></i> Todos</a>
 
                 </th></tr>
-            {% for applicant in mailing.selectedApplicants %}
+            {% for selectedApplicant in mailing.mailingSelectedApplicants %}
                 {% include "CuatrovientosArteanBundle:Mailing:selectedApplicant.html.twig" %}
             {% endfor %}
         </table>
