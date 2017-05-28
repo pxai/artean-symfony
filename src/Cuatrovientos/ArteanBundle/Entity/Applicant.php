@@ -133,6 +133,8 @@ class Applicant extends Entity
     */
     private $user;
 
+
+
     private $courses;
 
     /*

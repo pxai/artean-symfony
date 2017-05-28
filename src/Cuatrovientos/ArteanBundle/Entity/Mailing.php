@@ -73,9 +73,11 @@ class Mailing extends Entity
      */
     private $selectedCompanies;
 
+
     public function __construct () {
         $this->selectedCompanies = new ArrayCollection();
         $this->selectedApplicants =  new ArrayCollection();
+        $this->mailingSelectedApplicants =  new ArrayCollection();
     }
 
     /**
