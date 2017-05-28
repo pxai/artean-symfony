@@ -1033,9 +1033,9 @@ cuatrovientos_artean_mailing_delete_selected_applicant:
     requirements:
             'mailingid' : '\d+'
             'applicantid' : '\d+'
-#cuatrovientos_artean_company_admin_advanced_search:
-#    path:     /artean/admin/company/admin/search/advanced
-#    defaults: { _controller: CuatrovientosArteanBundle:Company:advancedSearch }
+cuatrovientos_artean_company_admin_advanced_search:
+    path:     /artean/admin/company/admin/search/advanced
+    defaults: { _controller: CuatrovientosArteanBundle:Company:advancedSearch }
 
 cuatrovientos_artean_mailing_add_selected_companies:
     path:     /artean/admin/mailing/add/selected/companies

@@ -27,6 +27,11 @@ class CompanyBusiness extends GenericBusiness {
         return $this->entityDAO->searchCompanies($company, $start, $total);
     }
 
+    public function detailedSearchCompanies($company, $start=0,$total=100)
+    {
+        return $this->entityDAO->detailedSearchCompanies($company, $start, $total);
+    }
+
 
     public function findCompaniesWithAgreement($company='')
     {

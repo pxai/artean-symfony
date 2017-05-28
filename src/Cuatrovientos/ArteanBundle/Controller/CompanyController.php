@@ -142,23 +142,23 @@ class CompanyController extends Controller
     }
 
     public function advancedSearchAction(Request $request) {
-        $form = $this->createForm(ApplicantAdvancedSearchType::class, new Applicant());
+        $form = $this->createForm(CompanySearchType::class, new Company());
         $logger = $this->get('logger');
         $response = "";
-        $applicants = array();
+        $companies = array();
         $total = 0;
 
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
             // if ($form->isValid()) {
-            $applicant = $form->getData();
-            $applicants = $this->get("cuatrovientos_artean.bo.applicant")->detailedSearchApplicants($applicant);
+            $company = $form->getData();
+            $companies = $this->get("cuatrovientos_artean.bo.company")->detailedSearchCompanies($company);
             /*} else  {
                 $applicants = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicants(0, 0, 10);
                 $total = $this->get("cuatrovientos_artean.bo.applicant")->countAllApplicants();
                 return $applicants;
             }*/
         }
-        return $this->render('CuatrovientosArteanBundle:Applicant:applicantList.html.twig', array('applicants' => $applicants  ));
+        return $this->render('CuatrovientosArteanBundle:Company:companyList.html.twig', array('companies' => $companies  ));
     }
 }

@@ -1,0 +1,5 @@
+{% for company in companies %}
+    <option value="{{ company.id }}">
+        {{ company.empresa }}, {{ company.cif }}
+    </option>
+{% endfor %}

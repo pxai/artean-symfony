@@ -23,6 +23,7 @@ class MailingSelectedApplicantsType extends AbstractType {
             ->add('selectedApplicants', EntityType::class, array(
                     'label' => 'Seleccionados',
                     'class' => 'CuatrovientosArteanBundle:Applicant',
+
                     'expanded' => true,
                     'multiple' => true
                 ))

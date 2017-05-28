@@ -81,11 +81,11 @@ class MailingController extends Controller
     {
         $form = $this->createForm(ApplicantAdvancedSearchType::class, new Applicant());
         $formSelectedApplicants = $this->createForm(MailingSelectedApplicantsType::class);
-       $formSelectedCompanies = $this->createForm(MailingSelectedApplicantsType::class);
-        // ,'formSelectedCompanies'=>$formSelectedCompanies->createView()
+        $formSelectedCompanies = $this->createForm(MailingSelectedCompaniesType::class);
+        //
         $formCompany = $this->createForm(CompanySearchType::class, new Company());
         $mailing = $this->get("cuatrovientos_artean.bo.mailing")->selectById($id);
-        return $this->render('CuatrovientosArteanBundle:Mailing:detail.html.twig',array('form'=>$form->createView(),'formSelectedApplicants'=>$formSelectedApplicants->createView(),'formCompany'=>$formCompany->createView(),'mailing'=> $mailing));
+        return $this->render('CuatrovientosArteanBundle:Mailing:detail.html.twig',array('form'=>$form->createView(),'formSelectedApplicants'=>$formSelectedApplicants->createView(),'formSelectedCompanies'=>$formSelectedCompanies->createView(),'formCompany'=>$formCompany->createView(),'mailing'=> $mailing));
     }
 
 
@@ -156,7 +156,7 @@ class MailingController extends Controller
         $form = $this->createForm(MailingSelectedCompaniesType::class, new Mailing());
         $mailing ="";
 
-        if ($request->getMethod() == 'POST') {
+     /*   if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
 
             if ($form->isValid()) {
@@ -170,8 +170,8 @@ class MailingController extends Controller
             } else {
                 return $this->mailingDetailAction($mailing->getId());
             }
-        }
-        return $this->mailingDetailAction($mailing->getId());
+        }*/
+        return $this->mailingDetailAction(56);
     }
 
     public function deleteAllSelectedApplicantsSaveAction($id) {
