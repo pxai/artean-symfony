@@ -31,6 +31,7 @@
         Candidatos
     </button>
     {% if mailing.selectedApplicants|length > 0 %}
+                <div  style="overflow-y: scroll; height:300px;">
         <table class="table .table-condensed">
             <tr><th>Id</th><th>Apellidos</th><th>Nombre</th><th>Telefono</th><th>Email</th><th>
                      <a href="{{ path('cuatrovientos_artean_mailing_delete_all_selected_applicants', {'id': mailing.id }) }}" class="btn btn-error"><i class="fa fa-trash" aria-hidden="true"></i> Todos</a>
@@ -40,6 +41,7 @@
                 {% include "CuatrovientosArteanBundle:Mailing:selectedApplicant.html.twig" %}
             {% endfor %}
         </table>
+        </div>
     {% else %}
         <div> No hay candidatos seleccionados</div>
     {% endif %}
@@ -49,6 +51,7 @@
         Empresas
     </button>
     {% if mailing.selectedCompanies|length > 0 %}
+        <div  style="overflow-y: scroll; height:300px;">
         <table class="table .table-condensed">
             <tr><th>Id</th><th>Empresa</th><th>Actividad</th><th>Email</th><th>
                     <a href="{{ path('cuatrovientos_artean_mailing_delete_all_selected_companies', {'id': mailing.id }) }}" class="btn btn-error"><i class="fa fa-trash" aria-hidden="true"></i> Todos</a>
@@ -58,6 +61,7 @@
                 {% include "CuatrovientosArteanBundle:Mailing:selectedCompanies.html.twig" %}
             {% endfor %}
         </table>
+        </div>
     {% else %}
         <div> No hay empresas seleccionadas</div>
     {% endif %}

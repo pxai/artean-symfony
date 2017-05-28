@@ -29,7 +29,10 @@ class MailingSelectedApplicant extends Entity
      */
     private $mailing;
 
-
+    /**
+     * @ORM\Column(name="enviado",type="integer")
+     */
+    private $sent;
 
     public function __construct () {
         $this->applicant = new Applicant();
@@ -82,6 +85,22 @@ class MailingSelectedApplicant extends Entity
     public function setMailing($mailing)
     {
         $this->mailing = $mailing;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSent()
+    {
+        return $this->sent;
+    }
+
+    /**
+     * @param mixed $sent
+     */
+    public function setSent($sent)
+    {
+        $this->sent = $sent;
     }
 
 
