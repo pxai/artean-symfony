@@ -6,7 +6,7 @@
         {% endfor %}
         . Ciclos:
         {% for studies in applicant.studies %}
-            {{ studies.studies.id }},
+            {{ studies.studies.id|degree }},
         {% endfor %}
     </option>
 {% endfor %}

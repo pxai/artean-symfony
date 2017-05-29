@@ -24,3 +24,8 @@ services:
         public: false
         tags:
             - { name: twig.extension }
+    app.twig_extension.degree:
+        class: Cuatrovientos\ArteanBundle\Twig\DegreeIconExtension
+        public: false
+        tags:
+            - { name: twig.extension }
