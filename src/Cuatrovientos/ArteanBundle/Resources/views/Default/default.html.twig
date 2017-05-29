@@ -192,7 +192,10 @@
             <ul>
                 {% for anew in news %}
 
-                        <li>{{ anew.title }}
+                        <li>
+                            <a href="{{ path('cuatrovientos_artean_homepage_news', {'id': anew.id, 'permalink': anew.permalink }) }}" title="{{ anew.title }}">
+                                {{ anew.title }}
+                            </a>
                         </li>
                 {% endfor %}
             </ul>

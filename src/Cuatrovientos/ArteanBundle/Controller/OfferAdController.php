@@ -110,10 +110,27 @@ class OfferAdController extends Controller
     
     private function permalink ($title) {
         $url = '';
+        $title = $this->delaccents($title);
         $patterns = array("/\s+/");
         $subst = array("-");
         $url = preg_replace($patterns, $subst, $title);
         return strtolower($url);
     }
-   
+
+    function delaccents($str)
+    {
+        if($this->is_utf($str))
+        {
+            $str = utf8_decode($str);
+        }
+        $str = htmlentities($str);
+        $str = preg_replace('/&([a-zA-Z0-9])(uml|acute|grave|circ|tilde);/','$1',$str);
+        return html_entity_decode($str);
+    }
+
+    function is_utf ($t)
+    {
+        if ( @preg_match ('/.+/u', $t) )
+            return 1;
+    }
 }

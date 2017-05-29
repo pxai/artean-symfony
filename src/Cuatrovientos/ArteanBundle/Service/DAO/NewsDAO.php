@@ -56,11 +56,20 @@ class NewsDAO extends GenericDAO {
     public function findNews($term)
     {
         return $this->repository->createQueryBuilder('m')
+
             ->where('m.title like :title')
             ->setParameter('title','%'.$term.'%')
             ->orderBy('m.title', 'ASC')
             ->getQuery()
             ->getResult();
+    }
+
+    public function findNewsByPermalink($permalink) {
+        return $this->repository->createQueryBuilder('m')
+            ->where('m.permalink = :permalink')
+            ->setParameter('permalink',$permalink)
+            ->getQuery()
+            ->getOneOrNullResult();
     }
 
     public function countAllNews()

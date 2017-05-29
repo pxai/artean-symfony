@@ -24,4 +24,16 @@ class DefaultController extends Controller
         return $this->render('CuatrovientosArteanBundle:Default:page.html.twig', array('current'=>$current,'offers'=>$offers,'news' => $news,'pages'=>$pages));
 
     }
+
+    public function newsAction($id,$permalink)
+    {
+        $offers = $this->get("cuatrovientos_artean.bo.offer")->findAllPublishedOffers(0,0,10);
+        $news = $this->get("cuatrovientos_artean.bo.news")->findAllPublishedNews(0,0,10);
+        $pages = $this->get("cuatrovientos_artean.bo.page")->findAllPages(0);
+
+        $current = $this->get("cuatrovientos_artean.bo.news")->selectById($id);
+        return $this->render('CuatrovientosArteanBundle:Default:news.html.twig', array('current'=>$current,'offers'=>$offers,'news' => $news,'pages'=>$pages));
+
+    }
+
 }

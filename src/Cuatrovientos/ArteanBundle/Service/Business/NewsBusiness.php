@@ -32,6 +32,9 @@ class NewsBusiness extends GenericBusiness {
         return $this->entityDAO->findNews($term);
     }
 
+    public function findNewsByPermalink($permalink) {
+        return $this->entityDAO->findNewsByPermalink($permalink);
+    }
 
     public function countAllNews()
     {

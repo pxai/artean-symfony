@@ -1,0 +1,23 @@
+{% extends "CuatrovientosArteanBundle:Default:default.html.twig" %}
+{% if current is not null %}
+    {% block title %}Artean :: {{ current.title }}{% endblock %}
+    {% block body %}
+        <div class="col-md-6">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('cuatrovientos_artean_homepage') }}">Inicio</a></li>
+                <li class="breadcrumb-item active">Noticias</li>
+                <li class="breadcrumb-item active">{{ current.title }}</li>
+            </ol>
+        <div>
+            <h3> {{ current.title }}</h3>
+            <div class="offer-details">
+                {{ current.tags }}
+            </div>
+            <div class="offer-text">
+                {{ current.what|raw }}
+            </div>
+            <div class="offer-data">{{ current.newsdate|date('d/m/Y') }}</div>
+        </div>
+        </div>
+    {% endblock %}
+{% endif %}
