@@ -128,7 +128,7 @@ class Applicant extends Entity
     private $jobOffers;
 
     /**
-    * @ORM\OneToOne(targetEntity="User", fetch="EXTRA_LAZY")
+    * @ORM\OneToOne(targetEntity="User", cascade={"ALL"})
     * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
     */
     private $user;
