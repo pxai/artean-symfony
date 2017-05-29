@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="tbmailing_destinatario")
+ * @ORM\Table(name="tbmailing_empresa_destinataria")
  */
 class MailingSelectedCompany extends Entity
 {
@@ -29,7 +29,10 @@ class MailingSelectedCompany extends Entity
      */
     private $mailing;
 
-
+    /**
+     * @ORM\Column(name="enviado",type="integer")
+     */
+    private $sent;
 
     public function __construct () {
         $this->company = new Company();
@@ -84,6 +87,22 @@ class MailingSelectedCompany extends Entity
     public function setMailing($mailing)
     {
         $this->mailing = $mailing;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSent()
+    {
+        return $this->sent;
+    }
+
+    /**
+     * @param mixed $sent
+     */
+    public function setSent($sent)
+    {
+        $this->sent = $sent;
     }
 
 

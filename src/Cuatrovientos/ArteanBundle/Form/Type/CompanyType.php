@@ -132,10 +132,6 @@ class CompanyType extends AbstractType {
                     'label' => 'Convenios para los ciclos',
                     'class' => 'CuatrovientosArteanBundle:Degree',
                     'attr' => array('class' => 'checkboxblock'),
-                    'query_builder' => function (EntityRepository $er) {
-                                        return $er->createQueryBuilder('u')
-                                        ->where('u.id < 10');
-                                    },
                     'expanded' => true,
                     'multiple' => true
                 )

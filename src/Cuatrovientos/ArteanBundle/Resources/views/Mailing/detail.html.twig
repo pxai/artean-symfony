@@ -33,7 +33,7 @@
     {% if mailing.mailingSelectedApplicants|length > 0 %}
                 <div  style="overflow-y: scroll; height:300px;">
         <table class="table .table-condensed">
-            <tr><th>Id</th><th>Apellidos</th><th>Nombre</th><th>Telefono</th><th>Email</th><th>
+            <tr><th>Id</th><th>Apellidos</th><th>Nombre</th><th>Telefono</th><th>Email</th><th>¿Enviado?</th><th>
                      <a href="{{ path('cuatrovientos_artean_mailing_delete_all_selected_applicants', {'id': mailing.id }) }}" class="btn btn-error"><i class="fa fa-trash" aria-hidden="true"></i> Todos</a>
 
                 </th></tr>
@@ -50,14 +50,14 @@
         <i class="fa fa-industry" aria-hidden="true"></i>
         Empresas
     </button>
-    {% if mailing.selectedCompanies|length > 0 %}
+    {% if mailing.mailingSelectedCompanies|length > 0 %}
         <div  style="overflow-y: scroll; height:300px;">
         <table class="table .table-condensed">
-            <tr><th>Id</th><th>Empresa</th><th>Actividad</th><th>Email</th><th>
+            <tr><th>Id</th><th>Empresa</th><th>Actividad</th><th>Email</th><th>¿Enviado?</th><th>
                     <a href="{{ path('cuatrovientos_artean_mailing_delete_all_selected_companies', {'id': mailing.id }) }}" class="btn btn-error"><i class="fa fa-trash" aria-hidden="true"></i> Todos</a>
 
                 </th></tr>
-            {% for company in mailing.selectedCompanies %}
+            {% for selectedCompany in mailing.mailingSelectedCompanies %}
                 {% include "CuatrovientosArteanBundle:Mailing:selectedCompanies.html.twig" %}
             {% endfor %}
         </table>

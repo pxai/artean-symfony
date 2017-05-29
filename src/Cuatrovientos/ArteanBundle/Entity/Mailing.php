@@ -78,10 +78,16 @@ class Mailing extends Entity
      */
     private $mailingSelectedApplicants;
 
+    /**
+     * @ORM\OneToMany(targetEntity="MailingSelectedCompany", mappedBy="mailing",fetch="EXTRA_LAZY")
+     */
+    private $mailingSelectedCompanies;
+
     public function __construct () {
         $this->selectedCompanies = new ArrayCollection();
         $this->selectedApplicants =  new ArrayCollection();
         $this->mailingSelectedApplicants =  new ArrayCollection();
+        $this->mailingSelectedCompanies =  new ArrayCollection();
     }
 
     /**
@@ -276,6 +282,22 @@ class Mailing extends Entity
     public function setMailingSelectedApplicants($mailingSelectedApplicants)
     {
         $this->mailingSelectedApplicants = $mailingSelectedApplicants;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMailingSelectedCompanies()
+    {
+        return $this->mailingSelectedCompanies;
+    }
+
+    /**
+     * @param mixed $mailingSelectedCompanies
+     */
+    public function setMailingSelectedCompanies($mailingSelectedCompanies)
+    {
+        $this->mailingSelectedCompanies = $mailingSelectedCompanies;
     }
 
 

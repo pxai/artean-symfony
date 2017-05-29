@@ -34,10 +34,6 @@ class ApplicantAdvancedSearchType extends AbstractType {
                     'label' => 'Estudios',
                     'class' => 'CuatrovientosArteanBundle:Degree',
                     'attr' => array('class' => 'checkboxblock'),
-                    'query_builder' => function (EntityRepository $er) {
-                        return $er->createQueryBuilder('u')
-                            ->where('u.id < 10');
-                    },
                     'expanded' => true,
                     'multiple' => true
                 )

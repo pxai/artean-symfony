@@ -1,12 +1,13 @@
 <tr>
-     <td>{{ company.id }}</td>
-     <td>{{ company.empresa }}</td>
-    <td>{{ company.actividad }}</td>
-    <td>{{ company.email }}</td>
+     <td>{{ selectedCompany.company.id }}</td>
+     <td>{{ selectedCompany.company.empresa }}</td>
+    <td>{{ selectedCompany.company.actividad }}</td>
+    <td>{{ selectedCompany.company.email }}</td>
+    <td>{{ selectedCompany.sent }}</td>
 		{#% if is_granted('ROLE_ADMIN') %#}
 			<td>        
-                <a href="{{ path('cuatrovientos_artean_company_detail', {'id': company.id }) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
-                <a href="{{ path('cuatrovientos_artean_company_delete', {'id': company.id }) }}{{ path('cuatrovientos_artean_mailing_delete_selected_company', {'mailingid': mailing.id,'companyid': company.id }) }}" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> </a>
+                <a href="{{ path('cuatrovientos_artean_company_detail', {'id': selectedCompany.company.id }) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
+                <a href="{{ path('cuatrovientos_artean_company_delete', {'id': selectedCompany.company.id }) }}{{ path('cuatrovientos_artean_mailing_delete_selected_company', {'mailingid': mailing.id,'companyid': selectedCompany.company.id }) }}" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> </a>
 		    </td>
 		{#% endif % #}
 </tr>
