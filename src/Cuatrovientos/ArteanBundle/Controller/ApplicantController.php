@@ -42,7 +42,7 @@ class ApplicantController extends Controller
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $applicant = $form->getData();
-                $applicant->setIdUser($this->user->getId());
+                $applicant->setUser($this->user);
                 $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);
 
                 return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');

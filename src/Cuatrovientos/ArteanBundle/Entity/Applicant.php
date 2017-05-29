@@ -46,7 +46,7 @@ class Applicant extends Entity
     private $web;
    
      /**
-     * @ORM\Column(name="id_user",type="integer")
+     * ORM\Column(name="id_user",type="integer")
      */
     private $idUser;
 
@@ -128,7 +128,7 @@ class Applicant extends Entity
     private $jobOffers;
 
     /**
-    * @ORM\OneToOne(targetEntity="User", cascade="ALL")
+    * @ORM\OneToOne(targetEntity="User", fetch="EXTRA_LAZY")
     * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
     */
     private $user;

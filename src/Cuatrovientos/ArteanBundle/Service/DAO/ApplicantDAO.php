@@ -59,7 +59,7 @@ class ApplicantDAO extends GenericDAO {
     {
         $repository = $this->em->getRepository($this->entityType);
         return $repository->createQueryBuilder('a')
-            ->where('a.idUser = :id')
+            ->where('a.user = :id')
             ->setParameter('id',$userid)
             ->getQuery()
             ->getOneOrNullResult();
