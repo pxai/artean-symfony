@@ -266,6 +266,7 @@ class Mailing extends Entity
         foreach($selectedCompanies as $id => $company) {
             $this->selectedCompanies[$id] = $company;
         }
+
     }
 
     /**
