@@ -29,3 +29,13 @@ services:
         public: false
         tags:
             - { name: twig.extension }
+    app.twig_extension.mail:
+        class: Cuatrovientos\ArteanBundle\Twig\MailStatusExtension
+        public: false
+        tags:
+            - { name: twig.extension }
+    app.twig_extension.mailing:
+        class: Cuatrovientos\ArteanBundle\Twig\MailingStatusExtension
+        public: false
+        tags:
+            - { name: twig.extension }

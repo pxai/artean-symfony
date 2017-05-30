@@ -54,6 +54,11 @@ class Mailing extends Entity
     private $type;
 
     /**
+     * @ORM\Column(name="status",type="integer", length=1)
+     */
+    private $status;
+
+    /**
      * Many Companies have many degrees
      * @ORM\ManyToMany(targetEntity="Applicant", indexBy="id", cascade={"all"})
      * @ORM\JoinTable(name="tbmailing_destinatario",
@@ -299,6 +304,22 @@ class Mailing extends Entity
     public function setMailingSelectedCompanies($mailingSelectedCompanies)
     {
         $this->mailingSelectedCompanies = $mailingSelectedCompanies;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param mixed $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
     }
 
 

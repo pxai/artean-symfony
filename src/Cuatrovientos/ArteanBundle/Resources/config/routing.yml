@@ -1060,6 +1060,18 @@ cuatrovientos_artean_mailing_delete_selected_company:
             'mailingid' : '\d+'
             'companyid' : '\d+'
 
+cuatrovientos_artean_mailing_start:
+    path:     /artean/admin/mailing/start/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Mailing:mailingStart }
+    requirements:
+        'id' : '\d+'
+
+cuatrovientos_artean_mailing_stop:
+    path:     /artean/admin/mailing/stop/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Mailing:mailingStop }
+    requirements:
+        'id' : '\d+'
+
 ################# page ##################
 
 cuatrovientos_artean_page:

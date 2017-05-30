@@ -94,7 +94,20 @@ class MailingController extends Controller
         $form = $this->createForm(MailingType::class, $mailing);
         return $this->render('CuatrovientosArteanBundle:Mailing:update.html.twig',array('form'=> $form->createView(),'id'=>$id));
     }
-    
+
+    public function mailingStartAction($id) {
+        $mailing = $this->get("cuatrovientos_artean.bo.mailing")->selectById($id);
+        $mailing->setStatus(1);
+        $this->get("cuatrovientos_artean.bo.mailing")->update($mailing);
+        return $this->mailingDetailAction($mailing->getId());
+    }
+
+    public function mailingStopAction($id) {
+        $mailing = $this->get("cuatrovientos_artean.bo.mailing")->selectById($id);
+        $mailing->setStatus(2);
+        $this->get("cuatrovientos_artean.bo.mailing")->update($mailing);
+        return $this->mailingDetailAction($mailing->getId());
+    }
 
     public function mailingUpdateSaveAction(Request $request) {
       

@@ -3,7 +3,7 @@
      <td>{{ selectedCompany.company.empresa }}</td>
     <td>{{ selectedCompany.company.actividad }}</td>
     <td>{{ selectedCompany.company.email }}</td>
-    <td>{{ selectedCompany.sent }}</td>
+    <td><i class="{{ selectedCompany.sent|mailStatus }}" aria-hidden="true"></i></td>
 		{#% if is_granted('ROLE_ADMIN') %#}
 			<td>        
                 <a href="{{ path('cuatrovientos_artean_company_detail', {'id': selectedCompany.company.id }) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>

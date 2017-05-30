@@ -85,3 +85,18 @@ input[type=checkbox]{
     -o-background-size: cover;
     background-size: cover;
 }
+
+.status-none {
+    color: gray;
+}
+.status-warning {
+    color: orange;
+}
+
+.status-success {
+    color: green;
+}
+
+.status-error {
+    color: red;
+}
