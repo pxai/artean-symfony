@@ -408,14 +408,14 @@ class ApplicantAdminController extends Controller
                     $em->persist($user);
                     $em->flush();
 
-                    $applicant->setIdUser($user->getId());
+                   /* $applicant->setIdUser($user->getId());
 
                     $em->persist($applicant);
-                    $em->flush();
+                   */
+                   $em->flush();
 
-                    $this->saveStudies($applicant);
+                    //$this->saveStudies($applicant);
                     $this->createProfile($user->getId());
-                    $this->newsession($user);
 
                     $this->sendEmail($applicant);
                     $this->sendEmailUser($user, $password);

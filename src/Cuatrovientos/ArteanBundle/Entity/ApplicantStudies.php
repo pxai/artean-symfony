@@ -20,8 +20,8 @@ class ApplicantStudies extends Entity
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Applicant",fetch="EXTRA_LAZY")
-     * @ORM\JoinColumn(name="idapplicant",inversedBy="studies", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Applicant",inversedBy="studies",fetch="EXTRA_LAZY")
+     * @ORM\JoinColumn(name="idapplicant", referencedColumnName="id")
      */
     private $applicant;
   
