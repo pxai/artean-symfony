@@ -46,7 +46,7 @@ class Applicant extends Entity
     private $web;
    
      /**
-     * @ORM\Column(name="id_user",type="integer")
+     * ORM\Column(name="id_user",type="integer")
      */
     private $idUser;
 

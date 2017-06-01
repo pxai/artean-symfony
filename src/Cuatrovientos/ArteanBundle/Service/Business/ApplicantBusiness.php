@@ -145,10 +145,15 @@ class ApplicantBusiness extends GenericBusiness {
     }
 
     public function createNewApplicant($user) {
+        /*
+delete from f_users where email='p@pello.io';
+delete from tbalumnos where email='p@pello.io';
+         */
         $applicant = new Applicant();
+        $applicant->setName('Sin especificar');
+        $applicant->setSurname('Sin especificar');
         $applicant->setEmail($user->getEmail());
         $applicant->setWeb('http://linked.in');
-        $applicant->setMobile($user->getId());
         $applicant->setUser($user);
         return $this->entityDAO->create($applicant);
     }
