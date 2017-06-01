@@ -150,6 +150,8 @@ class ApplicantAdminController extends Controller
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $applicant = $form->getData();
+                $applicantTmp = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($applicant->getId());
+                $applicant->setUser($applicantTmp->getUser());
                 $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);
 
                 return $this->detailAction($applicant->getId());
