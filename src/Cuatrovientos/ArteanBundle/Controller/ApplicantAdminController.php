@@ -145,7 +145,7 @@ class ApplicantAdminController extends Controller
 
     public function updateAction(Request $request) {
         $form = $this->createForm(ApplicantType::class, new Applicant());
-
+        $response = "";
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
             if ($form->isValid()) {
