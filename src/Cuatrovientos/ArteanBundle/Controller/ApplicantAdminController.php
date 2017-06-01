@@ -366,6 +366,13 @@ class ApplicantAdminController extends Controller
         return $response;
     }
 
+    public function applicantSignUpAction(Request $request)
+    {
+        $form = $this->createForm(ApplicantSignUpType::class, new Applicant());
+        $form->handleRequest($request);
+
+        return $this->render('CuatrovientosArteanBundle:Applicant:signUp.html.twig', array('form'=>$form->createView()));
+    }
     
      public function applicantSignUpSaveAction(Request $request)
     {

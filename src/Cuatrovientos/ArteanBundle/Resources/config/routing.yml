@@ -208,18 +208,18 @@ cuatrovientos_artean_offer_publish:
  ##### applicant ########################################33
 cuatrovientos_artean_applicant_signin:        
     path:     /artean/applicant/signin
-    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:applicantSignIn }
+    defaults: { _controller: CuatrovientosArteanBundle:Applicant:applicantSignIn }
 
 cuatrovientos_artean_applicant_signin_save:        
     path:     /artean/applicant/signin/save
-    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:applicantSignInSave }
+    defaults: { _controller: CuatrovientosArteanBundle:Applicant:applicantSignInSave }
 
 cuatrovientos_artean_applicant_signup:        
-    path:     /artean/applicant/signup
+    path:     /artean/open/signup
     defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:applicantSignUp }
 
 cuatrovientos_artean_applicant_signup_save:        
-    path:     /artean/applicant/signup/save
+    path:     /artean/open/signup/save
     defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:applicantSignUpSave }
 
 

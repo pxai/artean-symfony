@@ -1,6 +1,14 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}Artean::Login{% endblock %}
 {% block body %}
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="{{ path('cuatrovientos_artean_homepage') }}"><i class="fa fa-compass"></i> Artean</a>
+
+    </nav>
 {% if error %}
     {# For complex error messages
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>

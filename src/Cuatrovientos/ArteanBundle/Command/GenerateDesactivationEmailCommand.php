@@ -11,7 +11,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * php bin/console artean:send-emails Wouter
  * @package Cuatrovientos\ArteanBundle\Command
  */
-class GenerateDesactivationCommand Command extends ContainerAwareCommand
+class GenerateDesactivationCommand  extends ContainerAwareCommand
 {
     protected function configure()
     {
@@ -31,8 +31,8 @@ class GenerateDesactivationCommand Command extends ContainerAwareCommand
     {
         $mailings = $this->getContainer()->get("cuatrovientos_artean.bo.mailing")->findAllMailings(0, 0,10);
         $output->writeln([
-            'Artean: Sending Pending Emails',
-            '==============================',
+            'Artean: Sending Deactivation Emails',
+            '===================================',
             '',
         ]);
 

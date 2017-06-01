@@ -63,15 +63,14 @@
                             {% endimage %}
                             <p class="lead">Entra en tu perfil o crea una cuenta en Artean indicando tu email</p>
                             <form method="post" name="applicant"
-                                  action="{{ path('cuatrovientos_artean_applicant_signin_save') }}">
+                                  action="{{ path('cuatrovientos_artean_applicant_signup') }}">
                                 <div id="applicant_sign_in">
                                     <div class="col-lg-offset-3 col-lg-6">
                                         <div class="input-group">
-                                            <input class="form-control" type="email" id="applicant_sign_in_email" 1name="applicant_sign_in[email]" required="required"
+                                            <input class="form-control" type="email" id="applicant_sign_in_email" name="applicant_sign_up[email]" required="required"
                                                    placeholder="tudirección@decorreo"/>
                                             <span class="input-group-btn">
-                                            <button class="btn btn-secondary" type="button"
-                                                    onclick="forms.applicant.submit()">Entrar</button>
+                                            <button class="btn btn-secondary" type="submit">Entrar</button>
                                         </span>
                                         </div>
                                     </div>
