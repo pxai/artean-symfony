@@ -22,12 +22,12 @@ class Applicant extends Entity
      /**
      * @ORM\Column(name="nombre",type="string", length=100)
      */
-    private $name;
+    private $name = "";
   
     /**
      * @ORM\Column(name="apellidos",type="string", length=100)
      */
-    private $surname;
+    private $surname = "";
     
      /**
      * @ORM\Column(name="telefonomovil",type="string", length=100)
@@ -46,7 +46,7 @@ class Applicant extends Entity
     private $web;
    
      /**
-     * ORM\Column(name="id_user",type="integer")
+     * @ORM\Column(name="id_user",type="integer")
      */
     private $idUser;
 

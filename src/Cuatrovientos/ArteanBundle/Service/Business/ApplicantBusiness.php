@@ -144,6 +144,15 @@ class ApplicantBusiness extends GenericBusiness {
         $this->applicantJobsDAO->remove($applicantJobs);
     }
 
+    public function createNewApplicant($user) {
+        $applicant = new Applicant();
+        $applicant->setEmail($user->getEmail());
+        $applicant->setWeb('http://linked.in');
+        $applicant->setMobile($user->getId());
+        $applicant->setUser($user);
+        return $this->entityDAO->create($applicant);
+    }
+
     /**
      * @param $applicantStudies
      */

@@ -404,18 +404,12 @@ class ApplicantAdminController extends Controller
                     $password = $user->randPassword();
                     $user->setPassword($password);
 
-                    $em = $this->getDoctrine()->getEntityManager();
-                    $em->persist($user);
-                    $em->flush();
-
-                   /* $applicant->setIdUser($user->getId());
-
-                    $em->persist($applicant);
-                   */
-                   $em->flush();
+                    $this->get("cuatrovientos_artean.bo.security")->create($user);
 
                     //$this->saveStudies($applicant);
                     $this->createProfile($user->getId());
+
+                    $this->get("cuatrovientos_artean.bo.applicant")->createNewApplicant($user);
 
                     $this->sendEmail($applicant);
                     $this->sendEmailUser($user, $password);
