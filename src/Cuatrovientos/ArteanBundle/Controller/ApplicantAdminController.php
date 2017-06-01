@@ -386,34 +386,44 @@ class ApplicantAdminController extends Controller
             
             if ($form->isValid()) {
                 $applicant = $form->getData();
-                $user = new User();
-                
-                $user->setFullname($applicant->getName() .' '.$applicant->getSurname());
-                $user->setLogin($applicant->getEmail());
-                $user->setEmail($applicant->getEmail());
-                $password = $user->randPassword();
-                $user->setPassword($password);
-                
-                $em = $this->getDoctrine()->getEntityManager();
-                $em->persist($user);
-                $em->flush();
-                
-                $applicant->setIdUser($user->getId());
-                
-                $em->persist($applicant);
-                $em->flush();
-                
-                $this->saveStudies($applicant);
-                $this->createProfile($user->getId());
-                $this->newsession($user);
-                
-                $this->sendEmail($applicant);
-                $this->sendEmailUser($user,$password);
-                
-                //return $this->redirect('https://artean.cuatrovientos.org/?home', 301);
-                
-                $response = $this->render('CuatrovientosArteanBundle:Applicant:signUpSave.html.twig', array('applicant'=> $applicant, 'user'=> $user, 'password' => $password));
-                
+
+                $user = $this->get("cuatrovientos_artean.bo.security")->findUserByEmail($applicant->getEmail());
+                if ($user != null) {
+                    //$response = $this->render('CuatrovientosArteanBundle:Applicant:signUp.html.twig', array('form'=> $form->createView()));
+                    $request->getSession()
+                        ->getFlashBag()
+                        ->add('info', 'El email '. $applicant->getEmail(). ' ya está registrado. Prueba a entrar o resetea la cuenta en el enlace de abajo. ')
+                    ;
+                    return $this->redirectToRoute('cuatrovientos_artean_login');
+                } else {
+                    $user = new User();
+
+                    $user->setFullname($applicant->getName() . ' ' . $applicant->getSurname());
+                    $user->setLogin($applicant->getEmail());
+                    $user->setEmail($applicant->getEmail());
+                    $password = $user->randPassword();
+                    $user->setPassword($password);
+
+                    $em = $this->getDoctrine()->getEntityManager();
+                    $em->persist($user);
+                    $em->flush();
+
+                    $applicant->setIdUser($user->getId());
+
+                    $em->persist($applicant);
+                    $em->flush();
+
+                    $this->saveStudies($applicant);
+                    $this->createProfile($user->getId());
+                    $this->newsession($user);
+
+                    $this->sendEmail($applicant);
+                    $this->sendEmailUser($user, $password);
+
+                    //return $this->redirect('https://artean.cuatrovientos.org/?home', 301);
+
+                    $response = $this->render('CuatrovientosArteanBundle:Applicant:signUpSave.html.twig', array('applicant' => $applicant, 'user' => $user, 'password' => $password));
+                }
             } else {
                 $response = $this->render('CuatrovientosArteanBundle:Applicant:signUp.html.twig', array('form'=> $form->createView()));
             }
