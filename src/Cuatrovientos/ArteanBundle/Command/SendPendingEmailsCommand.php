@@ -39,6 +39,18 @@ class SendPendingEmailsCommand extends ContainerAwareCommand
         for ($i = 0; $i < count($mailings);$i++) {
             // outputs a message followed by a "\n"
             $output->writeln('Whoa: ' . $mailings[$i]->getSubject());
+            for ($i = 0; $i < count($mailings);$i++) {
+                // outputs a message followed by a "\n"
+                foreach ($mailings[$i]->getSelectedApplicants() as $applicant) {
+                    $output->writeln('Sending to...: ' . $applicant->getName() .': '.$applicant->getEmail());
+                    $this->sendEmail($mailings[$i], $applicant->getEmail());
+                }
+
+                foreach ($mailings[$i]->getSelectedCompanies() as $company) {
+                    $output->writeln('Sending to...: ' . $company->getEmpresa() .': '.$company->getEmail());
+                    $this->sendEmail($mailings[$i], $company->getEmail());
+                }
+            }
         }
 
         // outputs a message without adding a "\n" at the end of the line
@@ -46,16 +58,16 @@ class SendPendingEmailsCommand extends ContainerAwareCommand
         $output->write('create a user.');
     }
 
-    private function sendEmail ($from, $to, $subject, $content, $template="Emails/standard.html.twig",$bcc ="") {
+    private function sendEmail ($mailing, $to, $template="Emails/standard.html.twig") {
 
         $message = \Swift_Message::newInstance()
-            ->setSubject($subject)
-            ->setFrom($from)
+            ->setSubject($mailing->getSubject())
+            ->setFrom($mailing->getFrom())
             ->setTo($to)
-            ->setBcc($bcc)
+            ->setBcc($mailing->getBcc())
             ->setBody($this->renderView(
                 $template,
-                array('content' => $content)
+                array('content' => $mailing->getBody())
             ),'text/html'
 
             );
