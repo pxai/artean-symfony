@@ -191,4 +191,9 @@ class MailingController extends Controller
         $result  = $this->get("cuatrovientos_artean.bo.mailing")->deleteAllSelectedApplicants($id);
         return $this->mailingDetailAction($id);
     }
+
+    public function deleteAllSelectedCompaniesSaveAction($id) {
+        $result  = $this->get("cuatrovientos_artean.bo.mailing")->deleteAllSelectedCompanies($id);
+        return $this->mailingDetailAction($id);
+    }
 }
