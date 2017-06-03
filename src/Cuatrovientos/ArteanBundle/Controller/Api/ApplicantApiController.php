@@ -82,4 +82,26 @@ class ApplicantApiController extends Controller
         }
         return $applicants;
     }
+
+    /**
+     * @Rest\View
+     */
+    public function uploadCvAction(Request $request) {
+        $form = $this->createForm(ApplicantAdvancedSearchType::class, new Applicant());
+        $logger = $this->get('logger');
+        $id = 0;
+        $status = "";
+        return '{"id": '.$id.', "active" : '.$status.'}';
+    }
+
+    /**
+     * @Rest\View
+     */
+    public function uploadPhotoAction(Request $request) {
+        $form = $this->createForm(ApplicantAdvancedSearchType::class, new Applicant());
+        $logger = $this->get('logger');
+        $id = 0;
+        $status = "";
+        return '{"id": '.$id.', "active" : '.$status.'}';
+    }
 }

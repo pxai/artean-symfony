@@ -765,6 +765,14 @@ cuatrovientos_artean_jobrequest_delete_selected:
             'jobrequestid' : '\d+'
             'applicantid' : '\d+'
 
+cuatrovientos_artean_applicant_upload_cv:
+    path:     /api/applicant/upload/cv
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantApi:uploadCv }
+
+cuatrovientos_artean_applicant_upload_cv:
+    path:     /api/applicant/upload/photo
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantApi:uploadPhoto }
+
 cuatrovientos_artean_jobrequest_add_selected:
     path:     /artean/admin/jobrequest/add/selected/{jobrequestid}/{applicantid}
     defaults: { _controller: CuatrovientosArteanBundle:JobRequest:addSelectedSave }
