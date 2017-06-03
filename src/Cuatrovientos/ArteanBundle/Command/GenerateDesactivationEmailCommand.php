@@ -1,5 +1,4 @@
 <?php
-// src/AppBundle/Command/CreateUserCommand.php
 namespace Cuatrovientos\ArteanBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;

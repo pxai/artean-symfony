@@ -101,6 +101,9 @@ assetic:
  #               display: popup #dialog is optimized for popup window
  #               auth_type: rerequest # Re-asking for Declined Permissions
 
-#fos_user:
-#    service:
-#        user_manager: fos_user.user_manager.default
+vich_uploader:
+    db_driver: orm # or mongodb or propel or phpcr
+    mappings:
+            applicant_image:
+                uri_prefix:         /upload/images/applicant
+                upload_destination: '%kernel.root_dir%/../web/upload/images/applicant'

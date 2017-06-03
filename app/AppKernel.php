@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Cuatrovientos\ArteanBundle\CuatrovientosArteanBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new FOS\RestBundle\FOSRestBundle(),
+            new Vich\UploaderBundle\VichUploaderBundle(),
             new Pello\SerONoSerBundle\PelloSerONoSerBundle()
         ];
 
