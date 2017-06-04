@@ -18,6 +18,10 @@ use Cuatrovientos\ArteanBundle\Form\Type\ApplicantStudiesType;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantLanguageType;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantJobType;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantAdvancedSearchType;
+use Cuatrovientos\ArteanBundle\Form\Type\ApplicantPhotoType;
+use Cuatrovientos\ArteanBundle\Form\Type\ApplicantCvType;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 
 class ApplicantAdminController extends Controller
 {
@@ -86,11 +90,15 @@ class ApplicantAdminController extends Controller
         $formStudies = $this->createForm(ApplicantStudiesType::class, new ApplicantStudies());
         $formLanguage = $this->createForm(ApplicantLanguageType::class, new ApplicantLanguages());
         $formJob = $this->createForm(ApplicantJobType::class, new ApplicantJobs());
+        $formPhoto = $this->createForm(ApplicantPhotoType::class);
+        $formCv = $this->createForm(ApplicantCvType::class);
         return $this->render('CuatrovientosArteanBundle:Applicant:dashboard.html.twig',
             array(  'form'=> $form->createView(),
                 'formStudies'=>$formStudies->createView(),
                 'formLanguage'=>$formLanguage->createView(),
                 'formJob'=>$formJob->createView(),
+                'formPhoto' => $formPhoto->createView(),
+                'formCv' => $formCv->createView(),
                 'applicant'=>$applicant));
     }
 
@@ -541,6 +549,39 @@ class ApplicantAdminController extends Controller
 
         $this->get('mailer')->send($message);
 
+    }
+
+
+    public function deletePhotoAction($applicantid)
+    {
+        $fs = new Filesystem();
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($applicantid);
+        try {
+            $fs->remove($this->getParameter('photos_directory') . '/' . $applicant->getPhoto());
+        } catch (IOException $ioe) {
+
+        }
+        $applicant->setPhoto(null);
+
+        $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);
+
+        return $this->detailAction($applicantid);
+    }
+
+    public function deleteCvAction($applicantid)
+    {
+        $fs = new Filesystem();
+         $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($applicantid);
+        try {
+            $fs->remove($this->getParameter('cvs_directory') . '/' . $applicant->getCv());
+        } catch (IOException $ioe) {
+
+        }
+        $applicant->setCv(null);
+
+        $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);
+
+        return $this->detailAction($applicantid);
     }
 
 }

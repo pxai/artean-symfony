@@ -689,6 +689,18 @@ cuatrovientos_artean_applicant_admin_create_account:
     defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:createAccount}
     requirements:
             'id' : '\d+'
+# applicant files
+cuatrovientos_artean_applicant_admin_delete_cv:
+    path:     /artean/admin/applicant/delete/cv/{applicantid}
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:deleteCv }
+    requirements:
+            'applicantid' : '\d+'
+
+cuatrovientos_artean_applicant_admin_delete_photo:
+    path:     /artean/admin/applicant/delete/photo/{applicantid}
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:deletePhoto }
+    requirements:
+            'applicantid' : '\d+'
 
 ################# jobrequest ##################
 
@@ -776,6 +788,7 @@ cuatrovientos_artean_applicant_upload_photo:
 cuatrovientos_artean_applicant_delete_cv:
     path:     /artean/applicant/delete/cv
     defaults: { _controller: CuatrovientosArteanBundle:Applicant:deleteCv }
+
 
 cuatrovientos_artean_applicant_delete_photo:
     path:     /artean/applicant/delete/photo

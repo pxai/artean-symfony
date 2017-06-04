@@ -14,6 +14,7 @@ use Cuatrovientos\ArteanBundle\Form\Type\ApplicantLanguageType;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantJobType;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantPhotoType;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantCvType;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 
@@ -353,7 +354,7 @@ class ApplicantController extends Controller
         } catch (IOException $ioe) {
 
         }
-        $applicant->setPhoto('');
+        $applicant->setPhoto(null);
 
         $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);
 
@@ -370,7 +371,7 @@ class ApplicantController extends Controller
         } catch (IOException $ioe) {
 
         }
-        $applicant->setCv('');
+        $applicant->setCv(null);
 
         $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);
 

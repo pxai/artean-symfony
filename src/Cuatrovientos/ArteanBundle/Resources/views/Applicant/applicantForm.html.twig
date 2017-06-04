@@ -1,3 +1,25 @@
+
+<div class="mb-4">
+
+    {% if applicant.cv !="" %}
+        <a href="{{ asset('uploads/cvs/' ~ applicant.cv) }}" target="_blank"><i class="fa fa-file-text-o" aria-hidden="true"></i> Ver CV</a>
+        {% if is_granted('ROLE_ADMIN') %}
+            <span><a href="{{ path('cuatrovientos_artean_applicant_admin_delete_cv', {'applicantid': applicant.id }) }}" class="delete"><i class="fa fa-trash-o"></i> Eliminar CV</a></span>
+        {% else %}
+            <span><a href="{{ path('cuatrovientos_artean_applicant_delete_cv') }}" class="delete"><i class="fa fa-trash-o"></i> Eliminar CV</a></span>
+        {% endif %}
+    {% endif %}
+    <div class="photo">
+        {% if applicant.photo != "" %}
+            <img src="{{ asset('uploads/photos/' ~ applicant.photo) }}" class="img-responsive photo" />
+            {% if is_granted('ROLE_ADMIN') %}
+                <div><a href="{{ path('cuatrovientos_artean_applicant_admin_delete_photo', {'applicantid': applicant.id })  }}" class="delete"><i class="fa fa-trash-o"></i> Eliminar foto</a></div>
+            {% else %}
+                <div><a href="{{ path('cuatrovientos_artean_applicant_delete_photo') }}" class="delete"><i class="fa fa-trash-o"></i> Eliminar foto</a></div>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
 {% if is_granted('ROLE_ADMIN') %}
 <form method="post" action="{{ path('cuatrovientos_artean_applicant_admin_update') }}">
     {% else %}
