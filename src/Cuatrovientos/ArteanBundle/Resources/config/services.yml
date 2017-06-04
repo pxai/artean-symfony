@@ -148,3 +148,7 @@ services:
     cuatrovientos_artean.bo.offer:
         class: Cuatrovientos\ArteanBundle\Service\Business\OfferBusiness
         arguments: ['@cuatrovientos_artean.dao.offer']
+
+    cuatrovientos_artean.bo.filesystem:
+        class: Cuatrovientos\ArteanBundle\Service\Business\FileSystemBusiness
+        arguments: ['@cuatrovientos_artean.dao.user']

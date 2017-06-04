@@ -276,9 +276,11 @@ class ApplicantController extends Controller
 
     public function uploadCvAction(Request $request)
     {
+        $oldCvPath = "";
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
         $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantDataByUserId($this->user->getId());
         if ($applicant->getCv() != "") {
+            $oldCvPath =  $applicant->getCv();
             $applicant->setCv(new File($this->getParameter('cvs_directory') . '/' . $applicant->getCv()));
         }
 
@@ -296,7 +298,9 @@ class ApplicantController extends Controller
                 $this->getParameter('cvs_directory'),
                 $fileName
             );
-
+            if ($oldCvPath != "") {
+                $this->get("cuatrovientos_artean.bo.filesystem")->deleteFile($this->getParameter('cvs_directory') . '/' . $oldCvPath);
+            }
             $applicant->setCv($fileName);
             $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);
 
@@ -309,9 +313,11 @@ class ApplicantController extends Controller
 
     public function uploadPhotoAction(Request $request)
     {
+        $oldPhotoPath = "";
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
         $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantDataByUserId($this->user->getId());
         if ($applicant->getPhoto() != "") {
+            $oldPhotoPath = $applicant->getPhoto();
             $applicant->setPhoto(new File($this->getParameter('photos_directory') . '/' . $applicant->getPhoto()));
         }
         $form = $this->createForm(ApplicantPhotoType::class, $applicant);
@@ -330,6 +336,10 @@ class ApplicantController extends Controller
                 $fileName
             );
 
+            if ($oldPhotoPath != "") {
+                $this->get("cuatrovientos_artean.bo.filesystem")->deleteFile($this->getParameter('photos_directory') . '/' . $oldPhotoPath);
+            }
+
             $applicant->setPhoto($fileName);
             $applicant->setUser($this->user);
 
@@ -346,14 +356,11 @@ class ApplicantController extends Controller
 
     public function deletePhotoAction()
     {
-        $fs = new Filesystem();
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
         $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantDataByUserId($this->user->getId());
-        try {
-            $fs->remove($this->getParameter('photos_directory') . '/' . $applicant->getPhoto());
-        } catch (IOException $ioe) {
 
-        }
+        $this->get("cuatrovientos_artean.bo.filesystem")->deleteFile($this->getParameter('photos_directory') . '/' . $applicant->getPhoto());
+
         $applicant->setPhoto(null);
 
         $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);
@@ -363,14 +370,11 @@ class ApplicantController extends Controller
 
     public function deleteCvAction()
     {
-        $fs = new Filesystem();
+
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
         $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantDataByUserId($this->user->getId());
-        try {
-            $fs->remove($this->getParameter('cvs_directory') . '/' . $applicant->getCv());
-        } catch (IOException $ioe) {
 
-        }
+        $this->get("cuatrovientos_artean.bo.filesystem")->deleteFile($this->getParameter('cvs_directory') . '/' . $applicant->getCv());
         $applicant->setCv(null);
 
         $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);

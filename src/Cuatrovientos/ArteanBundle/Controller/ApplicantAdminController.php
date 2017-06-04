@@ -20,8 +20,10 @@ use Cuatrovientos\ArteanBundle\Form\Type\ApplicantJobType;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantAdvancedSearchType;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantPhotoType;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantCvType;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+
 
 class ApplicantAdminController extends Controller
 {
@@ -552,15 +554,90 @@ class ApplicantAdminController extends Controller
     }
 
 
+    public function uploadCvAction($applicantid, Request $request)
+    {
+        $oldCvPath = "";
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($applicantid);
+        if ($applicant->getCv() != "") {
+            $oldCvPath =  $applicant->getCv();
+            $applicant->setCv(new File($this->getParameter('cvs_directory') . '/' . $applicant->getCv()));
+        }
+
+        $form = $this->createForm(ApplicantCvType::class, $applicant);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) { //{} && $form->isValid()) {
+            // $file stores the uploaded PDF file
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $file = $applicant->getCv();
+
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+
+            $file->move(
+                $this->getParameter('cvs_directory'),
+                $fileName
+            );
+
+            if ($oldCvPath != "") {
+                $this->get("cuatrovientos_artean.bo.filesystem")->deleteFile($this->getParameter('cvs_directory') . '/' . $oldCvPath);
+            }
+
+            $applicant->setCv($fileName);
+            $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);
+
+            return $this->detailAction($applicantid);
+        }
+
+        return $this->detailAction($applicantid);
+    }
+
+
+    public function uploadPhotoAction($applicantid, Request $request)
+    {
+        $oldPhotoPath = "";
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($applicantid);
+        if ($applicant->getPhoto() != "") {
+            $oldPhotoPath = $applicant->getPhoto();
+            $applicant->setPhoto(new File($this->getParameter('photos_directory') . '/' . $applicant->getPhoto()));
+        }
+
+        $form = $this->createForm(ApplicantPhotoType::class, $applicant);
+        $form->handleRequest($request);
+        $logger = $this->get('logger');
+
+        if ($form->isSubmitted()) { //{} && $form->isValid()) {
+            $logger->info('Form seems ok: ' . $this->getParameter('photos_directory'));
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $file = $applicant->getPhoto();
+
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+
+            $file->move($this->getParameter('photos_directory'), $fileName);
+
+            if ($oldPhotoPath != "") {
+                $this->get("cuatrovientos_artean.bo.filesystem")->deleteFile($this->getParameter('photos_directory') . '/' . $oldPhotoPath);
+            }
+
+            $applicant->setPhoto($fileName);
+
+            $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);
+
+            return $this->detailAction($applicantid);
+        } else {
+            $logger->info('Form is not ok');
+        }
+
+        return $this->detailAction($applicantid);
+    }
+
+
     public function deletePhotoAction($applicantid)
     {
-        $fs = new Filesystem();
-        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($applicantid);
-        try {
-            $fs->remove($this->getParameter('photos_directory') . '/' . $applicant->getPhoto());
-        } catch (IOException $ioe) {
 
-        }
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($applicantid);
+
+        $this->get("cuatrovientos_artean.bo.filesystem")->deleteFile($this->getParameter('photos_directory') . '/' . $applicant->getPhoto());
+
         $applicant->setPhoto(null);
 
         $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);
@@ -570,13 +647,10 @@ class ApplicantAdminController extends Controller
 
     public function deleteCvAction($applicantid)
     {
-        $fs = new Filesystem();
-         $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($applicantid);
-        try {
-            $fs->remove($this->getParameter('cvs_directory') . '/' . $applicant->getCv());
-        } catch (IOException $ioe) {
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($applicantid);
 
-        }
+        $this->get("cuatrovientos_artean.bo.filesystem")->deleteFile($this->getParameter('cvs_directory') . '/' . $applicant->getCv());
+
         $applicant->setCv(null);
 
         $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);

@@ -1,6 +1,11 @@
 <div class="mb-4">
     <h3><i class="fa fa-camera" aria-hidden="true"></i> Subir fotografía</h3>
-    <form method="post" action="{{ path('cuatrovientos_artean_applicant_upload_photo') }}" id="applicant_upload_photo" class="arteanform" enctype="multipart/form-data">
+         {% if is_granted('ROLE_ADMIN') %}
+             <form method="post" action="{{ path('cuatrovientos_artean_applicant_admin_upload_photo', {'applicantid': applicant.id }) }}" id="applicant_upload_photo" class="arteanform" enctype="multipart/form-data">
+        {% else %}
+             <form method="post" action="{{ path('cuatrovientos_artean_applicant_upload_photo') }}" id="applicant_upload_photo" class="arteanform" enctype="multipart/form-data">
+        {% endif %}
+
 
         {{ form_row(formPhoto.photo) }}
         {{ form_row(formPhoto._token) }}
@@ -11,7 +16,12 @@
 
 <div class="mb-4">
     <h3><i class="fa fa-file-text-o" aria-hidden="true"></i> Subir Currículum</h3>
-    <form method="post" action="{{ path('cuatrovientos_artean_applicant_upload_cv') }}" id="applicant_upload_cv" class="arteanform" enctype="multipart/form-data">
+    {% if is_granted('ROLE_ADMIN') %}
+    <form method="post" action="{{ path('cuatrovientos_artean_applicant_admin_upload_cv', {'applicantid': applicant.id }) }}" id="applicant_upload_cv" class="arteanform" enctype="multipart/form-data">
+        {% else %}
+        <form method="post" action="{{ path('cuatrovientos_artean_applicant_upload_cv') }}" id="applicant_upload_cv" class="arteanform" enctype="multipart/form-data">
+            {% endif %}
+
 
         {{ form_row(formCv.cv) }}
         {{ form_row(formCv._token) }}
