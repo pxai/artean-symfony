@@ -283,26 +283,20 @@ class ApplicantController extends Controller
         $form = $this->createForm(ApplicantCvType::class, $applicant);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted()) { //{} && $form->isValid()) {
             // $file stores the uploaded PDF file
             /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
             $file = $applicant->getCv();
 
-            // Generate a unique name for the file before saving it
             $fileName = md5(uniqid()) . '.' . $file->guessExtension();
 
-            // Move the file to the directory where brochures are stored
             $file->move(
                 $this->getParameter('cvs_directory'),
                 $fileName
             );
 
-            // Update the 'brochure' property to store the PDF file name
-            // instead of its contents
             $applicant->setCv($fileName);
             $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);
-
-            // ... persist the $product variable or any other work
 
             return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');
         }
@@ -315,7 +309,9 @@ class ApplicantController extends Controller
     {
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
         $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantDataByUserId($this->user->getId());
-        $applicant->setPhoto(new File($this->getParameter('photos_directory') . '/' . $applicant->getPhoto()));
+        if ($applicant->getPhoto() != "") {
+            $applicant->setPhoto(new File($this->getParameter('photos_directory') . '/' . $applicant->getPhoto()));
+        }
         $form = $this->createForm(ApplicantPhotoType::class, $applicant);
         $form->handleRequest($request);
         $logger = $this->get('logger');
@@ -325,24 +321,17 @@ class ApplicantController extends Controller
             /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
             $file = $applicant->getPhoto();
 
-            // Generate a unique name for the file before saving it
             $fileName = md5(uniqid()) . '.' . $file->guessExtension();
 
-            // Move the file to the directory where brochures are stored
             $file->move(
                 $this->getParameter('photos_directory'),
                 $fileName
             );
 
-            // Update the 'brochure' property to store the PDF file name
-            // instead of its contents
             $applicant->setPhoto($fileName);
             $applicant->setUser($this->user);
 
-            // ... persist the $product variable or any other work
             $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);
-
-            // ... persist the $product variable or any other work
 
             return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');
         } else {

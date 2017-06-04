@@ -8,7 +8,6 @@
 {% block body %}
 <h1><i class="fa fa-user"></i> {{ applicant.surname }}, {{ applicant.name }} </h1>
     {% include "CuatrovientosArteanBundle:Default:flash.html.twig" %}
-    {{ applicant.photo }} {{ applicant.cv }}
     <div>
     {% if applicant.active %}
        Habilitado  <a href="{{ path('cuatrovientos_artean_applicant_admin_toggle', {'id': applicant.id }) }}" data-id="{{ applicant.id }}" data-status="{{ applicant.active }}" id="applicant_active_{{ applicant.id }}" class="applicant-toggle btn btn-success"><i class="fa fa-toggle-on" aria-hidden="true"> Sí</i></a>
@@ -24,7 +23,16 @@
             {% endif %}
         {% endif %}
         </div>
-
+    <div>
+        {% if applicant.cv !="" %}
+            <a href="{{ asset('uploads/cvs/' ~ applicant.cv) }}" target="_blank">Ver CV</a>
+        {% endif %}
+        <div>
+        {% if applicant.photo != "" %}
+        <img src="{{ asset('uploads/photos/' ~ applicant.photo) }}" class="img-responsive" />
+        {% endif %}
+        </div>
+        </div>
     <div>
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
