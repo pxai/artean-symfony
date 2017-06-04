@@ -43,12 +43,12 @@ class SendPendingEmailsCommand extends ContainerAwareCommand
                 // outputs a message followed by a "\n"
                 foreach ($mailings[$i]->getSelectedApplicants() as $applicant) {
                     $output->writeln('Sending to...: ' . $applicant->getName() .': '.$applicant->getEmail());
-                    $this->sendEmail($mailings[$i], $applicant->getEmail());
+                    //$this->sendEmail($mailings[$i], $applicant->getEmail());
                 }
 
                 foreach ($mailings[$i]->getSelectedCompanies() as $company) {
                     $output->writeln('Sending to...: ' . $company->getEmpresa() .': '.$company->getEmail());
-                    $this->sendEmail($mailings[$i], $company->getEmail());
+                    //$this->sendEmail($mailings[$i], $company->getEmail());
                 }
             }
         }

@@ -3,8 +3,7 @@
 namespace Cuatrovientos\ArteanBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Validator\Constraints\Count;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="Cuatrovientos\ArteanBundle\EntityRepository\ApplicantRepository")
@@ -101,9 +100,17 @@ class Applicant extends Entity
 
      /**
      * @ORM\Column(name="curriculum",type="string", length=255)
+      * @Assert\NotBlank(message="Por favor, suba el fichero en formato jpg, gif o png")
+      * @Assert\File(mimeTypes={ "applicantion/pdf","application/vnd.openxmlformats-officedocument.wordprocessingml.document","application/msword" })
      */
     private $cv = '';
 
+    /**
+     * @ORM\Column(name="fotografia",type="string", length=255)
+     * @Assert\NotBlank(message="Por favor, suba el fichero en formato jpg, gif o png")
+     * @Assert\File(mimeTypes={ "image/png","image/jpeg","image/gif" })
+     */
+    private $photo = '';
     
     private $lopd;
 
@@ -517,6 +524,22 @@ class Applicant extends Entity
     public function setUser($user)
     {
         $this->user = $user;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param mixed $photo
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
     }
 
 

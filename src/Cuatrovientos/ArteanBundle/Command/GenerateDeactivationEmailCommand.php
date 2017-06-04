@@ -1,5 +1,5 @@
 <?php
-// src/AppBundle/Command/CreateUserCommand.php
+
 namespace Cuatrovientos\ArteanBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
@@ -7,11 +7,11 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Class SendPendingEmailsCommand
- * php bin/console artean:send-emails Wouter
+ * Class GenerateDeactivationEmailCommand
+ * php bin/console artean:generate-desactivation-email Wouter
  * @package Cuatrovientos\ArteanBundle\Command
  */
-class GenerateDesactivationCommand  extends ContainerAwareCommand
+class GenerateDeactivationEmailCommand  extends ContainerAwareCommand
 {
     protected function configure()
     {

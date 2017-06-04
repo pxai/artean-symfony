@@ -8,6 +8,7 @@
 {% block body %}
 <h1><i class="fa fa-user"></i> {{ applicant.surname }}, {{ applicant.name }} </h1>
     {% include "CuatrovientosArteanBundle:Default:flash.html.twig" %}
+    {{ applicant.photo }} {{ applicant.cv }}
     <div>
     {% if applicant.active %}
        Habilitado  <a href="{{ path('cuatrovientos_artean_applicant_admin_toggle', {'id': applicant.id }) }}" data-id="{{ applicant.id }}" data-status="{{ applicant.active }}" id="applicant_active_{{ applicant.id }}" class="applicant-toggle btn btn-success"><i class="fa fa-toggle-on" aria-hidden="true"> Sí</i></a>
@@ -23,6 +24,7 @@
             {% endif %}
         {% endif %}
         </div>
+
     <div>
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
@@ -36,6 +38,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#exp" role="tab" data-toggle="tab"><i class="fa fa-industry" aria-hidden="true"></i> Experiencia laboral</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#upload" role="tab" data-toggle="tab"><i class="fa fa-upload" aria-hidden="true"></i> Subir CV/Foto</a>
             </li>
         </ul>
 
@@ -52,6 +57,9 @@
             </div>
             <div role="tabpanel" class="tab-pane fade" id="exp">
                 {% include "CuatrovientosArteanBundle:Applicant/Jobs:jobs.html.twig" %}
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="upload">
+                {% include "CuatrovientosArteanBundle:Applicant:uploadForms.html.twig" %}
             </div>
         </div>
     </div>
