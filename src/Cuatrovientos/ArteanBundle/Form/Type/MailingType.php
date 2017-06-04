@@ -23,6 +23,7 @@ class MailingType extends AbstractType {
             ->add('body', TextareaType::class, array('label' => 'Mensaje',"required"=>true))
             ->add('mailDate', TextType::class, array('label' => 'Fecha',"required"=>false))
             ->add('type', TextType::class, array('label' => 'Tipo',"required"=>false))
+            ->add('status', HiddenType::class)
             ->add('save', SubmitType::class, array('label' => 'Guardar mailing'));
     }
 

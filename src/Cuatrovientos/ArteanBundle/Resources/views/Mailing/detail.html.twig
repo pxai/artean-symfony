@@ -1,6 +1,7 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}Artean :: Mailings : Detalle mailing{% endblock %}
 {% block body %}
+
     <h2><i class="fa fa-envelope" aria-hidden="true"></i> Mailing</h2>
 
     <a href="{{ path('cuatrovientos_artean_mailing') }}" class="btn">
@@ -19,6 +20,8 @@
         <li><strong>Tipo de mailing: </strong>{{ mailing.type }}</li>
         <li><strong>Estado: </strong>{{ mailing.status|mailingStatus }}</li>
     </ul>
+
+    <div id="fileuploader">Upload</div>
 		{#% if is_granted('ROLE_ADMIN') %#}
                 <a href="{{ path('cuatrovientos_artean_mailing') }}">Index</a> |
                 <a href="{{ path('cuatrovientos_artean_mailing_update', {'id': mailing.id }) }}">Update</a> |
@@ -351,5 +354,15 @@
             selected = !selected;
             $('#preselected_company_list option').prop('selected', selected);
         });
+        $(document).ready(function()
+        {
+            var uploadUrl = "{{ path('cuatrovientos_artean_upload_attachment', {'id': mailing.id }) }}";
+            $("#fileuploader").uploadFile({
+                url: uploadUrl,
+                fileName:"uploadedFile",
+            });
+        });
     </script>
+    <script src="http://hayageek.github.io/jQuery-Upload-File/4.0.10/jquery.uploadfile.min.js"></script>
+    <link href="http://hayageek.github.io/jQuery-Upload-File/4.0.10/uploadfile.css" rel="stylesheet">
 {% endblock %}

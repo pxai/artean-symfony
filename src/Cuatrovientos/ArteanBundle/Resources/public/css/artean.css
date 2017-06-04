@@ -86,6 +86,10 @@ input[type=checkbox]{
     background-size: cover;
 }
 
+.sectiontitle{
+    text-decoration: none
+}
+
 .photo {
     width: 200px;
 }

@@ -1113,6 +1113,12 @@ cuatrovientos_artean_mailing_stop:
     requirements:
         'id' : '\d+'
 
+cuatrovientos_artean_upload_attachment:
+    path:     /api/admin/mailing/upload/attachment/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:Api/MailingApi:uploadAttachment }
+    requirements:
+        'id' : '\d+'
+
 ################# page ##################
 
 cuatrovientos_artean_page:

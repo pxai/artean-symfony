@@ -100,15 +100,15 @@ class Applicant extends Entity
 
      /**
      * @ORM\Column(name="curriculum",type="string", length=255)
-      * @Assert\NotBlank(message="Por favor, suba el fichero en formato jpg, gif o png")
-      * @Assert\File(mimeTypes={ "applicantion/pdf","application/vnd.openxmlformats-officedocument.wordprocessingml.document","application/msword" })
+      * Assert\NotBlank(message="Por favor, suba el fichero en formato jpg, gif o png")
+      * Assert\File(mimeTypes={ "applicantion/pdf","application/vnd.openxmlformats-officedocument.wordprocessingml.document","application/msword" })
      */
     private $cv = '';
 
     /**
      * @ORM\Column(name="fotografia",type="string", length=255)
-     * @Assert\NotBlank(message="Por favor, suba el fichero en formato jpg, gif o png")
-     * @Assert\File(mimeTypes={ "image/png","image/jpeg","image/gif" })
+     * Assert\NotBlank(message="Por favor, suba el fichero en formato jpg, gif o png")
+     * Assert\File(mimeTypes={ "image/png","image/jpeg","image/gif" })
      */
     private $photo = '';
     

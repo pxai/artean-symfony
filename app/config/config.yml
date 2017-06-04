@@ -9,6 +9,7 @@ parameters:
     locale: en
     cvs_directory: '%kernel.root_dir%/../web/uploads/cvs'
     photos_directory: '%kernel.root_dir%/../web/uploads/photos'
+    attachments_directory: '%kernel.root_dir%/../web/uploads/attachments'
 
 framework:
     #esi:             ~

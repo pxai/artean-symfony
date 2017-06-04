@@ -88,11 +88,17 @@ class Mailing extends Entity
      */
     private $mailingSelectedCompanies;
 
+    /**
+     * @ORM\OneToMany(targetEntity="MailingAttachment",cascade={"all"},mappedBy="mailing",fetch="EXTRA_LAZY")
+     */
+    private $mailingAttachments;
+
     public function __construct () {
         $this->selectedCompanies = new ArrayCollection();
         $this->selectedApplicants =  new ArrayCollection();
         $this->mailingSelectedApplicants =  new ArrayCollection();
         $this->mailingSelectedCompanies =  new ArrayCollection();
+        $this->mailingAttachments =  new ArrayCollection();
     }
 
     /**
@@ -320,6 +326,30 @@ class Mailing extends Entity
     public function setStatus($status)
     {
         $this->status = $status;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMailingAttachments()
+    {
+        return $this->mailingAttachments;
+    }
+
+    /**
+     * @param mixed $mailingAttachments
+     */
+    public function addMailingAttachments($mailingAttachment)
+    {
+        $this->mailingAttachments->add($mailingAttachment);
+    }
+
+    /**
+     * @param mixed $mailingAttachments
+     */
+    public function setMailingAttachments($mailingAttachments)
+    {
+        $this->mailingAttachments = $mailingAttachments;
     }
 
 

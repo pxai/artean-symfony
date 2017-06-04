@@ -13,6 +13,7 @@ use Cuatrovientos\ArteanBundle\Form\Type\MailingType;
 use Cuatrovientos\ArteanBundle\Form\Type\ApplicantAdvancedSearchType;
 use Cuatrovientos\ArteanBundle\Form\Type\MailingSelectedApplicantsType;
 
+
 class MailingController extends Controller
 {
     /**
@@ -79,12 +80,14 @@ class MailingController extends Controller
 
    public function mailingDetailAction($id=1)
     {
+
         $form = $this->createForm(ApplicantAdvancedSearchType::class, new Applicant());
         $formSelectedApplicants = $this->createForm(MailingSelectedApplicantsType::class);
         $formSelectedCompanies = $this->createForm(MailingSelectedCompaniesType::class);
         //
         $formCompany = $this->createForm(CompanySearchType::class, new Company());
         $mailing = $this->get("cuatrovientos_artean.bo.mailing")->selectById($id);
+
         return $this->render('CuatrovientosArteanBundle:Mailing:detail.html.twig',array('form'=>$form->createView(),'formSelectedApplicants'=>$formSelectedApplicants->createView(),'formSelectedCompanies'=>$formSelectedCompanies->createView(),'formCompany'=>$formCompany->createView(),'mailing'=> $mailing));
     }
 
