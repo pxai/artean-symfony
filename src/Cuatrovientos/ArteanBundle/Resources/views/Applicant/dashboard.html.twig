@@ -26,10 +26,12 @@
     <div>
         {% if applicant.cv !="" %}
             <a href="{{ asset('uploads/cvs/' ~ applicant.cv) }}" target="_blank">Ver CV</a>
+            <span><a href="{{ path('cuatrovientos_artean_applicant_delete_cv') }}" class="delete"><i class="fa fa-trash-o"></i> Eliminar CV</a></span>
         {% endif %}
-        <div>
+        <div class="photo">
         {% if applicant.photo != "" %}
         <img src="{{ asset('uploads/photos/' ~ applicant.photo) }}" class="img-responsive" />
+            <div><a href="{{ path('cuatrovientos_artean_applicant_delete_photo') }}" class="delete"><i class="fa fa-trash-o"></i> Eliminar foto</a></div>
         {% endif %}
         </div>
         </div>
