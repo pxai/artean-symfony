@@ -1119,6 +1119,19 @@ cuatrovientos_artean_upload_attachment:
     requirements:
         'id' : '\d+'
 
+cuatrovientos_artean_delete_attachments:
+    path:     /api/admin/mailing/delete/attachment/{mailingid}
+    defaults: { _controller: CuatrovientosArteanBundle:Api/MailingApi:deleteAttachments }
+    requirements:
+        'mailingid' : '\d+'
+
+cuatrovientos_artean_delete_attachment:
+    path:     /api/admin/mailing/delete/attachment/{mailingid}/{attachmentid}
+    defaults: { _controller: CuatrovientosArteanBundle:Api/MailingApi:deleteOneAttachment }
+    requirements:
+        'mailingid' : '\d+'
+        'attachmentid' : '\d+'
+
 ################# page ##################
 
 cuatrovientos_artean_page:

@@ -70,4 +70,14 @@ class MailingBusiness extends GenericBusiness {
     {
         return  $this->entityDAO->deleteAllSelectedCompanies($mailingid);
     }
+
+    public function deleteAttachment($mailingid, $attachmentid)
+    {
+        return  $this->entityDAO->deleteAttachment($mailingid, $attachmentid);
+    }
+
+    public function deleteAllAttachments($mailingid)
+    {
+        return  $this->entityDAO->deleteAllAttachments($mailingid);
+    }
 }

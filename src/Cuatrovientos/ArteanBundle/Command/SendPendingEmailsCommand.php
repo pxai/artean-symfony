@@ -43,7 +43,7 @@ class SendPendingEmailsCommand extends ContainerAwareCommand
                 // outputs a message followed by a "\n"
                 foreach ($mailings[$i]->getSelectedApplicants() as $applicant) {
                     $output->writeln('Sending to...: ' . $applicant->getName() .': '.$applicant->getEmail());
-                    //$this->sendEmail($mailings[$i], $applicant->getEmail());
+                    $this->sendEmail($mailings[$i], $applicant->getEmail());
                 }
 
                 foreach ($mailings[$i]->getSelectedCompanies() as $company) {
@@ -62,15 +62,20 @@ class SendPendingEmailsCommand extends ContainerAwareCommand
 
         $message = \Swift_Message::newInstance()
             ->setSubject($mailing->getSubject())
-            ->setFrom($mailing->getFrom())
+            ->setFrom($mailing->getMailFrom())
             ->setTo($to)
-            ->setBcc($mailing->getBcc())
-            ->setBody($this->renderView(
+           // ->setBcc($mailing->getBcc())
+            ->setBody($this->getContainer()->get('templating')->render(
                 $template,
                 array('content' => $mailing->getBody())
             ),'text/html'
 
             );
+
+        foreach ($mailing->getmailingAttachments() as $attachment) {
+            echo '    Adding attachment: ' . $this->getContainer()->getParameter('attachments_directory').'/'.$attachment->getPath());
+            $message->attach(\Swift_Attachment::fromPath($this->getContainer()->getParameter('attachments_directory').'/'.$attachment->getPath()));
+        }
 
         $this->getContainer()->get('mailer')->send($message);
     }

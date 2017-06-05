@@ -45,6 +45,21 @@ class MailingApiController extends Controller
     /**
      * @Rest\View
      */
+    public function deleteOneAttachmentAction($mailingid,$attachmentid) {
+        $result = $this->get("cuatrovientos_artean.bo.mailing")->deleteAttachment($mailingid, $attachmentid);
+        return '{"mailingid":'.$mailingid.',"result":'.$attachmentid.'}';
+    }
+
+    /**
+     * @Rest\View
+     */
+    public function deleteAttachmentsAction($mailingid) {
+        $result = $this->get("cuatrovientos_artean.bo.mailing")->deleteAllAttachments($mailingid);
+        return '{"mailingid":'.$mailingid.',"result":'.$mailingid.'}';
+    }
+    /**
+     * @Rest\View
+     */
     public function uploadAttachmentAction($id, Request $request) {
         $mailing = $this->get("cuatrovientos_artean.bo.mailing")->selectById($id);
         $logger = $this->get('logger');
@@ -60,15 +75,16 @@ class MailingApiController extends Controller
                 );
                 $attachment = new MailingAttachment();
                 $attachment->setPath($fileName);
-                $attachment->setName($fileName);
+                $attachment->setName($file->getClientOriginalName());
                 $attachment->setMailing($mailing);
                 $mailing->addMailingAttachments($attachment);
                 $this->get("cuatrovientos_artean.bo.mailing")->update($mailing);
+                $lastId = $mailing->getMailingAttachments()->last()->getId();
             }
         }
         $logger->info("Ok, something was uploaded: " . $id . ' or: ' . $fileName);
        // $result = $this->get("cuatrovientos_artean.bo.mailing")->deleteSelectedApplicant($mailingid, $applicantid);
-        return '{"mailingid":"'.$id.'","result":0}';
+        return '{"attachmentid":"'.$lastId.'","result":0}';
     }
 
 }

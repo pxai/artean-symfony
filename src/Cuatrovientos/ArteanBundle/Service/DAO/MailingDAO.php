@@ -82,6 +82,26 @@ class MailingDAO extends GenericDAO {
             ->getQuery()->execute();
     }
 
+    public function deleteAttachment($mailingid, $attachmentid)
+    {
+        return $this->repository->createQueryBuilder('m')
+            ->delete('Cuatrovientos\ArteanBundle\Entity\MailingAttachment', 'm')
+            ->where('m.mailing = :mailingid')
+            ->andWhere('m.id = :attachmentid')
+            ->setParameter('mailingid', $mailingid)
+            ->setParameter('attachmentid', $attachmentid)
+            ->getQuery()->execute();
+    }
+
+    public function deleteAllAttachments($mailingid)
+    {
+        return $this->repository->createQueryBuilder('m')
+            ->delete('Cuatrovientos\ArteanBundle\Entity\MailingAttachment', 'm')
+            ->where('m.mailing = :mailingid')
+            ->setParameter('mailingid', $mailingid)
+            ->getQuery()->execute();
+    }
+
 
     public function deleteAllSelectedCompanies($mailingid)
     {

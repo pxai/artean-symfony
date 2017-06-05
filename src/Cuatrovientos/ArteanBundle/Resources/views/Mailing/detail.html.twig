@@ -19,7 +19,25 @@
         <li><strong>Fecha: </strong>{{ mailing.mailDate }}</li>
         <li><strong>Tipo de mailing: </strong>{{ mailing.type }}</li>
         <li><strong>Estado: </strong>{{ mailing.status|mailingStatus }}</li>
+        <li><strong>Ficheros adjuntos: </strong>{{mailing.mailingAttachments|length }}</li>
     </ul>
+
+
+    {% if mailing.mailingAttachments|length > 0 %}
+        <i class="fa fa-paperclip" aria-hidden="true"></i> Adjuntos:
+        <div id="attachments">
+            <div id="attachment"><a href="{{ path('cuatrovientos_artean_delete_attachments', {'mailingid': mailing.id }) }}" id="delete_all_attachments"><i class="fa fa-trash" aria-hidden="true"></i>  Borrar todos</a></div>
+                {% for attachment in mailing.mailingAttachments %}
+                   <div id="attachment_{{ attachment.id }}">
+                   {{ attachment.name }} <a href="" data-id="{{ attachment.id }}" class="eliminar attachment" ><i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar</a>
+                   </div>
+                {% endfor %}
+        </div>
+    {% else %}
+        <div id="attachments">
+         No hay ficheros adjuntos
+         </div>
+    {% endif %}
 
     <div id="fileuploader">Upload</div>
 		{#% if is_granted('ROLE_ADMIN') %#}
@@ -360,7 +378,80 @@
             $("#fileuploader").uploadFile({
                 url: uploadUrl,
                 fileName:"uploadedFile",
+                onSuccess:function(files,data,xhr,pd)
+                {
+                    var result = JSON.parse(data);
+                    //files: list of files
+                    //data: response from server
+                    //xhr : jquer xhr object
+                    for (var i = 0; i<files.length;i++) {
+                        var newFile =  '<div id="attachment_'+result.attachmentid+'"> '+files[i]+' <a href="" data-id="'+result.attachmentid+'" class="eliminar attachment" ><i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar</a> </div>';
+                        $('#attachments').append(newFile);
+                                console.log(files[i]);
+                        console.log(i + ' File uploaded.');
+                    }
+                    console.log(data);
+                }
             });
+        });
+        $(document).on('click','.attachment',function (e) {
+        //$('.attachment').click(function (e) {
+            e.preventDefault();
+            var attachmentid = $(this).data("id");
+            console.log($(this).attr('href') + ":" + attachmentid);
+            var deleteUrl = "{{ path('cuatrovientos_artean_delete_attachments', {'mailingid': mailing.id }) }}/" + attachmentid;
+            load(deleteUrl);
+
+            //var itemForSymfony['jobrequest'] = item;
+            function load (url) {
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    dataType: 'json',
+                    error: function() {
+                        $('#showApplicant div.modal-body').html('Error al eliminar.');//res;
+                        $('#showApplicant').modal('show');
+                    },
+                    success: function(res) {
+                        console.log("Result OK: " + res);
+                        var result = JSON.parse(res);
+                        if (result.result == attachmentid) {
+                            $('#attachment_'+attachmentid).fadeOut(1000);
+                            $('#attachment_'+attachmentid).remove();
+                        } else {
+                            $('#showApplicant div.modal-body').html('No se pudo eliminar.');//res;
+                            $('#showApplicant').modal('show');
+
+                        }
+                    }
+                });
+            }
+        });
+        $('#delete_all_attachments').click(function (e) {
+            e.preventDefault();
+            var attachmentid = $(this).data("id");
+            console.log($(this).attr('href') + ":" + attachmentid);
+            var deleteUrl = "{{ path('cuatrovientos_artean_delete_attachments', {'mailingid': mailing.id }) }}";
+            load(deleteUrl);
+
+            //var itemForSymfony['jobrequest'] = item;
+            function load (url) {
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    dataType: 'json',
+                    error: function() {
+                        $('#showApplicant div.modal-body').html('Error al eliminar.');//res;
+                        $('#showApplicant').modal('show');
+                    },
+                    success: function(res) {
+                        console.log("Result OK: " + res);
+                        var result = JSON.parse(res);
+                        $('#attachments div').fadeOut(1000);
+                        $('#attachments div').remove();
+                    }
+                });
+            }
         });
     </script>
     <script src="http://hayageek.github.io/jQuery-Upload-File/4.0.10/jquery.uploadfile.min.js"></script>
