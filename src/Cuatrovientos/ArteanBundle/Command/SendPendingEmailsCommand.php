@@ -29,7 +29,7 @@ class SendPendingEmailsCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $mailings = $this->getContainer()->get("cuatrovientos_artean.bo.mailing")->findAllMailings(0, 0,10);
+        $mailings = $this->getContainer()->get("cuatrovientos_artean.bo.mailing")->findAllPendingMailings(0, 0,10);
         $output->writeln([
             'Artean: Sending Pending Emails',
             '==============================',
@@ -39,23 +39,30 @@ class SendPendingEmailsCommand extends ContainerAwareCommand
         for ($i = 0; $i < count($mailings);$i++) {
             // outputs a message followed by a "\n"
             $output->writeln('Whoa: ' . $mailings[$i]->getSubject());
-            for ($i = 0; $i < count($mailings);$i++) {
+
                 // outputs a message followed by a "\n"
                 foreach ($mailings[$i]->getSelectedApplicants() as $applicant) {
                     $output->writeln('Sending to...: ' . $applicant->getName() .': '.$applicant->getEmail());
-                    $this->sendEmail($mailings[$i], $applicant->getEmail());
+                    $result = $this->sendEmail($mailings[$i], $applicant->getEmail());
+                    $output->writeln('Result ' . $result . ' for ' . $applicant->getEmail());
                 }
 
                 foreach ($mailings[$i]->getSelectedCompanies() as $company) {
                     $output->writeln('Sending to...: ' . $company->getEmpresa() .': '.$company->getEmail());
-                    //$this->sendEmail($mailings[$i], $company->getEmail());
+                    //$result = $this->sendEmail($mailings[$i], $company->getEmail());
+                    //$output->writeln('Result ' . $result . ' for ' . $company->getEmail());
                 }
-            }
+
+           $mailings[$i]->setStatus(3);
+            $this->getContainer()->get("cuatrovientos_artean.bo.mailing")->update($mailings[$i]);
         }
 
+
+
+
         // outputs a message without adding a "\n" at the end of the line
-        $output->write('You are about to ');
-        $output->write('create a user.');
+        $output->write('Thanks yo');
+
     }
 
     private function sendEmail ($mailing, $to, $template="Emails/standard.html.twig") {
@@ -73,10 +80,10 @@ class SendPendingEmailsCommand extends ContainerAwareCommand
             );
 
         foreach ($mailing->getmailingAttachments() as $attachment) {
-            echo '    Adding attachment: ' . $this->getContainer()->getParameter('attachments_directory').'/'.$attachment->getPath());
+            echo '    Adding attachment: ';//. $this->getContainer()->getParameter('attachments_directory').'/'.$attachment->getPath();
             $message->attach(\Swift_Attachment::fromPath($this->getContainer()->getParameter('attachments_directory').'/'.$attachment->getPath()));
         }
 
-        $this->getContainer()->get('mailer')->send($message);
+        return $this->getContainer()->get('mailer')->send($message);
     }
 }

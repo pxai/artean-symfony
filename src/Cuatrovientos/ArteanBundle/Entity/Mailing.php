@@ -54,6 +54,10 @@ class Mailing extends Entity
     private $type;
 
     /**
+     *  "0" => "Creado, sin enviar",
+    "1" => "En proceso de envío",
+    "2" => "En pausa",
+    "3" => "Envío finalizado"
      * @ORM\Column(name="status",type="integer", length=1)
      */
     private $status;

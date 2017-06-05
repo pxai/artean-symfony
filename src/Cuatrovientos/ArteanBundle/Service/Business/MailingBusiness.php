@@ -27,7 +27,12 @@ class MailingBusiness extends GenericBusiness {
     {
         return $this->entityDAO->findAllMailings($id, $start,$total);
     }
-    
+
+    public function findAllPendingMailings($id=0, $start=0,$total=100)
+    {
+        return $this->entityDAO->findAllPendingMailings($id, $start,$total);
+    }
+
     public function findMailings($term) {
         return $this->entityDAO->findMailings($term);
     }
