@@ -1,7 +1,8 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}Ofertas::Index{% endblock %}
 {% block body %}
-{% trans %}Ofertas introducida por empresa{% endtrans %}
+    <h2><i class="fa fa-bullhorn" aria-hidden="true"></i> {% trans %}Oferta introducida por empresa{% endtrans %}</h2>
+
 
     <div><a href="{{ path('cuatrovientos_artean_offer') }}" class="btn btn-info">Volver al Índice</a>
 
@@ -24,6 +25,35 @@ Oferta de empleo para
       <th scope="row">Empresa</th>
       <td>{{ offer.company }}</td>
     </tr>
+
+    <tr>
+        <th scope="row">Dirección</th>
+        <td>{{ offer.address }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Localidad</th>
+        <td>{{ offer.city }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Actividad económica</th>
+        <td>{{ offer.activity }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Contacto</th>
+        <td>{{ offer.contact }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Persona de contacto</th>
+        <td>{{ offer.contactPerson }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Email de contacto</th>
+        <td>{{ offer.contactEmail }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Teléfono de contacto</th>
+        <td>{{ offer.contactPhone }}</td>
+    </tr>
     <tr>
       <th scope="row">Puesto</th>
       <td>{{ offer.position }}</td>
@@ -35,6 +65,10 @@ Oferta de empleo para
     <tr>
       <th scope="row">Jornada</th>
       <td>{{ offer.workday }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Contrato</th>
+        <td>{{ offer.contract }}</td>
     </tr>
     <tr>
       <th scope="row">Observaciones</th>
@@ -56,10 +90,7 @@ Oferta de empleo para
             {% endfor %}
         </td>
     </tr>
-    <tr>
-      <th scope="row">Contact</th>
-      <td>{{ offer.contact }}</td>
-    </tr>
+
      </tbody>
  </table>
 		{# % if is_granted('ROLE_ADMIN') % #}

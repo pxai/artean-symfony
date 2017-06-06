@@ -25,6 +25,36 @@ class OfferOpen
     private $company;
 
     /**
+     * @ORM\Column(name="direccion",type="string", length=100)
+     */
+    private $address;
+
+    /**
+     * @ORM\Column(name="localidad",type="string", length=100)
+     */
+    private $city;
+
+    /**
+     * @ORM\Column(name="actividad",type="string", length=255)
+     */
+    private $activity;
+
+    /**
+     * @ORM\Column(name="persona_contacto",type="string", length=100)
+     */
+    private $contactPerson;
+
+    /**
+     * @ORM\Column(name="email_contacto",type="string", length=100)
+     */
+    private $contactEmail;
+
+    /**
+     * @ORM\Column(name="telefono_contacto",type="string", length=100)
+     */
+    private $contactPhone;
+
+    /**
      * @ORM\Column(name="fechaoferta",type="datetime", length=255)
      */
     private $offerdate;
@@ -67,6 +97,11 @@ class OfferOpen
   * @ORM\JoinColumn(name="tipocontrato", referencedColumnName="id")
   */
     private $contract_type;
+
+    /**
+     * @ORM\Column(name="contrato",type="string", length=255)
+     */
+    private $contract;
 
      /**
      * @ORM\Column(name="salario",type="string", length=50)
@@ -252,9 +287,117 @@ class OfferOpen
         $this->published = $published;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getContract()
+    {
+        return $this->contract;
+    }
 
+    /**
+     * @param mixed $contract
+     */
+    public function setContract($contract)
+    {
+        $this->contract = $contract;
+    }
 
-  
+    /**
+     * @return mixed
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param mixed $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param mixed $city
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getActivity()
+    {
+        return $this->activity;
+    }
+
+    /**
+     * @param mixed $activity
+     */
+    public function setActivity($activity)
+    {
+        $this->activity = $activity;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContactPerson()
+    {
+        return $this->contactPerson;
+    }
+
+    /**
+     * @param mixed $contactPerson
+     */
+    public function setContactPerson($contactPerson)
+    {
+        $this->contactPerson = $contactPerson;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContactEmail()
+    {
+        return $this->contactEmail;
+    }
+
+    /**
+     * @param mixed $contactEmail
+     */
+    public function setContactEmail($contactEmail)
+    {
+        $this->contactEmail = $contactEmail;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContactPhone()
+    {
+        return $this->contactPhone;
+    }
+
+    /**
+     * @param mixed $contactPhone
+     */
+    public function setContactPhone($contactPhone)
+    {
+        $this->contactPhone = $contactPhone;
+    }
 
     
 }

@@ -31,13 +31,16 @@ class OfferType extends AbstractType {
                 "required"=>true,
                 'translation_domain' => 'messages'
               ))
+            ->add('address', TextType::class, array('label' => 'Dirección'))
+            ->add('city', TextType::class, array('label' => 'Localidad'))
+            ->add('activity', TextareaType::class, array('label' => 'Actividad económica'))
+            ->add('contactPerson', TextType::class, array('label' => 'Persona de contacto'))
+            ->add('contactEmail', TextType::class, array('label' => 'Email de contacto'))
+            ->add('contactPhone', TextType::class, array('label' => 'Teléfono de contacto'))
             ->add('position', TextType::class, array('label' => 'Puesto'))
-            ->add('description', TextareaType::class, array('label' => 'Descripción'))
+            ->add('description', TextareaType::class, array('label' => 'Descripción', 'attr' => array('placeholder'=> 'Funciones a desarrollar')))
             ->add('position_no', TextType::class,array('label' => 'Nº vacantes','data'=> 1))
-            ->add('contract_type', EntityType::class, array('label'=>'Tipo de contrato',
-                    'class' => 'CuatrovientosArteanBundle:ContractType'
-                    )
-            )
+            ->add('contract', TextareaType::class, array('label' => 'Tipo y duración de contrato', 'attr' => array('placeholder'=> 'Ejemplo: prácticas, 6 meses')))
             ->add('workday', TextType::class, array('label' => 'Jornada'))
             ->add('required_studies', ChoiceType::class, array('label'=> 'Formación requerida',
                     // each entry in the array will be an "email" field
@@ -100,7 +103,7 @@ class OfferType extends AbstractType {
                 if (isset($data['position'])) {
                      $data['position'] = $data['company'] .': ' .$data['position'];
                 }
-
+                $data['published'] = 0;
                 $event->setData($data);
         });
     }

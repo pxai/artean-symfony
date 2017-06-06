@@ -1,17 +1,50 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
 {% block title %}Ofertas::Index{% endblock %}
 {% block body %}
-    {% trans %}Ofertas introducidas por empreass{% endtrans %}
+    <h2><i class="fa fa-bullhorn" aria-hidden="true"></i> {% trans %}Ofertas introducidas por empreass{% endtrans %}</h2>
+
 
 <h3>Modificar oferta: {{ id }}</h3>
 <form method="post" action="{{ path('cuatrovientos_artean_offer_update_save') }}">
     {{ form_errors(form) }}
     {{ form_widget(form.id, {'attr': {'class': 'form-control'}}) }}
+    <h4><i class="fa fa-building-o" aria-hidden="true"></i> Datos Empresa</h4>
     <div class="form-group">
         {{ form_label(form.company) }}
         {{ form_errors(form.company) }}
         {{ form_widget(form.company, {'attr': {'class': 'form-control'}}) }}
     </div>
+    <div class="form-group">
+        {{ form_label(form.address) }}
+        {{ form_errors(form.address) }}
+        {{ form_widget(form.address, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.city) }}
+        {{ form_errors(form.city) }}
+        {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.activity) }}
+        {{ form_errors(form.activity) }}
+        {{ form_widget(form.activity, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.contactPerson) }}
+        {{ form_errors(form.contactPerson) }}
+        {{ form_widget(form.contactPerson, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.contactEmail) }}
+        {{ form_errors(form.contactEmail) }}
+        {{ form_widget(form.contactEmail, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.contactPhone) }}
+        {{ form_errors(form.contactPhone) }}
+        {{ form_widget(form.contactPhone, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <h4><i class="fa fa-briefcase" aria-hidden="true"></i> Puesto de trabajo</h4>
     <div class="form-group">
         {{ form_label(form.position) }}
         {{ form_errors(form.position) }}
@@ -28,15 +61,11 @@
         {{ form_widget(form.position_no, {'attr': {'class': 'form-control'}}) }}
     </div>
     <div class="form-group">
-        {{ form_label(form.contract_type) }}
-        {{ form_errors(form.contract_type) }}
-        {{ form_widget(form.contract_type, {'attr': {'class': 'form-control'}}) }}
+        {{ form_label(form.contract) }}
+        {{ form_errors(form.contract) }}
+        {{ form_widget(form.contract, {'attr': {'class': 'form-control'}}) }}
     </div>
-    <div class="form-group">
-        {{ form_label(form.workday) }}
-        {{ form_errors(form.workday) }}
-        {{ form_widget(form.workday, {'attr': {'class': 'form-control'}}) }}
-    </div>
+    <h4><i class="fa fa-users" aria-hidden="true"></i> Perfil de candidaturas</h4>
     <div class="form-group">
         {{ form_label(form.required_studies) }}
         {{ form_errors(form.required_studies) }}
@@ -52,11 +81,7 @@
         {{ form_errors(form.observations) }}
         {{ form_widget(form.observations, {'attr': {'class': 'form-control'}}) }}
     </div>
-    <div class="form-group">
-        {{ form_label(form.contact) }}
-        {{ form_errors(form.contact) }}
-        {{ form_widget(form.contact, {'attr': {'class': 'form-control'}}) }}
-    </div>
+    <h4><i class="fa fa-toggle-on" aria-hidden="true"></i> Estado</h4>
     <div class="form-group">
         {{ form_label(form.published) }}
         {{ form_errors(form.published) }}
@@ -64,7 +89,7 @@
     </div>
     <div class="form-group">
         {{ form_row(form._token) }}
-        {{ form_widget(form.save, {'attr': {'class': 'form-control'}}) }}
+        {{ form_widget(form.save, {'attr': {'class': 'form-control btn-info'}}) }}
     </div>
 </form>
 
