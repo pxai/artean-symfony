@@ -94,6 +94,7 @@ class OfferType extends AbstractType {
                     'expanded' => true,
                 )
             )
+            ->add('type',HiddenType::class)
             ->add('save', SubmitType::class, array('label'=> 'Enviar'));
         
           $builder->addEventListener(
@@ -104,6 +105,7 @@ class OfferType extends AbstractType {
                      $data['position'] = $data['company'] .': ' .$data['position'];
                 }
                 $data['published'] = 0;
+                $data['type'] = 0;
                 $event->setData($data);
         });
     }
@@ -115,6 +117,6 @@ class OfferType extends AbstractType {
     }
 
     public function getName() {
-        return 'center';
+        return 'offeropen';
     }
 }

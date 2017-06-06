@@ -1,12 +1,106 @@
-<div class='post'>
-	<div class='title'>{{ center.name }}</div> 
-		<div class='text'>{{ center.id }}</div> 
-		<div class='author'>by {{ center.name }}</div> 
-		{% if is_granted('ROLE_ADMIN') %}
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Ofertas publicadas::Index{% endblock %}
+{% block body %}
+    <h2><i class="fa fa-bullhorn" aria-hidden="true"></i> {% trans %}Oferta publicada por empresa{% endtrans %}</h2>
+
+
+    <div><a href="{{ path('cuatrovientos_artean_offerad') }}" class="btn btn-info">Volver al Índice</a>
+
+    <div class='offer'>
+Oferta de empleo para
+ {{ offer.company }}.
+{% if offer.published==1 %}
+    <b>Esta oferta ya fue publicada como noticia</b>
+{% endif  %}
+ <p>La empresa ha creado una oferta de empleo en el portal con las siguientes especificaciones</p>
+ <table class="table">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Nueva oferta</th>
+    </tr>    
+    </thead>
+     <tbody>
+    <tr>
+      <th scope="row">Empresa</th>
+      <td>{{ offer.company }}</td>
+    </tr>
+
+    <tr>
+        <th scope="row">Dirección</th>
+        <td>{{ offer.address }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Localidad</th>
+        <td>{{ offer.city }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Actividad económica</th>
+        <td>{{ offer.activity }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Contacto</th>
+        <td>{{ offer.contact }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Persona de contacto</th>
+        <td>{{ offer.contactPerson }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Email de contacto</th>
+        <td>{{ offer.contactEmail }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Teléfono de contacto</th>
+        <td>{{ offer.contactPhone }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Puesto</th>
+      <td>{{ offer.position }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Descripción</th>
+      <td>{{ offer.description }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Jornada</th>
+      <td>{{ offer.workday }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Contrato</th>
+        <td>{{ offer.contract }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Observaciones</th>
+      <td>{{ offer.observations }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Estudios</th>
+        <td>
+            {% for study in offer.requiredStudies %}
+                {{ study }},
+            {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <th scope="row">Idiomas</th>
+        <td>
+            {% for language in offer.requiredLanguages %}
+                {{ language }},
+            {% endfor %}
+        </td>
+    </tr>
+
+     </tbody>
+ </table>
+		{# % if is_granted('ROLE_ADMIN') % #}
 			<div>        
-                <a href="{{ path('cuatrovientos_artean_center_detail', {'id': center.id }) }}">Detail</a> |
-                <a href="{{ path('cuatrovientos_artean_center_update', {'id': center.id }) }}">Update</a> |
-                <a href="{{ path('cuatrovientos_artean_center_delete', {'id': center.id }) }}">Delete</a>                      
+                <a href="{{ path('cuatrovientos_artean_offerad_process', {'id': offer.id }) }}">Convertir en proceso</a> |
+		{% if offer.published==0 %}
+                    <a href="{{ path('cuatrovientos_artean_offerad_publish', {'id': offer.id }) }}">Publicar como noticia</a> |
+		{% endif  %}
+                <a href="{{ path('cuatrovientos_artean_offerad_delete', {'id': offer.id }) }}">Eliminar</a>
 		    </div>
-		{% endif %}
+		{#% endif % #}
 </div>
+{% endblock %}

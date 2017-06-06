@@ -17,7 +17,7 @@ class OfferController extends Controller
     public function indexAction()
     {
 
-        $offers = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:OfferOpen")->findOffers();
+        $offers = $this->get("cuatrovientos_artean.bo.offer")->findAllOffers();
         return $this->render('CuatrovientosArteanBundle:Offer:index.html.twig' , array('offers'=>$offers));
     }
 
@@ -83,14 +83,14 @@ class OfferController extends Controller
    public function offerDetailAction($id=1)
     {
 
-        $offer = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:OfferOpen")->find($id);
+        $offer = $this->get("cuatrovientos_artean.bo.offer")->selectById($id);
    
         return $this->render('CuatrovientosArteanBundle:Offer:offer.html.twig' ,array('offer'=> $offer));
     }
 
 
     public function offerUpdateAction($id) {
-        $offer = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:OfferOpen")->findOffer($id);
+        $offer = $this->get("cuatrovientos_artean.bo.offer")->selectById($id);
       
         $form = $this->createForm(OfferType::class, $offer);
 
@@ -106,10 +106,8 @@ class OfferController extends Controller
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $offer = $form->getData();
-                
-                $em = $this->getDoctrine()->getEntityManager();
-                $em->merge($offer);
-                $em->flush();
+
+                $this->get("cuatrovientos_artean.bo.offer")->update($offer);
                 
                 // redirect to index
                 $response = $this->forward('CuatrovientosArteanBundle:Offer:offerDetail' , array('id' => $offer->getId()));
@@ -126,7 +124,7 @@ class OfferController extends Controller
     */
    public function offerDeleteAction($id=1)
     {
-        $offer = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:OfferOpen")->find($id);
+        $offer = $this->get("cuatrovientos_artean.bo.offer")->selectById($id);
         return $this->render('CuatrovientosArteanBundle:Offer:delete.html.twig' ,array('offer'=> $offer));
     }
 
@@ -136,12 +134,7 @@ class OfferController extends Controller
     */
    public function offerDeleteSaveAction(OfferOpen $offer)
     {
-        $rsm = new ResultSetMapping();
-       $em = $this->getDoctrine()->getEntityManager();
-        
-
-        $em->remove($offer);
-        $em->flush();
+        $this->get("cuatrovientos_artean.bo.offer")->remove($offer);
       // return $this->forward('CuatrovientosArteanBundle:Offer:index');
         return $this->redirectToRoute('cuatrovientos_artean_offer');
     }
@@ -206,7 +199,7 @@ class OfferController extends Controller
     */
     public function newOfferPublishAction($id)
     {
-        $offer = $this->getDoctrine()->getRepository("CuatrovientosArteanBundle:OfferOpen")->findOffer($id);
+        $offer = $this->get("cuatrovientos_artean.bo.offer")->selectById($id);
                 
         $news = new News();
         $news->setTitle($offer->getCompany(). ' ' . $offer->getPosition());

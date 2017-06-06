@@ -1,13 +1,20 @@
 {% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
-{% block title %}Blog sample::Index{% endblock %}
+{% block title %}Ofertas::Index{% endblock %}
 {% block body %}
-{% trans %}hello{% endtrans %}
- <div id='offers'>
-        {% for offer in offers %}
-            {% include "CuatrovientosArteanBundle:Offer:workOrder.html.twig" %}
-            </div>
-        {% endfor %}
-</div>
-<div><a href="{{ path('cuatrovientos_artean_offer_new') }}">New</a> </div>
 
+    <h2><i class="fa fa-bullhorn" aria-hidden="true"></i> {% trans %}Ofertas publicadas por empreass{% endtrans %}</h2>
+    <div><a href="{{ path('cuatrovientos_artean_offerad') }}">{% trans %}Recargar{% endtrans %}</a>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <a href="{{ path('cuatrovientos_artean_offerad_status', {'status': 0 }) }}" class="page-draft btn btn-secondary">No publicado</a>
+        <a href="{{ path('cuatrovientos_artean_offerad_status', {'status': 5 }) }}" class="btn btn-secondary page-offer">Convertida en solicitud</a>
+        <a href="{{ path('cuatrovientos_artean_offerad_status', {'status': 6 }) }}" class="btn btn-secondary page-published">Publicada</a>
+    </div>
+<div class="table-responsive">
+  <table class="table .table-condensed">
+      <tr><th>Empresa</th><th>Fecha</th><th>Puesto</th><th>Estado</th><th></th></tr>
+        {% for offer in offers %}
+            {% include "CuatrovientosArteanBundle:OfferAd:offers.html.twig" %}
+        {% endfor %}
+  </table>
+</div>
 {% endblock %}

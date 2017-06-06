@@ -147,7 +147,7 @@ cuatrovientos_artean_open_offer_ad_save:
     path:     /artean/open/offerad/save
     defaults: { _controller: CuatrovientosArteanBundle:OfferAd:newOfferAdSaveOpen }
     
-### admin    
+### admin    offer
 cuatrovientos_artean_offer:
     path:     /artean/admin/offer
     defaults: { _controller: CuatrovientosArteanBundle:Offer:index }
@@ -204,6 +204,63 @@ cuatrovientos_artean_offer_publish:
     requirements: 
             'id' : '\d+'
 
+
+### admin    
+cuatrovientos_artean_offerad:
+    path:     /artean/admin/offerad
+    defaults: { _controller: CuatrovientosArteanBundle:OfferAd:index }
+
+cuatrovientos_artean_offerad_status:
+    path:     /artean/admin/offerad/status/{status}
+    defaults: { _controller: CuatrovientosArteanBundle:OfferAd:indexStatus }
+    requirements:
+            'status' : '\d+'
+
+cuatrovientos_artean_offerad_new:
+    path:     /artean/admin/offerad/new
+    defaults: { _controller: CuatrovientosArteanBundle:OfferAd:newOfferAd }
+
+cuatrovientos_artean_offerad_new_save:
+    path:     /artean/admin/offerad/new/save
+    defaults: { _controller: CuatrovientosArteanBundle:OfferAd:newOfferAdSave }
+
+cuatrovientos_artean_offerad_detail:
+    path:     /artean/admin/offerad/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:OfferAd:offerAdDetail }
+
+cuatrovientos_artean_offerad_update_save:
+    path:     /artean/admin/offerad/update/save
+    defaults: { _controller: CuatrovientosArteanBundle:OfferAd:offerAdUpdateSave }
+
+cuatrovientos_artean_offerad_update:
+    path:     /artean/admin/offerad/update/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:OfferAd:offerAdUpdate }
+    requirements: 
+            'id' : '\d+'
+            
+cuatrovientos_artean_offerad_delete:
+    path:     /artean/admin/offerad/delete/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:OfferAd:offerAdDelete }
+    requirements: 
+            'id' : '\d+'
+
+cuatrovientos_artean_offerad_delete_save:
+    path:     /artean/admin/offerad/delete/save/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:OfferAd:offerAdDeleteSave }
+    requirements: 
+            'id' : '\d+'
+   
+cuatrovientos_artean_offerad_process:
+    path:     /artean/admin/offerad/process/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:OfferAd:offerAdProcessSave }
+    requirements: 
+            'id' : '\d+'
+
+cuatrovientos_artean_offerad_publish:
+    path:     /artean/admin/offerad/publish/{id}
+    defaults: { _controller: CuatrovientosArteanBundle:OfferAd:newOfferAdPublish }
+    requirements: 
+            'id' : '\d+'
             
  ##### applicant ########################################33
 cuatrovientos_artean_applicant_signin:        

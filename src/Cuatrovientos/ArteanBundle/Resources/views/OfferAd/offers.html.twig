@@ -1,0 +1,13 @@
+<tr class="{{ offer.published|pageStatusColor }}">
+     <td>{{ offer.company }}</td> 
+     <td>{{ offer.offerdate|date('d-m-Y') }}</td> 
+     <td>{{ offer.position }}</td>
+    <td>{{ offer.published }}</td>
+    {#% if is_granted('ROLE_ADMIN') %#}
+			<td>        
+                <a href="{{ path('cuatrovientos_artean_offerad_detail', {'id': offer.id }) }}">Detail</a> |
+                <a href="{{ path('cuatrovientos_artean_offerad_update', {'id': offer.id }) }}">Update</a> |
+                <a href="{{ path('cuatrovientos_artean_offerad_delete', {'id': offer.id }) }}">Delete</a>
+		    </td>
+		{#% endif % #}
+</tr>

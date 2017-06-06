@@ -149,6 +149,14 @@ services:
         class: Cuatrovientos\ArteanBundle\Service\Business\OfferBusiness
         arguments: ['@cuatrovientos_artean.dao.offer']
 
+    cuatrovientos_artean.dao.offerad:
+        class: Cuatrovientos\ArteanBundle\Service\DAO\OfferAdDAO
+        arguments: ['CuatrovientosArteanBundle:OfferAdOpen', '@doctrine.orm.entity_manager' ]
+
+    cuatrovientos_artean.bo.offerad:
+        class: Cuatrovientos\ArteanBundle\Service\Business\OfferAdBusiness
+        arguments: ['@cuatrovientos_artean.dao.offerad']
+
     cuatrovientos_artean.bo.filesystem:
         class: Cuatrovientos\ArteanBundle\Service\Business\FileSystemBusiness
         arguments: ['@cuatrovientos_artean.dao.user']

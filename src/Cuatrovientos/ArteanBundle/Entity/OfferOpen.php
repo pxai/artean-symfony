@@ -7,10 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 
 
 /**
+ * SOLICITUD BOLSA DE EMPLEO
  * @ORM\Entity(repositoryClass="Cuatrovientos\ArteanBundle\EntityRepository\OfferOpenRepository")
  * @ORM\Table(name="ofertas")
  */
-class OfferOpen
+class OfferOpen extends Entity
 {
     /**
      * @ORM\Column(name="id",type="integer")
@@ -133,6 +134,10 @@ class OfferOpen
      */
     private $published = 0;
 
+    /**
+     * @ORM\Column(name="tipo",type="integer")
+     */
+    private $type = 1;
        
     public function __construct () {
         $this->required_languages = array();
@@ -397,6 +402,22 @@ class OfferOpen
     public function setContactPhone($contactPhone)
     {
         $this->contactPhone = $contactPhone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
     }
 
     
