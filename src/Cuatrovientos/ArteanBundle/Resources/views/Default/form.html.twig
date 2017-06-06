@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Artean, bolsa de empleo de Cuatrovientos{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    {% stylesheets
+    '@CuatrovientosArteanBundle/Resources/public/css/artean.css'
+    '@CuatrovientosArteanBundle/Resources/public/css/bootstrap.min.css'
+    '@CuatrovientosArteanBundle/Resources/public/css/bootstrap-theme.min.css'
+    filter='cssrewrite' output='css/compiled/app.css' %}
+    <link rel="stylesheet" type="text/css" href="{{ asset_url }}">
+    {% endstylesheets %}
+    {% block extrastyles %}{% endblock %}
+
+    {% block head %}{% endblock %}
+
+</head>
+
+<body>
+<div class="container-fluid">
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="{{ path('cuatrovientos_artean_homepage') }}"><i class="fa fa-compass"></i> Artean</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" id="load_candidates">
+                        <i class="fa fa-user"></i> Alta candidatos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="load_companies">
+                        <i class="fa fa-building-o"></i> Empresas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('cuatrovientos_artean_login') }}">
+                        <i class="fa fa-industry" aria-hidden="true"></i> FCTs
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('cuatrovientos_artean_login') }}">
+                        <i class="fa fa-lock" aria-hidden="true"></i> Entrar
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <div id="carouselExampleControls" class="carousel slide">
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item" >
+                        <div>
+                            <h1 class="cover-heading">Candidat@s</h1>
+                            {% image '@CuatrovientosArteanBundle/Resources/public/img/astronaut.png' %}
+                            <img src="{{ asset_url }}" alt="darest candidates" title="fearless candidate"/>
+                            {% endimage %}
+                            <p class="lead">Entra en tu perfil o crea una cuenta en Artean indicando tu email</p>
+                            <form method="post" name="applicant"
+                                  action="{{ path('cuatrovientos_artean_applicant_signup') }}">
+                                <div id="applicant_sign_in">
+                                    <div class="col-lg-offset-3 col-lg-6">
+                                        <div class="input-group">
+                                            <input class="form-control" type="email" id="applicant_sign_in_email" name="applicant_sign_up[email]" required="required"
+                                                   placeholder="tudirección@decorreo"/>
+                                            <span class="input-group-btn">
+                                            <button class="btn btn-secondary" type="submit">Entrar</button>
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--button type="submit" id="applicant_sign_in_save" name="applicant_sign_in[save]">Alta en Artean</button></div><input type="hidden" id="applicant_sign_in__token" name="applicant_sign_in[_token]" value="dGrOXtN830u2L9kHR4r__oHOjd4uWEXW1syCgIqwYkY" /-->
+                            </form>
+
+                        </div>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+
+                    </div>
+
+                    <div class="carousel-item active">
+                        <div>
+                            <h1 class="display-3">Artean Cuatrovientos</h1>
+                            <p class="lead">Desde Cuatrovientos queremos dar la bienvenida a todo el alumnado y empresas que por primera vez se acercan al instituto y a aquellos que continúan con sus programas formativos. </p>
+
+                            <p class="lead">
+                                <a href="#carouselExampleControls" class="btn btn-lg btn-success-outline" data-slide-to="0"><i class="fa fa-user"
+                                                                                                aria-hidden="true"></i>
+                                    Alta Candidatos</a>
+                                <a href="#carouselExampleControls" class="btn btn-lg btn-info-outline"  data-slide-to="2"><i class="fa fa-building" aria-hidden="true"></i>
+                                    Empresas</a>
+
+                            </p>
+                        </div>
+                    </div>
+
+                <div class="carousel-item" >
+                    <div>
+                        <h2 class="cover-heading">Empresas</h2>
+                        {% image '@CuatrovientosArteanBundle/Resources/public/img/company.png' %}
+                        <img src="{{ asset_url }}" alt="Join us, and together we will rule the galaxy"
+                             title="Companies are welcome"/>
+                        {% endimage %}
+                        <p class="lead">Si eres una empresa puedes iniciar un proceso de selección o bien publicar una
+                            oferta de empleo que llegue a nuestr@s candidat@s.</p>
+                        <p class="lead">
+                            <a href="{{ path('cuatrovientos_artean_open_offer_new') }}"
+                               class="btn btn-lg btn-success-outline"><i class="fa fa-users" aria-hidden="true"></i>
+                                Solicitud a bolsa</a>
+                            <a href="{{ path('cuatrovientos_artean_open_offer_ad_new') }}"
+                               class="btn btn-lg btn-warning-outline"><i class="fa fa-bullhorn" aria-hidden="true"></i>
+                                Publicar oferta</a>
+                        </p>
+
+                    </div>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-6">
+    {% block body %}
+
+
+
+    {% endblock body %}
+    </div>
+    <div class="col-md-3">
+
+    </div>
+</div>
+
+
+</div>
+{% block javascripts %}
+    <!-- JavaScript plugins (requires jQuery) -->
+    <!--script src="//code.jquery.com/jquery.js"></script-->
+    <script src="https://use.fontawesome.com/09c458bfbf.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+    {% javascripts
+    '@CuatrovientosArteanBundle/Resources/public/js/jquery.min.js'
+    '@CuatrovientosArteanBundle/Resources/public/js/tether.min.js'
+    '@CuatrovientosArteanBundle/Resources/public/js/bootstrap.min.js' %}
+    <!-- Optionally enable responsive features in IE8 -->
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+
+    {# % javascripts '@CuatrovientosArteanBundle/Resources/public/js/respond.js' % }
+        <!-- Optionally enable responsive features in IE8 -->
+        <script src="{{ asset_url }}"></script>
+     {  %endjavascripts % #}
+{% endblock %}
+
+{% block extrascripts %}
+<script language="javascript">
+
+
+    $('#load_candidates').click(function (e) {
+                e.preventDefault();
+                $('.carousel').carousel(0);
+            });
+    $('#load_companies').click(function (e) {
+        e.preventDefault();
+        $('.carousel').carousel(2);
+    });
+    $('#load_login').click(function (e) {
+        e.preventDefault();
+        $('.carousel').carousel(3);
+    });
+    </script>
+{% endblock %}
+</body>
+</html>

@@ -7,12 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e471461-a8a1-4423-98b7-019ee3911c23" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Default/form.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/Emails/forgotPassword.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/Emails/forgotPassword.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Command/SendPendingEmailsCommand.php" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Command/SendPendingEmailsCommand.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Entity/Mailing.php" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Entity/Mailing.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/Business/MailingBusiness.php" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/Business/MailingBusiness.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/DAO/MailingDAO.php" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/DAO/MailingDAO.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/Emails/newOfferAd.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/Emails/newOfferAd.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/Emails/newUser.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/Emails/newUser.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Offer/new.html.twig" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Offer/new.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Offer/newOpen.html.twig" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Offer/newOpen.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/OfferAd/newAdOpen.html.twig" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/OfferAd/newAdOpen.html.twig" />
     </list>
     <ignored path="arteans.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,108 +42,82 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/config/routing.yml">
+      <file leaf-file-name="newOpen.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Offer/newOpen.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="262" column="35" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="35" />
+            <state relative-caret-position="68">
+              <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="resetPassword.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Security/resetPassword.html.twig">
+      <file leaf-file-name="new.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Page/new.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-255">
+            <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MailingDAO.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/DAO/MailingDAO.php">
+      <file leaf-file-name="newAdOpen.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/OfferAd/newAdOpen.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state relative-caret-position="34">
+              <caret line="2" column="50" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MailingBusiness.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/Business/MailingBusiness.php">
+      <file leaf-file-name="new.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Offer/new.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="32" column="55" selection-start-line="32" selection-start-column="55" selection-end-line="32" selection-end-column="55" />
+            <state relative-caret-position="34">
+              <caret line="2" column="50" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Mailing.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Entity/Mailing.php">
+      <file leaf-file-name="default.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Default/default.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="56" column="8" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="8" />
-              <folding>
-                <element signature="e#53#85#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MailingStatusExtension.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Twig/MailingStatusExtension.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="18" selection-end-column="37" />
+            <state relative-caret-position="-2244">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MailingAttachment.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Entity/MailingAttachment.php">
+      <file leaf-file-name="form.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Default/form.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+            <state relative-caret-position="268">
+              <caret line="147" column="10" selection-start-line="147" selection-start-column="10" selection-end-line="147" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SendPendingEmailsCommand.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Command/SendPendingEmailsCommand.php">
+      <file leaf-file-name="page.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Default/page.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-              <folding>
-                <element signature="e#100#165#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forgotPassword.html.twig" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/Emails/forgotPassword.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MailingApiController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/Api/MailingApiController.php">
+      <file leaf-file-name="news.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Default/news.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="72" column="20" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="64" />
-              <folding>
-                <element signature="e#62#126#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -160,11 +135,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/Business/NewsBusiness.php" />
-        <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/DAO/NewsDAO.php" />
-        <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/NewsController.php" />
-        <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/OfferAdController.php" />
-        <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Default/news.html.twig" />
         <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/DAO/ApplicantDAO.php" />
         <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Mailing/selectedCompanies.html.twig" />
@@ -176,7 +146,6 @@
         <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Default/default.html.twig" />
         <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Applicant/signUp.html.twig" />
         <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Entity/ApplicantStudies.php" />
-        <option value="$PROJECT_DIR$/app/Resources/views/Emails/newUser.html.twig" />
         <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Applicant/signUpSave.html.twig" />
         <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Applicant/applicant.html.twig" />
@@ -211,6 +180,12 @@
         <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Entity/Mailing.php" />
         <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Command/SendPendingEmailsCommand.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/Emails/forgotPassword.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/Emails/newOfferAd.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/Emails/newUser.html.twig" />
+        <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Offer/new.html.twig" />
+        <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Default/form.html.twig" />
+        <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Offer/newOpen.html.twig" />
+        <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/OfferAd/newAdOpen.html.twig" />
       </list>
     </option>
   </component>
@@ -276,6 +251,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -681,6 +657,74 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Page" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="arteans" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="arteans" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cuatrovientos" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ArteanBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OfferAd" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="arteans" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="arteans" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cuatrovientos" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ArteanBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Offer" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -1235,7 +1279,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1245,19 +1288,19 @@
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\artean\arteans\src\Cuatrovientos\ArteanBundle\Form\Type" />
-      <recent name="C:\xampp\htdocs\artean\arteans\src\Cuatrovientos\ArteanBundle\Entity" />
-      <recent name="C:\xampp\htdocs\artean\arteans\src\Cuatrovientos\ArteanBundle\Resources\views\Applicant" />
-      <recent name="C:\xampp\htdocs\artean\arteans\src\Cuatrovientos\ArteanBundle\Command" />
-      <recent name="C:\xampp\htdocs\artean\arteans\src\Cuatrovientos\ArteanBundle\Twig" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\artean\arteans\src\Cuatrovientos\ArteanBundle\Resources\public\js" />
       <recent name="C:\xampp\htdocs\artean\arteans\src\Cuatrovientos\ArteanBundle\Resources\public\css" />
       <recent name="C:\xampp\htdocs\artean\arteans\src\Cuatrovientos\ArteanBundle\Resources\views\Course" />
       <recent name="C:\xampp\htdocs\artean\arteans\web\bundles\cuatrovientosartean\js" />
       <recent name="C:\xampp\htdocs\artean\arteans\src\Cuatrovientos\ArteanBundle\Resources\public\img" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\artean\arteans\src\Cuatrovientos\ArteanBundle\Resources\views\Default" />
+      <recent name="C:\xampp\htdocs\artean\arteans\src\Cuatrovientos\ArteanBundle\Form\Type" />
+      <recent name="C:\xampp\htdocs\artean\arteans\src\Cuatrovientos\ArteanBundle\Entity" />
+      <recent name="C:\xampp\htdocs\artean\arteans\src\Cuatrovientos\ArteanBundle\Resources\views\Applicant" />
+      <recent name="C:\xampp\htdocs\artean\arteans\src\Cuatrovientos\ArteanBundle\Command" />
     </key>
   </component>
   <component name="RunManager" selected="PHP Web Application.PHPLocal">
@@ -1392,14 +1435,8 @@
       <workItem from="1495962567944" duration="12201000" />
       <workItem from="1495990381726" duration="58340000" />
       <workItem from="1496527659469" duration="9513000" />
-      <workItem from="1496588541508" duration="30299000" />
-    </task>
-    <task id="LOCAL-00147" summary="Missing images&#10;">
-      <created>1495395865237</created>
-      <option name="number" value="00147" />
-      <option name="presentableId" value="LOCAL-00147" />
-      <option name="project" value="LOCAL" />
-      <updated>1495395865237</updated>
+      <workItem from="1496588541508" duration="30324000" />
+      <workItem from="1496731990296" duration="2174000" />
     </task>
     <task id="LOCAL-00148" summary="Need to check URL for static images in CSS&#10;">
       <created>1495396260651</created>
@@ -1737,17 +1774,24 @@
       <option name="project" value="LOCAL" />
       <updated>1496649078151</updated>
     </task>
-    <option name="localTasksCounter" value="196" />
+    <task id="LOCAL-00196" summary="Corrected mail url">
+      <created>1496658015576</created>
+      <option name="number" value="00196" />
+      <option name="presentableId" value="LOCAL-00196" />
+      <option name="project" value="LOCAL" />
+      <updated>1496658015577</updated>
+    </task>
+    <option name="localTasksCounter" value="197" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="737043000" />
+    <option name="totallyTimeSpent" value="739242000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.290469" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29500756" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10355487" sideWeight="0.5030349" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290469" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1815,8 +1859,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Finally, anyway, check this out to load EntityType fields&#10;https://github.com/Alsatian67/FormBundle" />
-    <MESSAGE value="command created" />
     <MESSAGE value="Issues with manyToMany" />
     <MESSAGE value="Exposed ManyToMany using another field" />
     <MESSAGE value="Corrected studies and degrees in forms" />
@@ -1840,7 +1882,9 @@
     <MESSAGE value="Reupload deletes previous file" />
     <MESSAGE value="Mailing attachments... almost there..." />
     <MESSAGE value="Mailing attachments, done with management" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mailing attachments, done with management" />
+    <MESSAGE value="Corrected mail url" />
+    <MESSAGE value="Ok, forms integration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ok, forms integration" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1855,113 +1899,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/DAO/GenericDAO.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-238">
-          <caret line="25" column="30" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/Business/GenericBusiness.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-408">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Applicant/signUpSave.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Applicant/applicantList.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Applicant/applicant.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Applicant/detail.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Applicant/indexAdmin.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-231">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/services.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="37" column="54" selection-start-line="37" selection-start-column="54" selection-end-line="37" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Entity/Company.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Command/GenerateDeactivationEmailCommand.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
-          <folding>
-            <element signature="e#54#119#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Form/Type/ApplicantType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="89" column="9" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Entity/ContractType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Form/Type/ApplicantSignInType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -2019,7 +1956,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-89">
           <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2027,7 +1963,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2035,7 +1970,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="83" selection-start-line="6" selection-start-column="83" selection-end-line="6" selection-end-column="116" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2043,7 +1977,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="149" selection-start-line="19" selection-start-column="149" selection-end-line="19" selection-end-column="149" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2087,7 +2020,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-35">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2103,7 +2035,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="92" selection-start-line="12" selection-start-column="92" selection-end-line="12" selection-end-column="92" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2111,7 +2042,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2133,19 +2063,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Form/Type/MailingAttachmentsType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" column="37" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Form/Type/MailingAttachmentsType.php" />
     <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Mailing/update.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="77" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="77" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2163,7 +2085,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="15" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2181,7 +2102,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="376">
           <caret line="95" column="7" selection-start-line="95" selection-start-column="1" selection-end-line="95" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2189,13 +2109,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
           <caret line="387" column="99" selection-start-line="387" selection-start-column="99" selection-end-line="387" selection-end-column="99" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/Api/MailingApiController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
+        <state relative-caret-position="1105">
           <caret line="72" column="20" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="64" />
           <folding>
             <element signature="e#62#126#0#PHP" expanded="true" />
@@ -2213,7 +2132,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Entity/MailingAttachment.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
+        <state relative-caret-position="1411">
           <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
           <folding />
         </state>
@@ -2229,7 +2148,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/DAO/MailingDAO.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
+        <state relative-caret-position="391">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
@@ -2237,7 +2156,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Entity/Mailing.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
+        <state relative-caret-position="935">
           <caret line="56" column="8" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="8" />
           <folding>
             <element signature="e#53#85#0#PHP" expanded="true" />
@@ -2247,7 +2166,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Command/SendPendingEmailsCommand.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
+        <state relative-caret-position="969">
           <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding>
             <element signature="e#100#165#0#PHP" expanded="true" />
@@ -2257,7 +2176,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
+        <state relative-caret-position="4454">
           <caret line="262" column="35" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="35" />
           <folding />
         </state>
@@ -2265,7 +2184,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Security/resetPassword.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-255">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -2273,8 +2192,120 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/Emails/forgotPassword.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+        <state relative-caret-position="391">
+          <caret line="23" column="47" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/Emails/newApplicant.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/Emails/jobRequest.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/Emails/newOfferAd.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="43" column="51" selection-start-line="43" selection-start-column="51" selection-end-line="43" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/Emails/newOffer.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-361">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/Emails/newUser.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="66" selection-start-line="25" selection-start-column="66" selection-end-line="25" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/Emails/standard.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Default/default.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2244">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Default/news.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Offer/new.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="50" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Default/page.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Default/form.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="147" column="10" selection-start-line="147" selection-start-column="10" selection-end-line="147" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Offer/newOpen.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Page/new.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/OfferAd/newAdOpen.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="50" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
           <folding />
         </state>
       </provider>
