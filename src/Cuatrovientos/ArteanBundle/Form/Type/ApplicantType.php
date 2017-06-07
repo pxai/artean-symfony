@@ -87,6 +87,8 @@ class ApplicantType extends AbstractType {
                 "label"=>"Resumen",
                 "required"=>false
             ))
+            ->add('cv',HiddenType::class)
+            ->add('photo',HiddenType::class)
             ->add('save', SubmitType::class);
         
          /* $builder->addEventListener(

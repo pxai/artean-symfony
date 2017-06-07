@@ -28,6 +28,8 @@
 
     {{ form_errors(form) }}
     {{ form_widget(form.id) }}
+    {{ form_widget(form.cv) }}
+    {{ form_widget(form.photo) }}
     <div class="form-group">
         {{ form_label(form.name) }}
         {{ form_errors(form.name) }}
@@ -101,6 +103,6 @@
 
     <div class="form-group">
         {{ form_row(form._token) }}
-        {{ form_widget(form.save, {'attr': {'class': 'form-control'}}) }}
+        {{ form_widget(form.save, {'attr': {'class': 'form-contro btn btn-info'}}) }}
     </div>
 </form>
