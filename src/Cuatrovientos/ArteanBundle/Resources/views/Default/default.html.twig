@@ -183,6 +183,18 @@
                 <div class="offer-data">{{ offer.offerdate|date('d/m/Y') }}</div>
                 </div>
         {% endfor %}
+        {% for offer in offerAds %}
+            <div class="offer">
+                <h5>{{ offer.position }}</h5>
+                <div class="offer-details">
+                    {{ offer.company }}
+                </div>
+                <div class="offer-text">
+
+                </div>
+                <div class="offer-data">{{ offer.offerdate|date('d/m/Y') }}</div>
+            </div>
+        {% endfor %}
     </div>
     {% endblock body %}
     <div class="col-md-3">

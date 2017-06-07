@@ -15,7 +15,7 @@ class OfferAdBusiness extends GenericBusiness {
 
     public function findAllPublishedOffersAd($id=0, $start=0,$total=100)
     {
-        return $this->entityDAO->findAllPublishedOffersAd($id, $start,$total);
+        return $this->entityDAO->findAllPublishedOfferAds($id, $start,$total);
     }
 
     public function findAllOfferAdsByType($id=0)

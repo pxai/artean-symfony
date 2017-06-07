@@ -88,8 +88,12 @@
         <div> No hay empresas seleccionadas</div>
     {% endif %}
     <h3><i class="fa fa-envelope" aria-hidden="true"></i> 2. Enviar email</h3>
+    <!--a href="" id="checkaddresses" class="btn btn-info">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        Comprobar direcciones de email
+    </a-->
     {% if mailing.status == 0 %}
-    <a href="{{ path('cuatrovientos_artean_mailing_start', {'id': mailing.id }) }}" class="btn btn-success">
+    <a href="{{ path('cuatrovientos_artean_mailing_start', {'id': mailing.id }) }}" id="mailingstart" class="btn btn-success">
         <i class="fa fa-envelope" aria-hidden="true"></i>
         Iniciar envío
         <i class="fa fa-play" aria-hidden="true"></i>
@@ -165,8 +169,14 @@
             </div>
         </div>
     </div>
+    <input type="hidden" id="email_value" />
 {% endblock %}
 {% block extrascripts %}
+    {% javascripts
+    '@CuatrovientosArteanBundle/Resources/public/js/mailgun_validator.js' %}
+    <!-- Optionally enable responsive features in IE8 -->
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
     <script language="javascript">
         var preselected = [];
 
@@ -453,6 +463,32 @@
                 });
             }
         });
+        $('#checkaddresses').click(function (e) {
+            e.preventDefault();
+                    alert("yeah");
+                    $('.mailrecipient').each(function (index ) {
+                        var email = $(this).find('td.mailaddress').text();
+                        console.log('Checking: ' + email);
+                        $('#email_value').val(email);
+                        $('#email_value').mailgun_validator({
+                            api_key: 'pubkey-958c3b27556b2e88654a79287e30455d',
+                            in_progress: function () {
+                                console.log('In progress');
+                            },
+                            success: function (data) {
+                                console.log('Success');
+                                console.log(data);
+                            },
+                            error: function (error_message) {
+                                console.log('Error');
+                                console.log(error_message);
+                            },
+                        });
+
+                    });
+            }
+
+        );
     </script>
     <script src="http://hayageek.github.io/jQuery-Upload-File/4.0.10/jquery.uploadfile.min.js"></script>
     <link href="http://hayageek.github.io/jQuery-Upload-File/4.0.10/uploadfile.css" rel="stylesheet">

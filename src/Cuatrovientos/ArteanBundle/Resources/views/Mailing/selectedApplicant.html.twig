@@ -1,10 +1,10 @@
-<tr id="selected_applicant_id_{{ selectedApplicant.applicant.id }}">
+<tr id="selected_applicant_id_{{ selectedApplicant.applicant.id }}" class="mailrecipient">
     <td>{{ selectedApplicant.applicant.id }}</td>
     <td>{{ selectedApplicant.applicant.surname }}</td>
     <td>{{ selectedApplicant.applicant.name }}</td>
     <td>{{ selectedApplicant.applicant.mobile }}</td>
-    <td>{{ selectedApplicant.applicant.email }}</td>
-    <td><i class="{{ selectedApplicant.sent|mailStatus }}"></i></td>
+    <td class="mailaddress">{{ selectedApplicant.applicant.email }}</td>
+    <td class="mailstatus"><i class="{{ selectedApplicant.sent|mailStatus }}"></i></td>
 
     {#% if is_granted('ROLE_ADMIN') %#}
     <td>

@@ -13,6 +13,8 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class SendPendingEmailsCommand extends ContainerAwareCommand
 {
+    private $failures = array();
+
     protected function configure()
     {
         $this
@@ -59,7 +61,7 @@ class SendPendingEmailsCommand extends ContainerAwareCommand
 
 
 
-
+        print_r($this->failures);
         // outputs a message without adding a "\n" at the end of the line
         $output->write('Thanks yo');
 
@@ -84,6 +86,9 @@ class SendPendingEmailsCommand extends ContainerAwareCommand
             $message->attach(\Swift_Attachment::fromPath($this->getContainer()->getParameter('attachments_directory').'/'.$attachment->getPath()));
         }
 
-        return $this->getContainer()->get('mailer')->send($message);
+        $result =  $this->getContainer()->get('mailer')->send($message, $failures);
+
+        $this->failures[] = $failures;
+        return $result;
     }
 }
