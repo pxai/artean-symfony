@@ -39,4 +39,16 @@ class DefaultController extends Controller
 
     }
 
+    public function offerAction($id)
+    {
+        $offers = $this->get("cuatrovientos_artean.bo.offer")->findAllPublishedOffers(0,0,10);
+        $offerAds = $this->get("cuatrovientos_artean.bo.offerad")->findAllPublishedOffersAd(0,0,10);
+        $news = $this->get("cuatrovientos_artean.bo.news")->findAllPublishedNews(0,0,10);
+        $pages = $this->get("cuatrovientos_artean.bo.page")->findAllPages(0);
+
+        $offer = $this->get("cuatrovientos_artean.bo.offer")->selectById($id);
+        return $this->render('CuatrovientosArteanBundle:Default:offer.html.twig', array('offer'=>$offer,'offers'=>$offers,'news' => $news,'pages'=>$pages));
+
+    }
+
 }

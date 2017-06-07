@@ -1,0 +1,23 @@
+{% extends "CuatrovientosArteanBundle:Default:default.html.twig" %}
+{% if offer is not null %}
+    {% block title %}Artean :: {{ offer.position }}{% endblock %}
+    {% block body %}
+        <div class="col-md-6">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('cuatrovientos_artean_homepage') }}">Inicio</a></li>
+                <li class="breadcrumb-item active">Ofertas</li>
+                <li class="breadcrumb-item active">{{ offer.position }}</li>
+            </ol>
+        <div>
+            <h3> {{ offer.position }}</h3>
+            <div class="offer-details">
+                {{ offer.company }}
+            </div>
+            <div class="offer-text">
+                {{ offer.position }}
+            </div>
+            <div class="offer-data">{{ offer.offerdate|date('d/m/Y') }}</div>
+        </div>
+        </div>
+    {% endblock %}
+{% endif %}

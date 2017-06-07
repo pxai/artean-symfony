@@ -88,7 +88,6 @@ class OfferController extends Controller
         return $this->render('CuatrovientosArteanBundle:Offer:offer.html.twig' ,array('offer'=> $offer));
     }
 
-
     public function offerUpdateAction($id) {
         $offer = $this->get("cuatrovientos_artean.bo.offer")->selectById($id);
       

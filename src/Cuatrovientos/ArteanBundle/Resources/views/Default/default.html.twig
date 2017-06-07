@@ -173,7 +173,11 @@
         <div>Últimas ofertas</div>
         {% for offer in offers %}
             <div class="offer">
-                <h5>{{ offer.position }}</h5>
+                <h5>
+                 <a href="{{ path('cuatrovientos_artean_homepage_offer', {'id': offer.id }) }}" title="{{ offer.company }}">
+                                                   {{ offer.position }}
+                 </a>
+                </h5>
                 <div class="offer-details">
                     {{ offer.company }}
                 </div>
@@ -185,7 +189,11 @@
         {% endfor %}
         {% for offer in offerAds %}
             <div class="offer">
-                <h5>{{ offer.position }}</h5>
+                <h5>
+                    <a href="{{ path('cuatrovientos_artean_homepage_offer', {'id': offer.id }) }}" title="{{ offer.company }}">
+                        {{ offer.position }}
+                    </a>
+                </h5>
                 <div class="offer-details">
                     {{ offer.company }}
                 </div>
