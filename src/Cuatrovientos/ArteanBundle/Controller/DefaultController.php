@@ -47,7 +47,7 @@ class DefaultController extends Controller
         $pages = $this->get("cuatrovientos_artean.bo.page")->findAllPages(0);
 
         $offer = $this->get("cuatrovientos_artean.bo.offer")->selectById($id);
-        return $this->render('CuatrovientosArteanBundle:Default:offer.html.twig', array('offer'=>$offer,'offers'=>$offers,'news' => $news,'pages'=>$pages));
+        return $this->render('CuatrovientosArteanBundle:Default:offer.html.twig', array('last_username'=>'','offer'=>$offer,'offers'=>$offers,'news' => $news,'pages'=>$pages));
 
     }
 

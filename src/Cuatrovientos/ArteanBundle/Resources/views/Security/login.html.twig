@@ -41,24 +41,10 @@
                 {% endfor %}
                 <div class="inner cover">
                     <h1 class="cover-heading">Login</h1>
-                    <form class="form-signin" method="post" action="{{ path('cuatrovientos_artean_login_check') }}">
-                        <h2 class="form-signin-heading">Identifícate</h2>
-                        <i class="fa fa-envelope" aria-hidden="true"></i>
-                        <label for="username">Usuario/Email:</label>
-                        <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required autofocus>
-                        <i class="fa fa-key" aria-hidden="true"></i>
-                        <label for="password">Password:</label>
-                        <input type="password" class="form-control"  id="password" name="_password" required>
-                        <br />
-                        <input type="hidden" name="_target_path" value="/artean/login/redirect" />
-                        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
-                    </form>
+                    <h2 class="form-signin-heading">Identifícate</h2>
+                {% include "CuatrovientosArteanBundle:Security:loginForm.html.twig" %}
 
                 </div>
-                <div><a href="{{ path('cuatrovientos_artean_forgot_password') }}">¿Olvidaste tu contraseña?</a></div>
-
-
-
             </div>
 
         </div>

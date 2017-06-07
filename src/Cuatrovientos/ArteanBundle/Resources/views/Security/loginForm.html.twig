@@ -1,0 +1,15 @@
+    <form class="form-signin" method="post" action="{{ path('cuatrovientos_artean_login_check') }}">
+        <i class="fa fa-envelope" aria-hidden="true"></i>
+        <label for="username">Usuario/Email:</label>
+        <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required autofocus>
+        <i class="fa fa-key" aria-hidden="true"></i>
+        <label for="password">Password:</label>
+        <input type="password" class="form-control"  id="password" name="_password" required>
+        <br />
+        <input type="hidden" name="_target_path" value="/artean/login/redirect" />
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+    </form>
+<div>
+        <a href="{{ path('cuatrovientos_artean_forgot_password') }}">¿Olvidaste tu contraseña?</a> |
+        <a href="{{ path('cuatrovientos_artean_applicant_signup') }}">Regístrate</a>
+</div>

@@ -20,4 +20,13 @@
         </div>
         </div>
     {% endblock %}
+    {% block login %}
+        {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+    <div class="pagelist">
+        <h4><i class="fa fa-user" aria-hidden="true"></i> ¿Te interesa?</h4>
+        <p>Entra en el portal o <a href="{{ path('cuatrovientos_artean_applicant_signup') }}">regístrate</a> para poder tener más información sobre esta oferta</p>
+        {% include "CuatrovientosArteanBundle:Security:loginForm.html.twig" %}
+    </div>
+            {% endif %}
+    {% endblock %}
 {% endif %}
