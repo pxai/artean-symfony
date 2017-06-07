@@ -4,8 +4,11 @@
 {% block title %}Artean :: Nueva solicitud{% endblock %}
 {% block body %}
 
-   <h3>Nueva publicación de oferta a bolsa de empleo</h3>
-
+   <h2><i class="fa fa-bullhorn" aria-hidden="true"></i> Nueva publicación de Oferta</h2>
+   <p>
+      Si deseas publicar una oferta de empleo en nuestro portal de empleo sólo tienes que rellenar el siguiente formulario de publicación.
+      <b>Señalar que en este servicio no se realiza un preselección de los candidatos/as al puesto de trabajo publicado.</b>
+   </p>
 <form method="post" action="{{ path('cuatrovientos_artean_open_offerad_save') }}">
    {{ form_errors(form) }}
    <h4><i class="fa fa-building-o" aria-hidden="true"></i> Datos Empresa</h4>
