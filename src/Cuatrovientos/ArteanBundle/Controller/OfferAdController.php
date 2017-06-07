@@ -122,7 +122,7 @@ class OfferAdController extends Controller
     *
     *
     */
-   public function offerDeleteAction($id=1)
+   public function offerAdDeleteAction($id=1)
     {
         $offer = $this->get("cuatrovientos_artean.bo.offerad")->selectById($id);
         return $this->render('CuatrovientosArteanBundle:OfferAd:delete.html.twig' ,array('offer'=> $offer));
@@ -132,7 +132,7 @@ class OfferAdController extends Controller
     *
     *
     */
-   public function offerDeleteSaveAction(OfferAdOpen $offer)
+   public function offerAdDeleteSaveAction(OfferAdOpen $offer)
     {
         $this->get("cuatrovientos_artean.bo.offerad")->remove($offer);
       // return $this->forward('CuatrovientosArteanBundle:Offer:index');
