@@ -104,7 +104,6 @@ class OfferType extends AbstractType {
                 if (isset($data['position'])) {
                      $data['position'] = $data['company'] .': ' .$data['position'];
                 }
-                $data['published'] = 0;
                 $data['type'] = 0;
                 $event->setData($data);
         });
