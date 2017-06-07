@@ -10,13 +10,66 @@
             </ol>
         <div>
             <h3> {{ offer.position }}</h3>
+            <div class="offer-data">{{ offer.offerdate|date('d/m/Y') }}</div>
+            <h4><i class="fa fa-building-o" aria-hidden="true"></i> Datos Empresa</h4>
             <div class="offer-details">
+                <div><b></b></div>
                 {{ offer.company }}
             </div>
             <div class="offer-text">
+                <div><b>Dirección</b></div>
+                {{ offer.address }}
+            </div>
+            <div class="offer-text">
+                <div><b>Localidad</b></div>
+                {{ offer.city }}
+            </div>
+            <div class="offer-text">
+                <div><b>Actividad económica</b></div>
+                {{ offer.activity }}
+            </div>
+            <!--div class="offer-text">
+                <div><b>Persona de contacto</b></div>
+                {{ offer.activity }}
+            </div>
+            <div class="offer-text">
+                <div><b>Email</b></div>
+                {{ offer.activity }}
+            </div>
+            <div class="offer-text">
+                <div><b>Teléfono de contacto</b></div>
+                {{ offer.activity }}
+            </div-->
+            <h4><i class="fa fa-briefcase" aria-hidden="true"></i> Puesto de trabajo</h4>
+            <div class="offer-text">
+                <div><b>Puesto</b></div>
                 {{ offer.position }}
             </div>
-            <div class="offer-data">{{ offer.offerdate|date('d/m/Y') }}</div>
+            <div class="offer-text">
+                <div><b>Descripción</b></div>
+                {{ offer.description }}
+            </div>
+            <div class="offer-text">
+                <div><b>Tipo y duración de contrato</b></div>
+                {{ offer.contract }}
+            </div>
+            <div class="offer-text">
+                <div><b>Vacantes</b></div>
+                {{ offer.positionNo }}
+            </div>
+            <h4><i class="fa fa-users" aria-hidden="true"></i> Perfil de candidaturas</h4>
+            <div class="offer-text">
+                <div><b>Estudios requeridos</b></div>
+                {{ offer.requiredStudies|join(', ') }}
+            </div>
+            <div class="offer-text">
+                <div><b>Otros conocimientos</b></div>
+                {{ offer.otherKnowledges }}
+            </div>
+            <div class="offer-text">
+                <div><b>Observaciones</b></div>
+                {{ offer.observations }}
+            </div>
         </div>
         </div>
     {% endblock %}
