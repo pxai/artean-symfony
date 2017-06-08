@@ -89,6 +89,7 @@ class ApplicantType extends AbstractType {
             ))
             ->add('cv',HiddenType::class)
             ->add('photo',HiddenType::class)
+            ->add('updateDate',HiddenType::class)
             ->add('save', SubmitType::class);
         
          /* $builder->addEventListener(

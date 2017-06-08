@@ -26,6 +26,9 @@ class ApplicantController extends Controller
         $this->user = $this->get('security.token_storage')->getToken()->getUser();
         $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantDataByUserId($this->user->getId());
 
+        $applicant->setUpdateDate(date('Y-m-d H:i:s'));
+        $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);
+
         $form = $this->createForm(ApplicantType::class, $applicant);
         $formPhoto = $this->createForm(ApplicantPhotoType::class);
         $formCv = $this->createForm(ApplicantCvType::class);
@@ -53,6 +56,7 @@ class ApplicantController extends Controller
             if ($form->isValid()) {
                 $applicant = $form->getData();
                 $applicant->setUser($this->user);
+
                 $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);
 
                 return $this->forward('CuatrovientosArteanBundle:Applicant:dashboard');

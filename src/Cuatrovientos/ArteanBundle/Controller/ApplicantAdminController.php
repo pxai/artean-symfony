@@ -162,6 +162,7 @@ class ApplicantAdminController extends Controller
                 $applicant = $form->getData();
                 $applicantTmp = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($applicant->getId());
                 $applicant->setUser($applicantTmp->getUser());
+                $applicant->setUpdateDate(date('Y-m-d H:i:s'));
                 $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);
 
                 return $this->detailAction($applicant->getId());

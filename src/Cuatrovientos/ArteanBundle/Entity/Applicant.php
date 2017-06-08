@@ -94,6 +94,11 @@ class Applicant extends Entity
     private $birth;
 
     /**
+     * @ORM\Column(name="fechaactualizacion",type="string", length=20)
+     */
+    private $updateDate;
+
+    /**
      * @ORM\Column(name="resumen",type="string")
      */
     private $resume;
@@ -157,6 +162,7 @@ class Applicant extends Entity
     public function __construct () {
         $this->studies = array();
         $this->courses = array();
+        $this->updateDate = date('Y-m-d H:i:s');
     }
 
     /**
@@ -540,6 +546,22 @@ class Applicant extends Entity
     public function setPhoto($photo)
     {
         $this->photo = $photo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdateDate()
+    {
+        return $this->updateDate;
+    }
+
+    /**
+     * @param mixed $updateDate
+     */
+    public function setUpdateDate($updateDate)
+    {
+        $this->updateDate = $updateDate;
     }
 
 

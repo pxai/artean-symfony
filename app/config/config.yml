@@ -70,7 +70,7 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:
           type: file
-          path: '%kernel.root_dir%/app/spool'
+          path: '%kernel.root_dir%/spool'
 
 # FOS Rest config
 #    disable_csrf_role: ROLE_API

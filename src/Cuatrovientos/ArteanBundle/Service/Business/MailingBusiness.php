@@ -142,7 +142,7 @@ class MailingBusiness extends GenericBusiness {
             );
 
         foreach ($mailing->getmailingAttachments() as $attachment) {
-            echo '    Adding attachment: ';//. $this->attachments_directory.'/'.$attachment->getPath();
+
             $message->attach(\Swift_Attachment::fromPath($this->attachments_directory.'/'.$attachment->getPath()));
         }
 
