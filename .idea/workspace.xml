@@ -8,17 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8e471461-a8a1-4423-98b7-019ee3911c23" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/ApplicantAdminController.php" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/ApplicantAdminController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/ApplicantController.php" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Controller/ApplicantController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Entity/Applicant.php" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Entity/Applicant.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Form/Type/ApplicantType.php" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Form/Type/ApplicantType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Applicant/applicantForm.html.twig" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Applicant/applicantForm.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Security/forgotPassword.html.twig" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Security/forgotPassword.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Security/forgotPasswordSave.html.twig" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Security/forgotPasswordSave.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Security/resetPassword.html.twig" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Security/resetPassword.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Security/resetPasswordSave.html.twig" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Security/resetPasswordSave.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/Business/MailingBusiness.php" afterPath="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/Business/MailingBusiness.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/Emails/forgotPassword.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/Emails/forgotPassword.html.twig" />
     </list>
     <ignored path="arteans.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -117,11 +107,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="resetPasswordSave.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="resetPasswordSave.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Security/resetPasswordSave.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
               <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forgotPassword.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/Emails/forgotPassword.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="23" column="79" selection-start-line="23" selection-start-column="79" selection-end-line="23" selection-end-column="79" />
               <folding />
             </state>
           </provider>
@@ -132,16 +132,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
               <caret line="163" column="62" selection-start-line="163" selection-start-column="62" selection-end-line="163" selection-end-column="62" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ApplicantType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Form/Type/ApplicantType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1309">
-              <caret line="91" column="29" selection-start-line="91" selection-start-column="29" selection-end-line="91" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -160,7 +150,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/DAO/OfferDAO.php" />
         <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Service/DAO/OfferAdDAO.php" />
         <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Entity/OfferOpen.php" />
         <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Default/adminDashboard.html.twig" />
@@ -211,6 +200,7 @@
         <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Security/forgotPasswordSave.html.twig" />
         <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Security/resetPassword.html.twig" />
         <option value="$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Security/resetPasswordSave.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/Emails/forgotPassword.html.twig" />
       </list>
     </option>
   </component>
@@ -1267,6 +1257,54 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="arteans" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="arteans" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="arteans" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="arteans" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Emails" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -1430,14 +1468,7 @@
       <workItem from="1496588541508" duration="30324000" />
       <workItem from="1496731990296" duration="21517000" />
       <workItem from="1496847916869" duration="2768000" />
-      <workItem from="1496872063158" duration="14546000" />
-    </task>
-    <task id="LOCAL-00163" summary="buttons ready">
-      <created>1495922157798</created>
-      <option name="number" value="00163" />
-      <option name="presentableId" value="LOCAL-00163" />
-      <option name="project" value="LOCAL" />
-      <updated>1495922157798</updated>
+      <workItem from="1496872063158" duration="15005000" />
     </task>
     <task id="LOCAL-00164" summary="Adding applicants to mailing works!">
       <created>1495927876455</created>
@@ -1775,17 +1806,24 @@
       <option name="project" value="LOCAL" />
       <updated>1496953104881</updated>
     </task>
-    <option name="localTasksCounter" value="212" />
+    <task id="LOCAL-00212" summary="update applicant data as soon as he enters">
+      <created>1496961123660</created>
+      <option name="number" value="00212" />
+      <option name="presentableId" value="LOCAL-00212" />
+      <option name="project" value="LOCAL" />
+      <updated>1496961123660</updated>
+    </task>
+    <option name="localTasksCounter" value="213" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="775899000" />
+    <option name="totallyTimeSpent" value="776358000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1378" height="735" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3353566" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3353566" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10355487" sideWeight="0.5030349" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290469" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1893,13 +1931,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Mailing/selectedCompanies.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="25" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Cuatrovientos/ArteanBundle/Resources/views/Mailing/selectedApplicant.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -2300,6 +2331,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/Emails/forgotPassword.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="79" selection-start-line="23" selection-start-column="79" selection-end-line="23" selection-end-column="79" />
           <folding />
         </state>
       </provider>
