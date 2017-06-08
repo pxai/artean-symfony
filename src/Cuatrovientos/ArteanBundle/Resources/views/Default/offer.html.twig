@@ -16,6 +16,8 @@
                 <div><b></b></div>
                 {{ offer.company }}
             </div>
+
+        {% if is_granted('ROLE_USER')  %}
             <div class="offer-text">
                 <div><b>Dirección</b></div>
                 {{ offer.address }}
@@ -28,7 +30,7 @@
                 <div><b>Actividad económica</b></div>
                 {{ offer.activity }}
             </div>
-            <!--div class="offer-text">
+            <div class="offer-text">
                 <div><b>Persona de contacto</b></div>
                 {{ offer.activity }}
             </div>
@@ -39,7 +41,7 @@
             <div class="offer-text">
                 <div><b>Teléfono de contacto</b></div>
                 {{ offer.activity }}
-            </div-->
+            </div>
             <h4><i class="fa fa-briefcase" aria-hidden="true"></i> Puesto de trabajo</h4>
             <div class="offer-text">
                 <div><b>Puesto</b></div>
@@ -70,6 +72,9 @@
                 <div><b>Observaciones</b></div>
                 {{ offer.observations }}
             </div>
+            {% else %}
+            <div>Si deseas saber más, entra en el portal o regístrate.</div>
+            {% endif %}
         </div>
         </div>
     {% endblock %}
