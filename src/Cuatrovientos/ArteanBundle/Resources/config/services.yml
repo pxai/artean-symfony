@@ -115,7 +115,7 @@ services:
 
     cuatrovientos_artean.bo.mailing:
          class: Cuatrovientos\ArteanBundle\Service\Business\MailingBusiness
-         arguments: ['@cuatrovientos_artean.dao.mailing','@cuatrovientos_artean.dao.company','@cuatrovientos_artean.dao.applicant']
+         arguments: ['@cuatrovientos_artean.dao.mailing','@cuatrovientos_artean.dao.company','@cuatrovientos_artean.dao.applicant','@monolog.logger','@mailer','@templating',%attachments_directory%]
 
     cuatrovientos_artean.dao.user:
          class: Cuatrovientos\ArteanBundle\Service\DAO\UserDAO

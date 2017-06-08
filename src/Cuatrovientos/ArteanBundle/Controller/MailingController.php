@@ -101,8 +101,9 @@ class MailingController extends Controller
     public function mailingStartAction($id) {
         $mailing = $this->get("cuatrovientos_artean.bo.mailing")->selectById($id);
         $mailing->setStatus(1);
-        $this->get("cuatrovientos_artean.bo.mailing")->update($mailing);
-        return $this->mailingDetailAction($mailing->getId());
+        $this->get("cuatrovientos_artean.bo.mailing")->startMailing($mailing);
+       // $this->get("cuatrovientos_artean.bo.mailing")->update($mailing);
+       return $this->mailingDetailAction($mailing->getId());
     }
 
     public function mailingStopAction($id) {
