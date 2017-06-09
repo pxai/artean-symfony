@@ -173,7 +173,7 @@ class OfferController extends Controller
             'contacto'=> $offer->getContact(),
             'descripcionempresa'=> $offer->getCompany().', ' .$offer->getDescription(),
             'horario'=> $offer->getSchedule(),
-            'contrato'=> $offer->getContractType()->getId(),
+            'contrato'=> 9,
             'formacion'=> $offer->getRequiredStudiesString(),
             'idiomas'=> $offer->getRequiredLanguagesString(),
             'vacantes'=> $offer->getPositionNo(),
@@ -187,8 +187,8 @@ class OfferController extends Controller
         $offer->setPublished(5);
         $em->persist($offer);
         $em->flush();
-        // return $this->forward('CuatrovientosArteanBundle:Offer:index');
-        return $this->redirect('https://artean.cuatrovientos.org/?ap_manage_tbsolicitudes&ta=update&id='.$id);
+
+        return $this->redirect($this->generateUrl('cuatrovientos_artean_jobrequest_detail', array('id' => $id)));
     }
 
     
