@@ -1239,5 +1239,8 @@ cuatrovientos_artean_page_delete_save:
     defaults: { _controller: CuatrovientosArteanBundle:Page:pageDeleteSave }
     requirements: 
             'id' : '\d+'
-            
-            
+
+# Stats
+cuatrovientos_artean_stat_index:
+    path:     /artean/admin/stats/dashboard
+    defaults: { _controller: CuatrovientosArteanBundle:Stats:index }

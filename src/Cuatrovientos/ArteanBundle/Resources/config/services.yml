@@ -160,3 +160,11 @@ services:
     cuatrovientos_artean.bo.filesystem:
         class: Cuatrovientos\ArteanBundle\Service\Business\FileSystemBusiness
         arguments: ['@cuatrovientos_artean.dao.user']
+
+    cuatrovientos_artean.dao.stats:
+        class: Cuatrovientos\ArteanBundle\Service\DAO\StatsDAO
+        arguments: ['CuatrovientosArteanBundle:Applicant', '@doctrine.orm.entity_manager' ]
+
+    cuatrovientos_artean.bo.stats:
+        class: Cuatrovientos\ArteanBundle\Service\Business\StatsBusiness
+        arguments: ['@cuatrovientos_artean.dao.stats']

@@ -1,0 +1,27 @@
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}Artean :: Datos aspirante{% endblock %}
+{% block extrastyles %}
+    <style>
+        {% include "CuatrovientosArteanBundle:Applicant/Studies:studies.select.css" %}
+    </style>
+{% endblock %}
+{% block body %}
+<h2><i class="fa fa-pie-chart m-2" aria-hidden="true"></i>  Indicadores</h2>
+    <section>
+        <h3><i class="fa fa-bar-chart m-1 ml-2" aria-hidden="true"></i>Evolución de solicitudes</h3>
+        </section>
+{% endblock %}
+{% block extrascripts %}
+    {% javascripts
+    '@CuatrovientosArteanBundle/Resources/public/js/selectize.js'
+    '@CuatrovientosArteanBundle/Resources/public/js/es5.js'
+    %}
+    <!-- Optionally enable responsive features in IE8 -->
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script language="javascript">
+
+    </script>
+
+{% endblock %}
+
