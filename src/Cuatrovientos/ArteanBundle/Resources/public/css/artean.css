@@ -112,3 +112,12 @@ input[type=checkbox]{
 .status-error {
     color: red;
 }
+
+.artean-graph {
+    width: 80%;
+    height: 200px;
+}
+
+.artean-graph canvas {
+    height: 200px;
+}
