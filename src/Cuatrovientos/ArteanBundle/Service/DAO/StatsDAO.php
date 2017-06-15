@@ -12,12 +12,10 @@ class StatsDAO extends GenericDAO {
     public function jobRequestStats($id=0, $start=0,$total=100)
     {
         return $this->repository->createQueryBuilder('m')
-            ->where('m.id > :id')
-            ->setParameter('id',$id)
-            ->orderBy('m.id', 'DESC')
+            ->select('j.id, count(j.id) as counter')
+            ->from('CuatrovientosArteanBundle:JobRequest','j')
+            ->groupby('j.offerdate')
             ->getQuery()
-            ->setFirstResult($start)
-            ->setMaxResults($total)
             ->getResult();
     }
 

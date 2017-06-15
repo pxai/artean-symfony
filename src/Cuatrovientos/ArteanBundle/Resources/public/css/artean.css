@@ -114,10 +114,9 @@ input[type=checkbox]{
 }
 
 .artean-graph {
-    width: 80%;
-    height: 200px;
+
 }
 
 .artean-graph canvas {
-    height: 200px;
+
 }
