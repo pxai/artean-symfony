@@ -116,7 +116,7 @@ class UserController extends Controller
                 $em->flush();
                 
                 $applicant->setIdUser($user->getId());
-                
+                $applicant->setActive(1);
                 $em->persist($applicant);
                 $em->flush();
                 

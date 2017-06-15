@@ -11,5 +11,9 @@ class StatsBusiness extends GenericBusiness {
         return $this->entityDAO->jobRequestStats();
     }
 
+    public function getApplicantStats()
+    {
+        return $this->entityDAO->applicantStats();
+    }
 
 }
