@@ -11,6 +11,12 @@ class StatsBusiness extends GenericBusiness {
         return json_encode($this->entityDAO->jobRequestStats());
     }
 
+    public function getJobRequestMonthlyStats()
+    {
+        return json_encode($this->entityDAO->jobRequestMonthlyStats());
+    }
+
+
     public function getApplicantStats()
     {
         return $this->entityDAO->applicantStats();

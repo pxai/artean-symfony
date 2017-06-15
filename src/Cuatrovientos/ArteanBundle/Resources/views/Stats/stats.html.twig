@@ -6,18 +6,17 @@
     </style>
 {% endblock %}
 {% block body %}
-    {{ dump(jobRequestStats) }}
 <h2><i class="fa fa-pie-chart m-2" aria-hidden="true"></i>  Indicadores</h2>
     <section>
-        <h3><i class="fa fa-bar-chart m-1 ml-2" aria-hidden="true"></i>Evolución de solicitudes</h3>
+        <h3><i class="fa fa-bar-chart m-1 ml-2" aria-hidden="true"></i>Evolución de solicitudes por año</h3>
         <div class="artean-graph">
             <canvas  id="jobRequestEvolutionChart" width='326' height='240' style='width:326px;height:240px'></canvas>
             </div>
         </section>
     <section>
-        <h3><i class="fa fa-bar-chart m-1 ml-2" aria-hidden="true"></i>Evolución de solicitudes 2</h3>
+        <h3><i class="fa fa-bar-chart m-1 ml-2" aria-hidden="true"></i>Solicitudes por mes</h3>
         <div class="artean-graph">
-            <canvas  id="jobRequestEvolutionChart2" width='326' height='240' style='width:326px;height:240px'></canvas>
+            <canvas  id="jobRequestMonthlyEvolutionChart" width='326' height='240' style='width:326px;height:240px'></canvas>
         </div>
     </section>
 
@@ -33,60 +32,61 @@
     <script language="JavaScript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js">
         </script>
     <script language="javascript">
-
+        var backColors = [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+        ];
+        var borderColors = [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+        ]
         var ctx = document.getElementById("jobRequestEvolutionChart").getContext('2d');
         var jobRequestEvolutionChartData = {{ jobRequestStats|raw  }};
-        var labels = [];
-        var values = [];
+        var labels1 = [];
+        var values1 = [];
         jobRequestEvolutionChartData.forEach(function(element) {
-            labels.push(element.offeryear);
-            values.push(element.counter);
+            labels1.push(element.offeryear);
+            values1.push(element.counter);
         });
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: labels,
+                labels: labels1,
                 datasets: [{
-                    label: '# of Votes',
-                    data: values,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
+                    label: '# solicitudes',
+                    data: values1,
+                    backgroundColor: backColors,
+                    borderColor: borderColors,
                     borderWidth: 1
                 }]
             },
@@ -101,30 +101,23 @@
             }
         });
 
-        var ctx2 = document.getElementById("jobRequestEvolutionChart2").getContext('2d');
+        var jobRequestMonthlyEvolutionChartData = {{ jobRequestMonthlyStats|raw  }};
+        var labelsJobRequestMonthly = [];
+        var valuesJobRequestMonthly = [];
+        jobRequestMonthlyEvolutionChartData.forEach(function(element) {
+            labelsJobRequestMonthly.push(element.offermonth);
+            valuesJobRequestMonthly.push(element.counter);
+        });
+        var ctx2 = document.getElementById("jobRequestMonthlyEvolutionChart").getContext('2d');
         var myChart2 = new Chart(ctx2, {
             type: 'bar',
             data: {
-                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                labels: labelsJobRequestMonthly,
                 datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
+                    label: '# solicitudes',
+                    data: valuesJobRequestMonthly,
+                    backgroundColor: backColors,
+                    borderColor: borderColors,
                     borderWidth: 1
                 }]
             },
