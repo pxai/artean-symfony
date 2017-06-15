@@ -12,8 +12,11 @@ class StatsController extends Controller
 
     public function indexAction()
     {
+        $logger = $this->get('logger');
         $jobRequestStats = $this->get("cuatrovientos_artean.bo.stats")->getJobRequestsStats();
-        return $this->render('CuatrovientosArteanBundle:Stats:stats.html.twig', array());
+        $logger->info('Stats: ');
+       //$logger->info($jobRequestStats);
+        return $this->render('CuatrovientosArteanBundle:Stats:stats.html.twig', array('jobRequestStats'=>$jobRequestStats));
     }  
 
 }
