@@ -75,9 +75,14 @@ class OfferOpen extends Entity
      * @ORM\Column(name="descripcionoferta",type="string", length=255)
      */
     private $description;
-    
+
     /**
-     * @ORM\Column(name="estudiosrequeridos",type="array", length=50, nullable=TRUE)
+     * Many Companies have many degrees
+     * @ORM\ManyToMany(targetEntity="Degree",cascade={"all"},fetch="EXTRA_LAZY")
+     * @ORM\JoinTable(name="ofertasestudios",
+     *      joinColumns={@ORM\JoinColumn(name="idoffer", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="codestudios", referencedColumnName="id")}
+     *      )
      */
     private $required_studies;
 

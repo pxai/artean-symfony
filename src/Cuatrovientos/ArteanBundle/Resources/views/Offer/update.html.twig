@@ -87,6 +87,8 @@
         {{ form_errors(form.published) }}
         {{ form_widget(form.published, {'attr': {'class': 'form-control'}}) }}
     </div>
+    {{ form_widget(form.position_no) }}
+    {{ form_widget(form.notified) }}
     <div class="form-group">
         {{ form_row(form._token) }}
         {{ form_widget(form.save, {'attr': {'class': 'form-control btn-info'}}) }}

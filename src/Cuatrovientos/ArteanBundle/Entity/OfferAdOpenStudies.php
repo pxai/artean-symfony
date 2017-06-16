@@ -10,7 +10,7 @@ use Cuatrovientos\ArteanBundle\Entity\Studies;
  * @ORM\Entity
  * @ORM\Table(name="ofertasestudios")
  */
-class OfferStudies extends Entity
+class OfferAdOpenStudies extends Entity
 {
     /**
      * @ORM\Id
