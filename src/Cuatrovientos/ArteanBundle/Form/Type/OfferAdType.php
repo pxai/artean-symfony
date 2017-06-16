@@ -43,22 +43,9 @@ class OfferAdType extends AbstractType {
             ->add('position_no', TextType::class,array('label' => 'Nº vacantes','data'=> 1))
             ->add('contract', TextareaType::class, array('label' => 'Tipo y duración de contrato', 'attr' => array('placeholder'=> 'Ejemplo: prácticas, 6 meses')))
             ->add('workday', TextType::class, array('label' => 'Jornada'))
-            ->add('required_studies', ChoiceType::class, array('label'=> 'Formación requerida',
-                    // each entry in the array will be an "email" field
-                    'choices'  => array(
-                        'Ciclo Medio Actividades Comerciales' => 'ACOM', //'9',
-                        'Ciclo Medio Comercio' => 'ACOM', //'9',
-                        'Ciclo Medio Gestión Administrativa'     => 'CM GA', //'10',
-                        'Ciclo Medio Sistemas Microinformáticos y Redes'    => 'CM SMR', //'144',
-                        'FP Básica'    => 'FPB', //'143',
-                        'Ciclo Superior Administración y Finanzas'    => 'CS AF', //'13',
-                        'Ciclo Superior Transporte y Logística'    => 'CS TL', //'19',
-                        'Ciclo Superior Comercio Internacional'    => 'CS CI', //'16',
-                        'Ciclo Superior GVEC'    => 'GVEC', //'18',
-                        'Ciclo Superior Redes y Sistemas'    => 'CS ASIR', //'15',
-                        'Ciclo Superior de Desarrollo de Aplicaciones Informáticas'    => 'CS DAM', //'17',
-                    ),
-                    'choice_attr' => array('class' => 'form-control'),
+            ->add('required_studies', EntityType::class, array(
+                    'label' => 'Formación requerida',
+                    'class' => 'CuatrovientosArteanBundle:Degree',
                     'attr' => array('class' => 'checkboxblock'),
                     'expanded' => true,
                     'multiple' => true
@@ -96,6 +83,9 @@ class OfferAdType extends AbstractType {
                 )
             )
             ->add('type',HiddenType::class)
+            ->add('offerdate',HiddenType::class)
+            ->add('notified',HiddenType::class)
+            ->add('positionNo',HiddenType::class)
             ->add('save', SubmitType::class, array('label'=> 'Enviar'));
 
         $builder->addEventListener(

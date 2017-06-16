@@ -2,11 +2,10 @@
 
 namespace Cuatrovientos\ArteanBundle\Service\Business;
 
-use Cuatrovientos\ArteanBundle\Entity\Offer;
-use Cuatrovientos\ArteanBundle\Service\DAO\OfferDAO;
 
 
 class OfferAdBusiness extends GenericBusiness {
+
 
     public function findAllOfferAds($id=0, $start=0,$total=100)
     {
@@ -42,5 +41,15 @@ class OfferAdBusiness extends GenericBusiness {
     {
         return $this->entityDAO->searchOfferAds($offer, $start, $total);
     }
+
+    public function notifyApplicants($offer)
+    {
+        if ($offer->isPublishedAndShouldBeNotified()) {
+            $offer->setNotified(1);
+            return $this->entityDAO->update($offer);
+        }
+
+    }
+
 
 }

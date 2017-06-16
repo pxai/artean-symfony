@@ -37,14 +37,9 @@ class OfferAdController extends Controller
 
     public function newOfferAdSaveOpenAction(Request $request)
     {
-        //$form = $this->createForm(new OfferType(), new Offer());
-        //$request->get('position')->set($request->request->get('company') .'=> , '. $request->request->get('position'));    
         $form = $this->createForm(OfferAdType::class, new OfferAdOpen());
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
-            
-            //$form->submit($request->request->get($form->getName()));
-            
             if ($form->isValid()) {
                 $offer = $form->getData();
                 $em = $this->getDoctrine()->getEntityManager();
@@ -68,7 +63,6 @@ class OfferAdController extends Controller
         ->setBcc('pello_altadill@cuatrovientos.org')
         ->setBody(
             $this->renderView(
-                // app/Resources/views/Emails/registration.html.twig
                 'Emails/newOfferAd.html.twig' ,
                 array('offer' => $offer)
             ),
@@ -101,19 +95,9 @@ class OfferAdController extends Controller
     public function offerAdUpdateSaveAction(Request $request) {
       
         $form = $this->createForm(OfferAdType::class, new OfferAdOpen());
-      //  $form->submit($request->request->get($form->getName()));
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
-            if ($form->isValid()) {
-                $offer = $form->getData();
-
-                $this->get("cuatrovientos_artean.bo.offerad")->update($offer);
-                
-                // redirect to index
-                $response = $this->forward('CuatrovientosArteanBundle:OfferAd:offerAdDetail' , array('id' => $offer->getId()));
-            } else  {
-                 $response = $this->render('CuatrovientosArteanBundle:OfferAd:updatePost.html.twig' , array('form'=> $form->createView()));
-            }
+            $response = $this->updateOffer($form);
         }
         return $response;
     }
@@ -221,5 +205,21 @@ class OfferAdController extends Controller
         return $this->render('CuatrovientosArteanBundle:News:update.html.twig',array('form'=> $form->createView(),'id'=>$news->getId()));
 
         return $response;
+    }
+
+    /**
+     * @param $form
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    private function updateOffer($form)
+    {
+        if ($form->isValid()) {
+            $offer = $form->getData();
+            $this->get("cuatrovientos_artean.bo.offerad")->update($offer);
+            $this->get("cuatrovientos_artean.bo.offerad")->notifyApplicants($offer);
+            return $this->forward('CuatrovientosArteanBundle:OfferAd:offerAdDetail', array('id' => $offer->getId()));
+        } else {
+            return $this->render('CuatrovientosArteanBundle:OfferAd:updatePost.html.twig', array('form' => $form->createView()));
+        }
     }
 }

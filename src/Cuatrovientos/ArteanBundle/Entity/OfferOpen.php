@@ -138,7 +138,14 @@ class OfferOpen extends Entity
      * @ORM\Column(name="tipo",type="integer")
      */
     private $type = 1;
-       
+
+
+
+    /**
+     * @ORM\Column(name="notificada",type="integer")
+     */
+    private $notified = 0;
+
     public function __construct () {
         $this->required_languages = array();
         $this->required_studies = array();
@@ -420,5 +427,20 @@ class OfferOpen extends Entity
         $this->type = $type;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getNotified()
+    {
+        return $this->notified;
+    }
+
+    /**
+     * @param mixed $notified
+     */
+    public function setNotified($notified)
+    {
+        $this->notified = $notified;
+    }
     
 }

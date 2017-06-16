@@ -76,8 +76,14 @@ class OfferAdOpen extends Entity
      */
     private $description;
     
+
     /**
-     * @ORM\Column(name="estudiosrequeridos",type="array", length=50, nullable=TRUE)
+     * Many Companies have many degrees
+     * @ORM\ManyToMany(targetEntity="Degree",cascade={"all"},fetch="EXTRA_LAZY")
+     * @ORM\JoinTable(name="ofertasestudios",
+     *      joinColumns={@ORM\JoinColumn(name="idoffer", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="codestudios", referencedColumnName="id")}
+     *      )
      */
     private $required_studies;
 
@@ -138,11 +144,17 @@ class OfferAdOpen extends Entity
      * @ORM\Column(name="tipo",type="integer")
      */
     private $type = 1;
-       
+
+    /**
+     * @ORM\Column(name="notificada",type="integer")
+     */
+    private $notified;
+
     public function __construct () {
         $this->required_languages = array();
         $this->required_studies = array();
         $this->published = 0;
+        $this->position_no = 1;
     }
 
   
@@ -420,5 +432,23 @@ class OfferAdOpen extends Entity
         $this->type = $type;
     }
 
-    
+    /**
+     * @return mixed
+     */
+    public function getNotified()
+    {
+        return $this->notified;
+    }
+
+    /**
+     * @param mixed $notified
+     */
+    public function setNotified($notified)
+    {
+        $this->notified = $notified;
+    }
+
+    public function isPublishedAndShouldBeNotified () {
+        return ($this->published == 6 && !$this->notified);
+    }
 }

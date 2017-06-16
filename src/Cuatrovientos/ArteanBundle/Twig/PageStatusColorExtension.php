@@ -13,6 +13,7 @@ class PageStatusColorExtension extends \Twig_Extension
     public function pageStatusColorFilter($status)
     {
         $cssClass = array(
+            "" => "page-draft",
            "0" => "page-draft",
            "1" => "page-notpublished",
             "2" => "page-published",
