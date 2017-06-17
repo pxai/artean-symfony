@@ -87,6 +87,12 @@ class ApplicantType extends AbstractType {
                 "label"=>"Resumen",
                 "required"=>false
             ))
+            ->add('notifications', ChoiceType::class, array(
+                    'choices'  => array(
+                        'Habilitado' => '1',
+                        'Deshabilitado'     => '0'),
+                    'label' => 'Recibir avisos' )
+            )
             ->add('cv',HiddenType::class)
             ->add('photo',HiddenType::class)
             ->add('updateDate',HiddenType::class)

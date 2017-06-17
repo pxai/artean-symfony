@@ -159,6 +159,11 @@ class Applicant extends Entity
      */
     private $active = 0;
 
+    /**
+     * @ORM\Column(name="notifications",type="integer")
+     */
+    private $notifications = 1;
+
     public function __construct () {
         $this->studies = array();
         $this->courses = array();
@@ -562,6 +567,22 @@ class Applicant extends Entity
     public function setUpdateDate($updateDate)
     {
         $this->updateDate = $updateDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNotifications()
+    {
+        return $this->notifications;
+    }
+
+    /**
+     * @param mixed $notifications
+     */
+    public function setNotifications($notifications)
+    {
+        $this->notifications = $notifications;
     }
 
 

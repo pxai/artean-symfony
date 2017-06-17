@@ -101,7 +101,11 @@
         {{ form_errors(form.resume) }}
         {{ form_widget(form.resume, {'attr': {'class': 'form-control'}}) }}
     </div>
-
+    <div class="form-group">
+        {{ form_label(form.notifications) }}
+        {{ form_errors(form.notifications) }}
+        {{ form_widget(form.notifications, {'attr': {'class': 'form-control'}}) }}
+    </div>
     <div class="form-group">
         {{ form_row(form._token) }}
         {{ form_widget(form.save, {'attr': {'class': 'form-contro btn btn-info'}}) }}
