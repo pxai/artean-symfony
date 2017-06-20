@@ -124,6 +124,24 @@ class ApplicantDAO extends GenericDAO {
             ->getResult();
     }
 
+    public function findApplicantsByDegree($degrees)
+    {
+        $repository = $this->em->getRepository($this->entityType);
+        $queryBuilder =  $repository->createQueryBuilder('m');
+        $queryBuilder
+            ->where('m.active = 1')
+            ->andWhere('m.notifications = 1')
+            ->andWhere('m.drivingLicense like :drivingLicense')
+            ->orderBy('m.surname', 'ASC');
+
+            $queryBuilder->leftJoin('m.studies', 's', 'studies')
+                ->andWhere('s.studies IN (:studies)')
+                ->setParameter('studies', $degrees);
+
+        return $queryBuilder
+            ->getQuery()
+            ->getResult();
+    }
 
 }
 

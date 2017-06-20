@@ -155,7 +155,7 @@ services:
 
     cuatrovientos_artean.bo.offerad:
         class: Cuatrovientos\ArteanBundle\Service\Business\OfferAdBusiness
-        arguments: ['@cuatrovientos_artean.dao.offerad']
+        arguments: ['@cuatrovientos_artean.dao.offerad','@cuatrovientos_artean.dao.applicant','@monolog.logger','@mailer','@templating']
 
     cuatrovientos_artean.bo.filesystem:
         class: Cuatrovientos\ArteanBundle\Service\Business\FileSystemBusiness
