@@ -131,7 +131,6 @@ class ApplicantDAO extends GenericDAO {
         $queryBuilder
             ->where('m.active = 1')
             ->andWhere('m.notifications = 1')
-            ->andWhere('m.drivingLicense like :drivingLicense')
             ->orderBy('m.surname', 'ASC');
 
             $queryBuilder->leftJoin('m.studies', 's', 'studies')

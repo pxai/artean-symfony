@@ -68,7 +68,7 @@ class OfferAdBusiness extends GenericBusiness {
     {
         if ($offer->isPublishedAndShouldBeNotified()) {
             $this->logger->info("Time to notify...");
-            $this->sendEmails($offer,$this->applicantDAO->findApplicantsByDegree($offer->getDegrees()));
+            $this->sendEmails($offer,$this->applicantDAO->findApplicantsByDegree($offer->getRequiredStudies()));
             $offer->setNotified(1);
             return $this->entityDAO->update($offer);
         }
@@ -79,8 +79,8 @@ class OfferAdBusiness extends GenericBusiness {
         foreach ($applicants as $a) {
             $this->logger->info("Sending email to: " . $a->getEmail());
             $this->sendEmail(
-                    new Email("artean@cuatrovientos.org",$a->getEmail(),"","[Artean] ¡Nueva oferta de empleo!",
-                    $offer));
+                    new Email("artean@cuatrovientos.org",$a->getEmail(),"","[Artean] ¡Nueva oferta de empleo!",""),
+                    $offer);
         }
     }
 
