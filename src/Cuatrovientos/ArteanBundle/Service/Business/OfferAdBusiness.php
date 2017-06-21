@@ -95,7 +95,7 @@ class OfferAdBusiness extends GenericBusiness {
                 ),'text/html'
             );
         $this->logger->info("Sending email to: " . $offer->getDescription());
-       // return  $this->mailer->send($message);
+        return  $this->mailer->send($message);
     }
 
 }
