@@ -1,15 +1,19 @@
 
 {# src/Cuatrovientos/ArteanBundle/Resources/views/Center/new.html.twig #}
 {% extends "CuatrovientosArteanBundle:Default:layoutStars.html.twig" %}
-{% block title %}SignIn ::new OK{% endblock %}
+{% block title %}Alta de candidatura{% endblock %}
 {% block body %}
 
-<h2>Alta en artean - OK </h2>
+<h2>Alta en artean - Solo un pasito más... </h2>
 <p>Hola {{ applicant.name }} .</p>
+    {%  if password is not null %}
+        <div><b>Tu usuario: </b> {{ user.login }}</div>
+        <div><b>Tu contraseña: </b> {{ password }}</div>
+    {% endif %}
 <p>Para terminar el alta, debes subir tu CV<p>
     <div class="mb-4">
         <h3><i class="fa fa-file-text-o" aria-hidden="true"></i> Subir Currículum</h3>
-             <form method="post" action="{{ path('cuatrovientos_artean_applicant_upload_cv') }}" id="applicant_upload_cv" class="arteanform" enctype="multipart/form-data">
+             <form method="post" action="{{ path('cuatrovientos_artean_applicant_signup_save_upload_cv', {'applicantid': applicant.id }) }}" id="applicant_upload_cv" class="arteanform" enctype="multipart/form-data">
                 {{ form_row(formCv.cv) }}
                 {{ form_row(formCv._token) }}
                 <button type="submit" class="btn btn-primary"><i class="fa fa-cloud-upload" aria-hidden="true"></i> Subir</button>

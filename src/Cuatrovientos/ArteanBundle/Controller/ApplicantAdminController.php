@@ -389,9 +389,7 @@ class ApplicantAdminController extends Controller
     
      public function applicantSignUpSaveAction(Request $request)
     {
-        //$form = $this->createForm(new ApplicantType(), new Applicant());
-        //$request->get('position')->set($request->request->get('company') .', '. $request->request->get('position'));    
-        $form = $this->createForm(ApplicantSignUpType::class, new Applicant());
+         $form = $this->createForm(ApplicantSignUpType::class, new Applicant());
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
             
@@ -423,8 +421,9 @@ class ApplicantAdminController extends Controller
                     //$this->saveStudies($applicant);
                     $this->createProfile($user->getId());
 
-                    $this->get("cuatrovientos_artean.bo.applicant")->createNewApplicant($user);
+                    $applicantid = $this->get("cuatrovientos_artean.bo.applicant")->createNewApplicant($user);
 
+                    $applicant->setId($applicantid);
                     $this->sendEmail($applicant);
                     $this->sendEmailUser($user, $password);
 
@@ -585,6 +584,7 @@ class ApplicantAdminController extends Controller
             }
 
             $applicant->setCv($fileName);
+            $applicant->setActive(1);
             $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);
 
             return $this->detailAction($applicantid);
@@ -593,6 +593,44 @@ class ApplicantAdminController extends Controller
         return $this->detailAction($applicantid);
     }
 
+    public function uploadCvSignUpAction($applicantid, Request $request)
+    {
+        $oldCvPath = "";
+        $applicant = $this->get("cuatrovientos_artean.bo.applicant")->findAllApplicantData($applicantid);
+        if ($applicant->getCv() != "") {
+            $oldCvPath =  $applicant->getCv();
+            $applicant->setCv(new File($this->getParameter('cvs_directory') . '/' . $applicant->getCv()));
+        }
+
+        $form = $this->createForm(ApplicantCvType::class, $applicant);
+        $form->handleRequest($request);
+        $formCv = $this->createForm(ApplicantCvType::class);
+        if ($form->isSubmitted()) { //{} && $form->isValid()) {
+            // $file stores the uploaded PDF file
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $file = $applicant->getCv();
+
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+
+            $file->move(
+                $this->getParameter('cvs_directory'),
+                $fileName
+            );
+
+            if ($oldCvPath != "") {
+                $this->get("cuatrovientos_artean.bo.filesystem")->deleteFile($this->getParameter('cvs_directory') . '/' . $oldCvPath);
+            }
+
+            $applicant->setCv($fileName);
+            $this->get("cuatrovientos_artean.bo.applicant")->update($applicant);
+
+            return $this->render('CuatrovientosArteanBundle:Applicant:signUpSaveWithCv.html.twig', array('applicant' => $applicant, 'user' => $applicant->getUser(), 'password' => '', 'formCv' => $formCv->createView()));
+
+        }
+
+        return  $this->render('CuatrovientosArteanBundle:Applicant:signUpSave.html.twig', array('applicant' => $applicant, 'user' => $applicant->getUser(), 'password' => '', 'formCv' => $formCv->createView()));
+
+    }
 
     public function uploadPhotoAction($applicantid, Request $request)
     {

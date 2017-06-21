@@ -286,8 +286,14 @@ cuatrovientos_artean_applicant_signup_save:
     defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:applicantSignUpSave }
 
 cuatrovientos_artean_applicant_signup_upload_cv:
-    path:     /artean/open/signup/cv
+    path:     /artean/open/signup/cv/
     defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:applicantSignUpCv }
+
+cuatrovientos_artean_applicant_signup_save_upload_cv:
+    path:     /artean/open/signup/cv/save/{applicantid}
+    defaults: { _controller: CuatrovientosArteanBundle:ApplicantAdmin:uploadCvSignUp }
+    requirements:
+            'applicantid' : '\d+'
 
 #### user 
 cuatrovientos_artean_login:
