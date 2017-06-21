@@ -1,0 +1,46 @@
+
+{# src/Samples/BlogBundle/Resources/views/simple.html.twig #}
+{% extends "CuatrovientosArteanBundle:Default:layout.html.twig" %}
+{% block title %}¡Oferta publicada!{% endblock %}
+{% block body %}
+    Su oferta de empleo ha sido publicada en el Portal de Empleo del Insituto Cuatrovientos.
+    Recuerde que las personas interesadas enviaran currículum la e-mail de contacto.
+ <p>El anuncio se ha publicado con las siguientes especificaciones</p>
+ <table class="table">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Nueva oferta</th>
+    </tr>    
+    </thead>
+     <tbody>
+    <tr>
+      <th scope="row">Empresa</th>
+      <td>{{ offer.company }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Puesto</th>
+      <td>{{ offer.position }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Descripción</th>
+      <td>{{ offer.description }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Jornada</th>
+      <td>{{ offer.workday }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Observaciones</th>
+      <td>{{ offer.observations }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Contact</th>
+      <td>{{ offer.contact }}</td>
+    </tr>
+     </tbody>
+ </table>
+    <p>
+    <div><a href="https://artean.cuatrovientos.org/">Pincha aquí para verlo</a> </div>
+    </p>
+{% endblock %}

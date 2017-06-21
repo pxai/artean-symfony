@@ -216,7 +216,7 @@ class OfferAdController extends Controller
         if ($form->isValid()) {
             $offer = $form->getData();
             $this->get("cuatrovientos_artean.bo.offerad")->update($offer);
-            $this->get("cuatrovientos_artean.bo.offerad")->notifyApplicants($offer);
+            $this->get("cuatrovientos_artean.bo.offerad")->notifyAll($offer);
             return $this->forward('CuatrovientosArteanBundle:OfferAd:offerAdDetail', array('id' => $offer->getId()));
         } else {
             return $this->render('CuatrovientosArteanBundle:OfferAd:updatePost.html.twig', array('form' => $form->createView()));

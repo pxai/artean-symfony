@@ -64,7 +64,12 @@ class OfferAdBusiness extends GenericBusiness {
         return $this->entityDAO->searchOfferAds($offer, $start, $total);
     }
 
-    public function notifyApplicants($offer)
+    public function notifyAll ($offer) {
+        $this->notifyApplicants($offer);
+        $this->notifyCompany($offer);
+    }
+
+    private function notifyApplicants($offer)
     {
         if ($offer->isPublishedAndShouldBeNotified()) {
             $this->logger->info("Time to notify...");
@@ -73,6 +78,14 @@ class OfferAdBusiness extends GenericBusiness {
             return $this->entityDAO->update($offer);
         }
 
+    }
+
+    private function notifyCompany($offer)
+    {
+        $this->sendEmail(
+            new Email("artean@cuatrovientos.org",$offer->getContactEmail(),"","[Artean Cuatrovientos] ¡Oferta publicada!",""),
+            $offer,
+            "Emails/newOfferAdEmployerNotification.html.twig");
     }
 
     private function sendEmails ($offer,$applicants) {
@@ -84,13 +97,13 @@ class OfferAdBusiness extends GenericBusiness {
         }
     }
 
-    private function sendEmail ($email, $offer) {
+    private function sendEmail ($email, $offer, $template="Emails/newOfferAd.html.twig") {
         $message = \Swift_Message::newInstance()
                 ->setSubject($email->getSubject())
                 ->setFrom($email->getFrom())
                 ->setTo($email->getTo())
                 ->setBody($this->templating->render(
-                    "Emails/newOfferAd.html.twig",
+                    $template,
                     array('offer' => $offer)
                 ),'text/html'
             );
