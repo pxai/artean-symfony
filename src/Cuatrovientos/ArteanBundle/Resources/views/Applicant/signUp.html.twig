@@ -9,6 +9,7 @@
                         <img src="{{ asset_url }}"  alt="darest candidates" title="fearless candidate"/>
                     {% endimage %}
 <!-- p>Tu email no existe en nuestra BBDD.</p -->
+	{% include "CuatrovientosArteanBundle:Default:flash.html.twig" %}
 <form method="post" action="{{ path('cuatrovientos_artean_applicant_signup_save') }}">
    <div class="form-group">
         {{ form_label(form.name) }}

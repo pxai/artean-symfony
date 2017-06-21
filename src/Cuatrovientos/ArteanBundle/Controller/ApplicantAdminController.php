@@ -407,7 +407,8 @@ class ApplicantAdminController extends Controller
                         ->getFlashBag()
                         ->add('info', 'El email '. $applicant->getEmail(). ' ya está registrado. Prueba a entrar o resetea la cuenta en el enlace de abajo. ')
                     ;
-                    return $this->redirectToRoute('cuatrovientos_artean_login');
+                    return $this->render('CuatrovientosArteanBundle:Applicant:signUp.html.twig', array('form'=> $form->createView()));
+
                 } else {
                     $user = new User();
 
@@ -428,8 +429,8 @@ class ApplicantAdminController extends Controller
                     $this->sendEmailUser($user, $password);
 
                     //return $this->redirect('https://artean.cuatrovientos.org/?home', 301);
-
-                    $response = $this->render('CuatrovientosArteanBundle:Applicant:signUpSave.html.twig', array('applicant' => $applicant, 'user' => $user, 'password' => $password));
+                    $formCv = $this->createForm(ApplicantCvType::class);
+                    $response = $this->render('CuatrovientosArteanBundle:Applicant:signUpSave.html.twig', array('applicant' => $applicant, 'user' => $user, 'password' => $password, 'formCv' => $formCv->createView()));
                 }
             } else {
                 $response = $this->render('CuatrovientosArteanBundle:Applicant:signUp.html.twig', array('form'=> $form->createView()));
