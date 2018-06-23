@@ -1,3 +1,8 @@
+# Artean-Symfony
+Job Bank open source management web app, built on Symfony.
+Currently Symfony 3 version.
+
+
 Instalation
 ===========
 Linux:
